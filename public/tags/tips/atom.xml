@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+	<title>Frey&#x27;s blog - tips</title>
+	<subtitle>一个简单的个人博客，用于记录笔记</subtitle>
+	<link href="https://blog.vhcffh.com/tags/tips/atom.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://blog.vhcffh.com"/>
+	<generator uri="https://www.getzola.org/">Zola</generator>
+	<updated>2022-05-21T00:00:00+00:00</updated>
+	<id>https://blog.vhcffh.com/tags/tips/atom.xml</id>
+	<entry xml:lang="en">
+		<title>一些不常用C语言关键字</title>
+		<published>2022-05-21T00:00:00+00:00</published>
+		<updated>2022-05-21T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/wp-765/" type="text/html"/>
+		<id>https://blog.vhcffh.com/wp-765/</id>
+		<content type="html">&lt;h2 id=&quot;volatile&quot;&gt;volatile&lt;&#x2F;h2&gt;
+&lt;p&gt;该关键字是一个类型修饰符，提醒编译器它后面所定义的变量随时有可能改变，因此编译后的程序每次需要存储或读取这个变量的时候，都会直接从变量地址中读取数据&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;typedef&quot;&gt;typedef&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;code&gt;typedef int myint;&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;声明类型:&lt;code&gt;int a;&lt;&#x2F;code&gt;等价于&lt;code&gt;myint a;&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;code&gt;typedef void （*fun)(void);&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;声明函数指针:&lt;code&gt;void （*p)(void);&lt;&#x2F;code&gt;等价于&lt;code&gt;fun p;&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;register&quot;&gt;register&lt;&#x2F;h2&gt;
+&lt;p&gt;register将数据存储在寄存器中&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;code&gt;register type var_name __asm(reg)&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;声明一个命名寄存器的变量，reg为寄存器名&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;attribute&quot;&gt;attribute&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;code&gt;__attribute__ ((attribute-list))&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;编译器优化配置&lt;&#x2F;p&gt;
+&lt;p&gt;设置函数属性，类型属性，变量属性&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;inline&quot;&gt;inline&lt;&#x2F;h2&gt;
+&lt;p&gt;将被调用函数以内联的方式嵌入到调用函数内&lt;&#x2F;p&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>树莓派4B运行docker错误</title>
+		<published>2022-04-12T00:00:00+00:00</published>
+		<updated>2022-04-12T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/wp-760/" type="text/html"/>
+		<id>https://blog.vhcffh.com/wp-760/</id>
+		<content type="html">&lt;p&gt;树莓派4B安装raspberrypi系统后，用自带的源安装docker，在涉及到libseccomp这个库时会报错&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash z-code&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;-------------------------------------&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;z-meta z-function z-shell&quot;&gt;          &lt;span class=&quot;z-entity z-name z-function z-shell&quot;&gt;_&lt;&#x2F;span&gt;         &lt;span class=&quot;z-punctuation z-section z-parens z-begin z-shell&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-parens z-end z-shell&quot;&gt;)&lt;&#x2F;span&gt;
+         | |  ___   _    __
+         | | &#x2F; __| | |  &#x2F;  &lt;span class=&quot;z-punctuation z-separator z-continuation z-line z-shell&quot;&gt;\
+&lt;&#x2F;span&gt;         | | &lt;span class=&quot;z-constant z-character z-escape z-shell&quot;&gt;\_&lt;&#x2F;span&gt;_ &lt;span class=&quot;z-constant z-character z-escape z-shell&quot;&gt;\ &lt;&#x2F;span&gt;| | | &lt;span class=&quot;z-punctuation z-section z-parens z-begin z-shell&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-parens z-end z-shell&quot;&gt;)&lt;&#x2F;span&gt; |
+         |_| |___&#x2F; |_|  &lt;span class=&quot;z-constant z-character z-escape z-shell&quot;&gt;\_&lt;&#x2F;span&gt;_&#x2F;
+
+Brought to you by linuxserver.io
+-------------------------------------
+To support LSIO projects visit:
+https:&#x2F;&#x2F;www.linuxserver.io&#x2F;donate&#x2F;
+-------------------------------------
+GID&#x2F;UID
+-------------------------------------
+User uid:    1000
+User gid:    1000
+-------------------------------------
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+Your DockerHost is running an outdated version of libseccomp
+To fix this, please visit https:&#x2F;&#x2F;docs.linuxserver.io&#x2F;faq#libseccomp
+Apps will not behave correctly without this
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;具体原因是由于libseccomp2库的一些bug，已经修复但没有被推送到所有仓库，在&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;docs.linuxserver.io&#x2F;faq#libseccomp&quot;&gt;这里&lt;&#x2F;a&gt;有一些解释。也介绍了一些措施去修复。&lt;&#x2F;p&gt;
+&lt;p&gt;尝试后并没有用，可能是某些步骤错了。&lt;&#x2F;p&gt;
+&lt;p&gt;最后通过通过docker官方脚本重新安装解决了&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash z-code&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; apt remove docker.io&lt;&#x2F;span&gt;
+&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; apt autoremove&lt;&#x2F;span&gt;
+&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; apt update&lt;&#x2F;span&gt;
+&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; apt upgrade&lt;&#x2F;span&gt;
+&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;curl&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;fsSL&lt;&#x2F;span&gt; https:&#x2F;&#x2F;get.docker.com&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;o&lt;&#x2F;span&gt; get-docker.sh&lt;&#x2F;span&gt;
+&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; sh get-docker.sh&lt;&#x2F;span&gt;
+&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;systemctl&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; start docker&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;docker官方下载的安装脚本&lt;code&gt;get-docker.sh&lt;&#x2F;code&gt;会给apt添加一个新的源，并从docker的官方源重新安装docker的最新版本。&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;can-kao&quot;&gt;参考&lt;&#x2F;h1&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;docs.linuxserver.io&#x2F;faq#libseccomp&quot;&gt;FAQ - LinuxServer.io&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>树莓派4B wlan0消失</title>
+		<published>2022-04-10T00:00:00+00:00</published>
+		<updated>2022-04-10T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/wp-756/" type="text/html"/>
+		<id>https://blog.vhcffh.com/wp-756/</id>
+		<content type="html">&lt;ol&gt;
+&lt;li&gt;wlan0 没有启动，使用&lt;code&gt;sudo ifconfig wlan0 up&lt;&#x2F;code&gt;启用即可&lt;&#x2F;li&gt;
+&lt;li&gt;wlan0被blocked，使用&lt;code&gt;sudo rfkill unblock all&lt;&#x2F;code&gt;解锁即可&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>cargo报错</title>
+		<published>2021-12-19T00:00:00+00:00</published>
+		<updated>2021-12-19T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/wp-661/" type="text/html"/>
+		<id>https://blog.vhcffh.com/wp-661/</id>
+		<content type="html">&lt;p&gt;遇到一个cargo错误&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;error: no override and no default toolchain set
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;用rustup重新下载并设置默认版本&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;rustup install stable
+&lt;&#x2F;span&gt;rustup default stable 
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;下载更新完成后就无错误了&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;can-kao&quot;&gt;参考&lt;&#x2F;h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;http:&#x2F;&#x2F;hongouru.blogspot.com&#x2F;2018&#x2F;11&#x2F;solved-arch-linux-error-no-default.html?m=0&quot;&gt;HELP GRANTED : [ SOLVED ] Arch Linux error: no default toolchain
+configured
+(hongouru.blogspot.com)&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+</content>
+	</entry>
+</feed>

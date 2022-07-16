@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+	<title>Frey&#x27;s blog - nginx</title>
+	<subtitle>一个简单的个人博客，用于记录笔记</subtitle>
+	<link href="https://blog.vhcffh.com/tags/nginx/atom.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://blog.vhcffh.com"/>
+	<generator uri="https://www.getzola.org/">Zola</generator>
+	<updated>2022-01-10T00:00:00+00:00</updated>
+	<id>https://blog.vhcffh.com/tags/nginx/atom.xml</id>
+	<entry xml:lang="en">
+		<title>nginx ssl配置问题（curl 60错误）</title>
+		<published>2022-01-10T00:00:00+00:00</published>
+		<updated>2022-01-10T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/wp-677/" type="text/html"/>
+		<id>https://blog.vhcffh.com/wp-677/</id>
+		<content type="html">&lt;p&gt;通过&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;acmesh-official&#x2F;acme.sh&quot;&gt;acme.sh&lt;&#x2F;a&gt;工具给网站配置了ssl，按照流程配置成功后，使用浏览器可以正常访问，但使用curl进行访问时，出现如下错误：&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;curl: (60) SSL certificate problem: unable to get local issuer certificate
+&lt;&#x2F;span&gt;More details here: https:&#x2F;&#x2F;curl.haxx.se&#x2F;docs&#x2F;sslcerts.html
+
+&lt;&#x2F;span&gt;curl failed to verify the legitimacy of the server and therefore could not
+&lt;&#x2F;span&gt;establish a secure connection to it. To learn more about this situation and
+&lt;&#x2F;span&gt;how to fix it, please visit the web page mentioned above.
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;由于浏览器能够访问成功，就主观认为是系统curl和系统证书的问题。&lt;&#x2F;p&gt;
+&lt;p&gt;找到了&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;stackoverflow.com&#x2F;questions&#x2F;24611640&#x2F;curl-60-ssl-certificate-problem-unable-to-get-local-issuer-certificate&quot;&gt;这里&lt;&#x2F;a&gt;，尝试了各种方法都不行。&lt;&#x2F;p&gt;
+&lt;p&gt;最终找到这个&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;whatsmychaincert.com&#x2F;&quot;&gt;网站&lt;&#x2F;a&gt;对自己网站的ssl进行测试，结果是：&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;****.com is misconfigured. This is the chain it should be using.
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;于是怀疑是自己nginx配置有问题，查看网站给出的证书文件（chain），比自己配置的多了一部分。&lt;&#x2F;p&gt;
+&lt;p&gt;网站上的有两个&lt;code&gt;CERTIFICATE&lt;&#x2F;code&gt;段，而acme.sh生成的只有一个。直接从&lt;code&gt;whatsmychaincert&lt;&#x2F;code&gt;网站下载fallchain证书。&lt;&#x2F;p&gt;
+&lt;p&gt;在服务器上重新配置，并重启nginx，curl就可以访问了。&lt;&#x2F;p&gt;
+&lt;p&gt;对比nginx和apache的配置：&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;acme.sh --install-cert -d example.com \
+&lt;&#x2F;span&gt;--cert-file &#x2F;path&#x2F;to&#x2F;certfile&#x2F;in&#x2F;apache&#x2F;cert.pem \
+&lt;&#x2F;span&gt;--key-file &#x2F;path&#x2F;to&#x2F;keyfile&#x2F;in&#x2F;apache&#x2F;key.pem \
+&lt;&#x2F;span&gt;--fullchain-file &#x2F;path&#x2F;to&#x2F;fullchain&#x2F;certfile&#x2F;apache&#x2F;fullchain.pem \
+&lt;&#x2F;span&gt;--reloadcmd &amp;quot;service apache2 force-reload&amp;quot;
+
+&lt;&#x2F;span&gt;acme.sh --install-cert -d example.com \
+&lt;&#x2F;span&gt;--key-file       &#x2F;path&#x2F;to&#x2F;keyfile&#x2F;in&#x2F;nginx&#x2F;key.pem  \
+&lt;&#x2F;span&gt;--fullchain-file &#x2F;path&#x2F;to&#x2F;fullchain&#x2F;nginx&#x2F;cert.pem \
+&lt;&#x2F;span&gt;--reloadcmd     &amp;quot;service nginx force-reload&amp;quot;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;可以看到apache多配置了一个 --cert-file 参数，而nginx只配置了
+--fullchain-file
+，仔细看了一下nginx的证书安装命令，原来是安装了cert文件，忘记安装fullchain文件了。&lt;&#x2F;p&gt;
+&lt;p&gt;大意了。。。&lt;&#x2F;p&gt;
+&lt;p&gt;明明参数是&lt;code&gt;--fullchain-file&lt;&#x2F;code&gt;为啥文件名要是&lt;code&gt;cert.pem&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+</content>
+	</entry>
+</feed>

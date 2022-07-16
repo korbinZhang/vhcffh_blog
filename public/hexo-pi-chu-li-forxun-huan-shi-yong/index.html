@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <script src="https://blog.vhcffh.com/theme.min.js" integrity="sha384-IpIaa84kOKgkF5EJ0fD/kBe2wtIIsIB60ANGmuJxeA0dz5bSRfwBwp2/QybtQpU2"></script>
+  <link rel="stylesheet" href="https://blog.vhcffh.com/abridge-switcher.css?h=e4088b6018baa6c5c4f8222bf9a3811dec2f942f862ca9550010fba28852c1bc" />
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <script defer src="https://blog.vhcffh.com/search_index.en.js?h=d5e574ffd65cdc44489544089e33544b19b3b86a3340d587cc85531d18b8e792" integrity="sha384-HT1AXvCEAQGWm4cehYh3bO0RNhvjaSLPHFBWZ/7j3UFKwYf5wgLbX7GVJy0LGqKp"></script>
+  <script defer src="https://blog.vhcffh.com/abridge-switcher.min.js?h=be6d42ac1cc5ae1da7cdde772d392d6508fc038f98a8d0fd1bc5b5678530631a" integrity="sha384-RAhv9DQbxrVfq4cbSJsOQ8l7sA56QdpoR10euhjBCBOhLdbJ6y8SCZVYy818n51+"></script>
+  <link rel="alternate" type="application/atom+xml" title="Atom/RSS Feed" href="https://blog.vhcffh.com/atom.xml" />
+  <meta name="robots" content="index, follow" />
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <title>批处理for循环使用 | Frey's blog</title>
+  <meta name="author" content="Jake G" />
+  <meta name="copyright" content="Frey&#x27;s blog" />
+  <meta name="description" content="一个简单的个人博客，用于记录笔记" />
+  <link rel="canonical" href="https://blog.vhcffh.com/hexo-pi-chu-li-forxun-huan-shi-yong/" />
+  <meta name="keywords" content="Abridge, Abridge.css, Zola, Theme, Zola Theme, getzola, Semantic Html, Fast, lightweight" />
+  <meta property="og:url" content="https://blog.vhcffh.com/hexo-pi-chu-li-forxun-huan-shi-yong/" />
+  <meta name="twitter:url" content="https://blog.vhcffh.com/hexo-pi-chu-li-forxun-huan-shi-yong/" />
+  <meta property="og:description" content="一个简单的个人博客，用于记录笔记" />
+  <meta name="twitter:description" content="一个简单的个人博客，用于记录笔记" />
+  <meta property="og:title" content="批处理for循环使用 | Frey&#x27;s blog" />
+  <meta name="twitter:title" content="批处理for循环使用 | Frey&#x27;s blog" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://blog.vhcffh.com/banner.png" />
+  <meta property="og:image" content="https://blog.vhcffh.com/banner.png" />
+  <meta property="og:site_name" content="Frey&#x27;s blog" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:type" content="website" />
+  <meta property="og:updated_time" content="2017-04-22" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="theme-color" content="#333333" />
+  <meta name="msapplication-TileColor" content="#333333" />
+  <link rel="manifest" href="https://blog.vhcffh.com/site.webmanifest" />
+  <link rel="mask-icon" href="https://blog.vhcffh.com/safari-pinned-tab.svg" color="#ff9900" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://blog.vhcffh.com/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="https://blog.vhcffh.com/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="https://blog.vhcffh.com/favicon-16x16.png" />
+  <noscript><link rel="stylesheet" href="https://blog.vhcffh.com/nojs.css" /></noscript>
+</head>
+<body>
+  <header>
+    <nav>
+      <div><h1><a href="https://blog.vhcffh.com/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#f90" viewBox="0 0 96 96" width="32" height="32"><path stroke-width="14" d="M14 99 46 7h4l32 92"/><path stroke-width="9" d="M-3 82c43-26 59-26 102 0"/><path stroke-linecap="round" stroke-width="1.5" d="M94 72v7m-5-9.8v7m-5-9.8v7.1M79 64v7M63 57.7v7m-5-8.2v7m-5-7.8v7m-5-7.2v7m-5-6.7v7m-5-6.3v7m-5-5.8v7M17 64v7m-5-4.6v7m-5-4.2v7M2 72v7"/></svg>bridge</a></h1></div>
+      <div>
+        <ul><li> <h2><a href="https://blog.vhcffh.com/about/">About</a></h2> </li><li> <h2><a href="https://blog.vhcffh.com/posts/">Posts</a></h2> </li><li> <h2><a href="https://blog.vhcffh.com/categories/">Categories</a></h2> </li><li> <h2><a href="https://blog.vhcffh.com/tags/">Tags</a></h2> </li><li class="js"><i type="reset" id="mode" class="svgs adjust"></i></li></ul>
+      </div>
+      <div>
+        <form class="js" name="goSearch">
+          <div class="searchd">
+            <input id="userinput" type="text" placeholder="Search" autocomplete="off" title="Search" />
+            <button type="submit" title="Search"><i class="svgs search"></i></button>
+          </div>
+          <div><div id="suggestions"></div></div>
+        </form>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <article>
+        <h1><a href="https://blog.vhcffh.com/hexo-pi-chu-li-forxun-huan-shi-yong/">批处理for循环使用</a></h1>
+        <span class="s95"> Jake G<span class="hpad"> </span> April 22, 2017<span class="hpad"> </span> [<a href="https://blog.vhcffh.com/categories/bian-cheng/">编程</a>] #<a href="https://blog.vhcffh.com/tags/pi-chu-li/">批处理</a>  #<a href="https://blog.vhcffh.com/tags/bat/">bat</a>  #<a href="https://blog.vhcffh.com/tags/powershell/">powershell</a> </span>
+
+    <p>FOR %variable IN (set) DO command [command-parameters]
+variable是一个变量
+(set)相当于一个数组，variable遍历这个数组
+command [command-parameters]这是每次循环要做的事</p>
+<h3 id="zai-cmdzhong-shu-ru-shi-yong-shi-ying-xie-wei">在cmd中输入使用时应写为</h3>
+<pre class="z-code"><code><span class="z-text z-plain">FOR %variable IN (set) DO command [command-parameters]
+</span></code></pre>
+<p>command [command-parameters]中用到变量也要写为%variable</p>
+<h3 id="xie-jin-bathuo-zhe-cmdshi-ying-xie-wei">写进.bat或者.cmd时应写为</h3>
+<pre class="z-code"><code><span class="z-text z-plain">FOR %%variable IN (set) DO command [command-parameters]
+</span></code></pre>
+<p>command [command-parameters]中用到变量也要写为%%variable</p>
+<h3 id="windowszi-dai-de-helpjie-shi">Windows自带的help解释</h3>
+<pre class="z-code"><code><span class="z-text z-plain">FOR %variable IN (set) DO command [command-parameters]
+
+  %variable  指定一个单一字母可替换的参数。
+  (set)      指定一个或一组文件。可以使用通配符。
+  command    指定对每个文件执行的命令。
+  command-parameters  为特定命令指定参数或命令行开关。
+</span></code></pre>
+<p>在批处理程序中使用 FOR 命令时，指定变量请使用 %%variable
+而不要用 %variable。变量名称是区分大小写的，所以 %i 不同于 %I.</p>
+<p>如果启用命令扩展，则会支持下列 FOR 命令的其他格式:</p>
+<pre class="z-code"><code><span class="z-text z-plain">FOR /D %variable IN (set) DO command [command-parameters]
+</span></code></pre>
+<p>如果集中包含通配符，则指定与目录名匹配，而不与文件名匹配。</p>
+<pre class="z-code"><code><span class="z-text z-plain">FOR /R [[drive:]path] %variable IN (set) DO command [command-parameters]
+</span></code></pre>
+<p>检查以 [drive:]path 为根的目录树，指向每个目录中的 FOR 语句。
+如果在 /R 后没有指定目录规范，则使用当前目录。如果集仅为一个单点(.)字符，则枚举该目录树。</p>
+<pre class="z-code"><code><span class="z-text z-plain">FOR /L %variable IN (start,step,end) DO command [command-parameters]
+</span></code></pre>
+<p>该集表示以增量形式从开始到结束的一个数字序列。因此，(1,1,5)将产生序列1 2 3 4 5，(5,-1,1)将产生序列(5 4 3 2 1)</p>
+<pre class="z-code"><code><span class="z-text z-plain">FOR /F [&quot;options&quot;] %variable IN (file-set) DO command [command-parameters]
+FOR /F [&quot;options&quot;] %variable IN (&quot;string&quot;) DO command [command-parameters]
+FOR /F [&quot;options&quot;] %variable IN (&#39;command&#39;) DO command [command-parameters]
+</span></code></pre>
+<p>或者，如果有 usebackq 选项:</p>
+<pre class="z-code"><code><span class="z-text z-plain">FOR /F [&quot;options&quot;] %variable IN (file-set) DO command [command-parameters]
+FOR /F [&quot;options&quot;] %variable IN (&quot;string&quot;) DO command [command-parameters]
+FOR /F [&quot;options&quot;] %variable IN (&#39;command&#39;) DO command [command-parameters]
+</span></code></pre>
+<p>fileset 为一个或多个文件名。继续到 fileset 中的下一个文件之前，每份文件都被打开、读取并经过处理。处理包括读取文件，将其分成一行行的文字，然后将每行解析成零或更多的符号。然后用已找到的符号字符串变量值调用 For 循环。
+以默认方式，/F 通过每个文件的每一行中分开的第一个空白符号。跳过空白行。你可通过指定可选 &quot;options&quot; 参数替代默认解析操作。这个带引号的字符串包括一个 或多个指定不同解析选项的关键字。这些关键字为:</p>
+<pre class="z-code"><code><span class="z-text z-plain">        eol=c           - 指一个行注释字符的结尾(就一个)
+        skip=n          - 指在文件开始时忽略的行数。
+        delims=xxx      - 指分隔符集。这个替换了空格和制表符的
+                          默认分隔符集。
+        tokens=x,y,m-n  - 指每行的哪一个符号被传递到每个迭代
+                          的 for 本身。这会导致额外变量名称的分配。m-n
+                          格式为一个范围。通过 nth 符号指定 mth。如果
+                          符号字符串中的最后一个字符星号，
+                          那么额外的变量将在最后一个符号解析之后
+                          分配并接受行的保留文本。
+        usebackq        - 指定新语法已在下类情况中使用:
+                          在作为命令执行一个后引号的字符串并且一个单
+                          引号字符为文字字符串命令并允许在 file-set
+                          中使用双引号扩起文件名称。
+</span></code></pre>
+<p>某些范例可能有助:</p>
+<pre class="z-code"><code><span class="z-text z-plain">FOR /F &quot;eol=; tokens=2,3* delims=, &quot; %i in (myfile.txt) do @echo %i %j %k
+</span></code></pre>
+<p>会分析 myfile.txt 中的每一行，忽略以分号打头的那些行，将每行中的第二个和第三个符号传递给 for 函数体，用逗号和/空格分隔符号。请注意，此 for 函数体的语句引用 %i 来获得第二个符号，引用 %j 来获得第三个符号，引用 %k来获得第三个符号后的所有剩余符号。对于带有空格的文件名，你需要用双引号将文件名括起来。为了用这种方式来使用双引号，还需要使用 usebackq 选项，否则，双引号会被理解成是用作定义某个要分析的字符串的。%i 在 for 语句中显式声明，%j 和 %k 是通过 tokens= 选项隐式声明的。可以通过 tokens= 一行指定最多 26 个符号，只要不试图声明一个高于字母 &quot;z&quot; 或 &quot;Z&quot; 的变量。请记住，FOR 变量是单一字母、分大小写和全局的变量；而且，不能同时使用超过 52 个。
+还可以在相邻字符串上使用 FOR /F 分析逻辑，方法是，用单引号将括号之间的 file-set 括起来。这样，该字符串会被当作一个文件中的一个单一输入行进行解析。</p>
+<p>最后，可以用 FOR /F 命令来分析命令的输出。方法是，将括号之间的 file-set 变成一个反括字符串。该字符串会被当作命令行，传递到一个子 CMD.EXE，其输出会被捕获到内存中，并被当作文件分析。如以下例子所示:</p>
+<pre class="z-code"><code><span class="z-text z-plain">      FOR /F &quot;usebackq delims==&quot; %i IN (`set`) DO @echo %i
+</span></code></pre>
+<p>会枚举当前环境中的环境变量名称。</p>
+<p>另外，FOR 变量参照的替换已被增强。你现在可以使用下列
+选项语法:</p>
+<pre class="z-code"><code><span class="z-text z-plain">     %~I          - 删除任何引号(&quot;)，扩展 %I
+     %~fI        - 将 %I 扩展到一个完全合格的路径名
+     %~dI        - 仅将 %I 扩展到一个驱动器号
+     %~pI        - 仅将 %I 扩展到一个路径
+     %~nI        - 仅将 %I 扩展到一个文件名
+     %~xI        - 仅将 %I 扩展到一个文件扩展名
+     %~sI        - 扩展的路径只含有短名
+     %~aI        - 将 %I 扩展到文件的文件属性
+     %~tI        - 将 %I 扩展到文件的日期/时间
+     %~zI        - 将 %I 扩展到文件的大小
+     %~$PATH:I   - 查找列在路径环境变量的目录，并将 %I 扩展
+                   到找到的第一个完全合格的名称。如果环境变量名
+                   未被定义，或者没有找到文件，此组合键会扩展到
+                   空字符串
+</span></code></pre>
+<p>可以组合修饰符来得到多重结果:</p>
+<pre class="z-code"><code><span class="z-text z-plain">     %~dpI       - 仅将 %I 扩展到一个驱动器号和路径
+     %~nxI       - 仅将 %I 扩展到一个文件名和扩展名
+     %~fsI       - 仅将 %I 扩展到一个带有短名的完整路径名
+     %~dp$PATH:I - 搜索列在路径环境变量的目录，并将 %I 扩展
+                   到找到的第一个驱动器号和路径。
+     %~ftzaI     - 将 %I 扩展到类似输出线路的 DIR
+</span></code></pre>
+<p>在以上例子中，%I 和 PATH 可用其他有效数值代替。%~ 语法
+用一个有效的 FOR 变量名终止。选取类似 %I 的大写变量名
+比较易读，而且避免与不分大小写的组合键混淆。</p>
+
+<p><b><a href="#">Back to top</a></b></p>
+    </article>
+  </main>
+  <footer>
+    <hr />
+    <div class="c">
+      <nav>
+        <ul><li><a href="https://blog.vhcffh.com/atom.xml" target="_blank" title="Atom/RSS Feed"><i type="Button" class="svg rss" title="Atom/RSS Feed"></i></a></li><li><a href="mailto:fly92727@outlook.com" target="_blank" title="Mail"><i type="Button" class="svg mail" title="Mail"></i></a></li><li><a href="https://github.com/FreyZhang007/" target="_blank" title="Github"><i type="Button" class="svg github" title="Github"></i></a></li><li><a href="https://github.com/sponsors/FreyZhang007/" target="_blank" title="GitHub Sponsor"><i type="Button" class="svg github-sponsor" title="GitHub Sponsor"></i></a></li></ul>
+      </nav>
+      <p class="s90">Copyright &copy; 2022 Frey&#x27;s blog</p>
+      <nav>
+        <ul><li class="s90"> <a href="https://blog.vhcffh.com/about/"> About </a> </li><li class="s90"> <a href="https://blog.vhcffh.com/contact/"> Contact </a> </li><li class="s90"> <a href="https://blog.vhcffh.com/privacy/"> Privacy </a> </li><li class="s90"> <a href="https://blog.vhcffh.com/sitemap.xml"> Sitemap </a> </li></ul>
+      </nav>
+      <p class="s90">Powered by <a href="https://www.getzola.org/">Zola</a> and <a href="https://github.com/jieiku/abridge/">Abridge</a></p>
+    </div>
+  </footer>
+<span class="topout">
+<span class="topleft"> </span><a href="#" class="top" title="Back to Top"><i class="svgs svgh angu"></i></a>
+</span>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+	<title>Frey&#x27;s blog - Windwos</title>
+	<subtitle>一个简单的个人博客，用于记录笔记</subtitle>
+	<link href="https://blog.vhcffh.com/tags/windwos/atom.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://blog.vhcffh.com"/>
+	<generator uri="https://www.getzola.org/">Zola</generator>
+	<updated>2017-09-01T00:00:00+00:00</updated>
+	<id>https://blog.vhcffh.com/tags/windwos/atom.xml</id>
+	<entry xml:lang="en">
+		<title>powershell脚本遍历目录</title>
+		<published>2017-09-01T00:00:00+00:00</published>
+		<updated>2017-09-01T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/hexo-powershelljiao-ben-bian-li-mu-lu/" type="text/html"/>
+		<id>https://blog.vhcffh.com/hexo-powershelljiao-ben-bian-li-mu-lu/</id>
+		<content type="html">&lt;p&gt;powershell脚本遍历目录&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;1-bian-li-mu-lu-ji-zi-mu-lu&quot;&gt;1.遍历目录及子目录&lt;&#x2F;h3&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;function filesize ([string]$filepath) {
+&lt;&#x2F;span&gt;    if ($filepath -eq $null) {
+&lt;&#x2F;span&gt;        throw &amp;quot;路径不能为空&amp;quot;
+&lt;&#x2F;span&gt;    }
+&lt;&#x2F;span&gt;    dir -Path $filepath | ForEach-Object -Process {
+&lt;&#x2F;span&gt;        if ($_.psiscontainer -eq $true) {
+&lt;&#x2F;span&gt;            $length = 0
+&lt;&#x2F;span&gt;            dir -Path $_.fullname -Recurse | ForEach-Object {
+&lt;&#x2F;span&gt;                $length += $_.Length
+&lt;&#x2F;span&gt;            }
+&lt;&#x2F;span&gt;            $l = $length &#x2F; 1KB
+&lt;&#x2F;span&gt;            $_.name + &amp;quot;文件夹的大小为: {0:n1} KB&amp;quot; -f $l
+&lt;&#x2F;span&gt;        }
+&lt;&#x2F;span&gt;    }
+&lt;&#x2F;span&gt;}
+&lt;&#x2F;span&gt;filesize -filepath &amp;quot;D:\&amp;quot;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;2-yun-xing-shi-li&quot;&gt;2.运行示例&lt;&#x2F;h3&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;PS F:\python&amp;gt; function filesize ([string]$filepath) {
+&lt;&#x2F;span&gt;&amp;gt;&amp;gt; if ($filepath -eq $null) {
+&lt;&#x2F;span&gt;&amp;gt;&amp;gt; throw &amp;quot;路径不能为空&amp;quot;
+&lt;&#x2F;span&gt;&amp;gt;&amp;gt; }
+&lt;&#x2F;span&gt;&amp;gt;&amp;gt; dir -Path $filepath | ForEach-Object -Process {
+&lt;&#x2F;span&gt;&amp;gt;&amp;gt; if ($_.psiscontainer -eq $true) {
+&lt;&#x2F;span&gt;&amp;gt;&amp;gt; $length = 0
+&lt;&#x2F;span&gt;&amp;gt;&amp;gt; dir -Path $_.fullname -Recurse | ForEach-Object {
+&lt;&#x2F;span&gt;&amp;gt;&amp;gt; $length += $_.Length
+&lt;&#x2F;span&gt;&amp;gt;&amp;gt; }
+&lt;&#x2F;span&gt;&amp;gt;&amp;gt; $l = $length &#x2F; 1KB
+&lt;&#x2F;span&gt;&amp;gt;&amp;gt; $_.name + &amp;quot;文件夹的大小为: {0:n1} KB&amp;quot; -f $l
+&lt;&#x2F;span&gt;&amp;gt;&amp;gt; }
+&lt;&#x2F;span&gt;&amp;gt;&amp;gt; }
+&lt;&#x2F;span&gt;&amp;gt;&amp;gt; }
+&lt;&#x2F;span&gt;PS F:\python&amp;gt; filesize -filepath &amp;quot;f:\python&amp;quot;
+&lt;&#x2F;span&gt;ipluyou文件夹的大小为: 82,196.5 KB
+&lt;&#x2F;span&gt;loginip_jlu文件夹的大小为: 16.8 KB
+&lt;&#x2F;span&gt;嗅事百科文件夹的大小为: 4.3 KB
+&lt;&#x2F;span&gt;小说文件夹的大小为: 31,043.6 KB
+&lt;&#x2F;span&gt;笑料文件夹的大小为: 1,578,575.8 KB
+&lt;&#x2F;span&gt;PS F:\python&amp;gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>powershell卸载自带应用</title>
+		<published>2017-09-01T00:00:00+00:00</published>
+		<updated>2017-09-01T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/hexo-powershellxie-zai-zi-dai-ying-yong/" type="text/html"/>
+		<id>https://blog.vhcffh.com/hexo-powershellxie-zai-zi-dai-ying-yong/</id>
+		<content type="html">&lt;p&gt;通过powershell卸载windows自带应用&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;1-xie-zai-quan-bu-zi-dai-ying-yong&quot;&gt;1.卸载全部自带应用&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;code&gt;Get-AppxPackage -User $env:USERNAME | Remove-AppxPackage&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;2-qi-ta-geng-duo-xie-zai&quot;&gt;2.其他更多卸载&lt;&#x2F;h3&gt;
+&lt;p&gt;OneNote:&lt;br &#x2F;&gt;
+&lt;code&gt;Get-AppxPackage OneNote | Remove-AppxPackage&lt;&#x2F;code&gt;&lt;br &#x2F;&gt;
+3D:&lt;br &#x2F;&gt;
+&lt;code&gt;Get-AppxPackage 3d | Remove-AppxPackage&lt;&#x2F;code&gt;&lt;br &#x2F;&gt;
+Camera相机:&lt;br &#x2F;&gt;
+&lt;code&gt;Get-AppxPackage camera | Remove-AppxPackage&lt;&#x2F;code&gt;&lt;br &#x2F;&gt;
+邮件和日历:&lt;br &#x2F;&gt;
+&lt;code&gt;Get-AppxPackage communi | Remove-AppxPackage&lt;&#x2F;code&gt;&lt;br &#x2F;&gt;
+新闻订阅:&lt;br &#x2F;&gt;
+&lt;code&gt;Get-AppxPackage bing | Remove-AppxPackage&lt;&#x2F;code&gt;&lt;br &#x2F;&gt;
+Groove音乐电影与电视:&lt;br &#x2F;&gt;
+&lt;code&gt;Get-AppxPackage zune | Remove-AppxPackage&lt;&#x2F;code&gt;&lt;br &#x2F;&gt;
+人脉:&lt;br &#x2F;&gt;
+&lt;code&gt;Get-AppxPackage people | Remove-AppxPackage&lt;&#x2F;code&gt;&lt;br &#x2F;&gt;
+手机伴侣Phone Companion:&lt;br &#x2F;&gt;
+&lt;code&gt;Get-AppxPackage phone | Remove-AppxPackage&lt;&#x2F;code&gt;&lt;br &#x2F;&gt;
+照片:&lt;br &#x2F;&gt;
+&lt;code&gt;Get-AppxPackage photo | Remove-AppxPackage&lt;&#x2F;code&gt;&lt;br &#x2F;&gt;
+纸牌游戏(还敢要钱的那货):&lt;br &#x2F;&gt;
+&lt;code&gt;Get-AppxPackage solit | Remove-AppxPackage&lt;&#x2F;code&gt;&lt;br &#x2F;&gt;
+录音机:&lt;br &#x2F;&gt;
+&lt;code&gt;Get-AppxPackage soundrec | Remove-AppxPackage&lt;&#x2F;code&gt;&lt;br &#x2F;&gt;
+Xbox:&lt;br &#x2F;&gt;
+&lt;code&gt;Get-AppxPackage xbox | Remove-AppxPackage&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+</content>
+	</entry>
+</feed>

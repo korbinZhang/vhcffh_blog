@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+	<title>Frey&#x27;s blog - NLP</title>
+	<subtitle>一个简单的个人博客，用于记录笔记</subtitle>
+	<link href="https://blog.vhcffh.com/tags/nlp/atom.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://blog.vhcffh.com"/>
+	<generator uri="https://www.getzola.org/">Zola</generator>
+	<updated>2020-08-06T00:00:00+00:00</updated>
+	<id>https://blog.vhcffh.com/tags/nlp/atom.xml</id>
+	<entry xml:lang="en">
+		<title>基于统计的分词方法</title>
+		<published>2020-08-06T00:00:00+00:00</published>
+		<updated>2020-08-06T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/wp-218/" type="text/html"/>
+		<id>https://blog.vhcffh.com/wp-218/</id>
+		<content type="html">&lt;h2 id=&quot;nyuan-yu-yan-mo-xing-n-gram&quot;&gt;n元语言模型(n-gram)&lt;&#x2F;h2&gt;
+&lt;p&gt;假设$ S $表示长度为$ i $，由$ (w_1,w_2,\dots,w_m)$字序列组成的句子，则代表$ S $的概率为：&lt;&#x2F;p&gt;
+&lt;p&gt;$$
+P(S) =
+P(w_1,w_2,\dots,w_m)=P(w_1)P(w_2|w_1)P(w_3|w_2,w_1)\cdots
+P(w_i|w_1,w_2,\dots,w_{m-1})
+$$&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;$ n=1 $,uni-gram
+$ P(w_1,w_2,\dots,w_m) = \prod_{i=1}^mP(w_i)$&lt;&#x2F;li&gt;
+&lt;li&gt;$ n=2 $,bi-gram
+$ P(w_1,w_2,\dots,w_m)
+=\prod_{i=1}^mP(w_i|w_{i-1})$&lt;&#x2F;li&gt;
+&lt;li&gt;$ n=3$,tri-gram
+$ P(w_1,w_2,\dots,w_m)
+=\prod_{i=1}^mP(w_i|w_{i-2}w_{i-1}) $&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;ji-yu-hmmde-fen-ci&quot;&gt;基于HMM的分词&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;hmmde-can-shu&quot;&gt;HMM的参数&lt;&#x2F;h3&gt;
+&lt;p&gt;HMM的参观测序列(输出状态序列),状态序列(隐藏状态序列),初始概率,转移概率(转移概率矩阵),发射概率(发射概率矩阵)&lt;&#x2F;p&gt;
+&lt;p&gt;状态值集合(隐藏状态):$ Q={q_1,q_2,\cdots,q_N}$,$
+N$为可能的状态数,对应状态序列$ I$&lt;&#x2F;p&gt;
+&lt;p&gt;观测值集合(输出状态):$ V={v_1,v_2,\cdots,v_M}$,$
+M$为可能的观测数,对应观测序列$ O$&lt;&#x2F;p&gt;
+&lt;p&gt;转移概率矩阵:$ A=[a_{ij}];i,j\in{1,2,\cdots,N}$,从$
+i$状态到$ j$状态的转换概率($ \sum_{j=1}^Na_{ij}=1$)&lt;&#x2F;p&gt;
+&lt;p&gt;发射概率矩阵(观测概率矩阵):$
+B=[b_j(k)];j\in{1,2,\cdots,N},k\in{1,2,\cdots,M}$,从状态$
+j$生成观测$ k$的概率&lt;&#x2F;p&gt;
+&lt;p&gt;初始状态分布:$ \pi$&lt;&#x2F;p&gt;
+&lt;p&gt;模型:$ \lambda=(A,B,\lambda)$,状态序列$ 
+I$,观测序列$ O$&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;hmmzhong-de-san-ge-wen-ti&quot;&gt;HMM中的三个问题&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;strong&gt;概率计算问题&lt;&#x2F;strong&gt;:已知模型,求观测序列$ O$出现的概率;前向后向算法&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;学习问题&lt;&#x2F;strong&gt;:已知观测序列,求模型参数,最大化$ 
+P(O|\lambda )$;鲍姆-韦尔奇(Baum-Welch)算法&lt;&#x2F;p&gt;
+&lt;p&gt;已知隐藏序列和观测序列(通过频数估计) $ A_{ij} $表示隐藏状态$ q_i $ 转移到$ q_j $的频率计数
+$$ A=[a_{ij}];a_{ij}=\frac{A_{ij}}{\sum_{s=1}^NA_{is}}\ $$
+$ B_{jk} $表示隐藏状态$ q_j $转移到观测状态
+$ v_k $的频率计数 
+$$ B=[b_j(k)];b_j(k)=\frac{B_{jk}}{\sum_{s=1}^MB_{js}} $$
+$ C(i)$为所有样本中初始隐藏状态$ q_j$的频率计数 
+$$ \Pi = \pi(i)=\frac{C(i)}{\sum_{s=1}^NC(s)} $$&lt;&#x2F;p&gt;
+&lt;p&gt;仅知观测序列(鲍姆-韦尔奇算法,EM算法)
+EM算法:最大似然估计用于没有隐变量的概率模型,EM算法可以用于有隐变量的算法模型
+模型参数: 
+$$
+\overline{\lambda} =
+arg\;\max_{\lambda}\sum\limits_{I}P(I|O,\overline{\lambda})logP(O,I|\lambda)
+$$&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;解码问题&lt;&#x2F;strong&gt;:已知模型$ \lambda$与观测序列$ 
+O$,求状态序列$ I$最大化$ P(I|O)$;维特比(Viterbi)算法&lt;&#x2F;p&gt;
+&lt;p&gt;HMM是一种序列模型,不仅可以用到自然语言处理这个领域,其他领域的应用也很常见:&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;http:&#x2F;&#x2F;tecdat.cn&#x2F;%e7%94%a8%e6%9c%ba%e5%99%a8%e5%ad%a6%e4%b9%a0%e8%af%86%e5%88%ab%e4%b8%8d%e6%96%ad%e5%8f%98%e5%8c%96%e7%9a%84%e8%82%a1%e5%b8%82%e7%8a%b6%e5%86%b5-%e9%9a%90%e9%a9%ac%e5%b0%94%e7%a7%91%e5%a4%ab&#x2F;&quot;&gt;股指预测&lt;&#x2F;a&gt;,&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.jianshu.com&#x2F;p&#x2F;16fc3712fdf6&quot;&gt;语音识别&lt;&#x2F;a&gt;,&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;http:&#x2F;&#x2F;www.c-a-m.org.cn&#x2F;CN&#x2F;abstract&#x2F;abstract4637.shtml&quot;&gt;网络安全&lt;&#x2F;a&gt;,&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;1901.06286&quot;&gt;基因序列&lt;&#x2F;a&gt;等方面，在自然语言处理中,HMM可以应用在分词,词性标注,命名实体识别等各个方面。&lt;&#x2F;p&gt;
+&lt;p&gt;在分词方面可以这样理解HMM：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;观测序列(输出状态序列)---序列构成的句子或短文&lt;&#x2F;li&gt;
+&lt;li&gt;状态序列(隐藏状态序列)---标注&lt;&#x2F;li&gt;
+&lt;li&gt;初始概率---统计的第一个字序的概率&lt;&#x2F;li&gt;
+&lt;li&gt;转移概率(转移概率矩阵)---第$ i$个字序到第$ 
+i+1$个自序的标注变换概率&lt;&#x2F;li&gt;
+&lt;li&gt;发射概率(发射概率矩阵)---从隐藏状态到输出状态的转换概率&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;如果把观测序列看作标注,状态序列看作句子,从解码问题转变成学习问题会怎样？ $
+这种情况就成了判别模型，从给定的序列中提取特征，输出每个标签的概率，是直接拟合条件概率分布；而HMM是生成模型。&lt;&#x2F;p&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>命名实体识别</title>
+		<published>2020-07-22T00:00:00+00:00</published>
+		<updated>2020-07-22T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/wp-179/" type="text/html"/>
+		<id>https://blog.vhcffh.com/wp-179/</id>
+		<content type="html">&lt;blockquote&gt;
+&lt;p&gt;命名实体识别（英语：Named Entity
+Recognition，简称NER），又称作专名识别、命名实体，是指识别文本中具有特定意义的实体，主要包括人名、地名、机构名、专有名词等，以及时间、数量、货币、比例数值等文字。指的是可以用专有名词（名称）标识的事物，一个命名实体一般代表唯一一个具体事物个体，包括人名、地名等。&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;h1 id=&quot;早期方法 .has-text-align-left&quot;&gt;早期方法&lt;&#x2F;h1&gt;
+&lt;p&gt;基于词典和规则的方法&lt;br &#x2F;&gt;
+优点：快速、可解释性强和不需要太多标注语料&lt;br &#x2F;&gt;
+缺点：需要领域知识、规则和词典的构建与维护繁重、未登录词匹配问题&lt;br &#x2F;&gt;
+具体步骤：&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;构建词典&lt;br &#x2F;&gt;
+综合中文语义词库&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;http:&#x2F;&#x2F;www.crsky.com&#x2F;soft&#x2F;31795.html&quot;&gt;CSC&lt;&#x2F;a&gt;,&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;http:&#x2F;&#x2F;www.keenage.com&#x2F;html&#x2F;e_index.html&quot;&gt;hownet&lt;&#x2F;a&gt;,&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;http:&#x2F;&#x2F;compling.hss.ntu.edu.sg&#x2F;cow&#x2F;&quot;&gt;Chinese
+Open Worldnet&lt;&#x2F;a&gt;&lt;br &#x2F;&gt;
+词典构建的统计方法：词频，TF-IDF，TextRank，借助百科，词法分析，依存句法分析&lt;br &#x2F;&gt;
+构建词典可以通过人工，基于统计学的方法。主要目的就是分词和词性标注&lt;&#x2F;li&gt;
+&lt;li&gt;规则构建&lt;br &#x2F;&gt;
+规则构建是通过根据对词的标注（词性，特征），通过对标注设计一系列规则，从而得到规则中特定标注的实体类别。
+&lt;ol&gt;
+&lt;li&gt;基于词性标注进行规则推理&lt;br &#x2F;&gt;
+通过特定的词性顺序，建立词性与实体的对应关系&lt;&#x2F;li&gt;
+&lt;li&gt;采用一个特征集合来泛化表达命名实体&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.researchgate.net&#x2F;publication&#x2F;220195686_Automatic_rule_learning_exploiting_morphological_features_for_named_entity_recognition_in_Turkish&quot;&gt;Tatar and
+Cicekli,2011&lt;&#x2F;a&gt;&lt;br &#x2F;&gt;
+为每个词生成特征，然后在特征上做规则的合并和构建。&lt;br &#x2F;&gt;
+提出&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;dl.acm.org&#x2F;doi&#x2F;10.1177&#x2F;0165551511398573&quot;&gt;一种自动学习规则的方案&lt;&#x2F;a&gt;,通过处理模式串的相似之处，通过泛化构建规则&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;规则维护&lt;br &#x2F;&gt;
+提出&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.aclweb.org&#x2F;anthology&#x2F;P01-1055.pdf&quot;&gt;一种基于机器学习长期维护规则的框架&lt;&#x2F;a&gt;，规则维护是在新增语料的情况下，通过对规则的改进与补充，提升其在新语料上的效果。&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;h1 id=&quot;chuan-tong-ji-qi-xue-xi&quot;&gt;传统机器学习&lt;&#x2F;h1&gt;
+&lt;h2 id=&quot;you-jian-du&quot;&gt;有监督&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;svm-logistichui-gui-he-jue-ce-shu-deng&quot;&gt;SVM，logistic回归和决策树等&lt;&#x2F;h3&gt;
+&lt;p&gt;这类方法将NER视为分类问题，根据提取的特征和标注的类别对模型进行训练。捕获上下文关系能力弱,对分词结果要求高。&lt;&#x2F;p&gt;
+&lt;p&gt;SVM(支持向量机）是在分类与回归分析中分析数据的监督式学习模型，主要思想是通过一个(p－1)维超平面将数据点(p维向量)分开，而且SVM可以通过核函数将低维线性不可分的数据集影射到高维空间使其线性可分。&lt;&#x2F;p&gt;
+&lt;p&gt;决策树是一种概率模型，通过分支对样本特征进行划分，从而划分样本所属类别，决策树的生成主要是通过使用熵的概念。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;hmm-memm-crf&quot;&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.vhcffh.com&#x2F;2019&#x2F;%E5%9F%BA%E4%BA%8E%E7%BB%9F%E8%AE%A1%E7%9A%84%E5%88%86%E8%AF%8D%E6%96%B9%E6%B3%95&#x2F;&quot;&gt;HMM&lt;&#x2F;a&gt;,MEMM,CRF&lt;&#x2F;h2&gt;
+&lt;p&gt;这些都属于序列模型，能够很好的捕获上下文关系。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;HMM&lt;&#x2F;strong&gt;模型主要用于序列标注问题，通过把标签看作隐藏状态变量，把要标注的序列看作可观察输出，可以有效的解决分词，词性标注，命名实体识别等问题。但是受限于HMM模型的两个假设，HMM只能学习到有限的序列特征。&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;当前观测状态只与当前隐藏状态有关&lt;&#x2F;li&gt;
+&lt;li&gt;当前隐藏状态只与前一时刻隐藏状态有关&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;&lt;strong&gt;MEMM&lt;&#x2F;strong&gt;（最大熵马尔可夫模型）是一种结合了HMM和最大熵模型的图模型，可用于序列标注问题。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;HMM&lt;&#x2F;strong&gt;将标注看作隐藏状态，不同的标注序列（隐藏状态）都可以计算出给定观测状态出现的概率,概率最大时对应的隐藏状态序列就是所求结果。而&lt;strong&gt;MEMM&lt;&#x2F;strong&gt;通过输入当前序列状态特征（这里可以加入多个特征，前后多个词或者标注），计算出每个标注的概率。也可以说是简单逻辑回归模型在序列模型上的扩展。&lt;&#x2F;p&gt;
+&lt;p&gt;「在求解$latex P(X|Y)$时，可以直接求，也可以间接求$latex
+P(Y|X)P(X)&#x2F;P(Y)$」&lt;&#x2F;p&gt;
+&lt;p&gt;在训练阶段，&lt;strong&gt;HMM&lt;&#x2F;strong&gt;通过概率估计（频率学派和贝叶斯派）获得模型参数，在预测阶段，可以通过维特比算法（一种dp算法，不用计算所有可能隐藏序列对应的观测序列概率）解码（找到最可能对应观测序列的隐藏状态序列）。&lt;strong&gt;MEMM&lt;&#x2F;strong&gt;直接通过定义特征，可以只将当前字符作为特征（此时就是logistic回归模型），也可以方便的加入任何其他特征（前后多个词，前面词的标注结果，或者后缀前缀等），通过对每个特征设置一个权重，代表其对最终结果的影响。通过训练，优化权重。预测时可以通过硬解码的方式一个一个给出类别（只考虑当前单词标签），另一种更好的方式是像HMM一样使用维特比算法求整个句子的最优解(CRF)。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;crf&quot;&gt;CRF&lt;&#x2F;h3&gt;
+&lt;p&gt;CRF模型与MEMM模型类似，也是通过序列特征计算每个token所有可能label的概率，取概率最大的label作为结果就是MEMM模型。这样计算出整个序列的结果后，可能出现不可理得标注(例如：[B,B...])。为了使输出序列前后相互约束，回想一下HMM的实现（当前观测状态依赖当前隐藏状态，当前隐藏状态依赖前一隐藏状态），因此可以考虑将当前label的概率与前一了label关联，求出整个序列所有可能label序列中可能性最大的。这样问题就变的复杂了，本来是sequence_lenth个分类问题（有多少种label，就有多少种类别），现在变成了一个分类问题，从所有可能label序列（共sequence_lenth^label_num个）选择合适的。&lt;&#x2F;p&gt;
+&lt;p&gt;简单来说，CRF模型就是在MEMM模型的基础上增加了对输出的约束，使其输出的标签序列更加合理。&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;shen-du-xue-xi&quot;&gt;深度学习&lt;&#x2F;h1&gt;
+&lt;h2 id=&quot;you-jian-du-1&quot;&gt;有监督&lt;&#x2F;h2&gt;
+&lt;ol&gt;
+&lt;li&gt;NN&#x2F;CNN-CRF&lt;&#x2F;li&gt;
+&lt;li&gt;Bi-LSTM-CRF&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;h1 id=&quot;zui-xin-yan-jiu&quot;&gt;最新研究&lt;&#x2F;h1&gt;
+&lt;h2 id=&quot;you-jian-du-2&quot;&gt;有监督&lt;&#x2F;h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Bi-LSTM-CRF+Attention&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;h2 id=&quot;ban-jian-du&quot;&gt;半监督&lt;&#x2F;h2&gt;
+&lt;ol&gt;
+&lt;li&gt;TagLM&lt;&#x2F;li&gt;
+&lt;li&gt;迁移学习&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;h1 id=&quot;can-kao&quot;&gt;参考&lt;&#x2F;h1&gt;
+&lt;p&gt;[1]&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;easyai.tech&#x2F;ai-definition&#x2F;ner&#x2F;&quot;&gt;一文看懂命名实体识别 -
+NER（发展史+4类方式+数据集+工具推荐）&lt;&#x2F;a&gt;&lt;br &#x2F;&gt;
+[2]&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;zekizz.github.io&#x2F;NER_survey_zeki.pdf&quot;&gt;命名实体识别调研报告&lt;&#x2F;a&gt;&lt;br &#x2F;&gt;
+[3]&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;carlos9310.github.io&#x2F;2018&#x2F;12&#x2F;28&#x2F;nlp-flow&#x2F;&quot;&gt;中文自然语言处理的一般流程&lt;&#x2F;a&gt;&lt;br &#x2F;&gt;
+[4]&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;carlos9310&#x2F;carlos9310.github.io&#x2F;master&#x2F;assets&#x2F;pdf&#x2F;chinese-nlp.pdf&quot;&gt;中文自然语言处理的完整机器处理流程&lt;&#x2F;a&gt;&lt;br &#x2F;&gt;
+[5]&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;homepages.inf.ed.ac.uk&#x2F;csutton&#x2F;publications&#x2F;crftut-fnt.pdf&quot;&gt;An Introduction to ConditionalRandom
+Fields&lt;&#x2F;a&gt;&lt;br &#x2F;&gt;
+[6]&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;60651380&quot;&gt;最大熵马尔可夫模型&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>Transformers</title>
+		<published>2019-12-21T00:00:00+00:00</published>
+		<updated>2019-12-21T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/hexo-transformers/" type="text/html"/>
+		<id>https://blog.vhcffh.com/hexo-transformers/</id>
+		<content type="html">&lt;p&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;huggingface&#x2F;transformers&quot;&gt;transformers&lt;&#x2F;a&gt;（与&lt;em&gt;pytorch-transformers&lt;&#x2F;em&gt;和&lt;em&gt;pytorch-pretrained-bert&lt;&#x2F;em&gt;相似）是python的一个库，它提供了用于自然语言理解(NLU)和自然语言生成(NLG)的多种预训练模型（BERT，GPT-2，RoBERTa，XLM，DistilBert，XLNet.....），为100多种语言提供了超过32种的预训练模型，并实现Tensorflow
+2.0和Pytorch的深度互操作。&lt;&#x2F;p&gt;
+&lt;p&gt;特点&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;与pytorch-transformers一样容易使用&lt;&#x2F;li&gt;
+&lt;li&gt;如Keras一样强大简洁&lt;&#x2F;li&gt;
+&lt;li&gt;在NLU和NLG任务上有很好的表现&lt;&#x2F;li&gt;
+&lt;li&gt;容易学习&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;模型&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;google-research&#x2F;bert&quot;&gt;BERT&lt;&#x2F;a&gt; (from Google)
+released with the paper &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;1810.04805&quot;&gt;BERT: Pre-training of Deep Bidirectional
+Transformers for Language
+Understanding&lt;&#x2F;a&gt; by Jacob Devlin,
+Ming-Wei Chang, Kenton Lee and Kristina Toutanova.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;openai&#x2F;finetune-transformer-lm&quot;&gt;GPT&lt;&#x2F;a&gt; (from
+OpenAI) released with the paper &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;blog.openai.com&#x2F;language-unsupervised&quot;&gt;Improving Language Understanding by
+Generative
+Pre-Training&lt;&#x2F;a&gt; by Alec
+Radford, Karthik Narasimhan, Tim Salimans and Ilya Sutskever.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;blog.openai.com&#x2F;better-language-models&quot;&gt;GPT-2&lt;&#x2F;a&gt; (from
+OpenAI) released with the paper &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;blog.openai.com&#x2F;better-language-models&quot;&gt;Language Models are Unsupervised
+Multitask Learners&lt;&#x2F;a&gt;
+by Alec Radford*, Jeffrey Wu*, Rewon Child, David Luan, Dario Amodei
+&lt;strong&gt;and Ilya Sutskever&lt;&#x2F;strong&gt;.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;kimiyoung&#x2F;transformer-xl&quot;&gt;Transformer-XL&lt;&#x2F;a&gt; (from
+Google&#x2F;CMU) released with the paper &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;1901.02860&quot;&gt;Transformer-XL: Attentive
+Language Models Beyond a Fixed-Length
+Context&lt;&#x2F;a&gt; by Zihang Dai*, Zhilin
+Yang*, Yiming Yang, Jaime Carbonell, Quoc V. Le, Ruslan
+Salakhutdinov.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;zihangdai&#x2F;xlnet&quot;&gt;XLNet&lt;&#x2F;a&gt; (from Google&#x2F;CMU)
+released with the paper &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;1906.08237&quot;&gt;XLNet: Generalized Autoregressive
+Pretraining for Language
+Understanding&lt;&#x2F;a&gt; by Zhilin Yang*,
+Zihang Dai*, Yiming Yang, Jaime Carbonell, Ruslan Salakhutdinov,
+Quoc V. Le.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;facebookresearch&#x2F;XLM&quot;&gt;XLM&lt;&#x2F;a&gt; (from Facebook)
+released together with the paper &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;1901.07291&quot;&gt;Cross-lingual Language Model
+Pretraining&lt;&#x2F;a&gt; by Guillaume Lample
+and Alexis Conneau.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;pytorch&#x2F;fairseq&#x2F;tree&#x2F;master&#x2F;examples&#x2F;roberta&quot;&gt;RoBERTa&lt;&#x2F;a&gt;
+(from Facebook), released together with the paper a &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;1907.11692&quot;&gt;Robustly
+Optimized BERT Pretraining
+Approach&lt;&#x2F;a&gt; by Yinhan Liu, Myle Ott,
+Naman Goyal, Jingfei Du, Mandar Joshi, Danqi Chen, Omer Levy, Mike
+Lewis, Luke Zettlemoyer, Veselin Stoyanov.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;transformers&#x2F;model_doc&#x2F;distilbert.html&quot;&gt;DistilBERT&lt;&#x2F;a&gt;
+(from HuggingFace) released together with the paper &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;1910.01108&quot;&gt;DistilBERT, a
+distilled version of BERT: smaller, faster, cheaper and
+lighter&lt;&#x2F;a&gt; by Victor Sanh, Lysandre
+Debut and Thomas Wolf. The same method has been applied to compress
+GPT2 into
+&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;huggingface&#x2F;transformers&#x2F;tree&#x2F;master&#x2F;examples&#x2F;distillation&quot;&gt;DistilGPT2&lt;&#x2F;a&gt;.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;pytorch&#x2F;fairseq&#x2F;tree&#x2F;master&#x2F;examples&#x2F;ctrl&quot;&gt;CTRL&lt;&#x2F;a&gt;
+(from Salesforce), released together with the paper &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.github.com&#x2F;salesforce&#x2F;ctrl&quot;&gt;CTRL: A
+Conditional Transformer Language Model for Controllable
+Generation&lt;&#x2F;a&gt; by Nitish
+Shirish Keskar*, Bryan McCann*, Lav R. Varshney, Caiming Xiong and
+Richard Socher.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;transformers&#x2F;model_doc&#x2F;camembert.html&quot;&gt;CamemBERT&lt;&#x2F;a&gt;
+(from FAIR, Inria, Sorbonne Université) released together with the
+paper &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;1911.03894&quot;&gt;CamemBERT: a Tasty French Language
+Model&lt;&#x2F;a&gt; by Louis Martin, Benjamin
+Muller, Pedro Javier Ortiz Suarez, Yoann Dupont, Laurent Romary,
+Eric Villemonte de la Clergerie, Djame Seddah, and Benoît Sagot.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;google-research&#x2F;ALBERT&quot;&gt;ALBERT&lt;&#x2F;a&gt; (from Google
+Research), released together with the paper a &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;1909.11942&quot;&gt;ALBERT: A Lite BERT
+for Self-supervised Learning of Language
+Representations&lt;&#x2F;a&gt; by Zhenzhong Lan,
+Mingda Chen, Sebastian Goodman, Kevin Gimpel, Piyush Sharma, Radu
+Soricut.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;pytorch&#x2F;fairseq&#x2F;tree&#x2F;master&#x2F;examples&#x2F;xlmr&quot;&gt;XLM-RoBERTa&lt;&#x2F;a&gt;
+(from Facebook AI), released together with the paper &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;1911.02116&quot;&gt;Unsupervised
+Cross-lingual Representation Learning at
+Scale&lt;&#x2F;a&gt; by Alexis Conneau*,
+Kartikay Khandelwal*, Naman Goyal, Vishrav Chaudhary, Guillaume
+Wenzek, Francisco Guzmán, Edouard Grave, Myle Ott, Luke Zettlemoyer
+and Veselin Stoyanov.&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;使用&lt;&#x2F;p&gt;
+&lt;p&gt;对于每个模型，这个库主要涉及3个类&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;model classes：提供模型的结构，如：&lt;code&gt;BertModel&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;configuration classes：存储构建模型的所有参数，如&lt;code&gt;BertConfig&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;tokenizer
+classes：提供模型的词汇表和用于对字符串解码&#x2F;编码的方法，如&lt;code&gt;BertTokenizer&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;所有的实例可以通过&lt;code&gt;from_pretrained()&lt;&#x2F;code&gt;加载预训练模型，通过&lt;code&gt;save_pretrained()&lt;&#x2F;code&gt;保存模型&lt;&#x2F;p&gt;
+&lt;p&gt;BERT example&lt;&#x2F;p&gt;
+&lt;p&gt;从字符串获得输入向量&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;import torch
+&lt;&#x2F;span&gt;from transformers import BertTokenizer, BertModel, BertForMaskedLM
+
+&lt;&#x2F;span&gt;# OPTIONAL: if you want to have more information on what&amp;#39;s happening under the hood, activate the logger as follows
+&lt;&#x2F;span&gt;import logging
+&lt;&#x2F;span&gt;logging.basicConfig(level=logging.INFO)
+
+&lt;&#x2F;span&gt;# Load pre-trained model tokenizer (vocabulary)
+&lt;&#x2F;span&gt;tokenizer = BertTokenizer.from_pretrained(&amp;#39;bert-base-uncased&amp;#39;)
+&lt;&#x2F;span&gt;# 中文bert模型&amp;#39;bert-base-chinese&amp;#39;
+&lt;&#x2F;span&gt;# bert 特殊的符号
+&lt;&#x2F;span&gt;# &amp;#39;[MASK]&amp;#39; 用于mask language model
+&lt;&#x2F;span&gt;# &amp;#39;[CLS]&amp;#39; 开头，用于分类的标记
+&lt;&#x2F;span&gt;# &amp;#39;[PAD]&amp;#39; 
+&lt;&#x2F;span&gt;# &amp;#39;[SEP]&amp;#39; 结尾，句子分隔符
+&lt;&#x2F;span&gt;# &amp;#39;[UNK]&amp;#39;
+
+&lt;&#x2F;span&gt;# Tokenize input
+&lt;&#x2F;span&gt;text = &amp;quot;[CLS] Who was Jim Henson ? [SEP] Jim Henson was a puppeteer [SEP]&amp;quot;
+&lt;&#x2F;span&gt;tokenized_text = tokenizer.tokenize(text)
+
+&lt;&#x2F;span&gt;# Mask a token that we will try to predict back with `BertForMaskedLM`
+&lt;&#x2F;span&gt;masked_index = 8
+&lt;&#x2F;span&gt;tokenized_text[masked_index] = &amp;#39;[MASK]&amp;#39;
+&lt;&#x2F;span&gt;assert tokenized_text == [&amp;#39;[CLS]&amp;#39;, &amp;#39;who&amp;#39;, &amp;#39;was&amp;#39;, &amp;#39;jim&amp;#39;, &amp;#39;henson&amp;#39;, &amp;#39;?&amp;#39;, &amp;#39;[SEP]&amp;#39;, &amp;#39;jim&amp;#39;, &amp;#39;[MASK]&amp;#39;, &amp;#39;was&amp;#39;, &amp;#39;a&amp;#39;, &amp;#39;puppet&amp;#39;, &amp;#39;##eer&amp;#39;, &amp;#39;[SEP]&amp;#39;]
+
+&lt;&#x2F;span&gt;# Convert token to vocabulary indices
+&lt;&#x2F;span&gt;indexed_tokens = tokenizer.convert_tokens_to_ids(tokenized_text)
+&lt;&#x2F;span&gt;# Define sentence A and B indices associated to 1st and 2nd sentences (see paper)
+&lt;&#x2F;span&gt;segments_ids = [0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1]
+
+&lt;&#x2F;span&gt;# Convert inputs to PyTorch tensors
+&lt;&#x2F;span&gt;tokens_tensor = torch.tensor([indexed_tokens])
+&lt;&#x2F;span&gt;segments_tensors = torch.tensor([segments_ids])
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;对输入进行编码&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;# Load pre-trained model (weights)
+&lt;&#x2F;span&gt;model = BertModel.from_pretrained(&amp;#39;bert-base-uncased&amp;#39;)
+
+&lt;&#x2F;span&gt;# Set the model in evaluation mode to deactivate the DropOut modules
+&lt;&#x2F;span&gt;# This is IMPORTANT to have reproducible results during evaluation!
+&lt;&#x2F;span&gt;model.eval()
+
+&lt;&#x2F;span&gt;# If you have a GPU, put everything on cuda
+&lt;&#x2F;span&gt;tokens_tensor = tokens_tensor.to(&amp;#39;cuda&amp;#39;)
+&lt;&#x2F;span&gt;segments_tensors = segments_tensors.to(&amp;#39;cuda&amp;#39;)
+&lt;&#x2F;span&gt;model.to(&amp;#39;cuda&amp;#39;)
+
+&lt;&#x2F;span&gt;# Predict hidden states features for each layer
+&lt;&#x2F;span&gt;with torch.no_grad():
+&lt;&#x2F;span&gt;    # See the models docstrings for the detail of the inputs
+&lt;&#x2F;span&gt;    outputs = model(tokens_tensor, token_type_ids=segments_tensors)
+&lt;&#x2F;span&gt;    # Transformers models always output tuples.
+&lt;&#x2F;span&gt;    # See the models docstrings for the detail of all the outputs
+&lt;&#x2F;span&gt;    # In our case, the first element is the hidden state of the last layer of the Bert model
+&lt;&#x2F;span&gt;    encoded_layers = outputs[0]
+&lt;&#x2F;span&gt;# We have encoded our input sequence in a FloatTensor of shape (batch size, sequence length, model hidden dimension)
+&lt;&#x2F;span&gt;assert tuple(encoded_layers.shape) == (1, len(indexed_tokens), model.config.hidden_size)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;使用&lt;code&gt;BertForMaskedLM&lt;&#x2F;code&gt;预测masked token&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;# Load pre-trained model (weights)
+&lt;&#x2F;span&gt;model = BertForMaskedLM.from_pretrained(&amp;#39;bert-base-uncased&amp;#39;)
+&lt;&#x2F;span&gt;model.eval()
+
+&lt;&#x2F;span&gt;# If you have a GPU, put everything on cuda
+&lt;&#x2F;span&gt;tokens_tensor = tokens_tensor.to(&amp;#39;cuda&amp;#39;)
+&lt;&#x2F;span&gt;segments_tensors = segments_tensors.to(&amp;#39;cuda&amp;#39;)
+&lt;&#x2F;span&gt;model.to(&amp;#39;cuda&amp;#39;)
+
+&lt;&#x2F;span&gt;# Predict all tokens
+&lt;&#x2F;span&gt;with torch.no_grad():
+&lt;&#x2F;span&gt;    outputs = model(tokens_tensor, token_type_ids=segments_tensors)
+&lt;&#x2F;span&gt;    predictions = outputs[0]
+
+&lt;&#x2F;span&gt;# confirm we were able to predict &amp;#39;henson&amp;#39;
+&lt;&#x2F;span&gt;predicted_index = torch.argmax(predictions[0, masked_index]).item()
+&lt;&#x2F;span&gt;predicted_token = tokenizer.convert_ids_to_tokens([predicted_index])[0]
+&lt;&#x2F;span&gt;assert predicted_token == &amp;#39;henson&amp;#39;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;参考&lt;&#x2F;p&gt;
+&lt;p&gt;1.&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;transformers&#x2F;index.html&quot;&gt;https:&#x2F;&#x2F;huggingface.co&#x2F;transformers&#x2F;index.html&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+	</entry>
+</feed>

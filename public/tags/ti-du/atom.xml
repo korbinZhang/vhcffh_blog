@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+	<title>Frey&#x27;s blog - 梯度</title>
+	<subtitle>一个简单的个人博客，用于记录笔记</subtitle>
+	<link href="https://blog.vhcffh.com/tags/ti-du/atom.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://blog.vhcffh.com"/>
+	<generator uri="https://www.getzola.org/">Zola</generator>
+	<updated>2018-09-08T00:00:00+00:00</updated>
+	<id>https://blog.vhcffh.com/tags/ti-du/atom.xml</id>
+	<entry xml:lang="en">
+		<title>梯度旋度和散度</title>
+		<published>2018-09-08T00:00:00+00:00</published>
+		<updated>2018-09-08T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/hexo-ti-du-xuan-du-he-san-du/" type="text/html"/>
+		<id>https://blog.vhcffh.com/hexo-ti-du-xuan-du-he-san-du/</id>
+		<content type="html">&lt;p&gt;有关梯度旋度和散度的定义和计算,记录一下&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;1-ding-yi&quot;&gt;1.定义&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;1-1ti-du&quot;&gt;1.1梯度&lt;&#x2F;h3&gt;
+&lt;p&gt;设函数$ u=f(x,y,z) $在空间区域$ G $内具有一阶连续偏导数，其中点$ P(x,y,z) \in G $
+则向量&lt;&#x2F;p&gt;
+&lt;p&gt;$$
+\left(
+\frac {\partial f}{\partial x},
+\frac {\partial f}{\partial y},
+\frac {\partial f}{\partial z}
+\right)=
+\frac {\partial f}{\partial x}\vec i+
+\frac {\partial f}{\partial y}\vec j+
+\frac {\partial f}{\partial z}\vec k
+$$&lt;&#x2F;p&gt;
+&lt;p&gt;为函数$ u=f(x,y,z) $在点$ P(x,y,z) $的&lt;strong&gt;梯度&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;记为$ grad;f(x,y,z) $ 或$ \nabla f(x,y,z) $ &lt;&#x2F;p&gt;
+&lt;p&gt;(&lt;font color=&quot;red&quot;&gt;注&lt;&#x2F;font&gt;: $ \nabla = \frac {\partial}{\partial x}\vec i+\frac {\partial}{\partial y}\vec j+\frac {\partial}{\partial z}\vec k $为三维的向量微分算子)&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;1-2xuan-du&quot;&gt;1.2旋度&lt;&#x2F;h3&gt;
+&lt;p&gt;在三维空间$ G $ 中有三维直角坐标系$ O_{xyz} $,设向量场:&lt;&#x2F;p&gt;
+&lt;p&gt;$$
+\vec v=v_x\vec i+v_y\vec j+v_z\vec k
+$$&lt;&#x2F;p&gt;
+&lt;p&gt;其中$ v_x,v_y,v_z $具有一阶连续偏导数,点$ P(x,y,z) \in G $&lt;&#x2F;p&gt;
+&lt;p&gt;向量&lt;&#x2F;p&gt;
+&lt;p&gt;$$
+\begin{vmatrix}
+\vec i &amp;amp; \vec j &amp;amp; \vec k \cr
+\frac {\partial}{\partial x} &amp;amp; \frac {\partial}{\partial y} &amp;amp; \frac {\partial}{\partial z} \cr
+v_x &amp;amp; v_y &amp;amp; v_z \cr
+\end{vmatrix} = 
+(\frac {\partial v_z}{\partial y} - \frac {\partial v_y}{\partial z})\vec i+
+(\frac {\partial v_x}{\partial z} - \frac {\partial v_z}{\partial x})\vec j+
+(\frac {\partial v_y}{\partial x} - \frac {\partial v_x}{\partial y})\vec k
+$$&lt;&#x2F;p&gt;
+&lt;p&gt;为向量场$ \vec v $ 在点$ P(x,y,z) $的&lt;strong&gt;旋度&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;记为$ curl;v $或者$ \nabla \times v $&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;1-3san-du&quot;&gt;1.3散度&lt;&#x2F;h3&gt;
+&lt;p&gt;在三维空间$ G $ 中有三维直角坐标系$ O_{xyz} $,设向量场:&lt;&#x2F;p&gt;
+&lt;p&gt;$$
+\vec v=v_x\vec i+v_y\vec j+v_z\vec k
+$$&lt;&#x2F;p&gt;
+&lt;p&gt;其中$ v_x,v_y,v_z $具有一阶连续偏导数,点$ P(x,y,z) \in G $&lt;&#x2F;p&gt;
+&lt;p&gt;标量&lt;&#x2F;p&gt;
+&lt;p&gt;$$
+\frac {\partial v_x}{\partial x}+
+\frac {\partial v_y}{\partial y}+
+\frac {\partial v_z}{\partial z}
+$$&lt;&#x2F;p&gt;
+&lt;p&gt;为向量场$$在点$$的散度&lt;&#x2F;p&gt;
+&lt;p&gt;记为$div;v$或$\nabla \cdot v$&lt;&#x2F;p&gt;
+</content>
+	</entry>
+</feed>

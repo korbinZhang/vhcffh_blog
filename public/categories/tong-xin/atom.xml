@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+	<title>Frey&#x27;s blog - 通信</title>
+	<subtitle>一个简单的个人博客，用于记录笔记</subtitle>
+	<link href="https://blog.vhcffh.com/categories/tong-xin/atom.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://blog.vhcffh.com"/>
+	<generator uri="https://www.getzola.org/">Zola</generator>
+	<updated>2021-12-18T00:00:00+00:00</updated>
+	<id>https://blog.vhcffh.com/categories/tong-xin/atom.xml</id>
+	<entry xml:lang="en">
+		<title>WIFI通信</title>
+		<published>2021-12-18T00:00:00+00:00</published>
+		<updated>2021-12-18T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/wp-600/" type="text/html"/>
+		<id>https://blog.vhcffh.com/wp-600/</id>
+		<content type="html">&lt;p&gt;WIFi是以&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;zh.wikipedia.org&#x2F;wiki&#x2F;IEEE_802.11&quot;&gt;IEEE
+802.11&lt;&#x2F;a&gt;（一种无线局域网标准）为标准的一种实现。随着标准的不断修订，其传输速度在不断增加。现今第六代的传输速率可达9.6Gbit&#x2F;s。下表为第一代到第六代的相关信息。对每一代仅列出了比较常见的标准，另外也有一些不常见的&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;zh.wikipedia.org&#x2F;wiki&#x2F;IEEE_802.11_(%E5%8E%9F%E5%A7%8B%E6%A0%87%E5%87%86)&quot;&gt;标准&lt;&#x2F;a&gt;。在多个厂商兼容802.11b后，802.11网络才开始大规模流行。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;wang-luo-cheng-yuan-he-jie-gou&quot;&gt;网络成员和结构&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;站点（Station），网络最基本的组成部分。&lt;&#x2F;li&gt;
+&lt;li&gt;基本服务单元（Basic Service
+Set，BSS）。网络最基本的服务单元。最简单的服务单元可以只由两个站点组成。站点可动态连结（associate）到基本服务单元中。&lt;&#x2F;li&gt;
+&lt;li&gt;分配系统（Distribution
+System，DS）。分配系统用于连结不同的基本服务单元。逻辑上，分配系统使用的介质（Medium）和基本服务单元使用的介质完全不同，尽管物理上它们可能会是同一个介质，例如同一个无线频段。&lt;&#x2F;li&gt;
+&lt;li&gt;接入点（Access
+Point，AP）。接入点即有普通站点的身份，又有连接到分配系统的功能。&lt;&#x2F;li&gt;
+&lt;li&gt;扩展服务单元（Extended Service
+Set，ESS）。由分配系统和基本服务单元组合而成。这种组合是逻辑上，并非物理上。不同的基本服务单元物有可能在地理位置相去甚远。分配系统也可以使用各种各样的技术。&lt;&#x2F;li&gt;
+&lt;li&gt;关口（Portal）。也是一个逻辑成分，用于将无线局域网和有线&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;zh.wikipedia.org&#x2F;wiki&#x2F;%E5%B1%80%E5%9F%9F%E7%BD%91&quot;&gt;局域网&lt;&#x2F;a&gt;或其它网络联系起来。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;这里有3种介质，站点使用的无线介质，分配系统使用的介质，以及和无线局域网集成一起的其它&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;zh.wikipedia.org&#x2F;wiki&#x2F;%E5%B1%80%E5%9F%9F%E7%BD%91&quot;&gt;局域网&lt;&#x2F;a&gt;使用的介质。物理上它们可能互相重叠。&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;zh.wikipedia.org&#x2F;wiki&#x2F;IEEE_802.11&quot;&gt;IEEE
+802.11&lt;&#x2F;a&gt;只负责在站点使用的无线的介质上的寻址（Addressing）。分配系统和其它局域网的寻址不属无线局域网的范围。&lt;&#x2F;p&gt;
+&lt;p&gt;IEEE802.11没有具体定义分配系统，只是定义了分配系统应该提供的服务（Service）。整个无线局域网定义了9种服务：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;5种服务属于分配系统的任务，分别为，连接（Association）、结束连接（Diassociation）、分配（Distribution）、集成（Integration）、再连接（Reassociation）。&lt;&#x2F;li&gt;
+&lt;li&gt;4种服务属于站点的任务，分别为，鉴权（Authentication）、结束鉴权（Deauthentication）、隐私（Privacy）、MAC数据传输（MSDU
+delivery）。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;zheng-jie-gou&quot;&gt;帧结构&lt;&#x2F;h2&gt;
+&lt;p&gt;一般802.11的帧结构由9个字段构成。&lt;&#x2F;p&gt;
+&lt;p&gt;802.11帧结构&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;Frame-Control&quot;&gt;Frame Control&lt;&#x2F;h3&gt;
+&lt;p&gt;Frame control&lt;&#x2F;p&gt;
+&lt;p&gt;所有的802.11帧都是由2字节的帧控制字段开始的，包括如下的字段：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Protocol([0:1]):表示该帧所使用的MAC版本，目前只有一个版本协议编号为0。&lt;&#x2F;li&gt;
+&lt;li&gt;Type([2:3]):表示帧类型。在802.11中定义了三种帧分别是：管理帧(Type=00b)、控制帧(Type=01b)、数据帧(Type=10b)。&lt;&#x2F;li&gt;
+&lt;li&gt;Subtype([4:7]):对于Type定义的三种帧，进行了进一步的细化，详细参见表1。&lt;&#x2F;li&gt;
+&lt;li&gt;ToDs([8]):表示该帧是BSS向DS发送的帧。&lt;&#x2F;li&gt;
+&lt;li&gt;FromDs([9]):表示该帧是DS向BSS发送的帧。&lt;&#x2F;li&gt;
+&lt;li&gt;More
+Frag([10]):说明了长帧分包发送的情况，为1表示该帧之后还有其它帧，为0表示该帧为最后一帧。&lt;&#x2F;li&gt;
+&lt;li&gt;Retry([11]):任何重传的帧都会将此位设定为1，以协助接收端剔除重复的帧。&lt;&#x2F;li&gt;
+&lt;li&gt;Pwr
+Mgmt([12]):只是该帧传送结束之后，Station应采用的电源管理模式。1表示Station即将进入省电(power-save)模式，
+0表示将进入激活(active)模式。&lt;&#x2F;li&gt;
+&lt;li&gt;More
+Data([13]):针对处于省电模式的Station，AP会将从分布系统中接收来的帧加以缓存。AP将此位置1表示至少还有一帧需要传给休眠中的Station。&lt;&#x2F;li&gt;
+&lt;li&gt;Protected Frame([14]):如果该帧经过WEP(Wired Equivalent
+Privacy)加密处理则置1，否则置0。&lt;&#x2F;li&gt;
+&lt;li&gt;Order([15]):在分段传送长帧的时候，将该位置1，表示接收端需要严格按照顺序处理该帧。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;duration-id&quot;&gt;Duration ID&lt;&#x2F;h3&gt;
+&lt;p&gt;Duration
+ID（持续时间）占2个字节，主要用来记载网络分配矢量NAC的值，用来限制访问介质的时间。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;address&quot;&gt;Address&lt;&#x2F;h3&gt;
+&lt;p&gt;address有五种类型：&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;BSSID，基本服务集标识符&lt;&#x2F;li&gt;
+&lt;li&gt;DA，目的地址&lt;&#x2F;li&gt;
+&lt;li&gt;SA，源地址&lt;&#x2F;li&gt;
+&lt;li&gt;RA，接收端地址&lt;&#x2F;li&gt;
+&lt;li&gt;TA，发送端地址&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;根据Frame Control中的ToDS和FromDS来确定其具体功能：&lt;&#x2F;p&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;功能&lt;&#x2F;th&gt;&lt;th&gt;To DS&lt;&#x2F;th&gt;&lt;th&gt;From DS&lt;&#x2F;th&gt;&lt;th&gt;Address1（接收端）&lt;&#x2F;th&gt;&lt;th&gt;Address2（发送端）&lt;&#x2F;th&gt;&lt;th&gt;Address3&lt;&#x2F;th&gt;&lt;th&gt;Address4&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;IBSS&lt;&#x2F;td&gt;&lt;td&gt;0&lt;&#x2F;td&gt;&lt;td&gt;0&lt;&#x2F;td&gt;&lt;td&gt;DA&lt;&#x2F;td&gt;&lt;td&gt;SA&lt;&#x2F;td&gt;&lt;td&gt;BSSID&lt;&#x2F;td&gt;&lt;td&gt;未使用&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;To AP（基础结构型）&lt;&#x2F;td&gt;&lt;td&gt;1&lt;&#x2F;td&gt;&lt;td&gt;0&lt;&#x2F;td&gt;&lt;td&gt;BSSID&lt;&#x2F;td&gt;&lt;td&gt;SA&lt;&#x2F;td&gt;&lt;td&gt;DA&lt;&#x2F;td&gt;&lt;td&gt;未使用&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;From AP（基础结构型）&lt;&#x2F;td&gt;&lt;td&gt;0&lt;&#x2F;td&gt;&lt;td&gt;1&lt;&#x2F;td&gt;&lt;td&gt;DA&lt;&#x2F;td&gt;&lt;td&gt;BSSID&lt;&#x2F;td&gt;&lt;td&gt;SA&lt;&#x2F;td&gt;&lt;td&gt;未使用&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;WDS（无线分布式系统）&lt;&#x2F;td&gt;&lt;td&gt;1&lt;&#x2F;td&gt;&lt;td&gt;1&lt;&#x2F;td&gt;&lt;td&gt;RA&lt;&#x2F;td&gt;&lt;td&gt;TA&lt;&#x2F;td&gt;&lt;td&gt;DA&lt;&#x2F;td&gt;&lt;td&gt;SA&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
+&lt;h3 id=&quot;seq-crl&quot;&gt;Seq-crl&lt;&#x2F;h3&gt;
+&lt;p&gt;Seq-crl（Sequence
+Control）格式式如下，顺序编号4096的模数，从0开始，每处理一个上层封包就加1&lt;br &#x2F;&gt;
+若上层封包分片处理，所有帧分片采用相同顺序编号；对于重传帧，顺序编号不变&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;frame-bodyzi-duan&quot;&gt;Frame Body字段&lt;&#x2F;h3&gt;
+&lt;p&gt;Frame
+Body字段中记录的是通信中实际的数据，所以该字段也是数据字段。它最多可以传送2304个字节的数据(为了能够支持&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;zh.wikipedia.org&#x2F;wiki&#x2F;%E6%9C%89%E7%B7%9A%E7%AD%89%E6%95%88%E5%8A%A0%E5%AF%86&quot;&gt;WEP&lt;&#x2F;a&gt;（无线加密协议），
+各供应商在具体实现的时候通常是支持2312个字节的数据)。802.11的&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;zh.wikipedia.org&#x2F;wiki&#x2F;%E9%80%BB%E8%BE%91%E9%93%BE%E8%B7%AF%E6%8E%A7%E5%88%B6&quot;&gt;LLC&lt;&#x2F;a&gt;（逻辑链路控制）需要占8个字节，因此最多可以承载2296个字节数据。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;fcszi-duan&quot;&gt;FCS字段&lt;&#x2F;h3&gt;
+&lt;p&gt;FCS字段叫做帧校验序列(Frame Check Sequence,
+FCS)，主要用来进行校验数据，确保传输过程没有发生错误（如果发生错误，将进行重传）。通常使用循环冗余校验&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;zh.wikipedia.org&#x2F;wiki&#x2F;%E5%BE%AA%E7%92%B0%E5%86%97%E9%A4%98%E6%A0%A1%E9%A9%97&quot;&gt;CSC&lt;&#x2F;a&gt;(Cyclic
+Redundancy Check)校验位进行校验。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;can-kao&quot;&gt;参考&lt;&#x2F;h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;zh.wikipedia.org&#x2F;wiki&#x2F;Wi-Fi&quot;&gt;Wi-Fi - 维基百科，自由的百科全书 (wikipedia.org)&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;zh.wikipedia.org&#x2F;wiki&#x2F;IEEE_802.11&quot;&gt;IEEE 802.11 - 维基百科，自由的百科全书 (wikipedia.org)&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gaoyichao.com&#x2F;Xiaotu&#x2F;?book=network_and_security&amp;amp;title=802.11%E5%B8%A7%E7%BB%93%E6%9E%84&quot;&gt;无处不在的小土-802.11帧结构 (gaoyichao.com)&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;cxymm.net&#x2F;article&#x2F;fengfeng0328&#x2F;112798288&quot;&gt;无线射频专题《协议类，IEEE 802.11&#x2F;802.11b&#x2F;802.11a&#x2F;802.11g&#x2F;802.11n&#x2F;802.11ac标准简介》_物联网研究室-BBC的博客-程序员秘密 - 程序员秘密 (cxymm.net)&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;http:&#x2F;&#x2F;codetd.com&#x2F;article&#x2F;12026114&quot;&gt;802.11 PHY层帧格式汇总 - 代码天地 (codetd.com)&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;http:&#x2F;&#x2F;codetd.com&#x2F;article&#x2F;8450730&quot;&gt;802.11帧格式 - 代码天地 (codetd.com)&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.cnblogs.com&#x2F;rougungun&#x2F;p&#x2F;14340489.html&quot;&gt;802.11 帧格式和分类详解 - 肉滚滚和代码 - 博客园 (cnblogs.com)&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.cnblogs.com&#x2F;hzl6255&#x2F;p&#x2F;4084173.html&quot;&gt;802.11 MAC层 - 北落不吉 - 博客园 (cnblogs.com)&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>SPI协议</title>
+		<published>2021-10-20T00:00:00+00:00</published>
+		<updated>2021-10-20T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/wp-566/" type="text/html"/>
+		<id>https://blog.vhcffh.com/wp-566/</id>
+		<content type="html">&lt;p&gt;串行外设接口（SPI）是一种同步串行通信接口规范，主要用于嵌入式系统的短距离通信。
+该接口由摩托罗拉公司在20世纪80年代中期开发，已成为事实上的标准。
+典型的应用包括闪存，EEPROM，SD卡和液晶显示器等。&lt;&#x2F;p&gt;
+&lt;p&gt;有时SPI被称为四线串行总线，与三线、二线和一线串行总线形成对比。
+SPI可以被准确地描述为一个同步串行接口，但它与同步串行接口（SSI）协议不同，后者也是一个四线同步串行通信协议。
+SSI协议采用差分信号，只提供一个单工通信通道。
+于此相对的是，SPI是一个主机和多个从机的通信。&lt;&#x2F;p&gt;
+&lt;p&gt;SPI设备之间使用全双工模式通信，是一个主机和一个或多个从机的主从模式。主机负责初始化帧，这个数据传输帧可以用于读与写两种操作，片选线路可以从多个从机选择一个来响应主机的请求。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;jie-kou-ding-yi&quot;&gt;接口定义&lt;&#x2F;h2&gt;
+&lt;p&gt;SPI总线规定了4个保留逻辑信号接口：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;SCLK（Serial Clock）：串行时钟，由主机发出&lt;&#x2F;li&gt;
+&lt;li&gt;MOSI（Master Output, Slave
+Input）：主机输出从机输入信号（数据由主机发出）&lt;&#x2F;li&gt;
+&lt;li&gt;MISO（Master Input, Slave
+Output）：主机输入从机输出信号（数据由从机发出）&lt;&#x2F;li&gt;
+&lt;li&gt;SS（Slave Select）：片选信号，由主机发出，一般是低电位有效&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;SPI总线的通信操作可以在单个主设备与一或多个从机之间进行。在只有单一从机的情况下，如果从机允许，可以固定为低电平。大多数从机具有三态逻辑的特性，当器件未被选中时MISO信号变为高阻抗（逻辑断开）。没有三态输出的器件不能与其他器件共享SPI总线段，但是可以使用外接的三态逻辑缓存来解决这个问题。&lt;&#x2F;p&gt;
+&lt;p&gt;SPI通信有4种不同的模式，不同的从设备可能在出厂就是配置为某种模式，这是无法改变的；但我们的通信双方必须工作在同一模式下，所以我们可以通过对CPOL(时钟极性)和CPHA(时钟相位)的配置来设置我们可以通过对CPOL(时钟极性)和CPHA(时钟相位)的配置来设置我们的主设备的工作模式；CPOL是用来配置SCLK的电平的空闲态或者有效态时的电平，CPHA是用来配置数据采样是发生在上升沿还是下降沿。具体如下：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Mode0：CPOL=0，CPHA=0；空闲态时SCLK=0,数据在上升沿采样，在下降沿移位&lt;&#x2F;li&gt;
+&lt;li&gt;Mode1：CPOL=0，CPHA=1；空闲态时SCLK=0,数据在下降沿采样，在上升沿移位&lt;&#x2F;li&gt;
+&lt;li&gt;Mode2：CPOL=1，CPHA=0；空闲态时SCLK=1,数据在上升沿采样，在下降沿移位&lt;&#x2F;li&gt;
+&lt;li&gt;Mode3：CPOL=1，CPHA=1；空闲态时SCLK=1,数据在下降沿采样，在上升沿移位&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;div&gt;
+&lt;&#x2F;div&gt;
+&lt;p&gt;四种模式&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;shu-ju-chuan-shu-xian-zhi&quot;&gt;数据传输限制&lt;&#x2F;h2&gt;
+&lt;p&gt;SPI数据传输速率主要受限与三点：&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;SPI的最大时钟频率&lt;&#x2F;li&gt;
+&lt;li&gt;CPU处理SPI数据的能力&lt;&#x2F;li&gt;
+&lt;li&gt;输出端驱动能力（PCB所允许的最大信号传输速率）&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;h2 id=&quot;kuo-zhan&quot;&gt;扩展&lt;&#x2F;h2&gt;
+&lt;p&gt;一、SPI设备内部详细结构如图2所示，主要组件包括状态寄存器、控制寄存器和数据寄存器，数据位移逻辑单元，波特率发生器，主从控制逻辑单元和端口控制逻辑单元。&lt;&#x2F;p&gt;
+&lt;div&gt;
+&lt;&#x2F;div&gt;
+&lt;p&gt;SPI设备内部详细结构图&lt;&#x2F;p&gt;
+&lt;p&gt;二、由于在SPI
+Flash的通信中,全双工并不常用,因此扩展了标准SPI中MOSI、MISO的用法,使其工作在半双工,用于加倍数据传输,这就形成了Dual
+SPI;在Dual
+SPI的基础上再增加两条信号线(SIO2、SIO3),可以在一个时钟内传输4bit数据,使传输速率再次加倍,就形成了Qual
+SPI。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;can-kao&quot;&gt;参考&lt;&#x2F;h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.cnblogs.com&#x2F;wcat&#x2F;p&#x2F;13854028.html&quot;&gt;硬件设计:接口--SPI总线&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;zh.wikipedia.org&#x2F;wiki&#x2F;%E5%BA%8F%E5%88%97%E5%91%A8%E9%82%8A%E4%BB%8B%E9%9D%A2&quot;&gt;序列周邊介面&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+</content>
+	</entry>
+</feed>

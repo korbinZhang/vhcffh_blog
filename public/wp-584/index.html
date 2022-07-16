@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <script src="https://blog.vhcffh.com/theme.min.js" integrity="sha384-IpIaa84kOKgkF5EJ0fD/kBe2wtIIsIB60ANGmuJxeA0dz5bSRfwBwp2/QybtQpU2"></script>
+  <link rel="stylesheet" href="https://blog.vhcffh.com/abridge-switcher.css?h=e4088b6018baa6c5c4f8222bf9a3811dec2f942f862ca9550010fba28852c1bc" />
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <script defer src="https://blog.vhcffh.com/search_index.en.js?h=d5e574ffd65cdc44489544089e33544b19b3b86a3340d587cc85531d18b8e792" integrity="sha384-HT1AXvCEAQGWm4cehYh3bO0RNhvjaSLPHFBWZ/7j3UFKwYf5wgLbX7GVJy0LGqKp"></script>
+  <script defer src="https://blog.vhcffh.com/abridge-switcher.min.js?h=be6d42ac1cc5ae1da7cdde772d392d6508fc038f98a8d0fd1bc5b5678530631a" integrity="sha384-RAhv9DQbxrVfq4cbSJsOQ8l7sA56QdpoR10euhjBCBOhLdbJ6y8SCZVYy818n51+"></script>
+  <link rel="alternate" type="application/atom+xml" title="Atom/RSS Feed" href="https://blog.vhcffh.com/atom.xml" />
+  <meta name="robots" content="index, follow" />
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <title>C语言标准输出格式化 | Frey's blog</title>
+  <meta name="author" content="Jake G" />
+  <meta name="copyright" content="Frey&#x27;s blog" />
+  <meta name="description" content="一个简单的个人博客，用于记录笔记" />
+  <link rel="canonical" href="https://blog.vhcffh.com/wp-584/" />
+  <meta name="keywords" content="Abridge, Abridge.css, Zola, Theme, Zola Theme, getzola, Semantic Html, Fast, lightweight" />
+  <meta property="og:url" content="https://blog.vhcffh.com/wp-584/" />
+  <meta name="twitter:url" content="https://blog.vhcffh.com/wp-584/" />
+  <meta property="og:description" content="一个简单的个人博客，用于记录笔记" />
+  <meta name="twitter:description" content="一个简单的个人博客，用于记录笔记" />
+  <meta property="og:title" content="C语言标准输出格式化 | Frey&#x27;s blog" />
+  <meta name="twitter:title" content="C语言标准输出格式化 | Frey&#x27;s blog" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://blog.vhcffh.com/banner.png" />
+  <meta property="og:image" content="https://blog.vhcffh.com/banner.png" />
+  <meta property="og:site_name" content="Frey&#x27;s blog" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:type" content="website" />
+  <meta property="og:updated_time" content="2021-11-13" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="theme-color" content="#333333" />
+  <meta name="msapplication-TileColor" content="#333333" />
+  <link rel="manifest" href="https://blog.vhcffh.com/site.webmanifest" />
+  <link rel="mask-icon" href="https://blog.vhcffh.com/safari-pinned-tab.svg" color="#ff9900" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://blog.vhcffh.com/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="https://blog.vhcffh.com/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="https://blog.vhcffh.com/favicon-16x16.png" />
+  <noscript><link rel="stylesheet" href="https://blog.vhcffh.com/nojs.css" /></noscript>
+</head>
+<body>
+  <header>
+    <nav>
+      <div><h1><a href="https://blog.vhcffh.com/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#f90" viewBox="0 0 96 96" width="32" height="32"><path stroke-width="14" d="M14 99 46 7h4l32 92"/><path stroke-width="9" d="M-3 82c43-26 59-26 102 0"/><path stroke-linecap="round" stroke-width="1.5" d="M94 72v7m-5-9.8v7m-5-9.8v7.1M79 64v7M63 57.7v7m-5-8.2v7m-5-7.8v7m-5-7.2v7m-5-6.7v7m-5-6.3v7m-5-5.8v7M17 64v7m-5-4.6v7m-5-4.2v7M2 72v7"/></svg>bridge</a></h1></div>
+      <div>
+        <ul><li> <h2><a href="https://blog.vhcffh.com/about/">About</a></h2> </li><li> <h2><a href="https://blog.vhcffh.com/posts/">Posts</a></h2> </li><li> <h2><a href="https://blog.vhcffh.com/categories/">Categories</a></h2> </li><li> <h2><a href="https://blog.vhcffh.com/tags/">Tags</a></h2> </li><li class="js"><i type="reset" id="mode" class="svgs adjust"></i></li></ul>
+      </div>
+      <div>
+        <form class="js" name="goSearch">
+          <div class="searchd">
+            <input id="userinput" type="text" placeholder="Search" autocomplete="off" title="Search" />
+            <button type="submit" title="Search"><i class="svgs search"></i></button>
+          </div>
+          <div><div id="suggestions"></div></div>
+        </form>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <article>
+        <h1><a href="https://blog.vhcffh.com/wp-584/">C语言标准输出格式化</a></h1>
+        <span class="s95"> Jake G<span class="hpad"> </span> November 13, 2021<span class="hpad"> </span> [<a href="https://blog.vhcffh.com/categories/bian-cheng/">编程</a>] #<a href="https://blog.vhcffh.com/tags/cyu-yan/">C语言</a> </span>
+
+    <p>c语言输出函数<code>printf</code>和<code>fprintf</code>使用修饰符格式化输出不同类型的变量。在这里总结一下各种不同的修饰符以及输出数据的格式。</p>
+<h2 id="xiu-shi-fu">修饰符</h2>
+<p>科学计数法</p>
+<p>c语言输出修饰符</p>
+<p>主要的修饰符如上表所示，而且可以在<code>%</code>和修饰符之间添加一个整型数字来指定输出内容的宽度，以及对齐方式。超出宽度的字符正常输出，负数表示左对齐：</p>
+<p>另外针对整型和浮点型有特别的标识可以使用。</p>
+<h2 id="zheng-xing">整型</h2>
+<p>整型主要包括<code>short</code>，<code>int</code>，<code>long int</code>，<code>long long int</code>以及它们对应的无符号类型<code>unsigned short</code>，<code>unsigned int</code>，<code>unsigned long int</code>，<code>unsigned long long int</code>。整型可以以十进制（%d）、十六进制（%x）、八进制（%o）。</p>
+<pre class="z-code"><code><span class="z-text z-plain">int l = 31;
+</span>printf( &quot;十进制(%%d)\t%d\n&quot;, l );
+</span>printf( &quot;十六进制(%%x,%%X)\t%x,%X\n&quot;, l, l );
+</span>printf( &quot;八进制(%%o)\t%o\n&quot;, l );
+</span>printf( &quot;十进制(%%04d,%%4d)\t%04d,%4d\n&quot;, l, l );
+</span>printf( &quot;十六进制(%%04x,%%4X) \t%04x,%4X\n&quot;, l, l );
+</span>printf( &quot;八进制(%%o04o,%%4o)\t%04o,%4o\n&quot;, l, l );
+</span>/*
+</span>十进制(%d)      31
+</span>十六进制(%x,%X) 1f,1F
+</span>八进制(%o)      37
+</span>十进制(%04d,%4d)        0031,  31
+</span>十六进制(%04x,%4X)      001f,  1F
+</span>八进制(%o4o,%4o)        0037,  37
+</span>*/
+</span></code></pre>
+<h2 id="fu-dian-xing">浮点型</h2>
+<p>浮点型主要包括<code>float</code>，<code>double</code>两种类型。可以使用%f，%g，%e进行输出。</p>
+<p>其中%g和%s都以科学计数法的方式输出，不过%g在默认情况下包括整数位共输出六位，而%f和%e默认小数位数为六位。不过可以通过.m来指定小数点后面的位数。</p>
+<h2 id="can-kao">参考</h2>
+<ol>
+<li><a rel="noopener" target="_blank" href="https://zhuanlan.zhihu.com/p/206738818">C语言printf指定宽度的格式化输出 - 知乎 (zhihu.com)</a></li>
+<li><a rel="noopener" target="_blank" href="https://www.cnblogs.com/hustxujinkang/p/4179373.html">C/C++中浮点数输出格式问题 - sfesly - 博客园 (cnblogs.com)</a></li>
+</ol>
+
+<p><b><a href="#">Back to top</a></b></p>
+    </article>
+  </main>
+  <footer>
+    <hr />
+    <div class="c">
+      <nav>
+        <ul><li><a href="https://blog.vhcffh.com/atom.xml" target="_blank" title="Atom/RSS Feed"><i type="Button" class="svg rss" title="Atom/RSS Feed"></i></a></li><li><a href="mailto:fly92727@outlook.com" target="_blank" title="Mail"><i type="Button" class="svg mail" title="Mail"></i></a></li><li><a href="https://github.com/FreyZhang007/" target="_blank" title="Github"><i type="Button" class="svg github" title="Github"></i></a></li><li><a href="https://github.com/sponsors/FreyZhang007/" target="_blank" title="GitHub Sponsor"><i type="Button" class="svg github-sponsor" title="GitHub Sponsor"></i></a></li></ul>
+      </nav>
+      <p class="s90">Copyright &copy; 2022 Frey&#x27;s blog</p>
+      <nav>
+        <ul><li class="s90"> <a href="https://blog.vhcffh.com/about/"> About </a> </li><li class="s90"> <a href="https://blog.vhcffh.com/contact/"> Contact </a> </li><li class="s90"> <a href="https://blog.vhcffh.com/privacy/"> Privacy </a> </li><li class="s90"> <a href="https://blog.vhcffh.com/sitemap.xml"> Sitemap </a> </li></ul>
+      </nav>
+      <p class="s90">Powered by <a href="https://www.getzola.org/">Zola</a> and <a href="https://github.com/jieiku/abridge/">Abridge</a></p>
+    </div>
+  </footer>
+<span class="topout">
+<span class="topleft"> </span><a href="#" class="top" title="Back to Top"><i class="svgs svgh angu"></i></a>
+</span>
+</body>
+</html>

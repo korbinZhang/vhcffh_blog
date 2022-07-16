@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+	<title>Frey&#x27;s blog - mysql</title>
+	<subtitle>一个简单的个人博客，用于记录笔记</subtitle>
+	<link href="https://blog.vhcffh.com/tags/mysql/atom.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://blog.vhcffh.com"/>
+	<generator uri="https://www.getzola.org/">Zola</generator>
+	<updated>2020-08-29T00:00:00+00:00</updated>
+	<id>https://blog.vhcffh.com/tags/mysql/atom.xml</id>
+	<entry xml:lang="en">
+		<title>mysql 新建用户</title>
+		<published>2020-08-29T00:00:00+00:00</published>
+		<updated>2020-08-29T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/wp-270/" type="text/html"/>
+		<id>https://blog.vhcffh.com/wp-270/</id>
+		<content type="html">&lt;p&gt;一、新建用户&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;CREATE USER &amp;#39;username&amp;#39;@&amp;#39;host&amp;#39; IDENTIFIED BY &amp;#39;password&amp;#39;;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;username:用户名&lt;&#x2F;p&gt;
+&lt;p&gt;host:允许在那些ip登录(%)&lt;&#x2F;p&gt;
+&lt;p&gt;password:密码&lt;&#x2F;p&gt;
+&lt;p&gt;&#x27;username&#x27;和@和&#x27;host&#x27;之间没有空格&lt;&#x2F;p&gt;
+&lt;p&gt;二、授权&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;GRANT privileges ON databasename.tablename TO &amp;#39;username&amp;#39;@&amp;#39;host&amp;#39;;
+&lt;&#x2F;span&gt;FLUSH PRIVILEGES;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;privileges:具体权限&lt;code&gt;SELECT&lt;&#x2F;code&gt;,&lt;code&gt;INSERT&lt;&#x2F;code&gt;,&lt;code&gt;UPDATE&lt;&#x2F;code&gt;,&lt;code&gt;DELETE&lt;&#x2F;code&gt;,&lt;code&gt;CREATE&lt;&#x2F;code&gt;,&lt;code&gt;DROP&lt;&#x2F;code&gt;(&lt;code&gt;ALL&lt;&#x2F;code&gt;)&lt;&#x2F;p&gt;
+&lt;p&gt;databasename:数据库名(*)&lt;&#x2F;p&gt;
+&lt;p&gt;tablename:表名(*)&lt;&#x2F;p&gt;
+&lt;p&gt;三、撤权&lt;&#x2F;p&gt;
+&lt;p&gt;与授权相似&lt;code&gt;GRANT&lt;&#x2F;code&gt;-&amp;gt;&lt;code&gt;REVOKE&lt;&#x2F;code&gt;,&lt;code&gt;TO&lt;&#x2F;code&gt;-&amp;gt;&lt;code&gt;FROM&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;REVOKE privileges ON databasename.tablename FROM &amp;#39;username&amp;#39;@&amp;#39;host&amp;#39;;
+FLUSH PRIVILEGES;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;privileges:具体权限&lt;code&gt;SELECT&lt;&#x2F;code&gt;,&lt;code&gt;INSERT&lt;&#x2F;code&gt;,&lt;code&gt;UPDATE&lt;&#x2F;code&gt;,&lt;code&gt;DELETE&lt;&#x2F;code&gt;,&lt;code&gt;CREATE&lt;&#x2F;code&gt;,&lt;code&gt;DROP&lt;&#x2F;code&gt;(&lt;code&gt;ALL&lt;&#x2F;code&gt;)&lt;&#x2F;p&gt;
+&lt;p&gt;databasename:数据库名(*)&lt;&#x2F;p&gt;
+&lt;p&gt;tablename:表名(*)&lt;&#x2F;p&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>搬瓦工VPS搭建Web服务器</title>
+		<published>2017-08-04T00:00:00+00:00</published>
+		<updated>2017-08-04T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/hexo-ban-wa-gong-vpsda-jian-webfu-wu-qi/" type="text/html"/>
+		<id>https://blog.vhcffh.com/hexo-ban-wa-gong-vpsda-jian-webfu-wu-qi/</id>
+		<content type="html">&lt;p&gt;记录在centos上安装apache+php+mysql&lt;br &#x2F;&gt;
+搬瓦工VPS&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;bandwagonhost.com&#x2F;aff.php?aff=17697&quot;&gt;购买地址&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;an-zhuang-apache&quot;&gt;安装apache&lt;&#x2F;h1&gt;
+&lt;p&gt;安装&lt;code&gt;yum install httpd&lt;&#x2F;code&gt;&lt;br &#x2F;&gt;
+启动&lt;code&gt;service httpd start&lt;&#x2F;code&gt;&lt;br &#x2F;&gt;
+暂停&lt;code&gt;service httpd stop&lt;&#x2F;code&gt;&lt;br &#x2F;&gt;
+重启&lt;code&gt;service httpd restart&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;检查开机启动情况&lt;code&gt;chkconfig --list httpd&lt;&#x2F;code&gt;&lt;br &#x2F;&gt;
+默认情况下是全部关闭的，尽量设置开机启动，以防主机意外关机&lt;&#x2F;p&gt;
+&lt;p&gt;设置开机启动命令&lt;code&gt;chkconfig httpd on&lt;&#x2F;code&gt;&lt;br &#x2F;&gt;
+再次检查启动情况，看到2，3，4，5为启动&lt;br &#x2F;&gt;
+关闭开机启动命令&lt;code&gt;chkconfig httpd off&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;到此Apache安装完成，在自己浏览器中输入主机IP和端口号能正常打开&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;an-zhuang-php&quot;&gt;安装php&lt;&#x2F;h1&gt;
+&lt;p&gt;命令为:&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;yum install php
+&lt;&#x2F;span&gt;yum install php-mysql  php-gd  php-imap  php-ldap  php-odbc php-pear  php-xml  php-xmlrpc
+&lt;&#x2F;span&gt;yum install php-mysql
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;以上命令为安装php及其支持的组件&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;an-zhuang-mysql&quot;&gt;安装mysql&lt;&#x2F;h1&gt;
+&lt;h2 id=&quot;an-zhuang&quot;&gt;安装&lt;&#x2F;h2&gt;
+&lt;hr &#x2F;&gt;
+&lt;p&gt;首先查看主机是否已经安装&lt;code&gt;rpm -qa|grep mysql&lt;&#x2F;code&gt;&lt;br &#x2F;&gt;
+注意：可能检查中安装有php-mysql XXXXX 和
+mysql-libXXXX,这是刚刚第二步安装的php的组件,不必理会&lt;&#x2F;p&gt;
+&lt;p&gt;已经安装的话就执行删除命令&lt;code&gt;rpm -e mysql&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;然后继续安装&lt;br &#x2F;&gt;
+使用命令yum list | grep mysql&lt;br &#x2F;&gt;
+来查看yum上提供的mysql数据库可下载的版本&lt;&#x2F;p&gt;
+&lt;p&gt;安装命令&lt;code&gt;yum install -y mysql-server mysql mysql-devel&lt;&#x2F;code&gt;&lt;br &#x2F;&gt;
+等待一段时间安装成功&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;pei-zhi&quot;&gt;配置&lt;&#x2F;h2&gt;
+&lt;hr &#x2F;&gt;
+&lt;p&gt;接下来是对mysql的配置(注意:命令中是&amp;quot;mysqld&amp;quot;,不是mysql)&lt;br &#x2F;&gt;
+初始化:&lt;code&gt;service mysqld start&lt;&#x2F;code&gt;&lt;br &#x2F;&gt;
+重启:&lt;code&gt;service mysqld restart&lt;&#x2F;code&gt;&lt;br &#x2F;&gt;
+配置开机自动启动:&lt;code&gt;chkconfig mysqld on&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;为mysql的root账户设置密码:&lt;code&gt;mysqladmin -u root password &#x27;*********&#x27;&lt;&#x2F;code&gt;&lt;br &#x2F;&gt;
+登录命令&lt;code&gt;mysql -u root -p&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+</content>
+	</entry>
+</feed>

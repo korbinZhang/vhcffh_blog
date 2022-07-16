@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <script src="https://blog.vhcffh.com/theme.min.js" integrity="sha384-IpIaa84kOKgkF5EJ0fD/kBe2wtIIsIB60ANGmuJxeA0dz5bSRfwBwp2/QybtQpU2"></script>
+  <link rel="stylesheet" href="https://blog.vhcffh.com/abridge-switcher.css?h=e4088b6018baa6c5c4f8222bf9a3811dec2f942f862ca9550010fba28852c1bc" />
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <script defer src="https://blog.vhcffh.com/search_index.en.js?h=d5e574ffd65cdc44489544089e33544b19b3b86a3340d587cc85531d18b8e792" integrity="sha384-HT1AXvCEAQGWm4cehYh3bO0RNhvjaSLPHFBWZ/7j3UFKwYf5wgLbX7GVJy0LGqKp"></script>
+  <script defer src="https://blog.vhcffh.com/abridge-switcher.min.js?h=be6d42ac1cc5ae1da7cdde772d392d6508fc038f98a8d0fd1bc5b5678530631a" integrity="sha384-RAhv9DQbxrVfq4cbSJsOQ8l7sA56QdpoR10euhjBCBOhLdbJ6y8SCZVYy818n51+"></script>
+  <link rel="alternate" type="application/atom+xml" title="Atom/RSS Feed" href="https://blog.vhcffh.com/atom.xml" />
+  <meta name="robots" content="index, follow" />
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <title>UML图介绍 | Frey's blog</title>
+  <meta name="author" content="Jake G" />
+  <meta name="copyright" content="Frey&#x27;s blog" />
+  <meta name="description" content="一个简单的个人博客，用于记录笔记" />
+  <link rel="canonical" href="https://blog.vhcffh.com/hexo-umltu-jie-shao/" />
+  <meta name="keywords" content="Abridge, Abridge.css, Zola, Theme, Zola Theme, getzola, Semantic Html, Fast, lightweight" />
+  <meta property="og:url" content="https://blog.vhcffh.com/hexo-umltu-jie-shao/" />
+  <meta name="twitter:url" content="https://blog.vhcffh.com/hexo-umltu-jie-shao/" />
+  <meta property="og:description" content="一个简单的个人博客，用于记录笔记" />
+  <meta name="twitter:description" content="一个简单的个人博客，用于记录笔记" />
+  <meta property="og:title" content="UML图介绍 | Frey&#x27;s blog" />
+  <meta name="twitter:title" content="UML图介绍 | Frey&#x27;s blog" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://blog.vhcffh.com/banner.png" />
+  <meta property="og:image" content="https://blog.vhcffh.com/banner.png" />
+  <meta property="og:site_name" content="Frey&#x27;s blog" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:type" content="website" />
+  <meta property="og:updated_time" content="2019-04-21" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="theme-color" content="#333333" />
+  <meta name="msapplication-TileColor" content="#333333" />
+  <link rel="manifest" href="https://blog.vhcffh.com/site.webmanifest" />
+  <link rel="mask-icon" href="https://blog.vhcffh.com/safari-pinned-tab.svg" color="#ff9900" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://blog.vhcffh.com/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="https://blog.vhcffh.com/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="https://blog.vhcffh.com/favicon-16x16.png" />
+  <noscript><link rel="stylesheet" href="https://blog.vhcffh.com/nojs.css" /></noscript>
+</head>
+<body>
+  <header>
+    <nav>
+      <div><h1><a href="https://blog.vhcffh.com/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#f90" viewBox="0 0 96 96" width="32" height="32"><path stroke-width="14" d="M14 99 46 7h4l32 92"/><path stroke-width="9" d="M-3 82c43-26 59-26 102 0"/><path stroke-linecap="round" stroke-width="1.5" d="M94 72v7m-5-9.8v7m-5-9.8v7.1M79 64v7M63 57.7v7m-5-8.2v7m-5-7.8v7m-5-7.2v7m-5-6.7v7m-5-6.3v7m-5-5.8v7M17 64v7m-5-4.6v7m-5-4.2v7M2 72v7"/></svg>bridge</a></h1></div>
+      <div>
+        <ul><li> <h2><a href="https://blog.vhcffh.com/about/">About</a></h2> </li><li> <h2><a href="https://blog.vhcffh.com/posts/">Posts</a></h2> </li><li> <h2><a href="https://blog.vhcffh.com/categories/">Categories</a></h2> </li><li> <h2><a href="https://blog.vhcffh.com/tags/">Tags</a></h2> </li><li class="js"><i type="reset" id="mode" class="svgs adjust"></i></li></ul>
+      </div>
+      <div>
+        <form class="js" name="goSearch">
+          <div class="searchd">
+            <input id="userinput" type="text" placeholder="Search" autocomplete="off" title="Search" />
+            <button type="submit" title="Search"><i class="svgs search"></i></button>
+          </div>
+          <div><div id="suggestions"></div></div>
+        </form>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <article>
+        <h1><a href="https://blog.vhcffh.com/hexo-umltu-jie-shao/">UML图介绍</a></h1>
+        <span class="s95"> Jake G<span class="hpad"> </span> April 21, 2019<span class="hpad"> </span> [<a href="https://blog.vhcffh.com/categories/ruan-jian/">软件</a>] #<a href="https://blog.vhcffh.com/tags/uml/">UML</a>  #<a href="https://blog.vhcffh.com/tags/ruan-jian-she-ji/">软件设计</a> </span>
+
+    <h1 id="1-yong-li-shi-tu">1.用例视图</h1>
+<h2 id="1-1yong-li-tu">1.1用例图</h2>
+<p>描述角色以及角色与用例之间的连接关系。说明的是谁要使用系统，以及他们使用该系统可以做些什么。</p>
+<h1 id="2-she-ji-shi-tu">2.设计视图</h1>
+<h2 id="2-1lei-tu">2.1类图</h2>
+<p>根据用例图抽象成类，描述类的内部结构和类与类之间的关系，是一种静态结构图。
+在UML类图中，常见的有以下几种关系: 泛化（Generalization）,
+实现（Realization），关联（Association)，聚合（Aggregation），组合(Composition)，依赖(Dependency)。</p>
+<p>类图是描述系统中的类，以及各个类之间的关系的静态视图。能够让我们在正确编写代码以前对系统有一个全面的认识。类图是一种模型类型，确切的说，是一种静态模型类型。</p>
+<h3 id="2-2dui-xiang-tu">2.2对象图</h3>
+<p>描述的是参与交互的各个对象在交互过程中某一时刻的状态。对象图可以被看作是类图在某一时刻的实例。</p>
+<p>与类图极为相似，它是类图的实例，对象图显示类的多个对象实例，而不是实际的类。它描述的不是类之间的关系，而是对象之间的关系。</p>
+<h1 id="3-jin-cheng-shi-tu">3.进程视图</h1>
+<h2 id="3-1xu-lie-tu-shun-xu-tu">3.1序列图（顺序图）</h2>
+<p>交互图的一种，描述了对象之间消息发送的先后顺序，强调时间顺序。</p>
+<p>序列图是用来显示你的参与者如何以一系列顺序的步骤与系统的对象交互的模型。顺序图可以用来展示对象之间是如何进行交互的。顺序图将显示的重点放在消息序列上，即强调消息是如何在对象之间被发送和接收的。</p>
+<h2 id="3-2xie-zuo-tu">3.2协作图</h2>
+<p>交互图的一种，描述了收发消息的对象的组织关系，强调对象之间的合作关系。时序图按照时间顺序布图，而写作图按照空间结构布图</p>
+<p>和序列图相似，显示对象间的动态合作关系。可以看成是类图和顺序图的交集，协作图建模对象或者角色，以及它们彼此之间是如何通信的。如果强调时间和顺序，则使用序列图；如果强调上下级关系，则选择协作图；这两种图合称为交互图。</p>
+<h2 id="3-3zhuang-tai-tu">3.3状态图</h2>
+<p>是一种由状态、变迁、事件和活动组成的状态机，用来描述类的对象所有可能的状态以及时间发生时状态的转移条件。</p>
+<p>描述类的对象所有可能的状态，以及事件发生时状态的转移条件。可以捕获对象、子系统和系统的生命周期。他们可以告知一个对象可以拥有的状态，并且事件(如消息的接收、时间的流逝、错误、条件变为真等)会怎么随着时间的推移来影响这些状态。一个状态图应该连接到所有具有清晰的可标识状态和复杂行为的类；该图可以确定类的行为，以及该行为如何根据当前的状态变化，也可以展示哪些事件将会改变类的对象的状态。状态图是对类图的补充。</p>
+<h2 id="3-4huo-dong-tu">3.4活动图</h2>
+<p>是状态图的一种特殊情况，这些状态大都处于活动状态。本质是一种流程图，它描述了活动到活动的控制流。</p>
+<p>描述用例要求所要进行的活动，以及活动间的约束关系，有利于识别并行活动。能够演示出系统中哪些地方存在功能</p>
+<h1 id="4-shi-xian-shi-tu">4.实现视图</h1>
+<h2 id="4-1gou-jian-tu-zu-jian-tu">4.1构件图 （组件图）</h2>
+<p>描述代码构件的物理结构以及各种构建之间的依赖关系。用来建模软件的组件及其相互之间的关系，这些图由构件标记符和构件之间的关系构成。在组件图中，构件时软件单个组成部分，它可以是一个文件，产品、可执行文件和脚本等。</p>
+<h1 id="5-tuo-bu-shi-tu">5.拓扑视图</h1>
+<h2 id="5-1bu-shu-tu">5.1部署图</h2>
+<p>是用来建模系统的物理部署。例如计算机和设备，以及它们之间是如何连接的。部署图的使用者是开发人员、系统集成人员和测试人员。</p>
+<h1 id="6-ruan-jian-she-ji-ji-guo-cheng">6.软件设计及过程</h1>
+<p>在需求阶段：采用用例图来描述需求<br />
+在分析阶段：采用类图来描述静态结构<br />
+在设计阶段：采用类图、包图对类的接口进行设计<br />
+在实现阶段：将类用某个面向对象的语言实现<br />
+在集成与交付阶段：构件图、包图、部署图<br />
+在测试阶段：单元测试使用类图和类的规格说明书<br />
+集成测试阶段使用类图、包图、构件图和合作图<br />
+系统测试使用用例图来测试系统功能</p>
+
+<p><b><a href="#">Back to top</a></b></p>
+    </article>
+  </main>
+  <footer>
+    <hr />
+    <div class="c">
+      <nav>
+        <ul><li><a href="https://blog.vhcffh.com/atom.xml" target="_blank" title="Atom/RSS Feed"><i type="Button" class="svg rss" title="Atom/RSS Feed"></i></a></li><li><a href="mailto:fly92727@outlook.com" target="_blank" title="Mail"><i type="Button" class="svg mail" title="Mail"></i></a></li><li><a href="https://github.com/FreyZhang007/" target="_blank" title="Github"><i type="Button" class="svg github" title="Github"></i></a></li><li><a href="https://github.com/sponsors/FreyZhang007/" target="_blank" title="GitHub Sponsor"><i type="Button" class="svg github-sponsor" title="GitHub Sponsor"></i></a></li></ul>
+      </nav>
+      <p class="s90">Copyright &copy; 2022 Frey&#x27;s blog</p>
+      <nav>
+        <ul><li class="s90"> <a href="https://blog.vhcffh.com/about/"> About </a> </li><li class="s90"> <a href="https://blog.vhcffh.com/contact/"> Contact </a> </li><li class="s90"> <a href="https://blog.vhcffh.com/privacy/"> Privacy </a> </li><li class="s90"> <a href="https://blog.vhcffh.com/sitemap.xml"> Sitemap </a> </li></ul>
+      </nav>
+      <p class="s90">Powered by <a href="https://www.getzola.org/">Zola</a> and <a href="https://github.com/jieiku/abridge/">Abridge</a></p>
+    </div>
+  </footer>
+<span class="topout">
+<span class="topleft"> </span><a href="#" class="top" title="Back to Top"><i class="svgs svgh angu"></i></a>
+</span>
+</body>
+</html>

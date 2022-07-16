@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+	<title>Frey&#x27;s blog - heapq</title>
+	<subtitle>一个简单的个人博客，用于记录笔记</subtitle>
+	<link href="https://blog.vhcffh.com/tags/heapq/atom.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://blog.vhcffh.com"/>
+	<generator uri="https://www.getzola.org/">Zola</generator>
+	<updated>2020-10-11T00:00:00+00:00</updated>
+	<id>https://blog.vhcffh.com/tags/heapq/atom.xml</id>
+	<entry xml:lang="en">
+		<title>python标准库模块heapq</title>
+		<published>2020-10-11T00:00:00+00:00</published>
+		<updated>2020-10-11T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/wp-322/" type="text/html"/>
+		<id>https://blog.vhcffh.com/wp-322/</id>
+		<content type="html">&lt;p&gt;堆是一个近似完全二叉树的结构，并同时满足如下性质&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;子节点的键值或索引总是小于（或者大于）它的父节点&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;python标准库模块heapq实现了堆排序的一些算法，主要提供了以下几个函数&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;heapify(x)&lt;&#x2F;code&gt;:本地把列表转换为堆，时间复杂度O(n)&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;heappush(heap, item)&lt;&#x2F;code&gt;:将新项添加到堆，并保持堆的不变性&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;heappop(heap)&lt;&#x2F;code&gt;:从堆中取出最小项，并保持堆的不变性&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;heapreplace(heap, item)&lt;&#x2F;code&gt;:从堆中取出最小项，并将新项添加到堆，并保持堆的不变性&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;heappushpop(heap, item)&lt;&#x2F;code&gt;:从堆中取出最小项，并将新项添加到堆，并保持堆的不变性（速度更快）&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;nsmallest(n, iterable, key=None)&lt;&#x2F;code&gt;:从可迭代对象中返回前n个最小项&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;nlargest(n, iterable, key=None)&lt;&#x2F;code&gt;:从可迭代对象中返回前n个最大项&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;merge(*iterables, key=None, reverse=False)&lt;&#x2F;code&gt;:合并多个可排序对象&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+</content>
+	</entry>
+</feed>

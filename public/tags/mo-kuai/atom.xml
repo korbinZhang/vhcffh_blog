@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+	<title>Frey&#x27;s blog - 模块</title>
+	<subtitle>一个简单的个人博客，用于记录笔记</subtitle>
+	<link href="https://blog.vhcffh.com/tags/mo-kuai/atom.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://blog.vhcffh.com"/>
+	<generator uri="https://www.getzola.org/">Zola</generator>
+	<updated>2018-04-28T00:00:00+00:00</updated>
+	<id>https://blog.vhcffh.com/tags/mo-kuai/atom.xml</id>
+	<entry xml:lang="en">
+		<title>python3之模块</title>
+		<published>2018-04-28T00:00:00+00:00</published>
+		<updated>2018-04-28T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/hexo-python3zhi-mo-kuai/" type="text/html"/>
+		<id>https://blog.vhcffh.com/hexo-python3zhi-mo-kuai/</id>
+		<content type="html">&lt;h2 id=&quot;1-python3mo-kuai&quot;&gt;1.python3模块&lt;&#x2F;h2&gt;
+&lt;p&gt;简单讲，一个模块就是一个*.py文件，这个文件里面可以定义类，函数，变量，也可以包含可执行代码。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;2-mo-kuai-de-yin-ru&quot;&gt;2.模块的引入&lt;&#x2F;h2&gt;
+&lt;p&gt;2.1import引入&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;import module1,[module2[,.........moduleN]]
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;一个模块只会被导入一次，不管执行了多少次import，这样可以防止导入模块被重复执行。&lt;&#x2F;p&gt;
+&lt;p&gt;2.2from * import语句&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;from modname import name1,name2..........nameN
+&lt;&#x2F;span&gt;from mod import func_1
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;这个声明不会把整个mod模块导入到当前命名空间中，它只会将mod里的func_1单个引入到执行这个声明的模块的全局符号表。&lt;&#x2F;p&gt;
+&lt;p&gt;from ... import *
+：这样会把模块中的所有内容导入到当前命名空间，一般不建议使用，消耗内存空间，也容易出现未预知的问题。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;3-sou-suo-lu-jing&quot;&gt;3.搜索路径&lt;&#x2F;h2&gt;
+&lt;p&gt;搜索顺序：当前目录-&amp;gt;系统环境变量PATHONHOME-&amp;gt;标准链接库目录&lt;br &#x2F;&gt;
+通过&lt;code&gt;sys.path&lt;&#x2F;code&gt;可查看搜索路径&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;&amp;gt;&amp;gt;&amp;gt; import sys
+&lt;&#x2F;span&gt;&amp;gt;&amp;gt;&amp;gt; sys.path
+&lt;&#x2F;span&gt;[&amp;#39;&amp;#39;, &amp;#39;C:\\Python36\\python36.zip&amp;#39;, &amp;#39;C:\\Python36\\DLLs&amp;#39;, &amp;#39;C:\\Python36\\lib&amp;#39;, &amp;#39;C:\\Python36&amp;#39;, &amp;#39;C:\\Python36\\lib\\site-packages&amp;#39;]
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;4-ming-ming-kong-jian&quot;&gt;4.命名空间&lt;&#x2F;h2&gt;
+&lt;p&gt;变量是拥有匹配对象的名字（标识符）。命名空间是一个包含了变量名称（键）和它们各自相应的对象们（值）的字典。&lt;br &#x2F;&gt;
+函数内用到全局变量要用global语句，否则会当作局部变量处理&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;qi-ta-wen-ti&quot;&gt;其他问题:&lt;&#x2F;h2&gt;
+&lt;p&gt;1.python模块里的可执行代码何时执行？&lt;br &#x2F;&gt;
+当导入模块时，python顶层的代码会执行一次，若要重新执行模块的顶层代码需要通道reload()函数&lt;br &#x2F;&gt;
+另外python3中的reload()需要从imp包中导入&lt;br &#x2F;&gt;
+2.关于python模块循环引入的问题？&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;can-kao-zi-liao&quot;&gt;参考资料&lt;&#x2F;h2&gt;
+&lt;p&gt;1.&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.cnblogs.com&#x2F;zhangxinqi&#x2F;p&#x2F;7905103.html&quot;&gt;https:&#x2F;&#x2F;www.cnblogs.com&#x2F;zhangxinqi&#x2F;p&#x2F;7905103.html&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+	</entry>
+</feed>

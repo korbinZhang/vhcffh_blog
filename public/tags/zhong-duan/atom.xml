@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+	<title>Frey&#x27;s blog - 终端</title>
+	<subtitle>一个简单的个人博客，用于记录笔记</subtitle>
+	<link href="https://blog.vhcffh.com/tags/zhong-duan/atom.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://blog.vhcffh.com"/>
+	<generator uri="https://www.getzola.org/">Zola</generator>
+	<updated>2020-03-13T00:00:00+00:00</updated>
+	<id>https://blog.vhcffh.com/tags/zhong-duan/atom.xml</id>
+	<entry xml:lang="en">
+		<title>实现让终端走代理</title>
+		<published>2020-03-13T00:00:00+00:00</published>
+		<updated>2020-03-13T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/wp-41/" type="text/html"/>
+		<id>https://blog.vhcffh.com/wp-41/</id>
+		<content type="html">&lt;p&gt;让终端走代理可以通过设置环境变量实现&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;export http_proxy=socks5:&#x2F;&#x2F;127.0.0.1:1080 
+&lt;&#x2F;span&gt;export https_proxy=socks5:&#x2F;&#x2F;127.0.0.1:1080 
+&lt;&#x2F;span&gt;export ALL_PROXY=socks5:&#x2F;&#x2F;127.0.0.1:1080
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;把代理服务器的配置写到shell配置文件&lt;code&gt;~&#x2F;.bashrc&lt;&#x2F;code&gt;或者&lt;code&gt;.&#x2F;zshrc&lt;&#x2F;code&gt;&lt;br &#x2F;&gt;
+并通过&lt;code&gt;alias&lt;&#x2F;code&gt;实现方便的设置代理&lt;code&gt;setproxy&lt;&#x2F;code&gt;，关闭代理&lt;code&gt;unsetproxy&lt;&#x2F;code&gt;，验证代理&lt;code&gt;myip&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;# ~&#x2F;.zshrc 
+&lt;&#x2F;span&gt;# setproxy,unsetproxy,myip 
+&lt;&#x2F;span&gt;alias setproxy=&amp;quot;export ALL_PROXY=socks:&#x2F;&#x2F;localhost:1080&amp;quot; 
+&lt;&#x2F;span&gt;alias unsetproxy=&amp;quot;unset ALL_PROXY&amp;quot; 
+&lt;&#x2F;span&gt;alias myip=&amp;quot;curl http:&#x2F;&#x2F;cip.cc&amp;quot; 
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;验证ip通过获取本机外网ip实现[2]
+&lt;img src=&quot;https:&#x2F;&#x2F;i.imgur.com&#x2F;Xtdho3W.png&quot; alt=&quot;file&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;wen-ti&quot;&gt;问题&lt;&#x2F;h1&gt;
+&lt;p&gt;本机使用v2ray开的&lt;code&gt;socks&lt;&#x2F;code&gt;代理，设置代理用&lt;code&gt;sock5&lt;&#x2F;code&gt;会出现错误，只能设置成socks，可能是终端不支持socks5，v2ray兼容socks&lt;br &#x2F;&gt;
+查&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.v2ray.com&#x2F;chapter_02&#x2F;protocols&#x2F;socks.html&quot;&gt;资料&lt;&#x2F;a&gt;得知&lt;code&gt;v2ray&lt;&#x2F;code&gt;中的&lt;code&gt;socks&lt;&#x2F;code&gt;兼容
+Socks 4、Socks 4a 和 Socks 5&lt;br &#x2F;&gt;
+&lt;code&gt;curl: (6) Couldn&#x27;t resolve host name&lt;&#x2F;code&gt;&lt;br &#x2F;&gt;
+但是在chrome中使用SwitchyOmega设置为&lt;code&gt;sock5&lt;&#x2F;code&gt;可以上网&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;can-kao-zi-liao&quot;&gt;参考资料&lt;&#x2F;h1&gt;
+&lt;p&gt;[1]&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; title=&quot;让终端走代理的几种方法&quot; href=&quot;https:&#x2F;&#x2F;blog.fazero.me&#x2F;2015&#x2F;09&#x2F;15&#x2F;%E8%AE%A9%E7%BB%88%E7%AB%AF%E8%B5%B0%E4%BB%A3%E7%90%86%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E6%B3%95&#x2F;&quot;&gt;让终端走代理的几种方法&lt;&#x2F;a&gt;&lt;br &#x2F;&gt;
+[2]&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; title=&quot;用Linux命令行获取本机外网IP地址&quot; href=&quot;https:&#x2F;&#x2F;www.cnblogs.com&#x2F;wjoyxt&#x2F;p&#x2F;6288582.html&quot;&gt;用Linux命令行获取本机外网IP地址&lt;&#x2F;a&gt;&lt;br &#x2F;&gt;
+[3]&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.v2ray.com&#x2F;chapter_02&#x2F;protocols&#x2F;socks.html&quot;&gt;www.v2ray.com&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+	</entry>
+</feed>

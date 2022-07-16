@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+	<title>Frey&#x27;s blog - 词性标注</title>
+	<subtitle>一个简单的个人博客，用于记录笔记</subtitle>
+	<link href="https://blog.vhcffh.com/tags/ci-xing-biao-zhu/atom.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://blog.vhcffh.com"/>
+	<generator uri="https://www.getzola.org/">Zola</generator>
+	<updated>2019-08-25T00:00:00+00:00</updated>
+	<id>https://blog.vhcffh.com/tags/ci-xing-biao-zhu/atom.xml</id>
+	<entry xml:lang="en">
+		<title>深度学习在中文分词和词性标注中的应用</title>
+		<published>2019-08-25T00:00:00+00:00</published>
+		<updated>2019-08-25T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/hexo-shen-du-xue-xi-zai-zhong-wen-fen-ci-he-ci-xing-biao-zhu-zhong-de-ying-yong/" type="text/html"/>
+		<id>https://blog.vhcffh.com/hexo-shen-du-xue-xi-zai-zhong-wen-fen-ci-he-ci-xing-biao-zhu-zhong-de-ying-yong/</id>
+		<content type="html">&lt;p&gt;得到字向量-&amp;gt;通过窗口方法得到字与上下文有关的向量(矩阵)-&amp;gt;通过两个线性层和一个非线性激活函数-&amp;gt;字的标注得分(窗口方法)-&amp;gt;一个句子的评分矩阵$ f \times \theta (c \times {[1:n]}) $ (句子中的第$ i $ 个子为标签$ t $
+的得分)-&amp;gt;定义转换分数$ A_{ij} $,得到tag path 得分 -&amp;gt;最大化得分,得到最优tag path&lt;&#x2F;p&gt;
+&lt;p&gt;$$
+s(c_{[1:N]},t_{[1:N]},\theta)=\sum_{i=1}^n(A_{t_{i-1}t_i}+f_\theta (t_i\vert i))
+$$&lt;&#x2F;p&gt;
+&lt;p&gt;log likelihood&lt;&#x2F;p&gt;
+&lt;p&gt;$$
+\sum_{\forall(c,t)\in R}\log p(t\vert c,\theta)
+$$&lt;&#x2F;p&gt;
+&lt;p&gt;将目标函数转换为条件概率&lt;&#x2F;p&gt;
+&lt;p&gt;$$
+p(t\vert c,\theta)=\frac {e^{s(c,t,\theta)}}{\sum_{\tilde t}{e^{s(c,\tilde t,\theta)}}}
+$$&lt;&#x2F;p&gt;
+&lt;p&gt;取对数&lt;&#x2F;p&gt;
+&lt;p&gt;$$
+\log p(t\vert c,\theta) = s(c,t,\theta)-log\sum_{\tilde t}{e^{s(c,\tilde t,\theta)}}
+$$&lt;&#x2F;p&gt;
+&lt;p&gt;维特比算法(viterbi)&lt;&#x2F;p&gt;
+&lt;p&gt;一种动态规划算法(穷举法,A*算法,beam search,Viterbi算法)&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;font color=&quot;red&quot;&gt;A*算法和Viterbi算法的区别?&lt;&#x2F;font&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;新的训练方法&lt;&#x2F;p&gt;
+&lt;p&gt;将维特比算法在当前参数下得出的最优路径结果与正确结果进行比较对比,定义出损失函数对$ A_{t_{i-1}t_i} $
+和$f_\theta (t_i|i) $ 的偏导数,通过后向传播更新参数&lt;&#x2F;p&gt;
+&lt;p&gt;收敛性的证明:Discriminative training methods for hidden Markov models&lt;&#x2F;p&gt;
+</content>
+	</entry>
+</feed>

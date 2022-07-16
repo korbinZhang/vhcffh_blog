@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+	<title>Frey&#x27;s blog - 软件使用</title>
+	<subtitle>一个简单的个人博客，用于记录笔记</subtitle>
+	<link href="https://blog.vhcffh.com/categories/ruan-jian-shi-yong/atom.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://blog.vhcffh.com"/>
+	<generator uri="https://www.getzola.org/">Zola</generator>
+	<updated>2017-12-21T00:00:00+00:00</updated>
+	<id>https://blog.vhcffh.com/categories/ruan-jian-shi-yong/atom.xml</id>
+	<entry xml:lang="en">
+		<title>sublime_Text3插入当前时间</title>
+		<published>2017-12-21T00:00:00+00:00</published>
+		<updated>2017-12-21T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/hexo-sublime-text3cha-ru-dang-qian-shi-jian/" type="text/html"/>
+		<id>https://blog.vhcffh.com/hexo-sublime-text3cha-ru-dang-qian-shi-jian/</id>
+		<content type="html">&lt;p&gt;sublime_Text3插入当前时间&lt;&#x2F;p&gt;
+&lt;p&gt;1.创建新snippet&lt;&#x2F;p&gt;
+&lt;p&gt;tool → new snippet
+创建一个新的snippet,并保存为&amp;quot;author.sublime-snippet&amp;quot;(最好在该目录(User)下再创建一个MySnippet目录):&lt;br &#x2F;&gt;
+其内容:&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;&amp;lt;snippet&amp;gt;
+&lt;&#x2F;span&gt;&amp;lt;content&amp;gt;&amp;lt;![CDATA[
+&lt;&#x2F;span&gt;&#x2F;**
+&lt;&#x2F;span&gt; * ============================
+&lt;&#x2F;span&gt; * @Author:   XX
+&lt;&#x2F;span&gt; * @Version:  1.0 
+&lt;&#x2F;span&gt; * @DateTime: ${1:alt+t}
+&lt;&#x2F;span&gt; * ============================
+&lt;&#x2F;span&gt; *&#x2F;
+&lt;&#x2F;span&gt;]]&amp;gt;&amp;lt;&#x2F;content&amp;gt;
+&lt;&#x2F;span&gt;    &amp;lt;!-- Optional: Set a tabTrigger to define how to trigger the snippet --&amp;gt;
+&lt;&#x2F;span&gt;    &amp;lt;tabTrigger&amp;gt;author&amp;lt;&#x2F;tabTrigger&amp;gt;
+&lt;&#x2F;span&gt;    &amp;lt;!-- Optional: Set a scope to limit where the snippet will trigger --&amp;gt;
+&lt;&#x2F;span&gt;    &amp;lt;!-- &amp;lt;scope&amp;gt;source.python&amp;lt;&#x2F;scope&amp;gt; --&amp;gt;
+&lt;&#x2F;span&gt;&amp;lt;&#x2F;snippet&amp;gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;2.创建新插件&lt;&#x2F;p&gt;
+&lt;p&gt;Tools → New Plugin.
+创建时间插件,保存在User目录,命名为addCurrentTime.py:&lt;br &#x2F;&gt;
+其内容为:&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;import sublime, sublime_plugin
+&lt;&#x2F;span&gt;import datetime
+&lt;&#x2F;span&gt;class AddCurrentTimeCommand(sublime_plugin.TextCommand):
+&lt;&#x2F;span&gt;    def run(self, edit):
+&lt;&#x2F;span&gt;        self.view.run_command(&amp;quot;insert_snippet&amp;quot;, 
+&lt;&#x2F;span&gt;            {
+&lt;&#x2F;span&gt;                &amp;quot;contents&amp;quot;: &amp;quot;%s&amp;quot; % datetime.datetime.now().strftime(&amp;quot;%Y-%m-%d %H:%M:%S&amp;quot;) 
+&lt;&#x2F;span&gt;            }
+&lt;&#x2F;span&gt;        )
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;3.绑定快捷键&lt;&#x2F;p&gt;
+&lt;p&gt;Preference → Key Bindings → User.绑定快捷键:&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;[
+&lt;&#x2F;span&gt;    {
+&lt;&#x2F;span&gt;        &amp;quot;command&amp;quot;: &amp;quot;add_current_time&amp;quot;,
+&lt;&#x2F;span&gt;        &amp;quot;keys&amp;quot;: [
+&lt;&#x2F;span&gt;            &amp;quot;alt+t&amp;quot;
+&lt;&#x2F;span&gt;        ]
+&lt;&#x2F;span&gt;    }
+&lt;&#x2F;span&gt;]
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;其中绑定的命令的名字是由所创建的插件的类名而来&lt;br &#x2F;&gt;
+AddCurrentTimeCommand---&amp;gt;add_current_time&lt;br &#x2F;&gt;
+这应该是Sublime创建插件的规则&lt;&#x2F;p&gt;
+&lt;p&gt;参考资料&lt;&#x2F;p&gt;
+&lt;p&gt;1,&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;http:&#x2F;&#x2F;www.cnblogs.com&#x2F;xiaomingzaixian&#x2F;p&#x2F;6984664.html&quot;&gt;http:&#x2F;&#x2F;www.cnblogs.com&#x2F;xiaomingzaixian&#x2F;p&#x2F;6984664.html&lt;&#x2F;a&gt;&lt;br &#x2F;&gt;
+2,&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;http:&#x2F;&#x2F;blog.csdn.net&#x2F;sshfl_csdn&#x2F;article&#x2F;details&#x2F;46415551&quot;&gt;http:&#x2F;&#x2F;blog.csdn.net&#x2F;sshfl_csdn&#x2F;article&#x2F;details&#x2F;46415551&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+	</entry>
+</feed>

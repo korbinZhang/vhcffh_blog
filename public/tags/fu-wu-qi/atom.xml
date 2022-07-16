@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+	<title>Frey&#x27;s blog - 服务器</title>
+	<subtitle>一个简单的个人博客，用于记录笔记</subtitle>
+	<link href="https://blog.vhcffh.com/tags/fu-wu-qi/atom.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://blog.vhcffh.com"/>
+	<generator uri="https://www.getzola.org/">Zola</generator>
+	<updated>2018-10-19T00:00:00+00:00</updated>
+	<id>https://blog.vhcffh.com/tags/fu-wu-qi/atom.xml</id>
+	<entry xml:lang="en">
+		<title>简单的iptables配置过程</title>
+		<published>2018-10-19T00:00:00+00:00</published>
+		<updated>2018-10-19T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/hexo-jian-dan-de-iptablespei-zhi-guo-cheng/" type="text/html"/>
+		<id>https://blog.vhcffh.com/hexo-jian-dan-de-iptablespei-zhi-guo-cheng/</id>
+		<content type="html">&lt;p&gt;简单的记一下iptables的配置过程，以后用到了就不用再google了&lt;br &#x2F;&gt;
+总的来说分为四步，清楚规则，预设规则，添加自定义规则，保存规则&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;iptablespei-zhi-guo-cheng&quot;&gt;iptables配置过程&lt;&#x2F;h2&gt;
+&lt;p&gt;1.清除规则:&lt;&#x2F;p&gt;
+&lt;p&gt;清楚旧的规则&lt;br &#x2F;&gt;
+iptables -F 清除预设表filter中的所有规则链的规则&lt;br &#x2F;&gt;
+iptables -X 清除预设表filter中使用者自定链中的规则&lt;&#x2F;p&gt;
+&lt;p&gt;2.设定预设规则&lt;&#x2F;p&gt;
+&lt;p&gt;默认情况下对各种包的处理方式&lt;br &#x2F;&gt;
+iptables -p INPUT DROP&lt;br &#x2F;&gt;
+iptables -p OUTPUT ACCEPT&lt;br &#x2F;&gt;
+iptables -p FORWARD DROP&lt;&#x2F;p&gt;
+&lt;p&gt;3.添加用户自定义规则&lt;&#x2F;p&gt;
+&lt;p&gt;对于特定端口协议的包的规则进行设置&lt;br &#x2F;&gt;
+iptables -A INPUT -p tcp ---dport 22 -j ACCEPT&lt;br &#x2F;&gt;
+-A:表示添加规则到INPUT(OUTPUT,FORWARD)链&lt;br &#x2F;&gt;
+-p:表示tcp(udp)协议&lt;br &#x2F;&gt;
+---dport(---sport):目的端口号(源端口号)&lt;br &#x2F;&gt;
+-j():添加规则为接受&lt;&#x2F;p&gt;
+&lt;p&gt;4.保存规则&lt;&#x2F;p&gt;
+&lt;p&gt;不保存的话重启后就没有了&lt;br &#x2F;&gt;
+service iptables save&lt;&#x2F;p&gt;
+&lt;p&gt;参考资料&lt;&#x2F;p&gt;
+&lt;p&gt;1.&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;http:&#x2F;&#x2F;www.cnblogs.com&#x2F;JemBai&#x2F;archive&#x2F;2009&#x2F;03&#x2F;19&#x2F;1416364.html&quot;&gt;http:&#x2F;&#x2F;www.cnblogs.com&#x2F;JemBai&#x2F;archive&#x2F;2009&#x2F;03&#x2F;19&#x2F;1416364.html&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>搬瓦工VPS搭建Web服务器</title>
+		<published>2017-08-04T00:00:00+00:00</published>
+		<updated>2017-08-04T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/hexo-ban-wa-gong-vpsda-jian-webfu-wu-qi/" type="text/html"/>
+		<id>https://blog.vhcffh.com/hexo-ban-wa-gong-vpsda-jian-webfu-wu-qi/</id>
+		<content type="html">&lt;p&gt;记录在centos上安装apache+php+mysql&lt;br &#x2F;&gt;
+搬瓦工VPS&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;bandwagonhost.com&#x2F;aff.php?aff=17697&quot;&gt;购买地址&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;an-zhuang-apache&quot;&gt;安装apache&lt;&#x2F;h1&gt;
+&lt;p&gt;安装&lt;code&gt;yum install httpd&lt;&#x2F;code&gt;&lt;br &#x2F;&gt;
+启动&lt;code&gt;service httpd start&lt;&#x2F;code&gt;&lt;br &#x2F;&gt;
+暂停&lt;code&gt;service httpd stop&lt;&#x2F;code&gt;&lt;br &#x2F;&gt;
+重启&lt;code&gt;service httpd restart&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;检查开机启动情况&lt;code&gt;chkconfig --list httpd&lt;&#x2F;code&gt;&lt;br &#x2F;&gt;
+默认情况下是全部关闭的，尽量设置开机启动，以防主机意外关机&lt;&#x2F;p&gt;
+&lt;p&gt;设置开机启动命令&lt;code&gt;chkconfig httpd on&lt;&#x2F;code&gt;&lt;br &#x2F;&gt;
+再次检查启动情况，看到2，3，4，5为启动&lt;br &#x2F;&gt;
+关闭开机启动命令&lt;code&gt;chkconfig httpd off&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;到此Apache安装完成，在自己浏览器中输入主机IP和端口号能正常打开&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;an-zhuang-php&quot;&gt;安装php&lt;&#x2F;h1&gt;
+&lt;p&gt;命令为:&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;yum install php
+&lt;&#x2F;span&gt;yum install php-mysql  php-gd  php-imap  php-ldap  php-odbc php-pear  php-xml  php-xmlrpc
+&lt;&#x2F;span&gt;yum install php-mysql
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;以上命令为安装php及其支持的组件&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;an-zhuang-mysql&quot;&gt;安装mysql&lt;&#x2F;h1&gt;
+&lt;h2 id=&quot;an-zhuang&quot;&gt;安装&lt;&#x2F;h2&gt;
+&lt;hr &#x2F;&gt;
+&lt;p&gt;首先查看主机是否已经安装&lt;code&gt;rpm -qa|grep mysql&lt;&#x2F;code&gt;&lt;br &#x2F;&gt;
+注意：可能检查中安装有php-mysql XXXXX 和
+mysql-libXXXX,这是刚刚第二步安装的php的组件,不必理会&lt;&#x2F;p&gt;
+&lt;p&gt;已经安装的话就执行删除命令&lt;code&gt;rpm -e mysql&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;然后继续安装&lt;br &#x2F;&gt;
+使用命令yum list | grep mysql&lt;br &#x2F;&gt;
+来查看yum上提供的mysql数据库可下载的版本&lt;&#x2F;p&gt;
+&lt;p&gt;安装命令&lt;code&gt;yum install -y mysql-server mysql mysql-devel&lt;&#x2F;code&gt;&lt;br &#x2F;&gt;
+等待一段时间安装成功&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;pei-zhi&quot;&gt;配置&lt;&#x2F;h2&gt;
+&lt;hr &#x2F;&gt;
+&lt;p&gt;接下来是对mysql的配置(注意:命令中是&amp;quot;mysqld&amp;quot;,不是mysql)&lt;br &#x2F;&gt;
+初始化:&lt;code&gt;service mysqld start&lt;&#x2F;code&gt;&lt;br &#x2F;&gt;
+重启:&lt;code&gt;service mysqld restart&lt;&#x2F;code&gt;&lt;br &#x2F;&gt;
+配置开机自动启动:&lt;code&gt;chkconfig mysqld on&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;为mysql的root账户设置密码:&lt;code&gt;mysqladmin -u root password &#x27;*********&#x27;&lt;&#x2F;code&gt;&lt;br &#x2F;&gt;
+登录命令&lt;code&gt;mysql -u root -p&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+</content>
+	</entry>
+</feed>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <script src="https://blog.vhcffh.com/theme.min.js" integrity="sha384-IpIaa84kOKgkF5EJ0fD/kBe2wtIIsIB60ANGmuJxeA0dz5bSRfwBwp2/QybtQpU2"></script>
+  <link rel="stylesheet" href="https://blog.vhcffh.com/abridge-switcher.css?h=e4088b6018baa6c5c4f8222bf9a3811dec2f942f862ca9550010fba28852c1bc" />
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <script defer src="https://blog.vhcffh.com/search_index.en.js?h=d5e574ffd65cdc44489544089e33544b19b3b86a3340d587cc85531d18b8e792" integrity="sha384-HT1AXvCEAQGWm4cehYh3bO0RNhvjaSLPHFBWZ/7j3UFKwYf5wgLbX7GVJy0LGqKp"></script>
+  <script defer src="https://blog.vhcffh.com/abridge-switcher.min.js?h=be6d42ac1cc5ae1da7cdde772d392d6508fc038f98a8d0fd1bc5b5678530631a" integrity="sha384-RAhv9DQbxrVfq4cbSJsOQ8l7sA56QdpoR10euhjBCBOhLdbJ6y8SCZVYy818n51+"></script>
+  <link rel="alternate" type="application/atom+xml" title="Atom/RSS Feed" href="https://blog.vhcffh.com/atom.xml" />
+  <meta name="robots" content="index, follow" />
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <title>简单了解汇编 | Frey's blog</title>
+  <meta name="author" content="Jake G" />
+  <meta name="copyright" content="Frey&#x27;s blog" />
+  <meta name="description" content="一个简单的个人博客，用于记录笔记" />
+  <link rel="canonical" href="https://blog.vhcffh.com/hexo-jian-dan-liao-jie-hui-bian/" />
+  <meta name="keywords" content="Abridge, Abridge.css, Zola, Theme, Zola Theme, getzola, Semantic Html, Fast, lightweight" />
+  <meta property="og:url" content="https://blog.vhcffh.com/hexo-jian-dan-liao-jie-hui-bian/" />
+  <meta name="twitter:url" content="https://blog.vhcffh.com/hexo-jian-dan-liao-jie-hui-bian/" />
+  <meta property="og:description" content="一个简单的个人博客，用于记录笔记" />
+  <meta name="twitter:description" content="一个简单的个人博客，用于记录笔记" />
+  <meta property="og:title" content="简单了解汇编 | Frey&#x27;s blog" />
+  <meta name="twitter:title" content="简单了解汇编 | Frey&#x27;s blog" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://blog.vhcffh.com/banner.png" />
+  <meta property="og:image" content="https://blog.vhcffh.com/banner.png" />
+  <meta property="og:site_name" content="Frey&#x27;s blog" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:type" content="website" />
+  <meta property="og:updated_time" content="2018-01-11" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="theme-color" content="#333333" />
+  <meta name="msapplication-TileColor" content="#333333" />
+  <link rel="manifest" href="https://blog.vhcffh.com/site.webmanifest" />
+  <link rel="mask-icon" href="https://blog.vhcffh.com/safari-pinned-tab.svg" color="#ff9900" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://blog.vhcffh.com/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="https://blog.vhcffh.com/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="https://blog.vhcffh.com/favicon-16x16.png" />
+  <noscript><link rel="stylesheet" href="https://blog.vhcffh.com/nojs.css" /></noscript>
+</head>
+<body>
+  <header>
+    <nav>
+      <div><h1><a href="https://blog.vhcffh.com/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#f90" viewBox="0 0 96 96" width="32" height="32"><path stroke-width="14" d="M14 99 46 7h4l32 92"/><path stroke-width="9" d="M-3 82c43-26 59-26 102 0"/><path stroke-linecap="round" stroke-width="1.5" d="M94 72v7m-5-9.8v7m-5-9.8v7.1M79 64v7M63 57.7v7m-5-8.2v7m-5-7.8v7m-5-7.2v7m-5-6.7v7m-5-6.3v7m-5-5.8v7M17 64v7m-5-4.6v7m-5-4.2v7M2 72v7"/></svg>bridge</a></h1></div>
+      <div>
+        <ul><li> <h2><a href="https://blog.vhcffh.com/about/">About</a></h2> </li><li> <h2><a href="https://blog.vhcffh.com/posts/">Posts</a></h2> </li><li> <h2><a href="https://blog.vhcffh.com/categories/">Categories</a></h2> </li><li> <h2><a href="https://blog.vhcffh.com/tags/">Tags</a></h2> </li><li class="js"><i type="reset" id="mode" class="svgs adjust"></i></li></ul>
+      </div>
+      <div>
+        <form class="js" name="goSearch">
+          <div class="searchd">
+            <input id="userinput" type="text" placeholder="Search" autocomplete="off" title="Search" />
+            <button type="submit" title="Search"><i class="svgs search"></i></button>
+          </div>
+          <div><div id="suggestions"></div></div>
+        </form>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <article>
+        <h1><a href="https://blog.vhcffh.com/hexo-jian-dan-liao-jie-hui-bian/">简单了解汇编</a></h1>
+        <span class="s95"> Jake G<span class="hpad"> </span> January 11, 2018<span class="hpad"> </span> [<a href="https://blog.vhcffh.com/categories/bian-cheng/">编程</a>] #<a href="https://blog.vhcffh.com/tags/hui-bian/">汇编</a>  #<a href="https://blog.vhcffh.com/tags/x8086/">x8086</a> </span>
+
+    <h3 id="1-hui-bian-shi-shi-yao">1.汇编是什么</h3>
+<p>汇编语言的主体是汇编指令，汇编指令是由机器指令发展而来，例如：<br />
+操作：将寄存器bx的内容送到ax<br />
+机器指令：101100000000000000000011<br />
+记起来太过于复杂，从而有了替代它的<br />
+汇编指令：<code>mov ax,bx</code><br />
+方便记忆，也符合人们的逻辑思维<br />
+程序员们编写汇编指令，在通过编译器编译成机器指令，然后就可以在计算机中运行了（如今的大部分高级语言是通过编译器，将高级语言转换成汇编语言，在编译成机器语言在电脑中运行）<br />
+不管什么语言，都要转换成机器语言在电脑中运行，汇编语言和高级语言都是人们为了简化程序制作过程而已</p>
+<h3 id="2-ji-suan-ji-de-zong-xian">2.计算机的总线</h3>
+<p>从逻辑上总线分为三类（8086）<br />
+数据总线：传送数据，总线宽度决定一次读取数据多少（16）<br />
+地址总线：指定地址，总线宽度决定寻址能力（20）<br />
+控制总线：控制读写</p>
+<h3 id="3-cun-chu-qi">3.存储器</h3>
+<p>RAM：程序和数据都要加载到RAM即内存中，才能通过CPU运行，可读可写<br />
+ROM：一些芯片的主要参数，及操作指令，芯片出厂时已经固定，仅可读<br />
+计算机运行时，全部程序和数据都要加载到RAM中<br />
+通过ROM中的一些必要信息，CPU才能对外设进行操作</p>
+
+<p><b><a href="#">Back to top</a></b></p>
+    </article>
+  </main>
+  <footer>
+    <hr />
+    <div class="c">
+      <nav>
+        <ul><li><a href="https://blog.vhcffh.com/atom.xml" target="_blank" title="Atom/RSS Feed"><i type="Button" class="svg rss" title="Atom/RSS Feed"></i></a></li><li><a href="mailto:fly92727@outlook.com" target="_blank" title="Mail"><i type="Button" class="svg mail" title="Mail"></i></a></li><li><a href="https://github.com/FreyZhang007/" target="_blank" title="Github"><i type="Button" class="svg github" title="Github"></i></a></li><li><a href="https://github.com/sponsors/FreyZhang007/" target="_blank" title="GitHub Sponsor"><i type="Button" class="svg github-sponsor" title="GitHub Sponsor"></i></a></li></ul>
+      </nav>
+      <p class="s90">Copyright &copy; 2022 Frey&#x27;s blog</p>
+      <nav>
+        <ul><li class="s90"> <a href="https://blog.vhcffh.com/about/"> About </a> </li><li class="s90"> <a href="https://blog.vhcffh.com/contact/"> Contact </a> </li><li class="s90"> <a href="https://blog.vhcffh.com/privacy/"> Privacy </a> </li><li class="s90"> <a href="https://blog.vhcffh.com/sitemap.xml"> Sitemap </a> </li></ul>
+      </nav>
+      <p class="s90">Powered by <a href="https://www.getzola.org/">Zola</a> and <a href="https://github.com/jieiku/abridge/">Abridge</a></p>
+    </div>
+  </footer>
+<span class="topout">
+<span class="topleft"> </span><a href="#" class="top" title="Back to Top"><i class="svgs svgh angu"></i></a>
+</span>
+</body>
+</html>

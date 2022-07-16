@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <script src="https://blog.vhcffh.com/theme.min.js" integrity="sha384-IpIaa84kOKgkF5EJ0fD/kBe2wtIIsIB60ANGmuJxeA0dz5bSRfwBwp2/QybtQpU2"></script>
+  <link rel="stylesheet" href="https://blog.vhcffh.com/abridge-switcher.css?h=e4088b6018baa6c5c4f8222bf9a3811dec2f942f862ca9550010fba28852c1bc" />
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <script defer src="https://blog.vhcffh.com/search_index.en.js?h=d5e574ffd65cdc44489544089e33544b19b3b86a3340d587cc85531d18b8e792" integrity="sha384-HT1AXvCEAQGWm4cehYh3bO0RNhvjaSLPHFBWZ/7j3UFKwYf5wgLbX7GVJy0LGqKp"></script>
+  <script defer src="https://blog.vhcffh.com/abridge-switcher.min.js?h=be6d42ac1cc5ae1da7cdde772d392d6508fc038f98a8d0fd1bc5b5678530631a" integrity="sha384-RAhv9DQbxrVfq4cbSJsOQ8l7sA56QdpoR10euhjBCBOhLdbJ6y8SCZVYy818n51+"></script>
+  <link rel="alternate" type="application/atom+xml" title="Atom/RSS Feed" href="https://blog.vhcffh.com/atom.xml" />
+  <meta name="robots" content="index, follow" />
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <title>自己写一个Android照相机应用-1 | Frey's blog</title>
+  <meta name="author" content="Jake G" />
+  <meta name="copyright" content="Frey&#x27;s blog" />
+  <meta name="description" content="一个简单的个人博客，用于记录笔记" />
+  <link rel="canonical" href="https://blog.vhcffh.com/hexo-zi-ji-xie-yi-ge-androidzhao-xiang-ji-ying-yong-1/" />
+  <meta name="keywords" content="Abridge, Abridge.css, Zola, Theme, Zola Theme, getzola, Semantic Html, Fast, lightweight" />
+  <meta property="og:url" content="https://blog.vhcffh.com/hexo-zi-ji-xie-yi-ge-androidzhao-xiang-ji-ying-yong-1/" />
+  <meta name="twitter:url" content="https://blog.vhcffh.com/hexo-zi-ji-xie-yi-ge-androidzhao-xiang-ji-ying-yong-1/" />
+  <meta property="og:description" content="一个简单的个人博客，用于记录笔记" />
+  <meta name="twitter:description" content="一个简单的个人博客，用于记录笔记" />
+  <meta property="og:title" content="自己写一个Android照相机应用-1 | Frey&#x27;s blog" />
+  <meta name="twitter:title" content="自己写一个Android照相机应用-1 | Frey&#x27;s blog" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://blog.vhcffh.com/banner.png" />
+  <meta property="og:image" content="https://blog.vhcffh.com/banner.png" />
+  <meta property="og:site_name" content="Frey&#x27;s blog" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:type" content="website" />
+  <meta property="og:updated_time" content="2017-08-09" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="theme-color" content="#333333" />
+  <meta name="msapplication-TileColor" content="#333333" />
+  <link rel="manifest" href="https://blog.vhcffh.com/site.webmanifest" />
+  <link rel="mask-icon" href="https://blog.vhcffh.com/safari-pinned-tab.svg" color="#ff9900" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://blog.vhcffh.com/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="https://blog.vhcffh.com/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="https://blog.vhcffh.com/favicon-16x16.png" />
+  <noscript><link rel="stylesheet" href="https://blog.vhcffh.com/nojs.css" /></noscript>
+</head>
+<body>
+  <header>
+    <nav>
+      <div><h1><a href="https://blog.vhcffh.com/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#f90" viewBox="0 0 96 96" width="32" height="32"><path stroke-width="14" d="M14 99 46 7h4l32 92"/><path stroke-width="9" d="M-3 82c43-26 59-26 102 0"/><path stroke-linecap="round" stroke-width="1.5" d="M94 72v7m-5-9.8v7m-5-9.8v7.1M79 64v7M63 57.7v7m-5-8.2v7m-5-7.8v7m-5-7.2v7m-5-6.7v7m-5-6.3v7m-5-5.8v7M17 64v7m-5-4.6v7m-5-4.2v7M2 72v7"/></svg>bridge</a></h1></div>
+      <div>
+        <ul><li> <h2><a href="https://blog.vhcffh.com/about/">About</a></h2> </li><li> <h2><a href="https://blog.vhcffh.com/posts/">Posts</a></h2> </li><li> <h2><a href="https://blog.vhcffh.com/categories/">Categories</a></h2> </li><li> <h2><a href="https://blog.vhcffh.com/tags/">Tags</a></h2> </li><li class="js"><i type="reset" id="mode" class="svgs adjust"></i></li></ul>
+      </div>
+      <div>
+        <form class="js" name="goSearch">
+          <div class="searchd">
+            <input id="userinput" type="text" placeholder="Search" autocomplete="off" title="Search" />
+            <button type="submit" title="Search"><i class="svgs search"></i></button>
+          </div>
+          <div><div id="suggestions"></div></div>
+        </form>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <article>
+        <h1><a href="https://blog.vhcffh.com/hexo-zi-ji-xie-yi-ge-androidzhao-xiang-ji-ying-yong-1/">自己写一个Android照相机应用-1</a></h1>
+        <span class="s95"> Jake G<span class="hpad"> </span> August 09, 2017<span class="hpad"> </span> [<a href="https://blog.vhcffh.com/categories/bian-cheng/">编程</a>] #<a href="https://blog.vhcffh.com/tags/android/">android</a>  #<a href="https://blog.vhcffh.com/tags/xiang-ji/">相机</a> </span>
+
+    <p>Android相机的相关知识</p>
+<h1 id="android-cameraxiang-guan-zhi-shi">Android Camera相关知识</h1>
+<p>调用系统相机</p>
+<pre data-lang="java" class="language-java z-code"><code class="language-java" data-lang="java"><span class="z-source z-java"><span class="z-support z-class z-java">Intent</span> intent <span class="z-meta z-assignment z-rhs z-java"><span class="z-keyword z-operator z-assignment z-java">=</span> <span class="z-meta z-instantiation z-java"><span class="z-keyword z-other z-storage z-new z-java">new</span> <span class="z-support z-class z-java">Intent</span><span class="z-meta z-parens z-constructor-arguments z-java"><span class="z-punctuation z-section z-parens z-begin z-java">(</span><span class="z-support z-class z-java">MediaStore</span><span class="z-punctuation z-accessor z-dot z-java">.</span><span class="z-constant z-other z-java">ACTION_IMAGE_CAPTURE</span><span class="z-punctuation z-section z-parens z-end z-java">)</span></span></span></span><span class="z-punctuation z-terminator z-java">;</span>
+<span class="z-comment z-line z-double-slash z-java"><span class="z-punctuation z-definition z-comment z-java">//</span>使用action启动系统相机
+</span>
+<span class="z-comment z-line z-double-slash z-java"><span class="z-punctuation z-definition z-comment z-java">//</span>startActivity(intent);    
+</span><span class="z-comment z-line z-double-slash z-java"><span class="z-punctuation z-definition z-comment z-java">//</span>仅调用相机拍照，不返回数据
+</span>
+<span class="z-comment z-line z-double-slash z-java"><span class="z-punctuation z-definition z-comment z-java">//</span>startActivityForResult(intent,REQ_1);
+</span><span class="z-comment z-line z-double-slash z-java"><span class="z-punctuation z-definition z-comment z-java">//</span>调用相机并通过onActivityResult函数data返回数据；
+</span>
+<span class="z-support z-class z-java">Uri</span> photoUri <span class="z-meta z-assignment z-rhs z-java"><span class="z-keyword z-operator z-assignment z-java">=</span> <span class="z-support z-class z-java">Uri</span><span class="z-punctuation z-accessor z-dot z-java">.</span><span class="z-meta z-function-call z-java"><span class="z-variable z-function z-java">fromFile</span><span class="z-punctuation z-section z-parens z-begin z-java">(</span><span class="z-meta z-instantiation z-java"><span class="z-keyword z-other z-storage z-new z-java">new</span> <span class="z-support z-class z-java">File</span><span class="z-meta z-parens z-constructor-arguments z-java"><span class="z-punctuation z-section z-parens z-begin z-java">(</span>mFilePath<span class="z-punctuation z-section z-parens z-end z-java">)</span></span></span><span class="z-punctuation z-section z-parens z-end z-java">)</span></span></span><span class="z-punctuation z-terminator z-java">;</span><span class="z-comment z-line z-double-slash z-java"><span class="z-punctuation z-definition z-comment z-java">//</span>图片保存路径
+</span>intent<span class="z-punctuation z-accessor z-dot z-java">.</span><span class="z-meta z-function-call z-java"><span class="z-variable z-function z-java">putExtra</span><span class="z-punctuation z-section z-parens z-begin z-java">(</span><span class="z-support z-class z-java">MediaStore</span><span class="z-punctuation z-accessor z-dot z-java">.</span><span class="z-constant z-other z-java">EXTRA_OUTPUT</span><span class="z-punctuation z-separator z-comma z-java">,</span>photoUri<span class="z-punctuation z-section z-parens z-end z-java">)</span></span><span class="z-punctuation z-terminator z-java">;</span>
+<span class="z-meta z-function-call z-java"><span class="z-variable z-function z-java">startActivityForResult</span><span class="z-punctuation z-section z-parens z-begin z-java">(</span>intent<span class="z-punctuation z-separator z-comma z-java">,</span><span class="z-constant z-other z-java">REQ_2</span><span class="z-punctuation z-section z-parens z-end z-java">)</span></span><span class="z-punctuation z-terminator z-java">;</span>
+<span class="z-comment z-line z-double-slash z-java"><span class="z-punctuation z-definition z-comment z-java">//</span>从文件中读取数据
+</span></span></code></pre>
+<p>路径获取</p>
+<pre data-lang="java" class="language-java z-code"><code class="language-java" data-lang="java"><span class="z-source z-java">mFilePath <span class="z-meta z-assignment z-rhs z-java"><span class="z-keyword z-operator z-assignment z-java">=</span> <span class="z-support z-class z-java">Environment</span><span class="z-punctuation z-accessor z-dot z-java">.</span><span class="z-meta z-function-call z-java"><span class="z-variable z-function z-java">getExternalStorageDirectory</span><span class="z-punctuation z-section z-parens z-begin z-java">(</span><span class="z-punctuation z-section z-parens z-end z-java">)</span></span><span class="z-punctuation z-accessor z-dot z-java">.</span><span class="z-meta z-function-call z-java"><span class="z-variable z-function z-java">getPath</span><span class="z-punctuation z-section z-parens z-begin z-java">(</span><span class="z-punctuation z-section z-parens z-end z-java">)</span></span></span><span class="z-punctuation z-terminator z-java">;</span>
+mFilePath <span class="z-meta z-assignment z-rhs z-java"><span class="z-keyword z-operator z-assignment z-java">=</span> mFilePath <span class="z-keyword z-operator z-arithmetic z-java">+</span> <span class="z-string z-quoted z-double z-java"><span class="z-punctuation z-definition z-string z-begin z-java">&quot;</span>/<span class="z-punctuation z-definition z-string z-end z-java">&quot;</span></span> <span class="z-keyword z-operator z-arithmetic z-java">+</span> <span class="z-string z-quoted z-double z-java"><span class="z-punctuation z-definition z-string z-begin z-java">&quot;</span>tmp.png<span class="z-punctuation z-definition z-string z-end z-java">&quot;</span></span></span><span class="z-punctuation z-terminator z-java">;</span>
+</span></code></pre>
+<p>读取内存卡权限</p>
+<pre data-lang="xml" class="language-xml z-code"><code class="language-xml" data-lang="xml"><span class="z-text z-xml">    <span class="z-meta z-tag z-xml"><span class="z-punctuation z-definition z-tag z-begin z-xml">&lt;</span><span class="z-entity z-name z-tag z-localname z-xml">uses-permission</span> <span class="z-entity z-other z-attribute-name z-namespace z-xml">android</span><span class="z-entity z-other z-attribute-name z-xml"><span class="z-punctuation z-separator z-namespace z-xml">:</span></span><span class="z-entity z-other z-attribute-name z-localname z-xml">name</span><span class="z-punctuation z-separator z-key-value z-xml">=</span><span class="z-string z-quoted z-double z-xml"><span class="z-punctuation z-definition z-string z-begin z-xml">&quot;</span>android.permission.WRITE_EXTERNAL_STORAGE<span class="z-punctuation z-definition z-string z-end z-xml">&quot;</span></span><span class="z-punctuation z-definition z-tag z-end z-xml">&gt;</span></span><span class="z-meta z-tag z-xml"><span class="z-punctuation z-definition z-tag z-begin z-xml">&lt;/</span><span class="z-entity z-name z-tag z-localname z-xml">uses-permission</span><span class="z-punctuation z-definition z-tag z-end z-xml">&gt;</span></span>
+</span></code></pre>
+<p>onActivityResult函数</p>
+<pre data-lang="java" class="language-java z-code"><code class="language-java" data-lang="java"><span class="z-source z-java"><span class="z-storage z-modifier z-java">protected</span> void <span class="z-meta z-function-call z-java"><span class="z-variable z-function z-java">onActivityResult</span><span class="z-punctuation z-section z-parens z-begin z-java">(</span><span class="z-storage z-type z-primitive z-java">int</span> requestCode<span class="z-punctuation z-separator z-comma z-java">,</span> <span class="z-storage z-type z-primitive z-java">int</span> resultCode<span class="z-punctuation z-separator z-comma z-java">,</span> <span class="z-support z-class z-java">Intent</span> data<span class="z-punctuation z-section z-parens z-end z-java">)</span></span> <span class="z-meta z-block z-java"><span class="z-punctuation z-section z-block z-begin z-java">{</span>
+    <span class="z-variable z-language z-java">super</span><span class="z-punctuation z-accessor z-dot z-java">.</span><span class="z-meta z-function-call z-java"><span class="z-variable z-function z-java">onActivityResult</span><span class="z-punctuation z-section z-parens z-begin z-java">(</span>requestCode<span class="z-punctuation z-separator z-comma z-java">,</span> resultCode<span class="z-punctuation z-separator z-comma z-java">,</span> data<span class="z-punctuation z-section z-parens z-end z-java">)</span></span><span class="z-punctuation z-terminator z-java">;</span>
+    <span class="z-keyword z-control z-conditional z-if z-java">if</span><span class="z-meta z-parens z-java"><span class="z-punctuation z-section z-parens z-begin z-java">(</span>resultCode <span class="z-keyword z-operator z-comparison z-java">==</span> <span class="z-constant z-other z-java">RESULT_OK</span><span class="z-punctuation z-section z-parens z-end z-java">)</span></span><span class="z-meta z-block z-java"><span class="z-punctuation z-section z-block z-begin z-java">{</span>
+        <span class="z-keyword z-control z-conditional z-if z-java">if</span> <span class="z-meta z-parens z-java"><span class="z-punctuation z-section z-parens z-begin z-java">(</span>requestCode <span class="z-keyword z-operator z-comparison z-java">==</span> <span class="z-constant z-other z-java">REQ_1</span><span class="z-punctuation z-section z-parens z-end z-java">)</span></span> <span class="z-meta z-block z-java"><span class="z-punctuation z-section z-block z-begin z-java">{</span><span class="z-comment z-line z-double-slash z-java"><span class="z-punctuation z-definition z-comment z-java">//</span>从data获取照片
+</span>            <span class="z-support z-class z-java">Bundle</span> bundle <span class="z-meta z-assignment z-rhs z-java"><span class="z-keyword z-operator z-assignment z-java">=</span> data<span class="z-punctuation z-accessor z-dot z-java">.</span><span class="z-meta z-function-call z-java"><span class="z-variable z-function z-java">getExtras</span><span class="z-punctuation z-section z-parens z-begin z-java">(</span><span class="z-punctuation z-section z-parens z-end z-java">)</span></span></span><span class="z-punctuation z-terminator z-java">;</span>
+            <span class="z-support z-class z-java">Bitmap</span> bitmap <span class="z-meta z-assignment z-rhs z-java"><span class="z-keyword z-operator z-assignment z-java">=</span> <span class="z-meta z-parens z-java"><span class="z-punctuation z-section z-parens z-begin z-java">(</span><span class="z-support z-class z-java">Bitmap</span><span class="z-punctuation z-section z-parens z-end z-java">)</span></span>bundle<span class="z-punctuation z-accessor z-dot z-java">.</span><span class="z-meta z-function-call z-java"><span class="z-variable z-function z-java">get</span><span class="z-punctuation z-section z-parens z-begin z-java">(</span><span class="z-string z-quoted z-double z-java"><span class="z-punctuation z-definition z-string z-begin z-java">&quot;</span>data<span class="z-punctuation z-definition z-string z-end z-java">&quot;</span></span><span class="z-punctuation z-section z-parens z-end z-java">)</span></span></span><span class="z-punctuation z-terminator z-java">;</span>
+            mImageView<span class="z-punctuation z-accessor z-dot z-java">.</span><span class="z-meta z-function-call z-java"><span class="z-variable z-function z-java">setImageBitmap</span><span class="z-punctuation z-section z-parens z-begin z-java">(</span>bitmap<span class="z-punctuation z-section z-parens z-end z-java">)</span></span><span class="z-punctuation z-terminator z-java">;</span>
+        <span class="z-punctuation z-section z-block z-end z-java">}</span></span> <span class="z-keyword z-control z-conditional z-else z-java">else</span> <span class="z-keyword z-control z-conditional z-if z-java">if</span> <span class="z-meta z-parens z-java"><span class="z-punctuation z-section z-parens z-begin z-java">(</span>requestCode <span class="z-keyword z-operator z-comparison z-java">==</span> <span class="z-constant z-other z-java">REQ_2</span><span class="z-punctuation z-section z-parens z-end z-java">)</span></span> <span class="z-meta z-block z-java"><span class="z-punctuation z-section z-block z-begin z-java">{</span><span class="z-comment z-line z-double-slash z-java"><span class="z-punctuation z-definition z-comment z-java">//</span>从文件获取照片
+</span>            <span class="z-support z-class z-java">FileInputStream</span> fis <span class="z-meta z-assignment z-rhs z-java"><span class="z-keyword z-operator z-assignment z-java">=</span> <span class="z-constant z-language z-java">null</span></span><span class="z-punctuation z-terminator z-java">;</span>
+            <span class="z-keyword z-control z-exception z-try z-java">try</span> <span class="z-meta z-block z-java"><span class="z-punctuation z-section z-block z-begin z-java">{</span>
+                fis <span class="z-meta z-assignment z-rhs z-java"><span class="z-keyword z-operator z-assignment z-java">=</span> <span class="z-meta z-instantiation z-java"><span class="z-keyword z-other z-storage z-new z-java">new</span> <span class="z-support z-class z-java">FileInputStream</span><span class="z-meta z-parens z-constructor-arguments z-java"><span class="z-punctuation z-section z-parens z-begin z-java">(</span>mFilePath<span class="z-punctuation z-section z-parens z-end z-java">)</span></span></span></span><span class="z-punctuation z-terminator z-java">;</span>
+                <span class="z-support z-class z-java">Bitmap</span> bitmap <span class="z-meta z-assignment z-rhs z-java"><span class="z-keyword z-operator z-assignment z-java">=</span> <span class="z-support z-class z-java">BitmapFactory</span><span class="z-punctuation z-accessor z-dot z-java">.</span><span class="z-meta z-function-call z-java"><span class="z-variable z-function z-java">decodeStream</span><span class="z-punctuation z-section z-parens z-begin z-java">(</span>fis<span class="z-punctuation z-section z-parens z-end z-java">)</span></span></span><span class="z-punctuation z-terminator z-java">;</span>
+                mImageView<span class="z-punctuation z-accessor z-dot z-java">.</span><span class="z-meta z-function-call z-java"><span class="z-variable z-function z-java">setImageBitmap</span><span class="z-punctuation z-section z-parens z-begin z-java">(</span>bitmap<span class="z-punctuation z-section z-parens z-end z-java">)</span></span><span class="z-punctuation z-terminator z-java">;</span>
+            <span class="z-punctuation z-section z-block z-end z-java">}</span></span> <span class="z-meta z-catch z-java"><span class="z-keyword z-control z-exception z-catch z-java">catch</span> </span><span class="z-meta z-catch z-parameters z-java"><span class="z-meta z-parens z-java"><span class="z-punctuation z-section z-parens z-begin z-java">(</span><span class="z-support z-class z-java">FileNotFoundException</span> <span class="z-variable z-parameter z-java">e</span><span class="z-punctuation z-section z-parens z-end z-java">)</span></span></span> <span class="z-meta z-block z-java"><span class="z-punctuation z-section z-block z-begin z-java">{</span>
+                e<span class="z-punctuation z-accessor z-dot z-java">.</span><span class="z-meta z-function-call z-java"><span class="z-variable z-function z-java">printStackTrace</span><span class="z-punctuation z-section z-parens z-begin z-java">(</span><span class="z-punctuation z-section z-parens z-end z-java">)</span></span><span class="z-punctuation z-terminator z-java">;</span>
+            <span class="z-punctuation z-section z-block z-end z-java">}</span></span> <span class="z-keyword z-control z-exception z-finally z-java">finally</span> <span class="z-meta z-block z-java"><span class="z-punctuation z-section z-block z-begin z-java">{</span>
+                <span class="z-keyword z-control z-exception z-try z-java">try</span> <span class="z-meta z-block z-java"><span class="z-punctuation z-section z-block z-begin z-java">{</span>
+                    fis<span class="z-punctuation z-accessor z-dot z-java">.</span><span class="z-meta z-function-call z-java"><span class="z-variable z-function z-java">close</span><span class="z-punctuation z-section z-parens z-begin z-java">(</span><span class="z-punctuation z-section z-parens z-end z-java">)</span></span><span class="z-punctuation z-terminator z-java">;</span>
+                <span class="z-punctuation z-section z-block z-end z-java">}</span></span> <span class="z-meta z-catch z-java"><span class="z-keyword z-control z-exception z-catch z-java">catch</span> </span><span class="z-meta z-catch z-parameters z-java"><span class="z-meta z-parens z-java"><span class="z-punctuation z-section z-parens z-begin z-java">(</span><span class="z-support z-class z-java">IOException</span> <span class="z-variable z-parameter z-java">e</span><span class="z-punctuation z-section z-parens z-end z-java">)</span></span></span> <span class="z-meta z-block z-java"><span class="z-punctuation z-section z-block z-begin z-java">{</span>
+                    e<span class="z-punctuation z-accessor z-dot z-java">.</span><span class="z-meta z-function-call z-java"><span class="z-variable z-function z-java">printStackTrace</span><span class="z-punctuation z-section z-parens z-begin z-java">(</span><span class="z-punctuation z-section z-parens z-end z-java">)</span></span><span class="z-punctuation z-terminator z-java">;</span>
+                <span class="z-punctuation z-section z-block z-end z-java">}</span></span>
+            <span class="z-punctuation z-section z-block z-end z-java">}</span></span>
+        <span class="z-punctuation z-section z-block z-end z-java">}</span></span>
+    <span class="z-punctuation z-section z-block z-end z-java">}</span></span>
+<span class="z-punctuation z-section z-block z-end z-java">}</span></span>
+</span></code></pre>
+<p>注册action，实现照相功能</p>
+<pre data-lang="xml" class="language-xml z-code"><code class="language-xml" data-lang="xml"><span class="z-text z-xml">    <span class="z-meta z-tag z-xml"><span class="z-punctuation z-definition z-tag z-begin z-xml">&lt;</span><span class="z-entity z-name z-tag z-localname z-xml">intent-filter</span><span class="z-punctuation z-definition z-tag z-end z-xml">&gt;</span></span>
+            <span class="z-meta z-tag z-xml"><span class="z-punctuation z-definition z-tag z-begin z-xml">&lt;</span><span class="z-entity z-name z-tag z-localname z-xml">action</span> <span class="z-entity z-other z-attribute-name z-namespace z-xml">android</span><span class="z-entity z-other z-attribute-name z-xml"><span class="z-punctuation z-separator z-namespace z-xml">:</span></span><span class="z-entity z-other z-attribute-name z-localname z-xml">name</span><span class="z-punctuation z-separator z-key-value z-xml">=</span><span class="z-string z-quoted z-double z-xml"><span class="z-punctuation z-definition z-string z-begin z-xml">&quot;</span>android.media.action.IMAGE_CAPTURE<span class="z-punctuation z-definition z-string z-end z-xml">&quot;</span></span><span class="z-punctuation z-definition z-tag z-end z-xml">/&gt;</span></span>
+            <span class="z-meta z-tag z-xml"><span class="z-punctuation z-definition z-tag z-begin z-xml">&lt;</span><span class="z-entity z-name z-tag z-localname z-xml">category</span> <span class="z-entity z-other z-attribute-name z-namespace z-xml">android</span><span class="z-entity z-other z-attribute-name z-xml"><span class="z-punctuation z-separator z-namespace z-xml">:</span></span><span class="z-entity z-other z-attribute-name z-localname z-xml">name</span><span class="z-punctuation z-separator z-key-value z-xml">=</span><span class="z-string z-quoted z-double z-xml"><span class="z-punctuation z-definition z-string z-begin z-xml">&quot;</span>android.intent.category.DEFAULT<span class="z-punctuation z-definition z-string z-end z-xml">&quot;</span></span><span class="z-punctuation z-definition z-tag z-end z-xml">/&gt;</span></span>
+    <span class="z-meta z-tag z-xml"><span class="z-punctuation z-definition z-tag z-begin z-xml">&lt;/</span><span class="z-entity z-name z-tag z-localname z-xml">intent-filter</span><span class="z-punctuation z-definition z-tag z-end z-xml">&gt;</span></span>
+</span></code></pre>
+
+<p><b><a href="#">Back to top</a></b></p>
+    </article>
+  </main>
+  <footer>
+    <hr />
+    <div class="c">
+      <nav>
+        <ul><li><a href="https://blog.vhcffh.com/atom.xml" target="_blank" title="Atom/RSS Feed"><i type="Button" class="svg rss" title="Atom/RSS Feed"></i></a></li><li><a href="mailto:fly92727@outlook.com" target="_blank" title="Mail"><i type="Button" class="svg mail" title="Mail"></i></a></li><li><a href="https://github.com/FreyZhang007/" target="_blank" title="Github"><i type="Button" class="svg github" title="Github"></i></a></li><li><a href="https://github.com/sponsors/FreyZhang007/" target="_blank" title="GitHub Sponsor"><i type="Button" class="svg github-sponsor" title="GitHub Sponsor"></i></a></li></ul>
+      </nav>
+      <p class="s90">Copyright &copy; 2022 Frey&#x27;s blog</p>
+      <nav>
+        <ul><li class="s90"> <a href="https://blog.vhcffh.com/about/"> About </a> </li><li class="s90"> <a href="https://blog.vhcffh.com/contact/"> Contact </a> </li><li class="s90"> <a href="https://blog.vhcffh.com/privacy/"> Privacy </a> </li><li class="s90"> <a href="https://blog.vhcffh.com/sitemap.xml"> Sitemap </a> </li></ul>
+      </nav>
+      <p class="s90">Powered by <a href="https://www.getzola.org/">Zola</a> and <a href="https://github.com/jieiku/abridge/">Abridge</a></p>
+    </div>
+  </footer>
+<span class="topout">
+<span class="topleft"> </span><a href="#" class="top" title="Back to Top"><i class="svgs svgh angu"></i></a>
+</span>
+</body>
+</html>

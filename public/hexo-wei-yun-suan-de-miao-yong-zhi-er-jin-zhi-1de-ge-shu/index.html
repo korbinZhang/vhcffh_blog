@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <script src="https://blog.vhcffh.com/theme.min.js" integrity="sha384-IpIaa84kOKgkF5EJ0fD/kBe2wtIIsIB60ANGmuJxeA0dz5bSRfwBwp2/QybtQpU2"></script>
+  <link rel="stylesheet" href="https://blog.vhcffh.com/abridge-switcher.css?h=e4088b6018baa6c5c4f8222bf9a3811dec2f942f862ca9550010fba28852c1bc" />
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <script defer src="https://blog.vhcffh.com/search_index.en.js?h=d5e574ffd65cdc44489544089e33544b19b3b86a3340d587cc85531d18b8e792" integrity="sha384-HT1AXvCEAQGWm4cehYh3bO0RNhvjaSLPHFBWZ/7j3UFKwYf5wgLbX7GVJy0LGqKp"></script>
+  <script defer src="https://blog.vhcffh.com/abridge-switcher.min.js?h=be6d42ac1cc5ae1da7cdde772d392d6508fc038f98a8d0fd1bc5b5678530631a" integrity="sha384-RAhv9DQbxrVfq4cbSJsOQ8l7sA56QdpoR10euhjBCBOhLdbJ6y8SCZVYy818n51+"></script>
+  <link rel="alternate" type="application/atom+xml" title="Atom/RSS Feed" href="https://blog.vhcffh.com/atom.xml" />
+  <meta name="robots" content="index, follow" />
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <title>位运算的妙用之二进制1的个数 | Frey's blog</title>
+  <meta name="author" content="Jake G" />
+  <meta name="copyright" content="Frey&#x27;s blog" />
+  <meta name="description" content="一个简单的个人博客，用于记录笔记" />
+  <link rel="canonical" href="https://blog.vhcffh.com/hexo-wei-yun-suan-de-miao-yong-zhi-er-jin-zhi-1de-ge-shu/" />
+  <meta name="keywords" content="Abridge, Abridge.css, Zola, Theme, Zola Theme, getzola, Semantic Html, Fast, lightweight" />
+  <meta property="og:url" content="https://blog.vhcffh.com/hexo-wei-yun-suan-de-miao-yong-zhi-er-jin-zhi-1de-ge-shu/" />
+  <meta name="twitter:url" content="https://blog.vhcffh.com/hexo-wei-yun-suan-de-miao-yong-zhi-er-jin-zhi-1de-ge-shu/" />
+  <meta property="og:description" content="一个简单的个人博客，用于记录笔记" />
+  <meta name="twitter:description" content="一个简单的个人博客，用于记录笔记" />
+  <meta property="og:title" content="位运算的妙用之二进制1的个数 | Frey&#x27;s blog" />
+  <meta name="twitter:title" content="位运算的妙用之二进制1的个数 | Frey&#x27;s blog" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://blog.vhcffh.com/banner.png" />
+  <meta property="og:image" content="https://blog.vhcffh.com/banner.png" />
+  <meta property="og:site_name" content="Frey&#x27;s blog" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:type" content="website" />
+  <meta property="og:updated_time" content="2017-12-26" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="theme-color" content="#333333" />
+  <meta name="msapplication-TileColor" content="#333333" />
+  <link rel="manifest" href="https://blog.vhcffh.com/site.webmanifest" />
+  <link rel="mask-icon" href="https://blog.vhcffh.com/safari-pinned-tab.svg" color="#ff9900" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://blog.vhcffh.com/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="https://blog.vhcffh.com/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="https://blog.vhcffh.com/favicon-16x16.png" />
+  <noscript><link rel="stylesheet" href="https://blog.vhcffh.com/nojs.css" /></noscript>
+</head>
+<body>
+  <header>
+    <nav>
+      <div><h1><a href="https://blog.vhcffh.com/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#f90" viewBox="0 0 96 96" width="32" height="32"><path stroke-width="14" d="M14 99 46 7h4l32 92"/><path stroke-width="9" d="M-3 82c43-26 59-26 102 0"/><path stroke-linecap="round" stroke-width="1.5" d="M94 72v7m-5-9.8v7m-5-9.8v7.1M79 64v7M63 57.7v7m-5-8.2v7m-5-7.8v7m-5-7.2v7m-5-6.7v7m-5-6.3v7m-5-5.8v7M17 64v7m-5-4.6v7m-5-4.2v7M2 72v7"/></svg>bridge</a></h1></div>
+      <div>
+        <ul><li> <h2><a href="https://blog.vhcffh.com/about/">About</a></h2> </li><li> <h2><a href="https://blog.vhcffh.com/posts/">Posts</a></h2> </li><li> <h2><a href="https://blog.vhcffh.com/categories/">Categories</a></h2> </li><li> <h2><a href="https://blog.vhcffh.com/tags/">Tags</a></h2> </li><li class="js"><i type="reset" id="mode" class="svgs adjust"></i></li></ul>
+      </div>
+      <div>
+        <form class="js" name="goSearch">
+          <div class="searchd">
+            <input id="userinput" type="text" placeholder="Search" autocomplete="off" title="Search" />
+            <button type="submit" title="Search"><i class="svgs search"></i></button>
+          </div>
+          <div><div id="suggestions"></div></div>
+        </form>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <article>
+        <h1><a href="https://blog.vhcffh.com/hexo-wei-yun-suan-de-miao-yong-zhi-er-jin-zhi-1de-ge-shu/">位运算的妙用之二进制1的个数</a></h1>
+        <span class="s95"> Jake G<span class="hpad"> </span> December 26, 2017<span class="hpad"> </span> [<a href="https://blog.vhcffh.com/categories/suan-fa/">算法</a>] #<a href="https://blog.vhcffh.com/tags/cyu-yan/">C语言</a> </span>
+
+    <p>求出一个正整数转换成二进制形式中数字&quot;1&quot;的个数<br />
+题目：求出一个正整数转换成二进制形式中数字&quot;1&quot;的个数<br />
+如：<br />
+int 型数值为 80<br />
+转化成二进制形式：80 = 00000000 00000000 00000000 01010000<br />
+因此 1 的个数为 2</p>
+<p>1.普通解法</p>
+<p>一位一位判断</p>
+<pre data-lang="c" class="language-c z-code"><code class="language-c" data-lang="c"><span class="z-source z-c">    <span class="z-storage z-type z-c">int</span> <span class="z-meta z-function z-c"><span class="z-entity z-name z-function z-c">bitCount1</span></span><span class="z-meta z-function z-parameters z-c"><span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-begin z-c">(</span></span></span><span class="z-meta z-function z-parameters z-c"><span class="z-meta z-group z-c"><span class="z-storage z-type z-c">int</span> <span class="z-variable z-parameter z-c">n</span><span class="z-punctuation z-section z-group z-end z-c">)</span></span></span><span class="z-meta z-function z-c"> </span><span class="z-meta z-function z-c"><span class="z-meta z-block z-c"><span class="z-punctuation z-section z-block z-begin z-c">{</span></span></span><span class="z-meta z-function z-c"><span class="z-meta z-block z-c">
+        <span class="z-storage z-type z-c">int</span> count <span class="z-keyword z-operator z-assignment z-c">=</span> <span class="z-constant z-numeric z-integer z-decimal z-c">0</span><span class="z-punctuation z-terminator z-c">;</span>
+        <span class="z-keyword z-control z-c">while</span> <span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-begin z-c">(</span>n <span class="z-keyword z-operator z-comparison z-c">!=</span> <span class="z-constant z-numeric z-integer z-decimal z-c">0</span><span class="z-punctuation z-section z-group z-end z-c">)</span></span> <span class="z-meta z-block z-c"><span class="z-punctuation z-section z-block z-begin z-c">{</span>
+            <span class="z-keyword z-control z-c">if</span> <span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-begin z-c">(</span>n <span class="z-keyword z-operator z-c">&amp;</span> <span class="z-constant z-numeric z-integer z-hexadecimal z-c"><span class="z-punctuation z-definition z-numeric z-base z-c">0x</span>01</span> <span class="z-keyword z-operator z-comparison z-c">==</span> <span class="z-constant z-numeric z-integer z-decimal z-c">1</span><span class="z-punctuation z-section z-group z-end z-c">)</span></span>
+                count<span class="z-keyword z-operator z-arithmetic z-c">++</span><span class="z-punctuation z-terminator z-c">;</span>
+            n <span class="z-keyword z-operator z-assignment z-c">=</span> n <span class="z-keyword z-operator z-arithmetic z-c">&gt;&gt;</span> <span class="z-constant z-numeric z-integer z-decimal z-c">1</span><span class="z-punctuation z-terminator z-c">;</span>
+        <span class="z-punctuation z-section z-block z-end z-c">}</span></span>
+        <span class="z-keyword z-control z-flow z-return z-c">return</span> count<span class="z-punctuation z-terminator z-c">;</span>
+    </span></span><span class="z-meta z-function z-c"><span class="z-meta z-block z-c"><span class="z-punctuation z-section z-block z-end z-c">}</span></span></span>
+</span></code></pre>
+<p>2.大神的解法</p>
+<pre data-lang="c" class="language-c z-code"><code class="language-c" data-lang="c"><span class="z-source z-c">    <span class="z-storage z-type z-c">int</span> <span class="z-meta z-function z-c"><span class="z-entity z-name z-function z-c">bitCount2</span></span><span class="z-meta z-function z-parameters z-c"><span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-begin z-c">(</span></span></span><span class="z-meta z-function z-parameters z-c"><span class="z-meta z-group z-c"><span class="z-storage z-type z-c">int</span> <span class="z-variable z-parameter z-c">n</span><span class="z-punctuation z-section z-group z-end z-c">)</span></span></span><span class="z-meta z-function z-c"> </span><span class="z-meta z-function z-c"><span class="z-meta z-block z-c"><span class="z-punctuation z-section z-block z-begin z-c">{</span></span></span><span class="z-meta z-function z-c"><span class="z-meta z-block z-c">
+        n <span class="z-keyword z-operator z-assignment z-c">=</span> n <span class="z-keyword z-operator z-arithmetic z-c">-</span> <span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-begin z-c">(</span><span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-begin z-c">(</span>n <span class="z-keyword z-operator z-arithmetic z-c">&gt;&gt;</span> <span class="z-constant z-numeric z-integer z-decimal z-c">1</span><span class="z-punctuation z-section z-group z-end z-c">)</span></span> <span class="z-keyword z-operator z-c">&amp;</span> <span class="z-constant z-numeric z-integer z-hexadecimal z-c"><span class="z-punctuation z-definition z-numeric z-base z-c">0x</span>55555555</span><span class="z-punctuation z-section z-group z-end z-c">)</span></span><span class="z-punctuation z-terminator z-c">;</span><span class="z-comment z-line z-double-slash z-c"><span class="z-punctuation z-definition z-comment z-c">//</span>n = (n &amp; 0x55555555) + ((n &gt;&gt; 1) &amp; 0x55555555);
+</span>        n <span class="z-keyword z-operator z-assignment z-c">=</span> <span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-begin z-c">(</span>n <span class="z-keyword z-operator z-c">&amp;</span> <span class="z-constant z-numeric z-integer z-hexadecimal z-c"><span class="z-punctuation z-definition z-numeric z-base z-c">0x</span>33333333</span><span class="z-punctuation z-section z-group z-end z-c">)</span></span> <span class="z-keyword z-operator z-arithmetic z-c">+</span> <span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-begin z-c">(</span><span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-begin z-c">(</span>n <span class="z-keyword z-operator z-arithmetic z-c">&gt;&gt;</span> <span class="z-constant z-numeric z-integer z-decimal z-c">2</span><span class="z-punctuation z-section z-group z-end z-c">)</span></span> <span class="z-keyword z-operator z-c">&amp;</span> <span class="z-constant z-numeric z-integer z-hexadecimal z-c"><span class="z-punctuation z-definition z-numeric z-base z-c">0x</span>33333333</span><span class="z-punctuation z-section z-group z-end z-c">)</span></span><span class="z-punctuation z-terminator z-c">;</span>
+        n <span class="z-keyword z-operator z-assignment z-c">=</span> <span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-begin z-c">(</span>n <span class="z-keyword z-operator z-c">&amp;</span> <span class="z-constant z-numeric z-integer z-hexadecimal z-c"><span class="z-punctuation z-definition z-numeric z-base z-c">0x</span>0f0f0f0f</span><span class="z-punctuation z-section z-group z-end z-c">)</span></span> <span class="z-keyword z-operator z-arithmetic z-c">+</span> <span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-begin z-c">(</span><span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-begin z-c">(</span>n <span class="z-keyword z-operator z-arithmetic z-c">&gt;&gt;</span> <span class="z-constant z-numeric z-integer z-decimal z-c">4</span><span class="z-punctuation z-section z-group z-end z-c">)</span></span> <span class="z-keyword z-operator z-c">&amp;</span> <span class="z-constant z-numeric z-integer z-hexadecimal z-c"><span class="z-punctuation z-definition z-numeric z-base z-c">0x</span>0f0f0f0f</span><span class="z-punctuation z-section z-group z-end z-c">)</span></span><span class="z-punctuation z-terminator z-c">;</span>
+        n <span class="z-keyword z-operator z-assignment z-c">=</span> n <span class="z-keyword z-operator z-arithmetic z-c">+</span> <span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-begin z-c">(</span>n <span class="z-keyword z-operator z-arithmetic z-c">&gt;&gt;</span> <span class="z-constant z-numeric z-integer z-decimal z-c">8</span><span class="z-punctuation z-section z-group z-end z-c">)</span></span><span class="z-punctuation z-terminator z-c">;</span>               <span class="z-comment z-line z-double-slash z-c"><span class="z-punctuation z-definition z-comment z-c">//</span>n = (n &amp; 0x00ff00ff) + ((n &gt;&gt; 8) &amp; 0x00ff00ff);
+</span>        n <span class="z-keyword z-operator z-assignment z-c">=</span> n <span class="z-keyword z-operator z-arithmetic z-c">+</span> <span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-begin z-c">(</span>n <span class="z-keyword z-operator z-arithmetic z-c">&gt;&gt;</span> <span class="z-constant z-numeric z-integer z-decimal z-c">16</span><span class="z-punctuation z-section z-group z-end z-c">)</span></span><span class="z-punctuation z-terminator z-c">;</span>              <span class="z-comment z-line z-double-slash z-c"><span class="z-punctuation z-definition z-comment z-c">//</span>n = (n &amp; 0x0000ffff) + ((n &gt;&gt; 16) &amp; 0x0000ffff);
+</span>        <span class="z-keyword z-control z-flow z-return z-c">return</span> n <span class="z-keyword z-operator z-c">&amp;</span> <span class="z-constant z-numeric z-integer z-hexadecimal z-c"><span class="z-punctuation z-definition z-numeric z-base z-c">0x</span>0000003f</span><span class="z-punctuation z-terminator z-c">;</span>          <span class="z-comment z-line z-double-slash z-c"><span class="z-punctuation z-definition z-comment z-c">//</span>return n;
+</span>    </span></span><span class="z-meta z-function z-c"><span class="z-meta z-block z-c"><span class="z-punctuation z-section z-block z-end z-c">}</span></span></span>
+</span></code></pre>
+<p>参考文章</p>
+<p>1.<a rel="noopener" target="_blank" href="https://www.jianshu.com/p/25c75149e7a2">https://www.jianshu.com/p/25c75149e7a2</a></p>
+
+    </article>
+  </main>
+  <footer>
+    <hr />
+    <div class="c">
+      <nav>
+        <ul><li><a href="https://blog.vhcffh.com/atom.xml" target="_blank" title="Atom/RSS Feed"><i type="Button" class="svg rss" title="Atom/RSS Feed"></i></a></li><li><a href="mailto:fly92727@outlook.com" target="_blank" title="Mail"><i type="Button" class="svg mail" title="Mail"></i></a></li><li><a href="https://github.com/FreyZhang007/" target="_blank" title="Github"><i type="Button" class="svg github" title="Github"></i></a></li><li><a href="https://github.com/sponsors/FreyZhang007/" target="_blank" title="GitHub Sponsor"><i type="Button" class="svg github-sponsor" title="GitHub Sponsor"></i></a></li></ul>
+      </nav>
+      <p class="s90">Copyright &copy; 2022 Frey&#x27;s blog</p>
+      <nav>
+        <ul><li class="s90"> <a href="https://blog.vhcffh.com/about/"> About </a> </li><li class="s90"> <a href="https://blog.vhcffh.com/contact/"> Contact </a> </li><li class="s90"> <a href="https://blog.vhcffh.com/privacy/"> Privacy </a> </li><li class="s90"> <a href="https://blog.vhcffh.com/sitemap.xml"> Sitemap </a> </li></ul>
+      </nav>
+      <p class="s90">Powered by <a href="https://www.getzola.org/">Zola</a> and <a href="https://github.com/jieiku/abridge/">Abridge</a></p>
+    </div>
+  </footer>
+</body>
+</html>

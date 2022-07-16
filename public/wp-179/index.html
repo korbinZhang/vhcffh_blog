@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <script src="https://blog.vhcffh.com/theme.min.js" integrity="sha384-IpIaa84kOKgkF5EJ0fD/kBe2wtIIsIB60ANGmuJxeA0dz5bSRfwBwp2/QybtQpU2"></script>
+  <link rel="stylesheet" href="https://blog.vhcffh.com/abridge-switcher.css?h=e4088b6018baa6c5c4f8222bf9a3811dec2f942f862ca9550010fba28852c1bc" />
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <script defer src="https://blog.vhcffh.com/search_index.en.js?h=d5e574ffd65cdc44489544089e33544b19b3b86a3340d587cc85531d18b8e792" integrity="sha384-HT1AXvCEAQGWm4cehYh3bO0RNhvjaSLPHFBWZ/7j3UFKwYf5wgLbX7GVJy0LGqKp"></script>
+  <script defer src="https://blog.vhcffh.com/abridge-switcher.min.js?h=be6d42ac1cc5ae1da7cdde772d392d6508fc038f98a8d0fd1bc5b5678530631a" integrity="sha384-RAhv9DQbxrVfq4cbSJsOQ8l7sA56QdpoR10euhjBCBOhLdbJ6y8SCZVYy818n51+"></script>
+  <link rel="alternate" type="application/atom+xml" title="Atom/RSS Feed" href="https://blog.vhcffh.com/atom.xml" />
+  <meta name="robots" content="index, follow" />
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <title>命名实体识别 | Frey's blog</title>
+  <meta name="author" content="Jake G" />
+  <meta name="copyright" content="Frey&#x27;s blog" />
+  <meta name="description" content="一个简单的个人博客，用于记录笔记" />
+  <link rel="canonical" href="https://blog.vhcffh.com/wp-179/" />
+  <meta name="keywords" content="Abridge, Abridge.css, Zola, Theme, Zola Theme, getzola, Semantic Html, Fast, lightweight" />
+  <meta property="og:url" content="https://blog.vhcffh.com/wp-179/" />
+  <meta name="twitter:url" content="https://blog.vhcffh.com/wp-179/" />
+  <meta property="og:description" content="一个简单的个人博客，用于记录笔记" />
+  <meta name="twitter:description" content="一个简单的个人博客，用于记录笔记" />
+  <meta property="og:title" content="命名实体识别 | Frey&#x27;s blog" />
+  <meta name="twitter:title" content="命名实体识别 | Frey&#x27;s blog" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://blog.vhcffh.com/banner.png" />
+  <meta property="og:image" content="https://blog.vhcffh.com/banner.png" />
+  <meta property="og:site_name" content="Frey&#x27;s blog" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:type" content="website" />
+  <meta property="og:updated_time" content="2020-07-22" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="theme-color" content="#333333" />
+  <meta name="msapplication-TileColor" content="#333333" />
+  <link rel="manifest" href="https://blog.vhcffh.com/site.webmanifest" />
+  <link rel="mask-icon" href="https://blog.vhcffh.com/safari-pinned-tab.svg" color="#ff9900" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://blog.vhcffh.com/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="https://blog.vhcffh.com/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="https://blog.vhcffh.com/favicon-16x16.png" />
+  <noscript><link rel="stylesheet" href="https://blog.vhcffh.com/nojs.css" /></noscript>
+</head>
+<body>
+  <header>
+    <nav>
+      <div><h1><a href="https://blog.vhcffh.com/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#f90" viewBox="0 0 96 96" width="32" height="32"><path stroke-width="14" d="M14 99 46 7h4l32 92"/><path stroke-width="9" d="M-3 82c43-26 59-26 102 0"/><path stroke-linecap="round" stroke-width="1.5" d="M94 72v7m-5-9.8v7m-5-9.8v7.1M79 64v7M63 57.7v7m-5-8.2v7m-5-7.8v7m-5-7.2v7m-5-6.7v7m-5-6.3v7m-5-5.8v7M17 64v7m-5-4.6v7m-5-4.2v7M2 72v7"/></svg>bridge</a></h1></div>
+      <div>
+        <ul><li> <h2><a href="https://blog.vhcffh.com/about/">About</a></h2> </li><li> <h2><a href="https://blog.vhcffh.com/posts/">Posts</a></h2> </li><li> <h2><a href="https://blog.vhcffh.com/categories/">Categories</a></h2> </li><li> <h2><a href="https://blog.vhcffh.com/tags/">Tags</a></h2> </li><li class="js"><i type="reset" id="mode" class="svgs adjust"></i></li></ul>
+      </div>
+      <div>
+        <form class="js" name="goSearch">
+          <div class="searchd">
+            <input id="userinput" type="text" placeholder="Search" autocomplete="off" title="Search" />
+            <button type="submit" title="Search"><i class="svgs search"></i></button>
+          </div>
+          <div><div id="suggestions"></div></div>
+        </form>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <article>
+        <h1><a href="https://blog.vhcffh.com/wp-179/">命名实体识别</a></h1>
+        <span class="s95"> Jake G<span class="hpad"> </span> July 22, 2020<span class="hpad"> </span> [<a href="https://blog.vhcffh.com/categories/suan-fa/">算法</a>] #<a href="https://blog.vhcffh.com/tags/ner/">NER</a>  #<a href="https://blog.vhcffh.com/tags/nlp/">NLP</a> </span>
+
+    <blockquote>
+<p>命名实体识别（英语：Named Entity
+Recognition，简称NER），又称作专名识别、命名实体，是指识别文本中具有特定意义的实体，主要包括人名、地名、机构名、专有名词等，以及时间、数量、货币、比例数值等文字。指的是可以用专有名词（名称）标识的事物，一个命名实体一般代表唯一一个具体事物个体，包括人名、地名等。</p>
+</blockquote>
+<h1 id="早期方法 .has-text-align-left">早期方法</h1>
+<p>基于词典和规则的方法<br />
+优点：快速、可解释性强和不需要太多标注语料<br />
+缺点：需要领域知识、规则和词典的构建与维护繁重、未登录词匹配问题<br />
+具体步骤：</p>
+<ol>
+<li>构建词典<br />
+综合中文语义词库<a rel="noopener" target="_blank" href="http://www.crsky.com/soft/31795.html">CSC</a>,<a rel="noopener" target="_blank" href="http://www.keenage.com/html/e_index.html">hownet</a>,<a rel="noopener" target="_blank" href="http://compling.hss.ntu.edu.sg/cow/">Chinese
+Open Worldnet</a><br />
+词典构建的统计方法：词频，TF-IDF，TextRank，借助百科，词法分析，依存句法分析<br />
+构建词典可以通过人工，基于统计学的方法。主要目的就是分词和词性标注</li>
+<li>规则构建<br />
+规则构建是通过根据对词的标注（词性，特征），通过对标注设计一系列规则，从而得到规则中特定标注的实体类别。
+<ol>
+<li>基于词性标注进行规则推理<br />
+通过特定的词性顺序，建立词性与实体的对应关系</li>
+<li>采用一个特征集合来泛化表达命名实体<a rel="noopener" target="_blank" href="https://www.researchgate.net/publication/220195686_Automatic_rule_learning_exploiting_morphological_features_for_named_entity_recognition_in_Turkish">Tatar and
+Cicekli,2011</a><br />
+为每个词生成特征，然后在特征上做规则的合并和构建。<br />
+提出<a rel="noopener" target="_blank" href="https://dl.acm.org/doi/10.1177/0165551511398573">一种自动学习规则的方案</a>,通过处理模式串的相似之处，通过泛化构建规则</li>
+</ol>
+</li>
+<li>规则维护<br />
+提出<a rel="noopener" target="_blank" href="https://www.aclweb.org/anthology/P01-1055.pdf">一种基于机器学习长期维护规则的框架</a>，规则维护是在新增语料的情况下，通过对规则的改进与补充，提升其在新语料上的效果。</li>
+</ol>
+<h1 id="chuan-tong-ji-qi-xue-xi">传统机器学习</h1>
+<h2 id="you-jian-du">有监督</h2>
+<h3 id="svm-logistichui-gui-he-jue-ce-shu-deng">SVM，logistic回归和决策树等</h3>
+<p>这类方法将NER视为分类问题，根据提取的特征和标注的类别对模型进行训练。捕获上下文关系能力弱,对分词结果要求高。</p>
+<p>SVM(支持向量机）是在分类与回归分析中分析数据的监督式学习模型，主要思想是通过一个(p－1)维超平面将数据点(p维向量)分开，而且SVM可以通过核函数将低维线性不可分的数据集影射到高维空间使其线性可分。</p>
+<p>决策树是一种概率模型，通过分支对样本特征进行划分，从而划分样本所属类别，决策树的生成主要是通过使用熵的概念。</p>
+<h2 id="hmm-memm-crf"><a rel="noopener" target="_blank" href="https://www.vhcffh.com/2019/%E5%9F%BA%E4%BA%8E%E7%BB%9F%E8%AE%A1%E7%9A%84%E5%88%86%E8%AF%8D%E6%96%B9%E6%B3%95/">HMM</a>,MEMM,CRF</h2>
+<p>这些都属于序列模型，能够很好的捕获上下文关系。</p>
+<p><strong>HMM</strong>模型主要用于序列标注问题，通过把标签看作隐藏状态变量，把要标注的序列看作可观察输出，可以有效的解决分词，词性标注，命名实体识别等问题。但是受限于HMM模型的两个假设，HMM只能学习到有限的序列特征。</p>
+<ol>
+<li>当前观测状态只与当前隐藏状态有关</li>
+<li>当前隐藏状态只与前一时刻隐藏状态有关</li>
+</ol>
+<p><strong>MEMM</strong>（最大熵马尔可夫模型）是一种结合了HMM和最大熵模型的图模型，可用于序列标注问题。</p>
+<p><strong>HMM</strong>将标注看作隐藏状态，不同的标注序列（隐藏状态）都可以计算出给定观测状态出现的概率,概率最大时对应的隐藏状态序列就是所求结果。而<strong>MEMM</strong>通过输入当前序列状态特征（这里可以加入多个特征，前后多个词或者标注），计算出每个标注的概率。也可以说是简单逻辑回归模型在序列模型上的扩展。</p>
+<p>「在求解$latex P(X|Y)$时，可以直接求，也可以间接求$latex
+P(Y|X)P(X)/P(Y)$」</p>
+<p>在训练阶段，<strong>HMM</strong>通过概率估计（频率学派和贝叶斯派）获得模型参数，在预测阶段，可以通过维特比算法（一种dp算法，不用计算所有可能隐藏序列对应的观测序列概率）解码（找到最可能对应观测序列的隐藏状态序列）。<strong>MEMM</strong>直接通过定义特征，可以只将当前字符作为特征（此时就是logistic回归模型），也可以方便的加入任何其他特征（前后多个词，前面词的标注结果，或者后缀前缀等），通过对每个特征设置一个权重，代表其对最终结果的影响。通过训练，优化权重。预测时可以通过硬解码的方式一个一个给出类别（只考虑当前单词标签），另一种更好的方式是像HMM一样使用维特比算法求整个句子的最优解(CRF)。</p>
+<h3 id="crf">CRF</h3>
+<p>CRF模型与MEMM模型类似，也是通过序列特征计算每个token所有可能label的概率，取概率最大的label作为结果就是MEMM模型。这样计算出整个序列的结果后，可能出现不可理得标注(例如：[B,B...])。为了使输出序列前后相互约束，回想一下HMM的实现（当前观测状态依赖当前隐藏状态，当前隐藏状态依赖前一隐藏状态），因此可以考虑将当前label的概率与前一了label关联，求出整个序列所有可能label序列中可能性最大的。这样问题就变的复杂了，本来是sequence_lenth个分类问题（有多少种label，就有多少种类别），现在变成了一个分类问题，从所有可能label序列（共sequence_lenth^label_num个）选择合适的。</p>
+<p>简单来说，CRF模型就是在MEMM模型的基础上增加了对输出的约束，使其输出的标签序列更加合理。</p>
+<h1 id="shen-du-xue-xi">深度学习</h1>
+<h2 id="you-jian-du-1">有监督</h2>
+<ol>
+<li>NN/CNN-CRF</li>
+<li>Bi-LSTM-CRF</li>
+</ol>
+<h1 id="zui-xin-yan-jiu">最新研究</h1>
+<h2 id="you-jian-du-2">有监督</h2>
+<ol>
+<li>Bi-LSTM-CRF+Attention</li>
+</ol>
+<h2 id="ban-jian-du">半监督</h2>
+<ol>
+<li>TagLM</li>
+<li>迁移学习</li>
+</ol>
+<h1 id="can-kao">参考</h1>
+<p>[1]<a rel="noopener" target="_blank" href="https://easyai.tech/ai-definition/ner/">一文看懂命名实体识别 -
+NER（发展史+4类方式+数据集+工具推荐）</a><br />
+[2]<a rel="noopener" target="_blank" href="https://zekizz.github.io/NER_survey_zeki.pdf">命名实体识别调研报告</a><br />
+[3]<a rel="noopener" target="_blank" href="https://carlos9310.github.io/2018/12/28/nlp-flow/">中文自然语言处理的一般流程</a><br />
+[4]<a rel="noopener" target="_blank" href="https://raw.githubusercontent.com/carlos9310/carlos9310.github.io/master/assets/pdf/chinese-nlp.pdf">中文自然语言处理的完整机器处理流程</a><br />
+[5]<a rel="noopener" target="_blank" href="https://homepages.inf.ed.ac.uk/csutton/publications/crftut-fnt.pdf">An Introduction to ConditionalRandom
+Fields</a><br />
+[6]<a rel="noopener" target="_blank" href="https://zhuanlan.zhihu.com/p/60651380">最大熵马尔可夫模型</a></p>
+
+<p><b><a href="#">Back to top</a></b></p>
+    </article>
+  </main>
+  <footer>
+    <hr />
+    <div class="c">
+      <nav>
+        <ul><li><a href="https://blog.vhcffh.com/atom.xml" target="_blank" title="Atom/RSS Feed"><i type="Button" class="svg rss" title="Atom/RSS Feed"></i></a></li><li><a href="mailto:fly92727@outlook.com" target="_blank" title="Mail"><i type="Button" class="svg mail" title="Mail"></i></a></li><li><a href="https://github.com/FreyZhang007/" target="_blank" title="Github"><i type="Button" class="svg github" title="Github"></i></a></li><li><a href="https://github.com/sponsors/FreyZhang007/" target="_blank" title="GitHub Sponsor"><i type="Button" class="svg github-sponsor" title="GitHub Sponsor"></i></a></li></ul>
+      </nav>
+      <p class="s90">Copyright &copy; 2022 Frey&#x27;s blog</p>
+      <nav>
+        <ul><li class="s90"> <a href="https://blog.vhcffh.com/about/"> About </a> </li><li class="s90"> <a href="https://blog.vhcffh.com/contact/"> Contact </a> </li><li class="s90"> <a href="https://blog.vhcffh.com/privacy/"> Privacy </a> </li><li class="s90"> <a href="https://blog.vhcffh.com/sitemap.xml"> Sitemap </a> </li></ul>
+      </nav>
+      <p class="s90">Powered by <a href="https://www.getzola.org/">Zola</a> and <a href="https://github.com/jieiku/abridge/">Abridge</a></p>
+    </div>
+  </footer>
+<span class="topout">
+<span class="topleft"> </span><a href="#" class="top" title="Back to Top"><i class="svgs svgh angu"></i></a>
+</span>
+</body>
+</html>

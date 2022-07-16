@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <script src="https://blog.vhcffh.com/theme.min.js" integrity="sha384-IpIaa84kOKgkF5EJ0fD/kBe2wtIIsIB60ANGmuJxeA0dz5bSRfwBwp2/QybtQpU2"></script>
+  <link rel="stylesheet" href="https://blog.vhcffh.com/abridge-switcher.css?h=e4088b6018baa6c5c4f8222bf9a3811dec2f942f862ca9550010fba28852c1bc" />
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <script defer src="https://blog.vhcffh.com/search_index.en.js?h=d5e574ffd65cdc44489544089e33544b19b3b86a3340d587cc85531d18b8e792" integrity="sha384-HT1AXvCEAQGWm4cehYh3bO0RNhvjaSLPHFBWZ/7j3UFKwYf5wgLbX7GVJy0LGqKp"></script>
+  <script defer src="https://blog.vhcffh.com/abridge-switcher.min.js?h=be6d42ac1cc5ae1da7cdde772d392d6508fc038f98a8d0fd1bc5b5678530631a" integrity="sha384-RAhv9DQbxrVfq4cbSJsOQ8l7sA56QdpoR10euhjBCBOhLdbJ6y8SCZVYy818n51+"></script>
+  <link rel="alternate" type="application/atom+xml" title="Atom/RSS Feed" href="https://blog.vhcffh.com/atom.xml" />
+  <meta name="robots" content="index, follow" />
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <title>docker镜像alpine无法联网 | Frey's blog</title>
+  <meta name="author" content="Jake G" />
+  <meta name="copyright" content="Frey&#x27;s blog" />
+  <meta name="description" content="一个简单的个人博客，用于记录笔记" />
+  <link rel="canonical" href="https://blog.vhcffh.com/wp-665/" />
+  <meta name="keywords" content="Abridge, Abridge.css, Zola, Theme, Zola Theme, getzola, Semantic Html, Fast, lightweight" />
+  <meta property="og:url" content="https://blog.vhcffh.com/wp-665/" />
+  <meta name="twitter:url" content="https://blog.vhcffh.com/wp-665/" />
+  <meta property="og:description" content="一个简单的个人博客，用于记录笔记" />
+  <meta name="twitter:description" content="一个简单的个人博客，用于记录笔记" />
+  <meta property="og:title" content="docker镜像alpine无法联网 | Frey&#x27;s blog" />
+  <meta name="twitter:title" content="docker镜像alpine无法联网 | Frey&#x27;s blog" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://blog.vhcffh.com/banner.png" />
+  <meta property="og:image" content="https://blog.vhcffh.com/banner.png" />
+  <meta property="og:site_name" content="Frey&#x27;s blog" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:type" content="website" />
+  <meta property="og:updated_time" content="2022-01-01" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="theme-color" content="#333333" />
+  <meta name="msapplication-TileColor" content="#333333" />
+  <link rel="manifest" href="https://blog.vhcffh.com/site.webmanifest" />
+  <link rel="mask-icon" href="https://blog.vhcffh.com/safari-pinned-tab.svg" color="#ff9900" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://blog.vhcffh.com/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="https://blog.vhcffh.com/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="https://blog.vhcffh.com/favicon-16x16.png" />
+  <noscript><link rel="stylesheet" href="https://blog.vhcffh.com/nojs.css" /></noscript>
+</head>
+<body>
+  <header>
+    <nav>
+      <div><h1><a href="https://blog.vhcffh.com/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#f90" viewBox="0 0 96 96" width="32" height="32"><path stroke-width="14" d="M14 99 46 7h4l32 92"/><path stroke-width="9" d="M-3 82c43-26 59-26 102 0"/><path stroke-linecap="round" stroke-width="1.5" d="M94 72v7m-5-9.8v7m-5-9.8v7.1M79 64v7M63 57.7v7m-5-8.2v7m-5-7.8v7m-5-7.2v7m-5-6.7v7m-5-6.3v7m-5-5.8v7M17 64v7m-5-4.6v7m-5-4.2v7M2 72v7"/></svg>bridge</a></h1></div>
+      <div>
+        <ul><li> <h2><a href="https://blog.vhcffh.com/about/">About</a></h2> </li><li> <h2><a href="https://blog.vhcffh.com/posts/">Posts</a></h2> </li><li> <h2><a href="https://blog.vhcffh.com/categories/">Categories</a></h2> </li><li> <h2><a href="https://blog.vhcffh.com/tags/">Tags</a></h2> </li><li class="js"><i type="reset" id="mode" class="svgs adjust"></i></li></ul>
+      </div>
+      <div>
+        <form class="js" name="goSearch">
+          <div class="searchd">
+            <input id="userinput" type="text" placeholder="Search" autocomplete="off" title="Search" />
+            <button type="submit" title="Search"><i class="svgs search"></i></button>
+          </div>
+          <div><div id="suggestions"></div></div>
+        </form>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <article>
+        <h1><a href="https://blog.vhcffh.com/wp-665/">docker镜像alpine无法联网</a></h1>
+        <span class="s95"> Jake G<span class="hpad"> </span> January 01, 2022<span class="hpad"> </span> [<a href="https://blog.vhcffh.com/categories/ruan-jian/">软件</a>] #<a href="https://blog.vhcffh.com/tags/docker/">docker</a>  #<a href="https://blog.vhcffh.com/tags/linux/">linux</a> </span>
+
+    <p>alpine docker镜像无法联网出现如下错误：</p>
+<pre class="z-code"><code><span class="z-text z-plain">ERROR: https://mirrors.ustc.edu.cn/alpine/v3.15/main: temporary error (try again later) WARNING: Ignoring https://mirrors.ustc.edu.cn/alpine/v3.15/main: No such file or directory 3069277072:error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed:ssl/statem/statem_clnt.c:1914:
+</span></code></pre>
+<p>基础的 docker 镜像是~ ~python:3.6-alpine~ ~</p>
+<p><strong>stack overflow上看到一个解答</strong></p>
+<p><a rel="noopener" target="_blank" href="https://stackoverflow.com/questions/53710206/docker-cant-build-because-of-alpine-error">docker can't build because of alpine error - Stack
+Overflow</a></p>
+<ol>
+<li>使用~ ~<code>docker build . --network local </code>进行构建--错误仍在</li>
+<li>添加~ ~8.8.8.8~ ~到文件<code> /etc/resolv.conf </code>并重启docker--错误仍在</li>
+</ol>
+<p><strong>思路：启动一个基础docker 容器，并进入查找错误原因</strong></p>
+<ol>
+<li>启动并进入容器<br />
+<code>docker run -it python:3.6-alpine /bin/sh </code></li>
+<li>执行Dockerfile文件里的命令<br />
+apk安装及更新时出错<br />
+使用~ ~ping~ ~命令测试网络连通性，出错~ ~ping:
+clock_gettime(MONOTONIC) failed~ ~<br />
+使用~ ~nc~ ~命令连接外部服务器，可以连接ip，不能连接域名<br />
+猜想应该是域名解析的问题</li>
+</ol>
+<p><strong>对alpine不熟，换一个其他的基础容器</strong></p>
+<p>使用镜像~ ~python:3.6~ ~，启动镜像后使用pip时报错</p>
+<pre class="z-code"><code><span class="z-text z-plain">Fatal Python error: Py_Initialize: can&#39;t initialize time
+</span>PermissionError: [Errno 1] Operation not permitted
+
+</span>Current thread 0xb6fda010 (most recent call first):
+</span>Aborted (core dumped)
+</span># pip
+</span>Fatal Python error: Py_Initialize: can&#39;t initialize time
+</span>PermissionError: [Errno 1] Operation not permitted
+
+</span>Current thread 0xb6f12010 (most recent call first):
+</span>Aborted (core dumped)
+</span></code></pre>
+<p>比较了一下两个python镜像的大小</p>
+<pre class="z-code"><code><span class="z-text z-plain">python                   3.6                 a3bba401d788        2 weeks ago         696MB
+</span>python                   3.6-alpine          dc8c4f7b64b7        2 weeks ago         34.8MB
+</span></code></pre>
+<p>还是用~ ~alpine~ ~版本的吧</p>
+<p><strong>域名解析问题</strong></p>
+<p>搜到<a rel="noopener" target="_blank" href="https://www.sudops.com/kubernetes-alpine-image-resolve-ext-dns.html">这里</a>，说要将~ ~/etc/resolv.conf~ ~文件中的~ ~ndots~ ~注释掉</p>
+<p>进入容器查看~ ~/etc/resolv.conf~ ~文件，并没有字符~ ~ndots~ ~</p>
+<p>搜索ping的错误~ ~ping: clock_gettime(MONOTONIC) failed~ ~</p>
+<p>找到了<a rel="noopener" target="_blank" href="https://docs.linuxserver.io/faq#libseccomp">这里</a>，有三种解决方法</p>
+<ol>
+<li>安装一个软件包<br />
+<code>wget http://ftp.us.debian.org/debian/pool/main/libs/libseccomp/libseccomp2_2.4.4-1~bpo10+1_armhf.deb &amp;&amp; sudo dpkg -i libseccomp2_2.4.4-1~bpo10+1_armhf.deb</code><br />
+下载时发现2.4.4版本已经没了，于是下载2.5.1版本<br />
+安装后仍然时间还不对，安装前是1970年，安装后变成了2071年</li>
+<li>第二个方法一样，不过是添加源安装软件</li>
+<li>方法三要更新树莓派的系统</li>
+</ol>
+<p>方法2和方法3需要添加源或更新系统，不想搞太多源，也懒得重新安装</p>
+<p>又搜了一下，看到<a rel="noopener" target="_blank" href="https://gitlab.alpinelinux.org/alpine/aports/-/issues/12091">这里</a>，有人提示添加~ ~--security-opt
+seccomp=unconfined~ ~</p>
+<p>测试一下</p>
+<pre class="z-code"><code><span class="z-text z-plain">❯ docker run -it --rm --security-opt seccomp=unconfined python:3.6-alpine ping baidu.com
+</span>PING baidu.com (220.181.38.148): 56 data bytes
+</span>64 bytes from 220.181.38.148: seq=0 ttl=48 time=45.827 ms
+</span>64 bytes from 220.181.38.148: seq=1 ttl=48 time=47.090 ms
+</span></code></pre>
+<p>网络可以ping通了，应该可行</p>
+<p>但是使用~ ~docker build~ ~时，出现了问题</p>
+<pre class="z-code"><code><span class="z-text z-plain">❯ docker build . --security-opt seccomp=unconfined
+</span>Error response from daemon: The daemon on this platform does not support setting security options on build
+</span></code></pre>
+<p>系统无法使用此选项</p>
+<p><strong>从其它系统构建镜像后导出</strong></p>
+<p>docker 镜像保存：</p>
+<p>~ ~docker save 0d33 &gt; proxy_pool.tar~ ~</p>
+<p>docker镜像导入：</p>
+<p>~ ~docker load &lt; proxy_pool.tar~ ~</p>
+<p>两个机器架构不同</p>
+<p>按照<a rel="noopener" target="_blank" href="https://blog.vhcffh.com/667.html">这里</a>进行跨平台构建即可</p>
+
+<p><b><a href="#">Back to top</a></b></p>
+    </article>
+  </main>
+  <footer>
+    <hr />
+    <div class="c">
+      <nav>
+        <ul><li><a href="https://blog.vhcffh.com/atom.xml" target="_blank" title="Atom/RSS Feed"><i type="Button" class="svg rss" title="Atom/RSS Feed"></i></a></li><li><a href="mailto:fly92727@outlook.com" target="_blank" title="Mail"><i type="Button" class="svg mail" title="Mail"></i></a></li><li><a href="https://github.com/FreyZhang007/" target="_blank" title="Github"><i type="Button" class="svg github" title="Github"></i></a></li><li><a href="https://github.com/sponsors/FreyZhang007/" target="_blank" title="GitHub Sponsor"><i type="Button" class="svg github-sponsor" title="GitHub Sponsor"></i></a></li></ul>
+      </nav>
+      <p class="s90">Copyright &copy; 2022 Frey&#x27;s blog</p>
+      <nav>
+        <ul><li class="s90"> <a href="https://blog.vhcffh.com/about/"> About </a> </li><li class="s90"> <a href="https://blog.vhcffh.com/contact/"> Contact </a> </li><li class="s90"> <a href="https://blog.vhcffh.com/privacy/"> Privacy </a> </li><li class="s90"> <a href="https://blog.vhcffh.com/sitemap.xml"> Sitemap </a> </li></ul>
+      </nav>
+      <p class="s90">Powered by <a href="https://www.getzola.org/">Zola</a> and <a href="https://github.com/jieiku/abridge/">Abridge</a></p>
+    </div>
+  </footer>
+<span class="topout">
+<span class="topleft"> </span><a href="#" class="top" title="Back to Top"><i class="svgs svgh angu"></i></a>
+</span>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+	<title>Frey&#x27;s blog - kafka</title>
+	<subtitle>一个简单的个人博客，用于记录笔记</subtitle>
+	<link href="https://blog.vhcffh.com/tags/kafka/atom.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://blog.vhcffh.com"/>
+	<generator uri="https://www.getzola.org/">Zola</generator>
+	<updated>2020-07-19T00:00:00+00:00</updated>
+	<id>https://blog.vhcffh.com/tags/kafka/atom.xml</id>
+	<entry xml:lang="en">
+		<title>初步了解kafka</title>
+		<published>2020-07-19T00:00:00+00:00</published>
+		<updated>2020-07-19T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/wp-173/" type="text/html"/>
+		<id>https://blog.vhcffh.com/wp-173/</id>
+		<content type="html">&lt;h2 id=&quot;kafkajian-jie&quot;&gt;kafka简介&lt;&#x2F;h2&gt;
+&lt;p&gt;kafka&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.apache.org&#x2F;dyn&#x2F;closer.cgi?path=&#x2F;kafka&#x2F;0.9.0.0&#x2F;kafka_2.11-0.9.0.0.tgz&quot;&gt;下载地址&lt;&#x2F;a&gt;
+kafka&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;http:&#x2F;&#x2F;kafka.apache.org&#x2F;&quot;&gt;官网&lt;&#x2F;a&gt;
+kafka是一个分布式消息发布订阅系统，主要特点：易于扩展，高吞吐量
+&lt;strong&gt;主要术语:&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;Topic Kafka将消息种子(Feed)分门别类， 每一类的消息称之为话题(Topic).&lt;&#x2F;li&gt;
+&lt;li&gt;Producer 发布消息的对象称之为话题生产者(Kafka topic producer)&lt;&#x2F;li&gt;
+&lt;li&gt;Consumer
+订阅消息并处理发布的消息的种子的对象称之为话题消费者(consumers)&lt;&#x2F;li&gt;
+&lt;li&gt;Broker
+已发布的消息保存在一组服务器中，称之为Kafka集群。集群中的每一个服务器都是一个代理(Broker).
+消费者可以订阅一个或多个话题，并从Broker拉数据，从而消费这些已发布的消息。&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;h2 id=&quot;qi-dong-fu-wu-duan&quot;&gt;启动服务端&lt;&#x2F;h2&gt;
+&lt;ol&gt;
+&lt;li&gt;启动ZooKeeper,因为Kafka Cluster使用ZooKeeper
+ZooKeeper是一个分布式服务框架，主要用来解决分布式应用中经常遇到的一些数据管理问题，如：统一命名服务、状态同步服务、集群管理、分布式应用配置项的管理等。&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;!-- --&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;bin&#x2F;zookeeper-server-start.sh config&#x2F;zookeeper.properties
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;ol start=&quot;2&quot;&gt;
+&lt;li&gt;启动Kafka Broker&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;!-- --&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;bin&#x2F;kafka-server-start.sh config&#x2F;server.properties
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;ol start=&quot;3&quot;&gt;
+&lt;li&gt;Jps查看进程&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;!-- --&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;$ jps
+&lt;&#x2F;span&gt;4407 QuorumPeerMain
+&lt;&#x2F;span&gt;4408 Kafka
+&lt;&#x2F;span&gt;5291 Jps
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;QuorumPeerMain是ZooKeeper守护进程，Kafka是Kafka守护进程&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;chuang-jian-yi-ge-zhu-ti&quot;&gt;创建一个主题&lt;&#x2F;h2&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;bin&#x2F;kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic test
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;code&gt;replication-factor&lt;&#x2F;code&gt;分区个数，不同分区会存储到不同的主机（负载均衡），分区写入策略（&lt;em&gt;1、轮询策略&lt;&#x2F;em&gt;，2、随机策略，3、按键保存策略）
+&lt;code&gt;partitions&lt;&#x2F;code&gt;副本个数，仅用于数据冗余&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;huo-qu-zhu-ti-lie-biao&quot;&gt;获取主题列表&lt;&#x2F;h2&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;bin&#x2F;kafka-topics.sh --list --bootstrap-server localhost:9092
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;sheng-chan-zhe-shi-li&quot;&gt;生产者示例&lt;&#x2F;h2&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;bin&#x2F;kafka-console-producer.sh --bootstrap-server localhost:9092 --topic test
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;code&gt;bootstrap-server&lt;&#x2F;code&gt;代理列表，kafka服务端配置文件中指定&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;xiao-fei-zhe-shi-li&quot;&gt;消费者示例&lt;&#x2F;h2&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;bin&#x2F;kafka-console-consumer.sh --bootstrap-server localhost:9092 —topic topic-name --from-beginning
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;code&gt;from-beginning&lt;&#x2F;code&gt;读取历史未消费的数据&lt;&#x2F;p&gt;
+</content>
+	</entry>
+</feed>

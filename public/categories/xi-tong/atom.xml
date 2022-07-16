@@ -1,0 +1,507 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+	<title>Frey&#x27;s blog - 系统</title>
+	<subtitle>一个简单的个人博客，用于记录笔记</subtitle>
+	<link href="https://blog.vhcffh.com/categories/xi-tong/atom.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://blog.vhcffh.com"/>
+	<generator uri="https://www.getzola.org/">Zola</generator>
+	<updated>2022-04-10T00:00:00+00:00</updated>
+	<id>https://blog.vhcffh.com/categories/xi-tong/atom.xml</id>
+	<entry xml:lang="en">
+		<title>树莓派4B wlan0消失</title>
+		<published>2022-04-10T00:00:00+00:00</published>
+		<updated>2022-04-10T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/wp-756/" type="text/html"/>
+		<id>https://blog.vhcffh.com/wp-756/</id>
+		<content type="html">&lt;ol&gt;
+&lt;li&gt;wlan0 没有启动，使用&lt;code&gt;sudo ifconfig wlan0 up&lt;&#x2F;code&gt;启用即可&lt;&#x2F;li&gt;
+&lt;li&gt;wlan0被blocked，使用&lt;code&gt;sudo rfkill unblock all&lt;&#x2F;code&gt;解锁即可&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>联想小新pro 13 windows11 bug记录（2022）</title>
+		<published>2022-03-05T00:00:00+00:00</published>
+		<updated>2022-03-05T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/wp-717/" type="text/html"/>
+		<id>https://blog.vhcffh.com/wp-717/</id>
+		<content type="html">&lt;h2 id=&quot;ren-lian-shi-bie-wu-fa-zheng-chang-gong-zuo&quot;&gt;人脸识别无法正常工作&lt;&#x2F;h2&gt;
+&lt;p&gt;具体现象：windows Hello 无法录入人脸，一直卡在请确保你的面孔剧中。&lt;&#x2F;p&gt;
+&lt;p&gt;解决方法：在设备管理器中卸载IR
+Camera（勾选删除此设备的驱动程序）和Camera，重启之后就可以录入人脸了。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;window-xdao-zhi-zi-yuan-guan-li-qi-zhong-qi&quot;&gt;Window+X导致资源管理器重启&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.ithome.com&#x2F;0&#x2F;604&#x2F;913.htm&quot;&gt;微软 Win11 预览版 22563 出现重大 Bug：Win + X 导致资源管理器崩溃，解决方案出炉 - IT之家 (ithome.com)&lt;&#x2F;a&gt;这里是关于此bug的具体详情及处理方案&lt;&#x2F;p&gt;
+&lt;p&gt;更新后bug已解决&lt;&#x2F;p&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>WSL2联网问题</title>
+		<published>2022-01-08T00:00:00+00:00</published>
+		<updated>2022-01-08T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/wp-675/" type="text/html"/>
+		<id>https://blog.vhcffh.com/wp-675/</id>
+		<content type="html">&lt;p&gt;使用wsl做开发有一段时间了，最近突然遇到在wsl中无法联网，查找原因发现是因为无法解析域名。&lt;&#x2F;p&gt;
+&lt;p&gt;查看文件&lt;code&gt;&#x2F;etc&#x2F;resolv.conf&lt;&#x2F;code&gt;，里面解释文件是wsl启动时生成的，将文件里的&lt;code&gt;namespace&lt;&#x2F;code&gt;更改为8.8.8.8后，可以正常访问网络，但是重启之后，文件&lt;code&gt;&#x2F;etc&#x2F;resolv.conf&lt;&#x2F;code&gt;恢复成原来的了。&lt;&#x2F;p&gt;
+&lt;p&gt;经过一番查找，按如下方法修改后，文件&#x2F;etc&#x2F;resolv.conf不在会改变。&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;sudo rm &#x2F;etc&#x2F;resolv.conf
+&lt;&#x2F;span&gt;sudo bash -c &amp;#39;echo &amp;quot;nameserver 8.8.8.8&amp;quot; &amp;gt; &#x2F;etc&#x2F;resolv.conf&amp;#39;
+&lt;&#x2F;span&gt;sudo bash -c &amp;#39;echo &amp;quot;[network]&amp;quot; &amp;gt; &#x2F;etc&#x2F;wsl.conf&amp;#39;
+&lt;&#x2F;span&gt;sudo bash -c &amp;#39;echo &amp;quot;generateResolvConf = false&amp;quot; &amp;gt;&amp;gt; &#x2F;etc&#x2F;wsl.conf&amp;#39;
+&lt;&#x2F;span&gt;sudo chattr +i &#x2F;etc&#x2F;resolv.conf
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;can-kao&quot;&gt;参考&lt;&#x2F;h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;microsoft&#x2F;WSL&#x2F;issues&#x2F;5420&quot;&gt;WSL 2 keeps overwriting resolv.conf · Issue #5420 · microsoft&#x2F;WSL
+(github.com)&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;microsoft&#x2F;WSL&#x2F;issues&#x2F;1908#issuecomment-641396913&quot;&gt;Custom resolv.conf being replaced by generated file, even with
+comment removed. · Issue #1908 · microsoft&#x2F;WSL
+(github.com)&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;docs.microsoft.com&#x2F;zh-cn&#x2F;windows&#x2F;wsl&#x2F;wsl-config&quot;&gt;WSL 中的高级设置配置 | Microsoft
+Docs&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>top命令笔记</title>
+		<published>2021-10-05T00:00:00+00:00</published>
+		<updated>2021-10-05T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/wp-376/" type="text/html"/>
+		<id>https://blog.vhcffh.com/wp-376/</id>
+		<content type="html">&lt;h1 id=&quot;界面介绍&quot;&gt;界面介绍&lt;&#x2F;h1&gt;
+&lt;h2 id=&quot;di-yi-xing-xin-xi-top&quot;&gt;第一行信息(&lt;code&gt;top -&lt;&#x2F;code&gt;)&lt;&#x2F;h2&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th align=&quot;left&quot;&gt;参数&lt;&#x2F;th&gt;&lt;th align=&quot;left&quot;&gt;含义&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td align=&quot;left&quot;&gt;&lt;code&gt;05:19:41&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td align=&quot;left&quot;&gt;系统当前时间&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td align=&quot;left&quot;&gt;&lt;code&gt;up 10 days, 20:15&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td align=&quot;left&quot;&gt;本机己经运行 10 天 20小时 15 分钟&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td align=&quot;left&quot;&gt;&lt;code&gt;1 users&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td align=&quot;left&quot;&gt;当前登录了一个用户&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td align=&quot;left&quot;&gt;&lt;code&gt;load average:0.01, 0.01, 0.00&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td align=&quot;left&quot;&gt;系统历史平均负载1分钟，5分钟，15分钟一般认为1表示一个CPU核满负载&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
+&lt;h2 id=&quot;di-er-xing-xin-xi-tasks&quot;&gt;第二行信息(&lt;code&gt;Tasks: &lt;&#x2F;code&gt;)&lt;&#x2F;h2&gt;
+&lt;p&gt;任务进程信息&lt;&#x2F;p&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;参数&lt;&#x2F;th&gt;&lt;th&gt;意义&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;&lt;code&gt;Tasks: 38 total&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td&gt;系统中的进程总数&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;code&gt;1 running&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td&gt;正在运行的进程数&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;code&gt;37 sleeping&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td&gt;睡眠的进程数&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;code&gt;0 stoped&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td&gt;停止的进程数&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;code&gt;0 zombie&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td&gt;僵尸进程数如果不是 0，则需要手工检查僵尸进程&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
+&lt;h2 id=&quot;di-san-xing-xin-xi-cpu-s&quot;&gt;第三行信息(&lt;code&gt;%CPU(s)&lt;&#x2F;code&gt;)&lt;&#x2F;h2&gt;
+&lt;p&gt;CPU状态信息，占用CPU百分比&lt;&#x2F;p&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;参数&lt;&#x2F;th&gt;&lt;th&gt;意义&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;0.0 us&lt;&#x2F;td&gt;&lt;td&gt;用户进程&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;0.0 sy&lt;&#x2F;td&gt;&lt;td&gt;内核进程&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;0.0 ni&lt;&#x2F;td&gt;&lt;td&gt;已调整优先级的用户进程&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;100.0 id&lt;&#x2F;td&gt;&lt;td&gt;空闲&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;0.0 wa&lt;&#x2F;td&gt;&lt;td&gt;等待IO&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;0.0 hi&lt;&#x2F;td&gt;&lt;td&gt;处理硬件中断&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;0.0 si&lt;&#x2F;td&gt;&lt;td&gt;处理软件中断&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;0.0 st&lt;&#x2F;td&gt;&lt;td&gt;虚拟机&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
+&lt;h1 id=&quot;ming-ling-can-shu&quot;&gt;命令参数&lt;&#x2F;h1&gt;
+&lt;h2 id=&quot;jiao-hu-ming-ling&quot;&gt;交互命令&lt;&#x2F;h2&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;命令&lt;&#x2F;th&gt;&lt;th&gt;意义&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;P&lt;&#x2F;td&gt;&lt;td&gt;根据CPU使用百分比(%CPU)大小排序（默认状态）&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;M&lt;&#x2F;td&gt;&lt;td&gt;根据内存使用量(%MEM)排序&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;T&lt;&#x2F;td&gt;&lt;td&gt;根据时间(TIME)&#x2F;累计时间(TIME+)排序&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>linux交换分区</title>
+		<published>2020-03-24T00:00:00+00:00</published>
+		<updated>2020-03-24T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/wp-102/" type="text/html"/>
+		<id>https://blog.vhcffh.com/wp-102/</id>
+		<content type="html">&lt;h2 id=&quot;xin-jian-ying-pan-fen-qu-zuo-wei-jiao-huan-fen-qu&quot;&gt;新建硬盘分区作为交换分区&lt;&#x2F;h2&gt;
+&lt;p&gt;硬盘分区情况&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;设备            起点      末尾      扇区  大小 类型
+&lt;&#x2F;span&gt;&#x2F;dev&#x2F;sda1       2048    821247    819200  400M Linux 文件系统
+&lt;&#x2F;span&gt;&#x2F;dev&#x2F;sda2     821248   1640447    819200  400M Linux 文件系统
+&lt;&#x2F;span&gt;&#x2F;dev&#x2F;sda3    1640448 840501247 838860800  400G Linux 文件系统
+&lt;&#x2F;span&gt;&#x2F;dev&#x2F;sda4  840501248 871958527  31457280   15G VMware 诊断
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;把&lt;code&gt;&#x2F;dev&#x2F;sda4&lt;&#x2F;code&gt;作为交换分区 交换分区大小建议&lt;&#x2F;p&gt;
+&lt;p&gt;物理内存   不需要休眠   需要休眠   最大值&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;p&gt;256M       256M         512M       512M
+512M       512M         1024M      1024M
+1024M      1024M        2048M      2048M
+1G         1G           2G         2G
+2G         1G           3G         4G
+3G         2G           5G         6G
+4G         2G           6G         8G
+5G         2G           7G         10G
+6G         2G           8G         12G
+8G         3G           11G        16G
+12G        3G           15G        24G
+16G        4G           20G        32G
+24G        5G           29G        48G
+32G        6G           38G        64G
+64G        8G           72G        128G
+128G       11G          139G       256G&lt;&#x2F;p&gt;
+&lt;p&gt;archlinux的wiki中建议交换分区类型为82 安装交换分区&lt;code&gt;mkswap &#x2F;dev&#x2F;sda4&lt;&#x2F;code&gt;
+启用交换分区&lt;code&gt;swapon &#x2F;dev&#x2F;sdxy&lt;&#x2F;code&gt; 设置自动启动
+在文件&lt;code&gt;&#x2F;etc&#x2F;fstab&lt;&#x2F;code&gt;中添加&lt;code&gt;UUID=&amp;lt;UUID&amp;gt; none swap defaults 0 0&lt;&#x2F;code&gt;
+其中UUID&lt;code&gt;lsblk -no UUID &#x2F;dev&#x2F;sda4&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;can-kao-zi-liao&quot;&gt;参考资料&lt;&#x2F;h2&gt;
+&lt;p&gt;[1]&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;segmentfault.com&#x2F;a&#x2F;1190000008125116&quot;&gt;Linux交换空间（swap
+space）&lt;&#x2F;a&gt; [2]&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;wiki.archlinux.org&#x2F;index.php&#x2F;Swap_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#%E4%BA%A4%E6%8D%A2%E6%96%87%E4%BB%B6&quot;&gt;Swap
+(简体中文)&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>nvidia显卡驱动错误</title>
+		<published>2019-09-09T00:00:00+00:00</published>
+		<updated>2019-09-09T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/hexo-nvidiaxian-qia-qu-dong-cuo-wu/" type="text/html"/>
+		<id>https://blog.vhcffh.com/hexo-nvidiaxian-qia-qu-dong-cuo-wu/</id>
+		<content type="html">&lt;p&gt;系统使用&lt;code&gt;bumblebee&lt;&#x2F;code&gt;实现双显卡(N卡和集成显卡)切换，&lt;br &#x2F;&gt;
+同时有N卡的开源驱动nouveau和专有显卡驱动nvidia&lt;&#x2F;p&gt;
+&lt;p&gt;使用命令&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;optirun glxspheres64
+&lt;&#x2F;span&gt;# 或者optirun glxspher
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;出现错误&lt;code&gt;[XORG] (EE) Failed to load module &amp;quot;nouveau&amp;quot;&lt;&#x2F;code&gt;&lt;br &#x2F;&gt;
+通过命令&lt;code&gt;lsmod |grep nouveau&lt;&#x2F;code&gt;&lt;br &#x2F;&gt;
+显示模块已经加载&lt;&#x2F;p&gt;
+&lt;p&gt;通过&lt;code&gt;&#x2F;etc&#x2F;modprobe.d&#x2F;blacklist.conf&lt;&#x2F;code&gt;文件禁用&lt;code&gt;nouveau&lt;&#x2F;code&gt;(需要重建内核&lt;code&gt;mkinitcpio -P&lt;&#x2F;code&gt;并重启),但&lt;code&gt;nouveau&lt;&#x2F;code&gt;驱动仍然加载了，&lt;code&gt;nvidia&lt;&#x2F;code&gt;未加载&lt;&#x2F;p&gt;
+&lt;p&gt;解决方法修改文件&lt;code&gt;&#x2F;etc&#x2F;bumblebee&#x2F;xorg.conf.nouveau&lt;&#x2F;code&gt;&lt;br &#x2F;&gt;
+去掉&lt;code&gt;BusID &amp;quot;PCI:01:00:0&amp;quot;&lt;&#x2F;code&gt;的注释&lt;br &#x2F;&gt;
+&lt;code&gt;PCI:01:00:0&lt;&#x2F;code&gt;通过命令&lt;code&gt;lspci | egrep (3D|VGA)&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;重启后&lt;code&gt;nvidia&lt;&#x2F;code&gt;驱动加载成功,&lt;code&gt;nouveau&lt;&#x2F;code&gt;没有加载&lt;&#x2F;p&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>记一次GRUB引导修复</title>
+		<published>2019-09-03T00:00:00+00:00</published>
+		<updated>2019-09-03T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/hexo-ji-yi-ci-grubyin-dao-xiu-fu/" type="text/html"/>
+		<id>https://blog.vhcffh.com/hexo-ji-yi-ci-grubyin-dao-xiu-fu/</id>
+		<content type="html">&lt;p&gt;使用Arch Linux已经2年多了，基本上已经习惯了，可前段时间英雄联盟也出了&amp;quot;自走棋&amp;quot;，想要体验一把。
+于是就在硬盘剩余的60多个G上装了Windows 10，用了一两个月没有问题，最后在一次Windows 10更新后，蓝屏了。
+又手惨的点了Windows 的修复功能。等了半天，结果是修复，重启，蓝屏无限循环。
+而且Arch Linux的引导全都没了，感觉应该是Windows的修复动了efi分区。
+无奈只能重新修复引导，各种方法尝试了好多遍，都是卡在了&lt;code&gt;GRUB _&lt;&#x2F;code&gt;一直闪这个状态，
+最终在官网wiki找到了办法 &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;wiki.archlinux.org&#x2F;index.php&#x2F;GRUB_#Default&#x2F;fallback_boot_path&quot;&gt;缺省&#x2F;后备启动路径&lt;&#x2F;a&gt; grub 安装时添加&lt;code&gt;--removable&lt;&#x2F;code&gt;参数&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash z-code&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;grub-install&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; --&lt;&#x2F;span&gt;target&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-assignment z-option z-shell&quot;&gt;=&lt;&#x2F;span&gt;x86_64-efi&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; --&lt;&#x2F;span&gt;efi-directory&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-assignment z-option z-shell&quot;&gt;=&lt;&#x2F;span&gt;esp&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; --&lt;&#x2F;span&gt;removable&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;或者手动移动&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash z-code&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;mv&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; esp&#x2F;EFI&#x2F;grub esp&#x2F;EFI&#x2F;BOOT&lt;&#x2F;span&gt;
+&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;mv&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; esp&#x2F;EFI&#x2F;BOOT&#x2F;grubx64.efi esp&#x2F;EFI&#x2F;BOOT&#x2F;BOOTX64.EFI&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;grub出现bug的原因应该会千奇百怪，要尽可能多的尝试网上的各种修改方法。&lt;&#x2F;p&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>Linux常用命令</title>
+		<published>2019-05-21T00:00:00+00:00</published>
+		<updated>2019-05-21T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/hexo-linuxchang-yong-ming-ling/" type="text/html"/>
+		<id>https://blog.vhcffh.com/hexo-linuxchang-yong-ming-ling/</id>
+		<content type="html">&lt;p&gt;Linux中的一些常用命令,tar&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;1-tarjie-ya-da-bao-xiang-guan&quot;&gt;1.tar解压打包相关&lt;&#x2F;h2&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash z-code&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;tar&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;cvf&lt;&#x2F;span&gt; log.tar log2019.log    &lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-begin z-shell&quot;&gt;#&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;仅打包，不压缩&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;tar&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;zcvf&lt;&#x2F;span&gt; log.tar.gz log2019.log   &lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-begin z-shell&quot;&gt;#&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;打包后，以 gzip 压缩&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;tar&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;jcvf&lt;&#x2F;span&gt; log.tar.bz2 log2019.log  &lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-begin z-shell&quot;&gt;#&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;打包后，以 bzip2 压缩&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;tar&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;ztvf&lt;&#x2F;span&gt; log.tar.gz &lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-begin z-shell&quot;&gt;#&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;gzip查阅&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;tar&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;jtvf&lt;&#x2F;span&gt; log.tar.gz &lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-begin z-shell&quot;&gt;#&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;bzip2查阅&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;tar&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;zxvf&lt;&#x2F;span&gt; log.tar.gz &lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-begin z-shell&quot;&gt;#&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;gzip解压&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;tar&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;jxvf&lt;&#x2F;span&gt; log.tar.gz &lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-begin z-shell&quot;&gt;#&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;bzip2解压&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;unzip&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; log.zip&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;d&lt;&#x2F;span&gt; dirname &lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-begin z-shell&quot;&gt;#&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;zip解压到dirname目录&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;补充&lt;&#x2F;p&gt;
+&lt;p&gt;c: 建立压缩档案&lt;br &#x2F;&gt;
+-x：解压&lt;br &#x2F;&gt;
+-t：查看内容&lt;br &#x2F;&gt;
+-r：向压缩归档文件末尾追加文件&lt;br &#x2F;&gt;
+-u：更新原压缩包中的文件&lt;&#x2F;p&gt;
+&lt;p&gt;这五个是独立的命令，压缩解压都要用到其中一个，可以和别的命令连用但只能用其中一个。下面的参数是根据需要在压缩或解压档案时可选的。&lt;&#x2F;p&gt;
+&lt;p&gt;-z：有gzip属性的&lt;br &#x2F;&gt;
+-j：有bz2属性的&lt;br &#x2F;&gt;
+-Z：有compress属性的&lt;br &#x2F;&gt;
+-v：显示所有过程&lt;br &#x2F;&gt;
+-O：将文件解开到标准输出&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;2-wgetshe-zhi-dai-li&quot;&gt;2.wget设置代理&lt;&#x2F;h2&gt;
+&lt;p&gt;2.1环境变量中设置&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;export http_proxy=http:&#x2F;&#x2F;127.0.0.1:8087
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;2.2使用配置文件&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;# cp &#x2F;etc&#x2F;wgetrc ~&#x2F;.wgetrc
+&lt;&#x2F;span&gt;# vim ~&#x2F;.wgetrc
+&lt;&#x2F;span&gt;# You can set the default proxies for Wget to use for http, https, and ftp.
+&lt;&#x2F;span&gt;# They will override the value in the environment.
+&lt;&#x2F;span&gt;https_proxy = http:&#x2F;&#x2F;127.0.0.1:8087&#x2F;
+&lt;&#x2F;span&gt;http_proxy = http:&#x2F;&#x2F;127.0.0.1:8087&#x2F;
+&lt;&#x2F;span&gt;ftp_proxy = http:&#x2F;&#x2F;127.0.0.1:8087&#x2F;
+
+&lt;&#x2F;span&gt;# If you do not want to use proxy at all, set this to off.
+&lt;&#x2F;span&gt;use_proxy = on
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;3-psxiang-guan-ming-ling&quot;&gt;3.ps相关命令&lt;&#x2F;h2&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;ps -ef # 查看进程信息和执行的命令
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;4-yong-hu-wen-jian-guan-li-xiang-guan&quot;&gt;4.用户文件管理相关&lt;&#x2F;h2&gt;
+&lt;p&gt;4.1Linux系统用户账号的管理&lt;&#x2F;p&gt;
+&lt;p&gt;4.1.1添加新的用户账号&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;useradd [-d dirname] username
+&lt;&#x2F;span&gt;# [-d dirname]指定用户主目录
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;4.1.2删除帐号&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;userdel [-r] username
+&lt;&#x2F;span&gt;# [-R]把用户的主目录一起删除
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;4.1.3修改帐号&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;usermod [] username
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;4.1.4用户密码管理&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;passwd [-I][-u][-d][-f] username
+&lt;&#x2F;span&gt;# [-I]锁定密码，即禁用账号。
+&lt;&#x2F;span&gt;# [-u]密码解锁。
+&lt;&#x2F;span&gt;# [-d]使账号无密码。
+&lt;&#x2F;span&gt;# [-f]强迫用户下次登录时修改密码。
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;4.2Linux系统用户组的管理&lt;&#x2F;p&gt;
+&lt;p&gt;4.2.1增加一个新的用户组&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;groupadd [-g GID] username
+&lt;&#x2F;span&gt;# [-g GID]指定新用户组的组标识号（GID）
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;4.2.2删除一个已有的用户组&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;groupdel groupname
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;4.2.3修改用户组的属性&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;groupmod [-g GID] groupname
+&lt;&#x2F;span&gt;# [-g GID]指定新用户组的组标识号（GID）
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;4.2.4更改用户组&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;如果一个用户同时属于多个用户组，那么用户可以在用户组之间切换，以便具有其他用户组的权限。用户可以在登录后，使用命令newgrp切换到其他用户组，这个命令的参数就是目的用户组。&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;newgrp root
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;4.3Linux文件用户属性修改&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;chown [-R] user_name filename_OR_dirname  # 更改文件或目录的所有者
+&lt;&#x2F;span&gt;chgrp [-R] group_name filename_OR_dirname  # 更改文件或目录所在组
+&lt;&#x2F;span&gt;# [-R]参数递归更改目录下所有文件的用户属性
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;can-kao-zi-liao&quot;&gt;参考资料&lt;&#x2F;h2&gt;
+&lt;p&gt;1.&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;http:&#x2F;&#x2F;man.linuxde.net&#x2F;tar&quot;&gt;http:&#x2F;&#x2F;man.linuxde.net&#x2F;tar&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;2.&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.cnblogs.com&#x2F;cloud2rain&#x2F;archive&#x2F;2013&#x2F;03&#x2F;22&#x2F;2976337.html&quot;&gt;https:&#x2F;&#x2F;www.cnblogs.com&#x2F;cloud2rain&#x2F;archive&#x2F;2013&#x2F;03&#x2F;22&#x2F;2976337.html&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;3.&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.cnblogs.com&#x2F;52php&#x2F;p&#x2F;5677628.html&quot;&gt;https:&#x2F;&#x2F;www.cnblogs.com&#x2F;52php&#x2F;p&#x2F;5677628.html&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;4.&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.jb51.net&#x2F;LINUXjishu&#x2F;43356.html&quot;&gt;https:&#x2F;&#x2F;www.jb51.net&#x2F;LINUXjishu&#x2F;43356.html&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>图片头文件解析</title>
+		<published>2017-12-12T00:00:00+00:00</published>
+		<updated>2017-12-12T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/hexo-tu-pian-tou-wen-jian-jie-xi/" type="text/html"/>
+		<id>https://blog.vhcffh.com/hexo-tu-pian-tou-wen-jian-jie-xi/</id>
+		<content type="html">&lt;p&gt;各种类型的图片头文件解析&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;1-pngtu-pian-wen-jian-tou&quot;&gt;1.PNG图片文件头&lt;&#x2F;h3&gt;
+&lt;h4 id=&quot;1-1pngwen-jian-jie-gou&quot;&gt;1.1PNG文件结构&lt;&#x2F;h4&gt;
+&lt;p&gt;PNG图像格式文件由一个8字节的PNG文件标识（file
+signature）域和3个以上的后续数据块（IHDR、IDAT、IEND等）组成。&lt;br &#x2F;&gt;
+PNG文件包括8字节文件署名（89 50 4E 47 0D 0A 1A
+0A，十六进制），用来识别PNG格式。&lt;&#x2F;p&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th align=&quot;left&quot;&gt;十六进制&lt;&#x2F;th&gt;&lt;th align=&quot;left&quot;&gt;含义&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td align=&quot;left&quot;&gt;89&lt;&#x2F;td&gt;&lt;td align=&quot;left&quot;&gt;用于检测传输系统是否支持8位的字符编码（8 bit data），用以减少将文本文件被错误的识别成PNG文件的机会，反之亦然。&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td align=&quot;left&quot;&gt;50 4E 47&lt;&#x2F;td&gt;&lt;td align=&quot;left&quot;&gt;PNG每个字母对应的ASCII，让用户可以使用文本编辑器查看时，识别出是PNG文件。&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td align=&quot;left&quot;&gt;0D 0A&lt;&#x2F;td&gt;&lt;td align=&quot;left&quot;&gt;DOS风格的换行符（CRLF）。用于DOS-Unix数据的换行符转换。&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td align=&quot;left&quot;&gt;1A&lt;&#x2F;td&gt;&lt;td align=&quot;left&quot;&gt;在DOS命令行下，用于阻止文件显示的文件结束符。&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td align=&quot;left&quot;&gt;0A&lt;&#x2F;td&gt;&lt;td align=&quot;left&quot;&gt;Unix风格的换行符（LF）。用于Unix-DOS换行符的转换。&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
+&lt;h3 id=&quot;1-2pngshu-ju-kuai-chunk&quot;&gt;1.2PNG数据块（chunk）&lt;&#x2F;h3&gt;
+&lt;p&gt;PNG定义了两种类型的数据块，一种是称为关键数据块(critical
+chunk)，这是标准的数据块，另一种叫做辅助数据块(ancillary
+chunks)，这是可选的数据块。&lt;br &#x2F;&gt;
+关键数据块定义了4个标准数据块，每个PNG文件都必须包含它们，PNG读写软件也都必须要支持这些数据块。虽然PNG文件规范没有要求PNG编译码器对可选数据块进行编码和译码，但规范提倡支持可选数据块。&lt;br &#x2F;&gt;
+下表就是PNG中数据块的类别，其中，关键数据块部分我们使用红色背景加以区分。&lt;&#x2F;p&gt;
+&lt;p&gt;数据块符号         数据块名称         多数据块   可选否        位置限制&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;  IHDR           文件头数据块           否        否           第一块
+&lt;&#x2F;span&gt;  cHRM        基色和白色点数据块        否        是      在PLTE和IDAT之前
+&lt;&#x2F;span&gt;  gAMA           图像γ数据块            否        是      在PLTE和IDAT之前
+&lt;&#x2F;span&gt;  sBIT         样本有效位数据块         否        是      在PLTE和IDAT之前
+&lt;&#x2F;span&gt;  PLTE           调色板数据块           否        是         在IDAT之前
+&lt;&#x2F;span&gt;  bKGD          背景颜色数据块          否        是     在PLTE之后IDAT之前
+&lt;&#x2F;span&gt;  hIST         图像直方图数据块         否        是     在PLTE之后IDAT之前
+&lt;&#x2F;span&gt;  tRNS          图像透明数据块          否        是     在PLTE之后IDAT之前
+&lt;&#x2F;span&gt;  oFFs         (专用公共数据块)         否        是         在IDAT之前
+&lt;&#x2F;span&gt;  pHYs        物理像素尺寸数据块        否        是         在IDAT之前
+&lt;&#x2F;span&gt;  sCAL         (专用公共数据块)         否        是         在IDAT之前
+&lt;&#x2F;span&gt;  IDAT            图像数据块            是        否       与其他IDAT连续
+&lt;&#x2F;span&gt;  tIME      图像最后修改时间数据块      否        是           无限制
+&lt;&#x2F;span&gt;  tEXt          文本信息数据块          是        是           无限制
+&lt;&#x2F;span&gt;  zTXt          压缩文本数据块          是        是           无限制
+&lt;&#x2F;span&gt;  fRAc         (专用公共数据块)         是        是           无限制
+&lt;&#x2F;span&gt;  gIFg         (专用公共数据块)         是        是           无限制
+&lt;&#x2F;span&gt;  gIFt         (专用公共数据块)         是        是           无限制
+&lt;&#x2F;span&gt;  gIFx         (专用公共数据块)         是        是           无限制
+&lt;&#x2F;span&gt;  IEND           图像结束数据           否        否       最后一个数据块
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>windows系统盘瘦身</title>
+		<published>2017-09-02T00:00:00+00:00</published>
+		<updated>2017-09-02T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/hexo-windowsxi-tong-pan-shou-shen/" type="text/html"/>
+		<id>https://blog.vhcffh.com/hexo-windowsxi-tong-pan-shou-shen/</id>
+		<content type="html">&lt;p&gt;C盘满了，瘦一下身&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;1-guan-bi-xi-tong-xiu-mian-gong-neng&quot;&gt;1.关闭系统休眠功能&lt;&#x2F;h3&gt;
+&lt;p&gt;删除Hiberfil.sys文件&lt;br &#x2F;&gt;
+管理员运行cmd输入下面命令&lt;br &#x2F;&gt;
+&lt;code&gt;powercfg -h of&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;2.设置虚拟内存&lt;&#x2F;p&gt;
+&lt;p&gt;控制面板---&amp;gt;(系统和安全)---&amp;gt;系统---&amp;gt;高级系统设置---&amp;gt;(高级)---&amp;gt;设置---&amp;gt;(高级)---&amp;gt;更改&lt;br &#x2F;&gt;
+把虚拟内存设置到其它盘&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;3-shan-chu-lin-shi-wen-jian&quot;&gt;3.删除临时文件&lt;&#x2F;h3&gt;
+&lt;p&gt;以下三个目录里的文件是临时文件，可以删除&lt;br &#x2F;&gt;
+C:\windows\temp&lt;br &#x2F;&gt;
+C:\ProgramData\TEMP&lt;br &#x2F;&gt;
+C:\Users\你的用户名\AppData\Local\Temp&lt;&#x2F;p&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>powershell脚本遍历目录</title>
+		<published>2017-09-01T00:00:00+00:00</published>
+		<updated>2017-09-01T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/hexo-powershelljiao-ben-bian-li-mu-lu/" type="text/html"/>
+		<id>https://blog.vhcffh.com/hexo-powershelljiao-ben-bian-li-mu-lu/</id>
+		<content type="html">&lt;p&gt;powershell脚本遍历目录&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;1-bian-li-mu-lu-ji-zi-mu-lu&quot;&gt;1.遍历目录及子目录&lt;&#x2F;h3&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;function filesize ([string]$filepath) {
+&lt;&#x2F;span&gt;    if ($filepath -eq $null) {
+&lt;&#x2F;span&gt;        throw &amp;quot;路径不能为空&amp;quot;
+&lt;&#x2F;span&gt;    }
+&lt;&#x2F;span&gt;    dir -Path $filepath | ForEach-Object -Process {
+&lt;&#x2F;span&gt;        if ($_.psiscontainer -eq $true) {
+&lt;&#x2F;span&gt;            $length = 0
+&lt;&#x2F;span&gt;            dir -Path $_.fullname -Recurse | ForEach-Object {
+&lt;&#x2F;span&gt;                $length += $_.Length
+&lt;&#x2F;span&gt;            }
+&lt;&#x2F;span&gt;            $l = $length &#x2F; 1KB
+&lt;&#x2F;span&gt;            $_.name + &amp;quot;文件夹的大小为: {0:n1} KB&amp;quot; -f $l
+&lt;&#x2F;span&gt;        }
+&lt;&#x2F;span&gt;    }
+&lt;&#x2F;span&gt;}
+&lt;&#x2F;span&gt;filesize -filepath &amp;quot;D:\&amp;quot;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;2-yun-xing-shi-li&quot;&gt;2.运行示例&lt;&#x2F;h3&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;PS F:\python&amp;gt; function filesize ([string]$filepath) {
+&lt;&#x2F;span&gt;&amp;gt;&amp;gt; if ($filepath -eq $null) {
+&lt;&#x2F;span&gt;&amp;gt;&amp;gt; throw &amp;quot;路径不能为空&amp;quot;
+&lt;&#x2F;span&gt;&amp;gt;&amp;gt; }
+&lt;&#x2F;span&gt;&amp;gt;&amp;gt; dir -Path $filepath | ForEach-Object -Process {
+&lt;&#x2F;span&gt;&amp;gt;&amp;gt; if ($_.psiscontainer -eq $true) {
+&lt;&#x2F;span&gt;&amp;gt;&amp;gt; $length = 0
+&lt;&#x2F;span&gt;&amp;gt;&amp;gt; dir -Path $_.fullname -Recurse | ForEach-Object {
+&lt;&#x2F;span&gt;&amp;gt;&amp;gt; $length += $_.Length
+&lt;&#x2F;span&gt;&amp;gt;&amp;gt; }
+&lt;&#x2F;span&gt;&amp;gt;&amp;gt; $l = $length &#x2F; 1KB
+&lt;&#x2F;span&gt;&amp;gt;&amp;gt; $_.name + &amp;quot;文件夹的大小为: {0:n1} KB&amp;quot; -f $l
+&lt;&#x2F;span&gt;&amp;gt;&amp;gt; }
+&lt;&#x2F;span&gt;&amp;gt;&amp;gt; }
+&lt;&#x2F;span&gt;&amp;gt;&amp;gt; }
+&lt;&#x2F;span&gt;PS F:\python&amp;gt; filesize -filepath &amp;quot;f:\python&amp;quot;
+&lt;&#x2F;span&gt;ipluyou文件夹的大小为: 82,196.5 KB
+&lt;&#x2F;span&gt;loginip_jlu文件夹的大小为: 16.8 KB
+&lt;&#x2F;span&gt;嗅事百科文件夹的大小为: 4.3 KB
+&lt;&#x2F;span&gt;小说文件夹的大小为: 31,043.6 KB
+&lt;&#x2F;span&gt;笑料文件夹的大小为: 1,578,575.8 KB
+&lt;&#x2F;span&gt;PS F:\python&amp;gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>powershell卸载自带应用</title>
+		<published>2017-09-01T00:00:00+00:00</published>
+		<updated>2017-09-01T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/hexo-powershellxie-zai-zi-dai-ying-yong/" type="text/html"/>
+		<id>https://blog.vhcffh.com/hexo-powershellxie-zai-zi-dai-ying-yong/</id>
+		<content type="html">&lt;p&gt;通过powershell卸载windows自带应用&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;1-xie-zai-quan-bu-zi-dai-ying-yong&quot;&gt;1.卸载全部自带应用&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;code&gt;Get-AppxPackage -User $env:USERNAME | Remove-AppxPackage&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;2-qi-ta-geng-duo-xie-zai&quot;&gt;2.其他更多卸载&lt;&#x2F;h3&gt;
+&lt;p&gt;OneNote:&lt;br &#x2F;&gt;
+&lt;code&gt;Get-AppxPackage OneNote | Remove-AppxPackage&lt;&#x2F;code&gt;&lt;br &#x2F;&gt;
+3D:&lt;br &#x2F;&gt;
+&lt;code&gt;Get-AppxPackage 3d | Remove-AppxPackage&lt;&#x2F;code&gt;&lt;br &#x2F;&gt;
+Camera相机:&lt;br &#x2F;&gt;
+&lt;code&gt;Get-AppxPackage camera | Remove-AppxPackage&lt;&#x2F;code&gt;&lt;br &#x2F;&gt;
+邮件和日历:&lt;br &#x2F;&gt;
+&lt;code&gt;Get-AppxPackage communi | Remove-AppxPackage&lt;&#x2F;code&gt;&lt;br &#x2F;&gt;
+新闻订阅:&lt;br &#x2F;&gt;
+&lt;code&gt;Get-AppxPackage bing | Remove-AppxPackage&lt;&#x2F;code&gt;&lt;br &#x2F;&gt;
+Groove音乐电影与电视:&lt;br &#x2F;&gt;
+&lt;code&gt;Get-AppxPackage zune | Remove-AppxPackage&lt;&#x2F;code&gt;&lt;br &#x2F;&gt;
+人脉:&lt;br &#x2F;&gt;
+&lt;code&gt;Get-AppxPackage people | Remove-AppxPackage&lt;&#x2F;code&gt;&lt;br &#x2F;&gt;
+手机伴侣Phone Companion:&lt;br &#x2F;&gt;
+&lt;code&gt;Get-AppxPackage phone | Remove-AppxPackage&lt;&#x2F;code&gt;&lt;br &#x2F;&gt;
+照片:&lt;br &#x2F;&gt;
+&lt;code&gt;Get-AppxPackage photo | Remove-AppxPackage&lt;&#x2F;code&gt;&lt;br &#x2F;&gt;
+纸牌游戏(还敢要钱的那货):&lt;br &#x2F;&gt;
+&lt;code&gt;Get-AppxPackage solit | Remove-AppxPackage&lt;&#x2F;code&gt;&lt;br &#x2F;&gt;
+录音机:&lt;br &#x2F;&gt;
+&lt;code&gt;Get-AppxPackage soundrec | Remove-AppxPackage&lt;&#x2F;code&gt;&lt;br &#x2F;&gt;
+Xbox:&lt;br &#x2F;&gt;
+&lt;code&gt;Get-AppxPackage xbox | Remove-AppxPackage&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>谷歌浏览器运行安卓APK</title>
+		<published>2017-06-25T00:00:00+00:00</published>
+		<updated>2017-06-25T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/hexo-gu-ge-liu-lan-qi-yun-xing-an-zhuo-apk/" type="text/html"/>
+		<id>https://blog.vhcffh.com/hexo-gu-ge-liu-lan-qi-yun-xing-an-zhuo-apk/</id>
+		<content type="html">&lt;p&gt;使用谷歌浏览器的插件ARChon实现安卓APK在电脑上运行&lt;&#x2F;p&gt;
+&lt;p&gt;用谷歌插件在电脑上运行安卓APK&lt;&#x2F;p&gt;
+&lt;p&gt;1，直接谷歌应用商店下载出现错误&lt;br &#x2F;&gt;
+程序包无效：&amp;quot;CRX_SIGNATURE_VERIFICATION_FAILED&amp;quot;。&lt;&#x2F;p&gt;
+&lt;p&gt;2，直接下载crx包参考百度经验&lt;&#x2F;p&gt;
+&lt;p&gt;3，出现错误：Cannot load extension with file or directory name
+&lt;em&gt;metadata. Filenames starting with &amp;quot;&lt;&#x2F;em&gt;&amp;quot; are reserved for use by the
+system.&lt;br &#x2F;&gt;
+更改解压后文件夹_metadata为metadata&lt;&#x2F;p&gt;
+&lt;p&gt;4，出现错误：&#x27;import&#x27; extension is not installed.&lt;br &#x2F;&gt;
+打开文件manifest.json去掉import一句&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;&amp;quot;import&amp;quot;:[{&amp;quot;id&amp;quot;:&amp;quot;mfaihdlpglflfgpfjcifdjdjcckigekc&amp;quot;}],
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;继续谷歌去掉这句话不对&lt;br &#x2F;&gt;
+看这篇CSDN文章&lt;br &#x2F;&gt;
+说要下载插件ARChon&lt;br &#x2F;&gt;
+(以下废话，直接看5）&lt;&#x2F;p&gt;
+&lt;p&gt;4.1，安装成功，但启用后一直白屏&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;http:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;2950376-a275f201f7fdead8.PNG?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;怀疑是不是去掉import一句出问题了&lt;&#x2F;p&gt;
+&lt;p&gt;4.2，网上看到开启Native Client&lt;br &#x2F;&gt;
+谷歌浏览器地址栏输入chrome:&#x2F;&#x2F;flags&#x2F;开启Native Client&lt;br &#x2F;&gt;
+无用&lt;&#x2F;p&gt;
+&lt;p&gt;4.3，发现另一个谷歌商店的应用twerk这个应用是把 APK 文件转换成 Chrome
+App用的&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;http:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;2950376-2372cf692c93b5a9.PNG?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;5ARChon是谷歌插件要在扩展程序，打钩开发者模式，点击加载已解压扩展程序，选择解压文件夹&lt;br &#x2F;&gt;
+加载ARChon时有警告，可忽略&lt;br &#x2F;&gt;
+先加载ARC Welder出现4的错误后&lt;br &#x2F;&gt;
+再加载ARChon，然后ARC Welder就好了，不好的话重新加载就好了&lt;br &#x2F;&gt;
+安装好了就是APK运行不了&lt;&#x2F;p&gt;
+&lt;p&gt;4.3安装的twerk可以把 APK 文件转换一个文件夹&lt;br &#x2F;&gt;
+然后ARC Welder运行&lt;br &#x2F;&gt;
+谷歌浏览器如何运行APK博客CSDN可以试一试&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;you-yu-dao-de-wen-ti&quot;&gt;又遇到的问题&lt;&#x2F;h2&gt;
+&lt;p&gt;Chrome加载Android应用，提示&amp;quot;There is no &amp;quot;message&amp;quot; element for key
+extName&amp;quot;错误，如：&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;http:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;2950376-0c0702ed3e06b504.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;jie-jue-fang-fa&quot;&gt;解决方法：&lt;&#x2F;h2&gt;
+&lt;p&gt;找到该Crx文件夹下的&amp;quot;_locales\en&amp;quot;目录下的&amp;quot;messages.json&amp;quot;文件，在&amp;quot;extName&amp;quot;节点下，添加&amp;quot;message&amp;quot;字段标签，值对应应用的包名：&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;http:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;2950376-c5a40ac2756b5a87.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;WebGL 不受支持&lt;br &#x2F;&gt;
+知乎有教程&lt;br &#x2F;&gt;
+浏览器快捷方式属性增加---ignore-gpu-blacklist&lt;br &#x2F;&gt;
+开启硬件加速&lt;br &#x2F;&gt;
+试了一下掌阅&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;http:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;2950376-f4ed0ddb2b2d06e1.PNG?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;试了一下简书&lt;br &#x2F;&gt;
+可以运行&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;http:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;2950376-ed37c301d49d7485.PNG?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+</content>
+	</entry>
+</feed>

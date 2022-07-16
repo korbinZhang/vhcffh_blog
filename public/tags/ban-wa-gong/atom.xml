@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+	<title>Frey&#x27;s blog - 搬瓦工</title>
+	<subtitle>一个简单的个人博客，用于记录笔记</subtitle>
+	<link href="https://blog.vhcffh.com/tags/ban-wa-gong/atom.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://blog.vhcffh.com"/>
+	<generator uri="https://www.getzola.org/">Zola</generator>
+	<updated>2017-08-04T00:00:00+00:00</updated>
+	<id>https://blog.vhcffh.com/tags/ban-wa-gong/atom.xml</id>
+	<entry xml:lang="en">
+		<title>搬瓦工VPS搭建Web服务器</title>
+		<published>2017-08-04T00:00:00+00:00</published>
+		<updated>2017-08-04T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/hexo-ban-wa-gong-vpsda-jian-webfu-wu-qi/" type="text/html"/>
+		<id>https://blog.vhcffh.com/hexo-ban-wa-gong-vpsda-jian-webfu-wu-qi/</id>
+		<content type="html">&lt;p&gt;记录在centos上安装apache+php+mysql&lt;br &#x2F;&gt;
+搬瓦工VPS&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;bandwagonhost.com&#x2F;aff.php?aff=17697&quot;&gt;购买地址&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;an-zhuang-apache&quot;&gt;安装apache&lt;&#x2F;h1&gt;
+&lt;p&gt;安装&lt;code&gt;yum install httpd&lt;&#x2F;code&gt;&lt;br &#x2F;&gt;
+启动&lt;code&gt;service httpd start&lt;&#x2F;code&gt;&lt;br &#x2F;&gt;
+暂停&lt;code&gt;service httpd stop&lt;&#x2F;code&gt;&lt;br &#x2F;&gt;
+重启&lt;code&gt;service httpd restart&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;检查开机启动情况&lt;code&gt;chkconfig --list httpd&lt;&#x2F;code&gt;&lt;br &#x2F;&gt;
+默认情况下是全部关闭的，尽量设置开机启动，以防主机意外关机&lt;&#x2F;p&gt;
+&lt;p&gt;设置开机启动命令&lt;code&gt;chkconfig httpd on&lt;&#x2F;code&gt;&lt;br &#x2F;&gt;
+再次检查启动情况，看到2，3，4，5为启动&lt;br &#x2F;&gt;
+关闭开机启动命令&lt;code&gt;chkconfig httpd off&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;到此Apache安装完成，在自己浏览器中输入主机IP和端口号能正常打开&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;an-zhuang-php&quot;&gt;安装php&lt;&#x2F;h1&gt;
+&lt;p&gt;命令为:&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;yum install php
+&lt;&#x2F;span&gt;yum install php-mysql  php-gd  php-imap  php-ldap  php-odbc php-pear  php-xml  php-xmlrpc
+&lt;&#x2F;span&gt;yum install php-mysql
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;以上命令为安装php及其支持的组件&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;an-zhuang-mysql&quot;&gt;安装mysql&lt;&#x2F;h1&gt;
+&lt;h2 id=&quot;an-zhuang&quot;&gt;安装&lt;&#x2F;h2&gt;
+&lt;hr &#x2F;&gt;
+&lt;p&gt;首先查看主机是否已经安装&lt;code&gt;rpm -qa|grep mysql&lt;&#x2F;code&gt;&lt;br &#x2F;&gt;
+注意：可能检查中安装有php-mysql XXXXX 和
+mysql-libXXXX,这是刚刚第二步安装的php的组件,不必理会&lt;&#x2F;p&gt;
+&lt;p&gt;已经安装的话就执行删除命令&lt;code&gt;rpm -e mysql&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;然后继续安装&lt;br &#x2F;&gt;
+使用命令yum list | grep mysql&lt;br &#x2F;&gt;
+来查看yum上提供的mysql数据库可下载的版本&lt;&#x2F;p&gt;
+&lt;p&gt;安装命令&lt;code&gt;yum install -y mysql-server mysql mysql-devel&lt;&#x2F;code&gt;&lt;br &#x2F;&gt;
+等待一段时间安装成功&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;pei-zhi&quot;&gt;配置&lt;&#x2F;h2&gt;
+&lt;hr &#x2F;&gt;
+&lt;p&gt;接下来是对mysql的配置(注意:命令中是&amp;quot;mysqld&amp;quot;,不是mysql)&lt;br &#x2F;&gt;
+初始化:&lt;code&gt;service mysqld start&lt;&#x2F;code&gt;&lt;br &#x2F;&gt;
+重启:&lt;code&gt;service mysqld restart&lt;&#x2F;code&gt;&lt;br &#x2F;&gt;
+配置开机自动启动:&lt;code&gt;chkconfig mysqld on&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;为mysql的root账户设置密码:&lt;code&gt;mysqladmin -u root password &#x27;*********&#x27;&lt;&#x2F;code&gt;&lt;br &#x2F;&gt;
+登录命令&lt;code&gt;mysql -u root -p&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>搬瓦工安装ss并加速</title>
+		<published>2017-08-03T00:00:00+00:00</published>
+		<updated>2017-08-03T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/hexo-ban-wa-gong-an-zhuang-ssbing-jia-su/" type="text/html"/>
+		<id>https://blog.vhcffh.com/hexo-ban-wa-gong-an-zhuang-ssbing-jia-su/</id>
+		<content type="html">&lt;p&gt;通过搬瓦工的VPS安装ss的几种方法&lt;&#x2F;p&gt;
+&lt;p&gt;搬瓦工（BandwagonHost）是美国IT7公司旗下的一家提供便宜年付OVZ架构的VPS主机方案的服务商。价格便宜、且依托的商家比较靠谱，具有较高的性价比。拿来搭个FQ是非常合适的，做个小站也是可以的。&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;1-gou-mai-di-zhi&quot;&gt;1.购买地址&lt;&#x2F;h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;搬瓦工所有配置及购买地址:&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;bandwagonhost.com&#x2F;aff.php?aff=17697&quot;&gt;https:&#x2F;&#x2F;bandwagonhost.com&#x2F;aff.php?aff=17697&lt;&#x2F;a&gt;
+以前有小内存的VPS年费三刀，很便宜，但现在没有了，缺货，连521M的有时候也会缺货，看来挺火的。&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;h1 id=&quot;2-an-zhuang-shadowsocks&quot;&gt;2.安装Shadowsocks&lt;&#x2F;h1&gt;
+&lt;h2 id=&quot;2-1ban-wa-gong-hou-tai-yi-jian-an-zhuang-bu-tui-jian&quot;&gt;2.1搬瓦工后台一键安装(不推荐)&lt;&#x2F;h2&gt;
+&lt;p&gt;登录账号-&amp;gt;Client Area-&amp;gt;Services-&amp;gt;My Services-&amp;gt;KiwiVM Control Panel&lt;br &#x2F;&gt;
+来到管理面板，点击 Shadowsocks Server 就可以一键安装 Shadowsocks&lt;br &#x2F;&gt;
+测试过它自带的一键安装，速度太慢，yotube视频看不了，有点慢。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;2-2shi-yong-shelljiao-ben-an-zhuang-tui-jian&quot;&gt;2.2使用shell脚本安装(推荐)&lt;&#x2F;h2&gt;
+&lt;p&gt;2.2.1安装 shadowsoksR&lt;&#x2F;p&gt;
+&lt;p&gt;Shadowsocks的一个分支，比较不错。但是默认是 aes-256-cfb 加密，如果需要
+chacha20 加密，需要手动切换。&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;wget --no-check-certificate https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;teddysun&#x2F;shadowsocks_install&#x2F;master&#x2F;shadowsocksR.sh
+&lt;&#x2F;span&gt;chmod +x shadowsocksR.sh
+&lt;&#x2F;span&gt;.&#x2F;shadowsocksR.sh 2&amp;gt;&amp;amp;1 | tee shadowsocksR.log
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;安装成功需要等几分钟&lt;br &#x2F;&gt;
+这个速度可以看yotube无压力&lt;&#x2F;p&gt;
+&lt;p&gt;卸载方法：&lt;br &#x2F;&gt;
+使用 root 用户登录，运行以下命令：&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;.&#x2F;shadowsocksR.sh uninstall
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;安装完成后即已后台启动 ShadowsocksR,运行：&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;&#x2F;etc&#x2F;init.d&#x2F;shadowsocks status
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;可以查看 ShadowsocksR 进程是否已经启动。&lt;br &#x2F;&gt;
+本脚本安装完成后，已将 ShadowsocksR 自动加入开机自启动。&lt;&#x2F;p&gt;
+&lt;p&gt;其它命令：&lt;br &#x2F;&gt;
+启动：&#x2F;etc&#x2F;init.d&#x2F;shadowsocks start&lt;br &#x2F;&gt;
+停止：&#x2F;etc&#x2F;init.d&#x2F;shadowsocks stop&lt;br &#x2F;&gt;
+重启：&#x2F;etc&#x2F;init.d&#x2F;shadowsocks restart&lt;br &#x2F;&gt;
+状态：&#x2F;etc&#x2F;init.d&#x2F;shadowsocks status&lt;&#x2F;p&gt;
+&lt;p&gt;配置文件路径：&#x2F;etc&#x2F;shadowsocks.json&lt;br &#x2F;&gt;
+日志文件路径：&#x2F;var&#x2F;log&#x2F;shadowsocks.log&lt;br &#x2F;&gt;
+代码安装目录：&#x2F;usr&#x2F;local&#x2F;shadowsocks&lt;&#x2F;p&gt;
+&lt;p&gt;2.2.2安装 shadowsocks-go版本&lt;&#x2F;p&gt;
+&lt;p&gt;据说有buff，比python版Shadowsocks要快：&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;wget --no-check-certificate https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;teddysun&#x2F;shadowsocks_install&#x2F;master&#x2F;shadowsocks-go.sh
+&lt;&#x2F;span&gt;chmod +x shadowsocks-go.sh
+&lt;&#x2F;span&gt;.&#x2F;shadowsocks-go.sh 2&amp;amp;gt;&amp;amp;amp;1 | tee shadowsocks-go.log
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;2.2.3其他版本Shadowsocks一键安装：&lt;&#x2F;p&gt;
+&lt;p&gt;来自 teddysun：&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;teddysun&#x2F;shadowsocks_install&quot;&gt;https:&#x2F;&#x2F;github.com&#x2F;teddysun&#x2F;shadowsocks_install&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;3-yu-dao-de-yi-xie-wen-ti&quot;&gt;3.遇到的一些问题&lt;&#x2F;h1&gt;
+&lt;h2 id=&quot;3-1ban-wa-gong-mo-ren-xi-tong-centosmei-you-wgetming-ling-xu-yao-an-zhuang&quot;&gt;3.1搬瓦工默认系统Centos没有wget命令需要安装&lt;&#x2F;h2&gt;
+&lt;p&gt;安装命令:&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;yum -y install wget
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;3-2guan-yu-pei-zhi-duo-yong-hu&quot;&gt;3.2关于配置多用户&lt;&#x2F;h2&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;vi &#x2F;etc&#x2F;shadowsocks.json
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;只需要在port_password项下添加&amp;quot;端口号&amp;quot;:&amp;quot;密码&amp;quot;&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;{
+&lt;&#x2F;span&gt;    &amp;quot;server&amp;quot;:&amp;quot;0.0.0.0&amp;quot;,
+&lt;&#x2F;span&gt;    &amp;quot;server_ipv6&amp;quot;:&amp;quot;[::]&amp;quot;,
+&lt;&#x2F;span&gt;    &amp;quot;local_address&amp;quot;:&amp;quot;127.0.0.1&amp;quot;,
+&lt;&#x2F;span&gt;    &amp;quot;local_port&amp;quot;:1080,
+&lt;&#x2F;span&gt;    &amp;quot;port_password&amp;quot;:{
+&lt;&#x2F;span&gt;        &amp;quot;12345&amp;quot;: &amp;quot;123456&amp;quot;,
+&lt;&#x2F;span&gt;        &amp;quot;23456&amp;quot;: &amp;quot;123456&amp;quot;
+&lt;&#x2F;span&gt;    },
+&lt;&#x2F;span&gt;    &amp;quot;timeout&amp;quot;:120,
+&lt;&#x2F;span&gt;    &amp;quot;method&amp;quot;:&amp;quot;aes-256-cfb&amp;quot;,
+&lt;&#x2F;span&gt;    &amp;quot;protocol&amp;quot;:&amp;quot;origin&amp;quot;,
+&lt;&#x2F;span&gt;    &amp;quot;protocol_param&amp;quot;:&amp;quot;&amp;quot;,
+&lt;&#x2F;span&gt;    &amp;quot;obfs&amp;quot;:&amp;quot;plain&amp;quot;,
+&lt;&#x2F;span&gt;    &amp;quot;obfs_param&amp;quot;:&amp;quot;&amp;quot;,
+&lt;&#x2F;span&gt;    &amp;quot;redirect&amp;quot;:&amp;quot;&amp;quot;,
+&lt;&#x2F;span&gt;    &amp;quot;dns_ipv6&amp;quot;:false,
+&lt;&#x2F;span&gt;    &amp;quot;fast_open&amp;quot;:false,
+&lt;&#x2F;span&gt;    &amp;quot;workers&amp;quot;:1
+&lt;&#x2F;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h1 id=&quot;can-kao-zi-liao&quot;&gt;参考资料&lt;&#x2F;h1&gt;
+&lt;p&gt;1.&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;blog.kuoruan.com&#x2F;48.html&quot;&gt;https:&#x2F;&#x2F;blog.kuoruan.com&#x2F;48.html&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+	</entry>
+</feed>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+	<title>Frey&#x27;s blog - Bagging</title>
+	<subtitle>一个简单的个人博客，用于记录笔记</subtitle>
+	<link href="https://blog.vhcffh.com/tags/bagging/atom.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://blog.vhcffh.com"/>
+	<generator uri="https://www.getzola.org/">Zola</generator>
+	<updated>2019-08-19T00:00:00+00:00</updated>
+	<id>https://blog.vhcffh.com/tags/bagging/atom.xml</id>
+	<entry xml:lang="en">
+		<title>集成学习算法总结</title>
+		<published>2019-08-19T00:00:00+00:00</published>
+		<updated>2019-08-19T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/hexo-ji-cheng-xue-xi-suan-fa-zong-jie/" type="text/html"/>
+		<id>https://blog.vhcffh.com/hexo-ji-cheng-xue-xi-suan-fa-zong-jie/</id>
+		<content type="html">&lt;p&gt;集成学习算法是指使用多个分类器提高整体的泛化能力&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;1-bagging-bootstrap-aggregating-suan-fa&quot;&gt;1.Bagging（Bootstrap Aggregating）算法&lt;&#x2F;h1&gt;
+&lt;p&gt;通过组合随机生成的训练集而改进分类的集成算法(bootstrap)&lt;&#x2F;p&gt;
+&lt;p&gt;使用训练集中的某个子集作为当前训练集（有放回随机抽样）;经过T次训练后,得到T个不同的分类器&lt;&#x2F;p&gt;
+&lt;p&gt;调用这T个分类器,把这T个分类结果中出现次数多的类赋予测试样例&lt;&#x2F;p&gt;
+&lt;p&gt;有效减少噪声影响&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;2-boostingsuan-fa&quot;&gt;2.Boosting算法&lt;&#x2F;h1&gt;
+&lt;p&gt;初始化样本权重,生成一个弱分类器;&lt;&#x2F;p&gt;
+&lt;p&gt;利用弱分类器增加分类错误的样本的权重;&lt;&#x2F;p&gt;
+&lt;p&gt;不断重复,生成T个弱分类器;&lt;&#x2F;p&gt;
+&lt;p&gt;对噪声敏感&lt;&#x2F;p&gt;
+&lt;p&gt;改进算法-AdaBoosting算法&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;对每一次的训练数据样本赋予一个权重，并且每一次样本的权重分布依赖上一次的分类结果&lt;&#x2F;li&gt;
+&lt;li&gt;基分类器之间采用序列的线性加权方式来组合&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h1 id=&quot;3-gradient-boosting&quot;&gt;3.Gradient Boosting&lt;&#x2F;h1&gt;
+&lt;p&gt;1,初始化&lt;&#x2F;p&gt;
+&lt;p&gt;$$
+f_0(x)=\arg\min_\gamma\sum_{i=1}^NL(y_i,\gamma)
+$$&lt;&#x2F;p&gt;
+&lt;p&gt;2.1计算负梯度&lt;&#x2F;p&gt;
+&lt;p&gt;$$
+\widetilde y_i = -\frac{\partial L(y_i,f_{m-1}(x_i))}{\partial f_{m-1}(x_i)}, i=1,2,\cdots N
+$$&lt;&#x2F;p&gt;
+&lt;p&gt;2.2用基学习器$ h_m(x) $ 拟合$ \widetilde y_i $&lt;&#x2F;p&gt;
+&lt;p&gt;$$
+w_m=\mathop{\arg\min}\limits_w\sum_{i=1}^N[\widetilde y_i-h_m(x_i;w)]^2
+$$&lt;&#x2F;p&gt;
+&lt;p&gt;2.3确定步长$ \rho_m $&lt;&#x2F;p&gt;
+&lt;p&gt;$$
+\rho_m = \mathop{\arg\min}\limits_{\rho} \sum\limits_{i=1}^{N} L(y_i,f_{m-1}(x_i) + \rho h_m(x_i,;,w_m))
+$$&lt;&#x2F;p&gt;
+&lt;p&gt;2.4更新$ f_m(x) $ 最终得到$ f_M(x) $&lt;&#x2F;p&gt;
+&lt;p&gt;$$
+f_m(x) = f_{m-1}(x) + \rho_m h_m(x,;,w_m)
+$$&lt;&#x2F;p&gt;
+&lt;p&gt;Bagging + 决策树 = 随机森林&lt;&#x2F;p&gt;
+&lt;p&gt;AdaBoost + 决策树 = 提升树&lt;&#x2F;p&gt;
+&lt;p&gt;Gradient Boosting + 决策树 = GBDT&lt;&#x2F;p&gt;
+</content>
+	</entry>
+</feed>

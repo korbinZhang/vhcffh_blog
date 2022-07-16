@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+	<title>Frey&#x27;s blog - Git</title>
+	<subtitle>一个简单的个人博客，用于记录笔记</subtitle>
+	<link href="https://blog.vhcffh.com/tags/git/atom.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://blog.vhcffh.com"/>
+	<generator uri="https://www.getzola.org/">Zola</generator>
+	<updated>2020-10-16T00:00:00+00:00</updated>
+	<id>https://blog.vhcffh.com/tags/git/atom.xml</id>
+	<entry xml:lang="en">
+		<title>git基本用法笔记</title>
+		<published>2020-10-16T00:00:00+00:00</published>
+		<updated>2020-10-16T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/wp-351/" type="text/html"/>
+		<id>https://blog.vhcffh.com/wp-351/</id>
+		<content type="html">&lt;h2 id=&quot;fen-zhi-jian-li-yu-he-bing&quot;&gt;分支建立于合并&lt;&#x2F;h2&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;git commit # 提交
+&lt;&#x2F;span&gt;git branch branch_name # 新建分支
+&lt;&#x2F;span&gt;git checkout branch_name # 切换分支
+
+&lt;&#x2F;span&gt;git merge branch_name # 合并分支
+&lt;&#x2F;span&gt;# 将branch_name合并到当前分支，并增加一次commit
+
+&lt;&#x2F;span&gt;git rebase branch_name # 复制分支
+&lt;&#x2F;span&gt;# 将当前分支所有commit复制到branch_name，没有新增commit
+&lt;&#x2F;span&gt;# 当前分支和branch_name 有共同的祖先
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;zai-fen-zhi-shu-shang-yi-dong&quot;&gt;在分支树上移动&lt;&#x2F;h2&gt;
+&lt;p&gt;branch_name指向分支树上的一个提交记录，每一个提交记录都有唯一的SHA-1
+Hash值标识作为commit id&lt;&#x2F;p&gt;
+&lt;p&gt;默认HEAD指向当前提交记录，当前记录有分支名，则显示为branch_name*&lt;&#x2F;p&gt;
+&lt;p&gt;HEAD可以指向任何其他的提交记录，只需要checkout到一个指定的commit
+id，或者使用引用&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;git checkout da3423*
+&lt;&#x2F;span&gt;# 相对引用^
+&lt;&#x2F;span&gt;git checkout HEAD^^ # 将HEAD指向HEAD的第2父提交
+&lt;&#x2F;span&gt;git checkout master^ # 将HEAD指向master的第1父提交
+&lt;&#x2F;span&gt;git branch -f master HEAD^^^ # 强制将master指向HEAD的第三父提交
+&lt;&#x2F;span&gt;# 相对引用~
+&lt;&#x2F;span&gt;git checkout HEAD~10 # 将HEAD指向HEAD前10个commit id
+&lt;&#x2F;span&gt;# 撤销变更
+&lt;&#x2F;span&gt;git reset master^ # 当前分支指向master^，工作区内容不变
+&lt;&#x2F;span&gt;git revert master^ # 增加一次提交，使当前分支与master^相同
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;yi-dong-ti-jiao-ji-lu&quot;&gt;移动提交记录&lt;&#x2F;h2&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;git cherry-pick &amp;lt;提交号&amp;gt;...
+&lt;&#x2F;span&gt;# 将一系列提交copy到当前分支
+&lt;&#x2F;span&gt;git rebase -i &amp;lt;提交号&amp;gt;
+&lt;&#x2F;span&gt;# 以-i参数为基,重新整理提交（排序，删除等）
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>Git使用中的一些问题</title>
+		<published>2018-01-22T00:00:00+00:00</published>
+		<updated>2018-01-22T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/hexo-gitshi-yong-zhong-de-yi-xie-wen-ti/" type="text/html"/>
+		<id>https://blog.vhcffh.com/hexo-gitshi-yong-zhong-de-yi-xie-wen-ti/</id>
+		<content type="html">&lt;h3 id=&quot;1-pei-zhi-wen-ti&quot;&gt;1-配置问题&lt;&#x2F;h3&gt;
+&lt;p&gt;全局配置&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;$ git config --list  查看当前用户信息
+&lt;&#x2F;span&gt;$ git config --global user.name &amp;quot;username&amp;quot; 配置用户名
+&lt;&#x2F;span&gt;$ git config --global user.email emailname@example.com 配置邮箱
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;项目配置(进入项目目录)&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;$ cat .git&#x2F;config  项目配置信息
+&lt;&#x2F;span&gt;$ git config  user.name &amp;quot;username&amp;quot; 配置用户名
+&lt;&#x2F;span&gt;$ git config  user.email emailname@example.com 配置邮箱
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;全局的配置就是加上---global&lt;br &#x2F;&gt;
+项目未设置的配置默认使用全局配置&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;2-mi-yao-wen-ti&quot;&gt;2-密钥问题&lt;&#x2F;h3&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;$ cd ~&#x2F;.ssh  查看是否存在密钥
+&lt;&#x2F;span&gt;$ ssh-keygen -t rsa -C &amp;quot;emailname@example.com&amp;quot; 生成密钥
+&lt;&#x2F;span&gt;$ ssh -T git@github.com  测试是否配置成功
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;生成密钥过程中回车三次，是密码为空，不然每次push都要输入密码&lt;br &#x2F;&gt;
+生成密钥后主要有两个文件&lt;br &#x2F;&gt;
+~&#x2F;.ssh&#x2F;id_rsa&lt;br &#x2F;&gt;
+私钥进行处理后的一些内容&lt;br &#x2F;&gt;
+~&#x2F;.ssh&#x2F;id_rsa.pub&lt;br &#x2F;&gt;
+公钥进行处理后的内容，提交到服务器(github或coding)的内容&lt;br &#x2F;&gt;
+~&#x2F;.ssh&#x2F;known_hosts&lt;br &#x2F;&gt;
+这个文件可能会有，是ssh对服务器的一些记录&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;3-gong-zuo-qu-zan-cun-qu-he-ban-ben-ku&quot;&gt;3-工作区、暂存区和版本库&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;img src=&quot;git.jpg&quot; alt=&quot;img&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;code&gt;git add&lt;&#x2F;code&gt;：暂存区的目录树被更新，同时工作区修改（或新增）的文件内容被写入到对象库中的一个新的对象中，而该对象的ID被记录在暂存区的文件索引中。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;code&gt;git commit&lt;&#x2F;code&gt;：暂存区的目录树写到版本库（对象库）中，master
+分支会做相应的更新。即 master 指向的目录树就是提交时暂存区的目录树。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;code&gt;git reset HEAD&lt;&#x2F;code&gt; ：暂存区的目录树会被重写，被 master
+分支指向的目录树所替换，但是工作区不受影响。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;code&gt;git rm --cached &amp;lt;file&amp;gt;&lt;&#x2F;code&gt;：直接从暂存区删除文件，工作区则不做出改变。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;code&gt;git checkout .&lt;&#x2F;code&gt; 或者
+&lt;code&gt;git checkout -- &amp;lt;file&amp;gt;&lt;&#x2F;code&gt;：用暂存区全部或指定的文件替换工作区的文件。&lt;strong&gt;这个操作很危险，会清除工作区中未添加到暂存区的改动。&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;code&gt;git checkout HEAD .&lt;&#x2F;code&gt;或者 &lt;code&gt;git checkout HEAD &amp;lt;file&amp;gt;&lt;&#x2F;code&gt;：用 HEAD 指向的
+master
+分支中的全部或者部分文件替换暂存区和以及工作区中的文件。&lt;strong&gt;这个命令也是极具危险性的，因为不但会清除工作区中未提交的改动，也会清除暂存区中未提交的改动。&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;can-kao-zi-liao&quot;&gt;参考资料&lt;&#x2F;h3&gt;
+&lt;p&gt;1.&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.cnblogs.com&#x2F;hustskyking&#x2F;p&#x2F;problems-in-git-when-ssh.html&quot;&gt;https:&#x2F;&#x2F;www.cnblogs.com&#x2F;hustskyking&#x2F;p&#x2F;problems-in-git-when-ssh.html&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+	</entry>
+</feed>

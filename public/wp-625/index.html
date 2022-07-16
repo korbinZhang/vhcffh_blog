@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <script src="https://blog.vhcffh.com/theme.min.js" integrity="sha384-IpIaa84kOKgkF5EJ0fD/kBe2wtIIsIB60ANGmuJxeA0dz5bSRfwBwp2/QybtQpU2"></script>
+  <link rel="stylesheet" href="https://blog.vhcffh.com/abridge-switcher.css?h=e4088b6018baa6c5c4f8222bf9a3811dec2f942f862ca9550010fba28852c1bc" />
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <script defer src="https://blog.vhcffh.com/search_index.en.js?h=d5e574ffd65cdc44489544089e33544b19b3b86a3340d587cc85531d18b8e792" integrity="sha384-HT1AXvCEAQGWm4cehYh3bO0RNhvjaSLPHFBWZ/7j3UFKwYf5wgLbX7GVJy0LGqKp"></script>
+  <script defer src="https://blog.vhcffh.com/abridge-switcher.min.js?h=be6d42ac1cc5ae1da7cdde772d392d6508fc038f98a8d0fd1bc5b5678530631a" integrity="sha384-RAhv9DQbxrVfq4cbSJsOQ8l7sA56QdpoR10euhjBCBOhLdbJ6y8SCZVYy818n51+"></script>
+  <link rel="alternate" type="application/atom+xml" title="Atom/RSS Feed" href="https://blog.vhcffh.com/atom.xml" />
+  <meta name="robots" content="index, follow" />
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <title>C语言日期时间 | Frey's blog</title>
+  <meta name="author" content="Jake G" />
+  <meta name="copyright" content="Frey&#x27;s blog" />
+  <meta name="description" content="一个简单的个人博客，用于记录笔记" />
+  <link rel="canonical" href="https://blog.vhcffh.com/wp-625/" />
+  <meta name="keywords" content="Abridge, Abridge.css, Zola, Theme, Zola Theme, getzola, Semantic Html, Fast, lightweight" />
+  <meta property="og:url" content="https://blog.vhcffh.com/wp-625/" />
+  <meta name="twitter:url" content="https://blog.vhcffh.com/wp-625/" />
+  <meta property="og:description" content="一个简单的个人博客，用于记录笔记" />
+  <meta name="twitter:description" content="一个简单的个人博客，用于记录笔记" />
+  <meta property="og:title" content="C语言日期时间 | Frey&#x27;s blog" />
+  <meta name="twitter:title" content="C语言日期时间 | Frey&#x27;s blog" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://blog.vhcffh.com/banner.png" />
+  <meta property="og:image" content="https://blog.vhcffh.com/banner.png" />
+  <meta property="og:site_name" content="Frey&#x27;s blog" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:type" content="website" />
+  <meta property="og:updated_time" content="2021-11-28" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="theme-color" content="#333333" />
+  <meta name="msapplication-TileColor" content="#333333" />
+  <link rel="manifest" href="https://blog.vhcffh.com/site.webmanifest" />
+  <link rel="mask-icon" href="https://blog.vhcffh.com/safari-pinned-tab.svg" color="#ff9900" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://blog.vhcffh.com/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="https://blog.vhcffh.com/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="https://blog.vhcffh.com/favicon-16x16.png" />
+  <noscript><link rel="stylesheet" href="https://blog.vhcffh.com/nojs.css" /></noscript>
+</head>
+<body>
+  <header>
+    <nav>
+      <div><h1><a href="https://blog.vhcffh.com/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#f90" viewBox="0 0 96 96" width="32" height="32"><path stroke-width="14" d="M14 99 46 7h4l32 92"/><path stroke-width="9" d="M-3 82c43-26 59-26 102 0"/><path stroke-linecap="round" stroke-width="1.5" d="M94 72v7m-5-9.8v7m-5-9.8v7.1M79 64v7M63 57.7v7m-5-8.2v7m-5-7.8v7m-5-7.2v7m-5-6.7v7m-5-6.3v7m-5-5.8v7M17 64v7m-5-4.6v7m-5-4.2v7M2 72v7"/></svg>bridge</a></h1></div>
+      <div>
+        <ul><li> <h2><a href="https://blog.vhcffh.com/about/">About</a></h2> </li><li> <h2><a href="https://blog.vhcffh.com/posts/">Posts</a></h2> </li><li> <h2><a href="https://blog.vhcffh.com/categories/">Categories</a></h2> </li><li> <h2><a href="https://blog.vhcffh.com/tags/">Tags</a></h2> </li><li class="js"><i type="reset" id="mode" class="svgs adjust"></i></li></ul>
+      </div>
+      <div>
+        <form class="js" name="goSearch">
+          <div class="searchd">
+            <input id="userinput" type="text" placeholder="Search" autocomplete="off" title="Search" />
+            <button type="submit" title="Search"><i class="svgs search"></i></button>
+          </div>
+          <div><div id="suggestions"></div></div>
+        </form>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <article>
+        <h1><a href="https://blog.vhcffh.com/wp-625/">C语言日期时间</a></h1>
+        <span class="s95"> Jake G<span class="hpad"> </span> November 28, 2021<span class="hpad"> </span> [<a href="https://blog.vhcffh.com/categories/bian-cheng/">编程</a>] #<a href="https://blog.vhcffh.com/tags/cyu-yan/">C语言</a>  #<a href="https://blog.vhcffh.com/tags/linux/">linux</a> </span>
+
+    <p>在本教程中，我们将展示如何在 C 中使用日期和时间。在本教程中，我们使用
+C99。</p>
+<h2 id="c-ri-qi-shi-jian-ding-yi">C 日期时间定义</h2>
+<p>我们从几个定义开始。<strong>日历时间</strong>，也称为绝对时间，是时间连续体中的一个点，例如
+2016 年 2 月 17 日 13：02：5
+CET。<strong>时间间隔</strong>是两个日历时间之间时间连续体的连续部分，例如 2000 年 2
+月 20 日 13：00 到 14：00 之间的小时。<em>经过的时间</em>是间隔的长度，例如 28
+分钟。</p>
+<p><strong>时间量</strong>是经过的时间之和。经过的时间不需要是连续的。当工作花了我们十一个小时，我们可能是在不同的日子工作。<strong>CPU
+时间</strong>是中央处理单元 （CPU）
+用于处理计算机程序或操作系统指令的时间量。它以系统时钟或秒为单位进行测量。<strong>Unix
+纪元</strong>是指从1970 年 1 月 1 日 00：00：00 UTC 开始的时间（或
+1970-01-01T00：00：00Z ISO 8601）。</p>
+<p><strong>Unix 时间</strong>是自<strong>Unix 纪元</strong>以来经过的时间的秒数。 <strong>Unix
+时间</strong>的类型为<code>time_t</code>。另外有一个<strong>时间结构体</strong>来表示人类可读的日历时间。它由一组包括年、月、日、时、分、秒等变量组成。<strong>时间结构体</strong>的类型为<code>struct tm</code>。</p>
+<p><strong>现实时间</strong>（Wall time、real-world time、wall-clock
+time）不同于通过计算机微处理器时钟脉冲或周期测量得到的时间。</p>
+<p><code>time.h</code>包含了以下函数：</p>
+<ul>
+<li><code>char *asctime(const struct tm *)</code> --- 将时间转化为字符串（过时的）</li>
+<li><code>clock_t clock(void)</code> --- 返回当前进程启动后使用的CPU时间</li>
+<li><code>int clock_getres(clockid_t, struct timespec *)</code> --- 返回时钟精度</li>
+<li><code>int clock_gettime(clockid_t, struct timespec *)</code> ---
+用于计算时间，有秒和纳秒两种精度；比clock精确</li>
+<li><code>int clock_settime(clockid_t, const struct timespec *)</code> ---
+设置系统时间</li>
+<li><code>char *ctime(const time_t *)</code> ---
+将时间值转换为日期和时间字符串（过时）</li>
+<li><code>double difftime(time_t, time_t)</code> --- 计算两个时间的差</li>
+<li><code>struct tm *getdate(const char *)</code> --- 将时间字符串转换为时间结构体</li>
+<li><code>struct tm *gmtime(const time_t *)</code> ---
+将Unix时间转换为时间结构体（<a rel="noopener" target="_blank" href="https://baike.baidu.com/item/%E5%8D%8F%E8%B0%83%E4%B8%96%E7%95%8C%E6%97%B6/787659">UTC时间</a>）</li>
+<li><code>struct tm *localtime(const time_t *)</code> ---
+将Unix时间转换为时间结构体（本地时间）</li>
+<li><code>time_t mktime(struct tm *)</code> --- 将时间结构体转换为Unix时间</li>
+<li><code>size_t strftime(char *, size_t, const char *, const struct tm *)</code> ---
+以指定格式输出时间字符串</li>
+<li><code>char *strptime(const char *, const char *, struct tm *)</code> ---
+以指定格式的时间字符串配置时间结构体</li>
+<li><code>time_t time(time_t *)</code> --- 返回Unix时间或设置Unix时间</li>
+<li><code>void tzset(void)</code> --- 设置时区信息</li>
+</ul>
+<p>此外，<code>time.h</code>文件定义了<code>CLOCKS_PER_SEC</code>宏，它保存了每秒的处理器时钟刻度数。
+<code>clock_t</code>是进程运行时间类型。</p>
+<h2 id="unixshi-jian-time-t">Unix时间（time_t）</h2>
+<p>Unix时间是指自Unix纪元以来的秒数。
+time()函数返回自1970年1月1日协调世界时0小时0分0秒以来的时间值，单位为秒。
+如果发生错误，它返回-1。</p>
+<pre class="z-code"><code><span class="z-text z-plain">time_t time(time_t *t);
+</span></code></pre>
+<p>如果<code>t!=NULL</code>，此函数返回值也会存储到<code>t</code>指向的内存。</p>
+<pre class="z-code"><code><span class="z-text z-plain">#include &lt;stdio.h&gt;
+</span>#include &lt;time.h&gt;
+
+</span>// unixtime.c
+</span>int main(void) {
+</span>    
+</span>    time_t now = time(NULL);
+</span>    
+</span>    if (now == -1) {
+</span>        
+</span>        puts(&quot;The time() function failed&quot;);
+</span>    }
+
+</span>    printf(&quot;%ld\n&quot;, now);
+
+</span>    return 0;
+</span>}
+
+</span>//❯ ./unixtime
+</span>//1638028257
+</span></code></pre>
+<h2 id="shi-jian-jie-gou-ti-struct-tm">时间结构体（struct tm）</h2>
+<p>时间结构体是一个人类友好的日期时间。结构体类型为<code>struct tm</code>。函数<code>localtime()</code>可以将
+Unix时间（time_t）
+转换为时间结构体。他使用本地账户的时区。函数原型如下：</p>
+<pre class="z-code"><code><span class="z-text z-plain">struct tm *localtime(const time_t *clock);
+</span></code></pre>
+<p>函数存储了一个结构体并返回指针。</p>
+<p>下面关于结构tm的描述来自FreeBSD手册。</p>
+<pre class="z-code"><code><span class="z-text z-plain">struct tm {
+</span>    int tm_sec;         /* seconds:0-59 */
+</span>    int tm_min;         /* minutes:0-59 */
+</span>    int tm_hour;        /* hours:0-23 */
+</span>    int tm_mday;        /* day of the month:1-31 */
+</span>    int tm_mon;         /* month:0-11 */
+</span>    int tm_year;        /* year:1900-&gt; */
+</span>    int tm_wday;        /* day of the week:0-6 */
+</span>    int tm_yday;        /* day in the year:0-365 */
+</span>    int tm_isdst;       /* daylight saving time:是否实行夏令时 */
+</span>};
+
+</span>#include &lt;stdio.h&gt; 
+</span>#include &lt;time.h&gt;       
+</span> 
+</span>int main(void) {
+</span>    
+</span>    time_t rawtime = time(NULL);  // 得到Unix时间
+</span>    
+</span>    if (rawtime == -1) {
+
+</span>        puts(&quot;The time() function failed&quot;);
+</span>        return 1;
+</span>    }
+</span>    
+</span>    struct tm *ptm = localtime(&amp;rawtime);   // 将Unix时间转换为时间结构体
+</span>    
+</span>    if (ptm == NULL) {
+</span>        
+</span>puts(&quot;The localtime() function failed&quot;);
+</span>        return 1;
+</span>    }
+</span>    
+</span>    printf(&quot;The time is: %02d:%02d:%02d\n&quot;, ptm-&gt;tm_hour, 
+</span>           ptm-&gt;tm_min, ptm-&gt;tm_sec);
+
+</span>    return 0;
+</span>}
+
+</span>//❯ ./brokendowntime 
+</span>//The time is: 17:00:12
+</span></code></pre>
+<h2 id="shi-jian-jie-gou-ti-zhuan-huan-wei-unixshi-jian">时间结构体转换为Unix时间</h2>
+<h2 id="can-kao">参考</h2>
+<ol>
+<li><a rel="noopener" target="_blank" href="https://zetcode.com/articles/cdatetime/">C Date time
+(zetcode.com)</a>[原文]</li>
+<li><a rel="noopener" target="_blank" href="https://www.cnblogs.com/buptmuye/p/3711022.html">clock_gettime的使用，计时比clock()精确 - 木叶火影 - 博客园
+(cnblogs.com)</a></li>
+<li><a rel="noopener" target="_blank" href="https://www.jianshu.com/p/0161e730eb5d">C语言getdate函数、setdate函数的用法 - 简书
+(jianshu.com)</a></li>
+</ol>
+
+<p><b><a href="#">Back to top</a></b></p>
+    </article>
+  </main>
+  <footer>
+    <hr />
+    <div class="c">
+      <nav>
+        <ul><li><a href="https://blog.vhcffh.com/atom.xml" target="_blank" title="Atom/RSS Feed"><i type="Button" class="svg rss" title="Atom/RSS Feed"></i></a></li><li><a href="mailto:fly92727@outlook.com" target="_blank" title="Mail"><i type="Button" class="svg mail" title="Mail"></i></a></li><li><a href="https://github.com/FreyZhang007/" target="_blank" title="Github"><i type="Button" class="svg github" title="Github"></i></a></li><li><a href="https://github.com/sponsors/FreyZhang007/" target="_blank" title="GitHub Sponsor"><i type="Button" class="svg github-sponsor" title="GitHub Sponsor"></i></a></li></ul>
+      </nav>
+      <p class="s90">Copyright &copy; 2022 Frey&#x27;s blog</p>
+      <nav>
+        <ul><li class="s90"> <a href="https://blog.vhcffh.com/about/"> About </a> </li><li class="s90"> <a href="https://blog.vhcffh.com/contact/"> Contact </a> </li><li class="s90"> <a href="https://blog.vhcffh.com/privacy/"> Privacy </a> </li><li class="s90"> <a href="https://blog.vhcffh.com/sitemap.xml"> Sitemap </a> </li></ul>
+      </nav>
+      <p class="s90">Powered by <a href="https://www.getzola.org/">Zola</a> and <a href="https://github.com/jieiku/abridge/">Abridge</a></p>
+    </div>
+  </footer>
+<span class="topout">
+<span class="topleft"> </span><a href="#" class="top" title="Back to Top"><i class="svgs svgh angu"></i></a>
+</span>
+</body>
+</html>

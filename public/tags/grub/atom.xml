@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+	<title>Frey&#x27;s blog - grub</title>
+	<subtitle>一个简单的个人博客，用于记录笔记</subtitle>
+	<link href="https://blog.vhcffh.com/tags/grub/atom.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://blog.vhcffh.com"/>
+	<generator uri="https://www.getzola.org/">Zola</generator>
+	<updated>2019-09-03T00:00:00+00:00</updated>
+	<id>https://blog.vhcffh.com/tags/grub/atom.xml</id>
+	<entry xml:lang="en">
+		<title>记一次GRUB引导修复</title>
+		<published>2019-09-03T00:00:00+00:00</published>
+		<updated>2019-09-03T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/hexo-ji-yi-ci-grubyin-dao-xiu-fu/" type="text/html"/>
+		<id>https://blog.vhcffh.com/hexo-ji-yi-ci-grubyin-dao-xiu-fu/</id>
+		<content type="html">&lt;p&gt;使用Arch Linux已经2年多了，基本上已经习惯了，可前段时间英雄联盟也出了&amp;quot;自走棋&amp;quot;，想要体验一把。
+于是就在硬盘剩余的60多个G上装了Windows 10，用了一两个月没有问题，最后在一次Windows 10更新后，蓝屏了。
+又手惨的点了Windows 的修复功能。等了半天，结果是修复，重启，蓝屏无限循环。
+而且Arch Linux的引导全都没了，感觉应该是Windows的修复动了efi分区。
+无奈只能重新修复引导，各种方法尝试了好多遍，都是卡在了&lt;code&gt;GRUB _&lt;&#x2F;code&gt;一直闪这个状态，
+最终在官网wiki找到了办法 &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;wiki.archlinux.org&#x2F;index.php&#x2F;GRUB_#Default&#x2F;fallback_boot_path&quot;&gt;缺省&#x2F;后备启动路径&lt;&#x2F;a&gt; grub 安装时添加&lt;code&gt;--removable&lt;&#x2F;code&gt;参数&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash z-code&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;grub-install&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; --&lt;&#x2F;span&gt;target&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-assignment z-option z-shell&quot;&gt;=&lt;&#x2F;span&gt;x86_64-efi&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; --&lt;&#x2F;span&gt;efi-directory&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-assignment z-option z-shell&quot;&gt;=&lt;&#x2F;span&gt;esp&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; --&lt;&#x2F;span&gt;removable&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;或者手动移动&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash z-code&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;mv&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; esp&#x2F;EFI&#x2F;grub esp&#x2F;EFI&#x2F;BOOT&lt;&#x2F;span&gt;
+&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;mv&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; esp&#x2F;EFI&#x2F;BOOT&#x2F;grubx64.efi esp&#x2F;EFI&#x2F;BOOT&#x2F;BOOTX64.EFI&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;grub出现bug的原因应该会千奇百怪，要尽可能多的尝试网上的各种修改方法。&lt;&#x2F;p&gt;
+</content>
+	</entry>
+</feed>

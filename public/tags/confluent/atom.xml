@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+	<title>Frey&#x27;s blog - confluent</title>
+	<subtitle>一个简单的个人博客，用于记录笔记</subtitle>
+	<link href="https://blog.vhcffh.com/tags/confluent/atom.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://blog.vhcffh.com"/>
+	<generator uri="https://www.getzola.org/">Zola</generator>
+	<updated>2020-07-21T00:00:00+00:00</updated>
+	<id>https://blog.vhcffh.com/tags/confluent/atom.xml</id>
+	<entry xml:lang="en">
+		<title>confluent系列软件介绍</title>
+		<published>2020-07-21T00:00:00+00:00</published>
+		<updated>2020-07-21T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/wp-176/" type="text/html"/>
+		<id>https://blog.vhcffh.com/wp-176/</id>
+		<content type="html">&lt;h2 id=&quot;zookeeper&quot;&gt;zookeeper&lt;&#x2F;h2&gt;
+&lt;p&gt;主要功能：配置管理、名字服务、分布式同步、集群管理
+&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;juejin.im&#x2F;post&#x2F;5ba879ce6fb9a05d16588802&quot;&gt;集群配置&lt;&#x2F;a&gt;：每台机器的配置都相同，主要通过&lt;code&gt;myid&lt;&#x2F;code&gt;文件区分ip端口&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;kafka&quot;&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;http:&#x2F;&#x2F;blog.vhcffh.com&#x2F;2020&#x2F;%e5%88%9d%e6%ad%a5%e4%ba%86%e8%a7%a3kafka&#x2F;&quot;&gt;kafka&lt;&#x2F;a&gt;&lt;&#x2F;h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Broker：Kafka的broker是无状态的，broker使用Zookeeper维护集群的状态。Leader的选举也由Zookeeper负责。&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Zookeeper：Zookeeper负责维护和协调broker。当Kafka系统中新增了broker或者某个broker发生故障失效时，由ZooKeeper通知生产者和消费者。生产者和消费者依据Zookeeper的broker状态信息与broker协调数据的发布和订阅任务。&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Producer：生产者将数据推送到broker上，当集群中出现新的broker时，所有的生产者将会搜寻到这个新的broker，并自动将数据发送到这个broker上。&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Consumer：因为Kafka的broker是无状态的，所以consumer必须使用partition
+offset来记录消费了多少数据。如果一个consumer指定了一个topic的offset，意味着该consumer已经消费了该offset之前的所有数据。consumer可以通过指定offset，从topic的指定位置开始消费数据。consumer的offset存储在Zookeeper中。&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;h2 id=&quot;schema-registry&quot;&gt;schema-registry&lt;&#x2F;h2&gt;
+&lt;p&gt;作用：让 Kafka 支持 Avro
+序列化,从而减少存储空间的占用，加快读取速度。大部分结构化的数据都有相同的schema，将结构和数据分开存储，减少数据量。
+Avro序列化：将结构化数据变成有序的数据格式（一般是二进制），并通过schema记录数据结构。
+生产者在使用schema-registry时首先向schema-registry注册数据格式，然后使用Avro序列化将数据发送到kafka；消费者消费数据时，先向schema-registry获取数据格式，然后从kafka的到数据，反序列化。
+schema-registry服务端的数据存储在kafka中名为_schemas的topic
+schema-registry提供了restful api
+&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;zhmin.github.io&#x2F;2019&#x2F;04&#x2F;23&#x2F;kafka-schema-registry&#x2F;&quot;&gt;参考&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;kafka-rest&quot;&gt;kafka-rest&lt;&#x2F;h2&gt;
+&lt;p&gt;提供kafka restful api，实现通过http协议实现kafka
+的生产者，消费者等。registry存储数据结构，提供了restful
+api。kafka-rest也提供了api，用于存储数据。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;connect&quot;&gt;connect&lt;&#x2F;h2&gt;
+&lt;p&gt;Kafaka connect
+是一种用于在Kafka和其他系统之间可扩展的、可靠的流式传输数据的工具。它使得能够快速定义将大量数据集合移入和移出Kafka的连接器变得简单。Kafka
+Connect可以从数据库或应用程序服务器收集数据到Kafka
+topic，使数据可用于低延迟的流处理。导出作业可以将数据从Kafka
+topic传输到二次存储和查询系统，或者传递到批处理系统以进行离线分析。
+用于其他数据库与kafka的连接，实现数据的导入导出。
+&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.cnblogs.com&#x2F;laoqing&#x2F;p&#x2F;11927958.html&quot;&gt;参考&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;ksql-server&quot;&gt;ksql-server&lt;&#x2F;h2&gt;
+&lt;p&gt;实现kafka中数据的sql查询&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;control-center&quot;&gt;control-center&lt;&#x2F;h2&gt;
+&lt;p&gt;confluent的控制中心，用于监控集群状态等。用商用版和社区版。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;confluent-ben-di-qi-dong&quot;&gt;confluent 本地启动&lt;&#x2F;h2&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;$ .&#x2F;bin&#x2F;confluent local start
+&lt;&#x2F;span&gt;    The local commands are intended for a single-node development environment
+&lt;&#x2F;span&gt;    only, NOT for production usage. https:&#x2F;&#x2F;docs.confluent.io&#x2F;current&#x2F;cli&#x2F;index.html
+
+&lt;&#x2F;span&gt;Using CONFLUENT_CURRENT: &#x2F;tmp&#x2F;confluent.HWNZqmRc
+&lt;&#x2F;span&gt;Starting zookeeper
+&lt;&#x2F;span&gt;zookeeper is [UP]
+&lt;&#x2F;span&gt;Starting kafka
+&lt;&#x2F;span&gt;kafka is [UP]
+&lt;&#x2F;span&gt;Starting schema-registry
+&lt;&#x2F;span&gt;schema-registry is [UP]
+&lt;&#x2F;span&gt;Starting kafka-rest
+&lt;&#x2F;span&gt;kafka-rest is [UP]
+&lt;&#x2F;span&gt;Starting connect
+&lt;&#x2F;span&gt;connect is [UP]
+&lt;&#x2F;span&gt;Starting ksql-server
+&lt;&#x2F;span&gt;ksql-server is [UP]
+&lt;&#x2F;span&gt;Starting control-center
+&lt;&#x2F;span&gt;control-center is [UP]
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;confluent-ben-di-guan-bi&quot;&gt;confluent 本地关闭&lt;&#x2F;h2&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;$ .&#x2F;bin&#x2F;confluent local stop
+&lt;&#x2F;span&gt;    The local commands are intended for a single-node development environment
+&lt;&#x2F;span&gt;    only, NOT for production usage. https:&#x2F;&#x2F;docs.confluent.io&#x2F;current&#x2F;cli&#x2F;index.html
+
+&lt;&#x2F;span&gt;Using CONFLUENT_CURRENT: &#x2F;tmp&#x2F;confluent.HWNZqmRc
+&lt;&#x2F;span&gt;Stopping control-center
+&lt;&#x2F;span&gt;control-center is [DOWN]
+&lt;&#x2F;span&gt;Stopping ksql-server
+&lt;&#x2F;span&gt;ksql-server is [DOWN]
+&lt;&#x2F;span&gt;Stopping connect
+&lt;&#x2F;span&gt;connect is [DOWN]
+&lt;&#x2F;span&gt;Stopping kafka-rest
+&lt;&#x2F;span&gt;kafka-rest is [DOWN]
+&lt;&#x2F;span&gt;Stopping schema-registry
+&lt;&#x2F;span&gt;schema-registry is [DOWN]
+&lt;&#x2F;span&gt;Stopping kafka
+&lt;&#x2F;span&gt;kafka is [DOWN]
+&lt;&#x2F;span&gt;Stopping zookeeper
+&lt;&#x2F;span&gt;zookeeper is [DOWN]
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</content>
+	</entry>
+</feed>

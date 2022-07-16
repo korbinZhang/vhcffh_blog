@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <script src="https://blog.vhcffh.com/theme.min.js" integrity="sha384-IpIaa84kOKgkF5EJ0fD/kBe2wtIIsIB60ANGmuJxeA0dz5bSRfwBwp2/QybtQpU2"></script>
+  <link rel="stylesheet" href="https://blog.vhcffh.com/abridge-switcher.css?h=e4088b6018baa6c5c4f8222bf9a3811dec2f942f862ca9550010fba28852c1bc" />
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <script defer src="https://blog.vhcffh.com/search_index.en.js?h=d5e574ffd65cdc44489544089e33544b19b3b86a3340d587cc85531d18b8e792" integrity="sha384-HT1AXvCEAQGWm4cehYh3bO0RNhvjaSLPHFBWZ/7j3UFKwYf5wgLbX7GVJy0LGqKp"></script>
+  <script defer src="https://blog.vhcffh.com/abridge-switcher.min.js?h=be6d42ac1cc5ae1da7cdde772d392d6508fc038f98a8d0fd1bc5b5678530631a" integrity="sha384-RAhv9DQbxrVfq4cbSJsOQ8l7sA56QdpoR10euhjBCBOhLdbJ6y8SCZVYy818n51+"></script>
+  <link rel="alternate" type="application/atom+xml" title="Atom/RSS Feed" href="https://blog.vhcffh.com/atom.xml" />
+  <meta name="robots" content="index, follow" />
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <title>图片头文件解析 | Frey's blog</title>
+  <meta name="author" content="Jake G" />
+  <meta name="copyright" content="Frey&#x27;s blog" />
+  <meta name="description" content="一个简单的个人博客，用于记录笔记" />
+  <link rel="canonical" href="https://blog.vhcffh.com/hexo-tu-pian-tou-wen-jian-jie-xi/" />
+  <meta name="keywords" content="Abridge, Abridge.css, Zola, Theme, Zola Theme, getzola, Semantic Html, Fast, lightweight" />
+  <meta property="og:url" content="https://blog.vhcffh.com/hexo-tu-pian-tou-wen-jian-jie-xi/" />
+  <meta name="twitter:url" content="https://blog.vhcffh.com/hexo-tu-pian-tou-wen-jian-jie-xi/" />
+  <meta property="og:description" content="一个简单的个人博客，用于记录笔记" />
+  <meta name="twitter:description" content="一个简单的个人博客，用于记录笔记" />
+  <meta property="og:title" content="图片头文件解析 | Frey&#x27;s blog" />
+  <meta name="twitter:title" content="图片头文件解析 | Frey&#x27;s blog" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://blog.vhcffh.com/banner.png" />
+  <meta property="og:image" content="https://blog.vhcffh.com/banner.png" />
+  <meta property="og:site_name" content="Frey&#x27;s blog" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:type" content="website" />
+  <meta property="og:updated_time" content="2017-12-12" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="theme-color" content="#333333" />
+  <meta name="msapplication-TileColor" content="#333333" />
+  <link rel="manifest" href="https://blog.vhcffh.com/site.webmanifest" />
+  <link rel="mask-icon" href="https://blog.vhcffh.com/safari-pinned-tab.svg" color="#ff9900" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://blog.vhcffh.com/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="https://blog.vhcffh.com/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="https://blog.vhcffh.com/favicon-16x16.png" />
+  <noscript><link rel="stylesheet" href="https://blog.vhcffh.com/nojs.css" /></noscript>
+</head>
+<body>
+  <header>
+    <nav>
+      <div><h1><a href="https://blog.vhcffh.com/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#f90" viewBox="0 0 96 96" width="32" height="32"><path stroke-width="14" d="M14 99 46 7h4l32 92"/><path stroke-width="9" d="M-3 82c43-26 59-26 102 0"/><path stroke-linecap="round" stroke-width="1.5" d="M94 72v7m-5-9.8v7m-5-9.8v7.1M79 64v7M63 57.7v7m-5-8.2v7m-5-7.8v7m-5-7.2v7m-5-6.7v7m-5-6.3v7m-5-5.8v7M17 64v7m-5-4.6v7m-5-4.2v7M2 72v7"/></svg>bridge</a></h1></div>
+      <div>
+        <ul><li> <h2><a href="https://blog.vhcffh.com/about/">About</a></h2> </li><li> <h2><a href="https://blog.vhcffh.com/posts/">Posts</a></h2> </li><li> <h2><a href="https://blog.vhcffh.com/categories/">Categories</a></h2> </li><li> <h2><a href="https://blog.vhcffh.com/tags/">Tags</a></h2> </li><li class="js"><i type="reset" id="mode" class="svgs adjust"></i></li></ul>
+      </div>
+      <div>
+        <form class="js" name="goSearch">
+          <div class="searchd">
+            <input id="userinput" type="text" placeholder="Search" autocomplete="off" title="Search" />
+            <button type="submit" title="Search"><i class="svgs search"></i></button>
+          </div>
+          <div><div id="suggestions"></div></div>
+        </form>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <article>
+        <h1><a href="https://blog.vhcffh.com/hexo-tu-pian-tou-wen-jian-jie-xi/">图片头文件解析</a></h1>
+        <span class="s95"> Jake G<span class="hpad"> </span> December 12, 2017<span class="hpad"> </span> [<a href="https://blog.vhcffh.com/categories/xi-tong/">系统</a>] #<a href="https://blog.vhcffh.com/tags/wen-jian-tou/">文件头</a>  #<a href="https://blog.vhcffh.com/tags/tu-pian/">图片</a> </span>
+
+    <p>各种类型的图片头文件解析</p>
+<h3 id="1-pngtu-pian-wen-jian-tou">1.PNG图片文件头</h3>
+<h4 id="1-1pngwen-jian-jie-gou">1.1PNG文件结构</h4>
+<p>PNG图像格式文件由一个8字节的PNG文件标识（file
+signature）域和3个以上的后续数据块（IHDR、IDAT、IEND等）组成。<br />
+PNG文件包括8字节文件署名（89 50 4E 47 0D 0A 1A
+0A，十六进制），用来识别PNG格式。</p>
+<table><thead><tr><th align="left">十六进制</th><th align="left">含义</th></tr></thead><tbody>
+<tr><td align="left">89</td><td align="left">用于检测传输系统是否支持8位的字符编码（8 bit data），用以减少将文本文件被错误的识别成PNG文件的机会，反之亦然。</td></tr>
+<tr><td align="left">50 4E 47</td><td align="left">PNG每个字母对应的ASCII，让用户可以使用文本编辑器查看时，识别出是PNG文件。</td></tr>
+<tr><td align="left">0D 0A</td><td align="left">DOS风格的换行符（CRLF）。用于DOS-Unix数据的换行符转换。</td></tr>
+<tr><td align="left">1A</td><td align="left">在DOS命令行下，用于阻止文件显示的文件结束符。</td></tr>
+<tr><td align="left">0A</td><td align="left">Unix风格的换行符（LF）。用于Unix-DOS换行符的转换。</td></tr>
+</tbody></table>
+<h3 id="1-2pngshu-ju-kuai-chunk">1.2PNG数据块（chunk）</h3>
+<p>PNG定义了两种类型的数据块，一种是称为关键数据块(critical
+chunk)，这是标准的数据块，另一种叫做辅助数据块(ancillary
+chunks)，这是可选的数据块。<br />
+关键数据块定义了4个标准数据块，每个PNG文件都必须包含它们，PNG读写软件也都必须要支持这些数据块。虽然PNG文件规范没有要求PNG编译码器对可选数据块进行编码和译码，但规范提倡支持可选数据块。<br />
+下表就是PNG中数据块的类别，其中，关键数据块部分我们使用红色背景加以区分。</p>
+<p>数据块符号         数据块名称         多数据块   可选否        位置限制</p>
+<hr />
+<pre class="z-code"><code><span class="z-text z-plain">  IHDR           文件头数据块           否        否           第一块
+</span>  cHRM        基色和白色点数据块        否        是      在PLTE和IDAT之前
+</span>  gAMA           图像γ数据块            否        是      在PLTE和IDAT之前
+</span>  sBIT         样本有效位数据块         否        是      在PLTE和IDAT之前
+</span>  PLTE           调色板数据块           否        是         在IDAT之前
+</span>  bKGD          背景颜色数据块          否        是     在PLTE之后IDAT之前
+</span>  hIST         图像直方图数据块         否        是     在PLTE之后IDAT之前
+</span>  tRNS          图像透明数据块          否        是     在PLTE之后IDAT之前
+</span>  oFFs         (专用公共数据块)         否        是         在IDAT之前
+</span>  pHYs        物理像素尺寸数据块        否        是         在IDAT之前
+</span>  sCAL         (专用公共数据块)         否        是         在IDAT之前
+</span>  IDAT            图像数据块            是        否       与其他IDAT连续
+</span>  tIME      图像最后修改时间数据块      否        是           无限制
+</span>  tEXt          文本信息数据块          是        是           无限制
+</span>  zTXt          压缩文本数据块          是        是           无限制
+</span>  fRAc         (专用公共数据块)         是        是           无限制
+</span>  gIFg         (专用公共数据块)         是        是           无限制
+</span>  gIFt         (专用公共数据块)         是        是           无限制
+</span>  gIFx         (专用公共数据块)         是        是           无限制
+</span>  IEND           图像结束数据           否        否       最后一个数据块
+</span></code></pre>
+
+<p><b><a href="#">Back to top</a></b></p>
+    </article>
+  </main>
+  <footer>
+    <hr />
+    <div class="c">
+      <nav>
+        <ul><li><a href="https://blog.vhcffh.com/atom.xml" target="_blank" title="Atom/RSS Feed"><i type="Button" class="svg rss" title="Atom/RSS Feed"></i></a></li><li><a href="mailto:fly92727@outlook.com" target="_blank" title="Mail"><i type="Button" class="svg mail" title="Mail"></i></a></li><li><a href="https://github.com/FreyZhang007/" target="_blank" title="Github"><i type="Button" class="svg github" title="Github"></i></a></li><li><a href="https://github.com/sponsors/FreyZhang007/" target="_blank" title="GitHub Sponsor"><i type="Button" class="svg github-sponsor" title="GitHub Sponsor"></i></a></li></ul>
+      </nav>
+      <p class="s90">Copyright &copy; 2022 Frey&#x27;s blog</p>
+      <nav>
+        <ul><li class="s90"> <a href="https://blog.vhcffh.com/about/"> About </a> </li><li class="s90"> <a href="https://blog.vhcffh.com/contact/"> Contact </a> </li><li class="s90"> <a href="https://blog.vhcffh.com/privacy/"> Privacy </a> </li><li class="s90"> <a href="https://blog.vhcffh.com/sitemap.xml"> Sitemap </a> </li></ul>
+      </nav>
+      <p class="s90">Powered by <a href="https://www.getzola.org/">Zola</a> and <a href="https://github.com/jieiku/abridge/">Abridge</a></p>
+    </div>
+  </footer>
+<span class="topout">
+<span class="topleft"> </span><a href="#" class="top" title="Back to Top"><i class="svgs svgh angu"></i></a>
+</span>
+</body>
+</html>

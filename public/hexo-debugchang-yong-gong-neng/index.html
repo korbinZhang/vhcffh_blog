@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <script src="https://blog.vhcffh.com/theme.min.js" integrity="sha384-IpIaa84kOKgkF5EJ0fD/kBe2wtIIsIB60ANGmuJxeA0dz5bSRfwBwp2/QybtQpU2"></script>
+  <link rel="stylesheet" href="https://blog.vhcffh.com/abridge-switcher.css?h=e4088b6018baa6c5c4f8222bf9a3811dec2f942f862ca9550010fba28852c1bc" />
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <script defer src="https://blog.vhcffh.com/search_index.en.js?h=d5e574ffd65cdc44489544089e33544b19b3b86a3340d587cc85531d18b8e792" integrity="sha384-HT1AXvCEAQGWm4cehYh3bO0RNhvjaSLPHFBWZ/7j3UFKwYf5wgLbX7GVJy0LGqKp"></script>
+  <script defer src="https://blog.vhcffh.com/abridge-switcher.min.js?h=be6d42ac1cc5ae1da7cdde772d392d6508fc038f98a8d0fd1bc5b5678530631a" integrity="sha384-RAhv9DQbxrVfq4cbSJsOQ8l7sA56QdpoR10euhjBCBOhLdbJ6y8SCZVYy818n51+"></script>
+  <link rel="alternate" type="application/atom+xml" title="Atom/RSS Feed" href="https://blog.vhcffh.com/atom.xml" />
+  <meta name="robots" content="index, follow" />
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <title>DEBUG常用功能 | Frey's blog</title>
+  <meta name="author" content="Jake G" />
+  <meta name="copyright" content="Frey&#x27;s blog" />
+  <meta name="description" content="一个简单的个人博客，用于记录笔记" />
+  <link rel="canonical" href="https://blog.vhcffh.com/hexo-debugchang-yong-gong-neng/" />
+  <meta name="keywords" content="Abridge, Abridge.css, Zola, Theme, Zola Theme, getzola, Semantic Html, Fast, lightweight" />
+  <meta property="og:url" content="https://blog.vhcffh.com/hexo-debugchang-yong-gong-neng/" />
+  <meta name="twitter:url" content="https://blog.vhcffh.com/hexo-debugchang-yong-gong-neng/" />
+  <meta property="og:description" content="一个简单的个人博客，用于记录笔记" />
+  <meta name="twitter:description" content="一个简单的个人博客，用于记录笔记" />
+  <meta property="og:title" content="DEBUG常用功能 | Frey&#x27;s blog" />
+  <meta name="twitter:title" content="DEBUG常用功能 | Frey&#x27;s blog" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://blog.vhcffh.com/banner.png" />
+  <meta property="og:image" content="https://blog.vhcffh.com/banner.png" />
+  <meta property="og:site_name" content="Frey&#x27;s blog" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:type" content="website" />
+  <meta property="og:updated_time" content="2018-02-12" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="theme-color" content="#333333" />
+  <meta name="msapplication-TileColor" content="#333333" />
+  <link rel="manifest" href="https://blog.vhcffh.com/site.webmanifest" />
+  <link rel="mask-icon" href="https://blog.vhcffh.com/safari-pinned-tab.svg" color="#ff9900" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://blog.vhcffh.com/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="https://blog.vhcffh.com/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="https://blog.vhcffh.com/favicon-16x16.png" />
+  <noscript><link rel="stylesheet" href="https://blog.vhcffh.com/nojs.css" /></noscript>
+</head>
+<body>
+  <header>
+    <nav>
+      <div><h1><a href="https://blog.vhcffh.com/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#f90" viewBox="0 0 96 96" width="32" height="32"><path stroke-width="14" d="M14 99 46 7h4l32 92"/><path stroke-width="9" d="M-3 82c43-26 59-26 102 0"/><path stroke-linecap="round" stroke-width="1.5" d="M94 72v7m-5-9.8v7m-5-9.8v7.1M79 64v7M63 57.7v7m-5-8.2v7m-5-7.8v7m-5-7.2v7m-5-6.7v7m-5-6.3v7m-5-5.8v7M17 64v7m-5-4.6v7m-5-4.2v7M2 72v7"/></svg>bridge</a></h1></div>
+      <div>
+        <ul><li> <h2><a href="https://blog.vhcffh.com/about/">About</a></h2> </li><li> <h2><a href="https://blog.vhcffh.com/posts/">Posts</a></h2> </li><li> <h2><a href="https://blog.vhcffh.com/categories/">Categories</a></h2> </li><li> <h2><a href="https://blog.vhcffh.com/tags/">Tags</a></h2> </li><li class="js"><i type="reset" id="mode" class="svgs adjust"></i></li></ul>
+      </div>
+      <div>
+        <form class="js" name="goSearch">
+          <div class="searchd">
+            <input id="userinput" type="text" placeholder="Search" autocomplete="off" title="Search" />
+            <button type="submit" title="Search"><i class="svgs search"></i></button>
+          </div>
+          <div><div id="suggestions"></div></div>
+        </form>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <article>
+        <h1><a href="https://blog.vhcffh.com/hexo-debugchang-yong-gong-neng/">DEBUG常用功能</a></h1>
+        <span class="s95"> Jake G<span class="hpad"> </span> February 12, 2018<span class="hpad"> </span> [<a href="https://blog.vhcffh.com/categories/bian-cheng/">编程</a>] #<a href="https://blog.vhcffh.com/tags/debug/">DEBUG</a>  #<a href="https://blog.vhcffh.com/tags/hui-bian/">汇编</a> </span>
+
+    <p>window 10中DEBUG的安装,以及DEBUG调试中一些常用的命令</p>
+<h3 id="1-an-zhuang">1.安装</h3>
+<p>window 10中好像已经没有了Debug的调试工具，需要下载另外的软件</p>
+<p>下载安装DOSBox.百度云下载地址：(DOSBOX)[<a rel="noopener" target="_blank" href="https://pan.baidu.com/s/1cC3cuy">https://pan.baidu.com/s/1cC3cuy</a>]<br />
+下载后先安装DOSBox0.74-win32-installer.exe<br />
+然后找到文件dos-box0.74.conf(C:\Users\username\AppData\Local\DOSBox)<br />
+添加两行</p>
+<pre class="z-code"><code><span class="z-text z-plain">MOUNT C E:\DEBUG                  # 将目录E:\DEBUG挂载为DOSBOX下的C:  
+</span>set PATH=$PATH$;E:\DEBUG          # 将E:\DEBUG写入环境变量PATH中
+</span></code></pre>
+<p>并将下载的MASM.exe,LINK.exe,debug.exe三个文件放入目录E:\DEBUG<br />
+打开软件，输入<code>c:</code>就可以使用debug命令了</p>
+<h3 id="2-chang-yong-ming-ling">2.常用命令:</h3>
+<p>R命令：查看改变CPU寄存器的内容<br />
+D命令：查看内存中的内容<br />
+E命令：改写内存中的内容<br />
+U命令：将内存中的机器指令翻译成汇编指令<br />
+T命令：执行一条机器指令<br />
+A命令：以汇编指令的格式在内存中写入一条机器指令<br />
+Q命令：退出DEBUG调试</p>
+<h3 id="3-ming-ling-ju-ti-shi-yong-shi-li">3.命令具体使用实例</h3>
+<h4 id="3-1rming-ling">3.1R命令</h4>
+<p>R命令：查看改变CPU寄存器的内容</p>
+<pre class="z-code"><code><span class="z-text z-plain">-r                          ;显示寄存器的值
+</span>-r reg                      ;改变寄存器reg的值
+</span></code></pre>
+<p><img src="2_12_R%E5%91%BD%E4%BB%A4.PNG" alt="img" /></p>
+<h4 id="3-2dming-ling">3.2D命令</h4>
+<p>D命令：查看内存中的内容<br />
+默认显示128字节的内容</p>
+<pre class="z-code"><code><span class="z-text z-plain">-d                          ;默认地址
+</span>-d 段地址:偏移地址            ;指定地址
+</span>-d 段地址:偏一偏二            ;两个地址间的内容
+</span></code></pre>
+<p><img src="2_12_D%E5%91%BD%E4%BB%A4.PNG" alt="img" /></p>
+<h4 id="3-3eming-ling">3.3E命令</h4>
+<p>E命令：改写内存中的内容</p>
+<pre class="z-code"><code><span class="z-text z-plain">-e 起始地址 数据 数据 ...   
+</span>-e 起始地址
+</span></code></pre>
+<p><img src="2_12_E%E5%91%BD%E4%BB%A4.PNG" alt="img" /></p>
+<h4 id="3-4uming-ling">3.4U命令</h4>
+<p>U命令：将内存中的机器指令翻译成汇编指令<br />
+与D命令有些类似<br />
+<img src="2_12_U%E5%91%BD%E4%BB%A4.PNG" alt="img" /></p>
+<h4 id="3-5tming-ling">3.5T命令</h4>
+<p>T命令：执行内存中的一条机器指令<br />
+指令位置由cs:ip确定<br />
+<img src="2_12_T%E5%91%BD%E4%BB%A4.PNG" alt="img" /></p>
+<h4 id="3-6aming-ling">3.6A命令</h4>
+<p>A命令：以汇编指令的格式在内存中写入一条机器指令<br />
+<img src="2_12_A%E5%91%BD%E4%BB%A4.PNG" alt="img" /></p>
+
+<p><b><a href="#">Back to top</a></b></p>
+    </article>
+    <div class="toc" aria-hidden="true">
+      <div class="toc-sticky">
+        <h3>Index</h3>
+        <div class="toc-item">
+          <a class="subtext" href="https://blog.vhcffh.com/hexo-debugchang-yong-gong-neng/#1-an-zhuang">1.安装</a>
+        </div>
+        <div class="toc-item">
+          <a class="subtext" href="https://blog.vhcffh.com/hexo-debugchang-yong-gong-neng/#2-chang-yong-ming-ling">2.常用命令:</a>
+        </div>
+        <div class="toc-item">
+          <a class="subtext" href="https://blog.vhcffh.com/hexo-debugchang-yong-gong-neng/#3-ming-ling-ju-ti-shi-yong-shi-li">3.命令具体使用实例</a>
+        </div>
+        <div class="toc-item-child">
+          <a class="subtext" href="https://blog.vhcffh.com/hexo-debugchang-yong-gong-neng/#3-1rming-ling"><small>- 3.1R命令</small></a>
+        </div>
+        <div class="toc-item-child">
+          <a class="subtext" href="https://blog.vhcffh.com/hexo-debugchang-yong-gong-neng/#3-2dming-ling"><small>- 3.2D命令</small></a>
+        </div>
+        <div class="toc-item-child">
+          <a class="subtext" href="https://blog.vhcffh.com/hexo-debugchang-yong-gong-neng/#3-3eming-ling"><small>- 3.3E命令</small></a>
+        </div>
+        <div class="toc-item-child">
+          <a class="subtext" href="https://blog.vhcffh.com/hexo-debugchang-yong-gong-neng/#3-4uming-ling"><small>- 3.4U命令</small></a>
+        </div>
+        <div class="toc-item-child">
+          <a class="subtext" href="https://blog.vhcffh.com/hexo-debugchang-yong-gong-neng/#3-5tming-ling"><small>- 3.5T命令</small></a>
+        </div>
+        <div class="toc-item-child">
+          <a class="subtext" href="https://blog.vhcffh.com/hexo-debugchang-yong-gong-neng/#3-6aming-ling"><small>- 3.6A命令</small></a>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <hr />
+    <div class="c">
+      <nav>
+        <ul><li><a href="https://blog.vhcffh.com/atom.xml" target="_blank" title="Atom/RSS Feed"><i type="Button" class="svg rss" title="Atom/RSS Feed"></i></a></li><li><a href="mailto:fly92727@outlook.com" target="_blank" title="Mail"><i type="Button" class="svg mail" title="Mail"></i></a></li><li><a href="https://github.com/FreyZhang007/" target="_blank" title="Github"><i type="Button" class="svg github" title="Github"></i></a></li><li><a href="https://github.com/sponsors/FreyZhang007/" target="_blank" title="GitHub Sponsor"><i type="Button" class="svg github-sponsor" title="GitHub Sponsor"></i></a></li></ul>
+      </nav>
+      <p class="s90">Copyright &copy; 2022 Frey&#x27;s blog</p>
+      <nav>
+        <ul><li class="s90"> <a href="https://blog.vhcffh.com/about/"> About </a> </li><li class="s90"> <a href="https://blog.vhcffh.com/contact/"> Contact </a> </li><li class="s90"> <a href="https://blog.vhcffh.com/privacy/"> Privacy </a> </li><li class="s90"> <a href="https://blog.vhcffh.com/sitemap.xml"> Sitemap </a> </li></ul>
+      </nav>
+      <p class="s90">Powered by <a href="https://www.getzola.org/">Zola</a> and <a href="https://github.com/jieiku/abridge/">Abridge</a></p>
+    </div>
+  </footer>
+<span class="topout">
+<span class="topleft"> </span><a href="#" class="top" title="Back to Top"><i class="svgs svgh angu"></i></a>
+</span>
+</body>
+</html>

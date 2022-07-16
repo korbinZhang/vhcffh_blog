@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <script src="https://blog.vhcffh.com/theme.min.js" integrity="sha384-IpIaa84kOKgkF5EJ0fD/kBe2wtIIsIB60ANGmuJxeA0dz5bSRfwBwp2/QybtQpU2"></script>
+  <link rel="stylesheet" href="https://blog.vhcffh.com/abridge-switcher.css?h=e4088b6018baa6c5c4f8222bf9a3811dec2f942f862ca9550010fba28852c1bc" />
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <script defer src="https://blog.vhcffh.com/search_index.en.js?h=d5e574ffd65cdc44489544089e33544b19b3b86a3340d587cc85531d18b8e792" integrity="sha384-HT1AXvCEAQGWm4cehYh3bO0RNhvjaSLPHFBWZ/7j3UFKwYf5wgLbX7GVJy0LGqKp"></script>
+  <script defer src="https://blog.vhcffh.com/abridge-switcher.min.js?h=be6d42ac1cc5ae1da7cdde772d392d6508fc038f98a8d0fd1bc5b5678530631a" integrity="sha384-RAhv9DQbxrVfq4cbSJsOQ8l7sA56QdpoR10euhjBCBOhLdbJ6y8SCZVYy818n51+"></script>
+  <link rel="alternate" type="application/atom+xml" title="Atom/RSS Feed" href="https://blog.vhcffh.com/atom.xml" />
+  <meta name="robots" content="index, follow" />
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <title>vim中的leetcode插件 | Frey's blog</title>
+  <meta name="author" content="Jake G" />
+  <meta name="copyright" content="Frey&#x27;s blog" />
+  <meta name="description" content="一个简单的个人博客，用于记录笔记" />
+  <link rel="canonical" href="https://blog.vhcffh.com/wp-111/" />
+  <meta name="keywords" content="Abridge, Abridge.css, Zola, Theme, Zola Theme, getzola, Semantic Html, Fast, lightweight" />
+  <meta property="og:url" content="https://blog.vhcffh.com/wp-111/" />
+  <meta name="twitter:url" content="https://blog.vhcffh.com/wp-111/" />
+  <meta property="og:description" content="一个简单的个人博客，用于记录笔记" />
+  <meta name="twitter:description" content="一个简单的个人博客，用于记录笔记" />
+  <meta property="og:title" content="vim中的leetcode插件 | Frey&#x27;s blog" />
+  <meta name="twitter:title" content="vim中的leetcode插件 | Frey&#x27;s blog" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://blog.vhcffh.com/banner.png" />
+  <meta property="og:image" content="https://blog.vhcffh.com/banner.png" />
+  <meta property="og:site_name" content="Frey&#x27;s blog" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:type" content="website" />
+  <meta property="og:updated_time" content="2020-03-24" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="theme-color" content="#333333" />
+  <meta name="msapplication-TileColor" content="#333333" />
+  <link rel="manifest" href="https://blog.vhcffh.com/site.webmanifest" />
+  <link rel="mask-icon" href="https://blog.vhcffh.com/safari-pinned-tab.svg" color="#ff9900" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://blog.vhcffh.com/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="https://blog.vhcffh.com/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="https://blog.vhcffh.com/favicon-16x16.png" />
+  <noscript><link rel="stylesheet" href="https://blog.vhcffh.com/nojs.css" /></noscript>
+</head>
+<body>
+  <header>
+    <nav>
+      <div><h1><a href="https://blog.vhcffh.com/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#f90" viewBox="0 0 96 96" width="32" height="32"><path stroke-width="14" d="M14 99 46 7h4l32 92"/><path stroke-width="9" d="M-3 82c43-26 59-26 102 0"/><path stroke-linecap="round" stroke-width="1.5" d="M94 72v7m-5-9.8v7m-5-9.8v7.1M79 64v7M63 57.7v7m-5-8.2v7m-5-7.8v7m-5-7.2v7m-5-6.7v7m-5-6.3v7m-5-5.8v7M17 64v7m-5-4.6v7m-5-4.2v7M2 72v7"/></svg>bridge</a></h1></div>
+      <div>
+        <ul><li> <h2><a href="https://blog.vhcffh.com/about/">About</a></h2> </li><li> <h2><a href="https://blog.vhcffh.com/posts/">Posts</a></h2> </li><li> <h2><a href="https://blog.vhcffh.com/categories/">Categories</a></h2> </li><li> <h2><a href="https://blog.vhcffh.com/tags/">Tags</a></h2> </li><li class="js"><i type="reset" id="mode" class="svgs adjust"></i></li></ul>
+      </div>
+      <div>
+        <form class="js" name="goSearch">
+          <div class="searchd">
+            <input id="userinput" type="text" placeholder="Search" autocomplete="off" title="Search" />
+            <button type="submit" title="Search"><i class="svgs search"></i></button>
+          </div>
+          <div><div id="suggestions"></div></div>
+        </form>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <article>
+        <h1><a href="https://blog.vhcffh.com/wp-111/">vim中的leetcode插件</a></h1>
+        <span class="s95"> Jake G<span class="hpad"> </span> March 24, 2020<span class="hpad"> </span> [<a href="https://blog.vhcffh.com/categories/ruan-jian/">软件</a>] #<a href="https://blog.vhcffh.com/tags/leetcode/">leetcode</a>  #<a href="https://blog.vhcffh.com/tags/vim/">vim</a> </span>
+
+    <h2 id="an-zhuang">安装</h2>
+<p>1.安装依赖</p>
+<pre class="z-code"><code><span class="z-text z-plain">pip install keyring browser-cookie3
+</span></code></pre>
+<p>2.使用<code>vundle</code>安装并简单配置</p>
+<pre class="z-code"><code><span class="z-text z-plain">call vundle#begin()
+</span>...
+</span>Plugin &#39;ianding1/leetcode.vim&#39;
+</span>...
+</span>call vundle#end()
+
+</span>&quot;leetcode&quot;
+</span>let g:leetcode_china=1  &quot;中国区leetcode&quot;
+</span>let g:leetcode_solution_filetype=&#39;python3&#39;    &quot;默认使用python3&quot;
+</span>let g:leetcode_browser=&#39;chrome&#39;   &quot;登录leetcode-cn.com的浏览器&quot;
+</span></code></pre>
+<h2 id="wen-ti">问题</h2>
+<p>1.<code>leetcode.vim</code>依赖<code>keyring</code>
+按照<a rel="noopener" target="_blank" href="https://github.com/ianding1/leetcode.vim#faq">这里</a>配置使用GnomeKeyring</p>
+<pre class="z-code"><code><span class="z-text z-plain">[backend]
+</span>default-keyring=keyring.backends.Gnome.Keyring
+</span></code></pre>
+<p>vim中执行<code>:LeetCodeSignIn</code>出现错误<code>browser_cookie3 not installed</code>
+明明已经安装过了</p>
+<p>2.通过<code>python</code>直接导入<code>browser_cookie3</code>
+发现原因<code>ModuleNotFoundError: No module named 'keyring.backends.Gnome'</code></p>
+<p>3.查看<code>keyring</code>的<a rel="noopener" target="_blank" href="https://github.com/jaraco/keyring">资料</a>后,发现<code>keyring</code>把<code>keyring.backends.Gnome.Keyring</code>单独放到了<code>keyrings.alt</code>包中
+安装<code>keyrings.alt</code>,有提示<code>RuntimeError: GnomeKeyring module required</code>
+<code>GnomeKeyring</code>是<a rel="noopener" target="_blank" href="https://pygobject.readthedocs.io/en/latest/getting_started.html">PyGObject</a>里面的，<a rel="noopener" target="_blank" href="https://pygobject.readthedocs.io/en/latest/getting_started.html">PyGObject</a>是<code>Gtk</code>python接口,在archlinux中需要安装<code>pygobject-devel</code>和<code>libgnome-keyring</code></p>
+<p>4.<code>browser-cookie3</code>无法正确获取<code>chrome</code>的cookies,只能获取到key,获得的value为空,猜想应该是<code>browser-cookie3</code>解密cookies时出现了问题。
+原因就是<code>chrome</code>更改了对<code>cookie</code>的加密方法，因此<code>browser-cookie3</code>无法获取<code>cookie</code>。通过更改<code>leetcode.vim</code>使用<code>pycookiecheat</code>库获取<code>cookie</code></p>
+<p>5.更新<code>browser-cookie3</code>库也可以解决这个问题<a rel="noopener" target="_blank" href="https://github.com/borisbabic/browser_cookie3/pull/52">Pull</a></p>
+<h2 id="can-kao-zi-liao">参考资料</h2>
+<p>[1]<a rel="noopener" target="_blank" href="https://github.com/ianding1/leetcode.vim">leetcode.vim插件</a>
+[2]<a rel="noopener" target="_blank" href="https://github.com/jaraco/keyring">keyring</a>
+[3]<a rel="noopener" target="_blank" href="https://github.com/n8henrie/pycookiecheat">pycookiecheat</a></p>
+
+<p><b><a href="#">Back to top</a></b></p>
+    </article>
+    <div class="toc" aria-hidden="true">
+      <div class="toc-sticky">
+        <h3>Index</h3>
+        <div class="toc-item">
+          <a class="subtext" href="https://blog.vhcffh.com/wp-111/#an-zhuang">安装</a>
+        </div>
+        <div class="toc-item">
+          <a class="subtext" href="https://blog.vhcffh.com/wp-111/#wen-ti">问题</a>
+        </div>
+        <div class="toc-item">
+          <a class="subtext" href="https://blog.vhcffh.com/wp-111/#can-kao-zi-liao">参考资料</a>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <hr />
+    <div class="c">
+      <nav>
+        <ul><li><a href="https://blog.vhcffh.com/atom.xml" target="_blank" title="Atom/RSS Feed"><i type="Button" class="svg rss" title="Atom/RSS Feed"></i></a></li><li><a href="mailto:fly92727@outlook.com" target="_blank" title="Mail"><i type="Button" class="svg mail" title="Mail"></i></a></li><li><a href="https://github.com/FreyZhang007/" target="_blank" title="Github"><i type="Button" class="svg github" title="Github"></i></a></li><li><a href="https://github.com/sponsors/FreyZhang007/" target="_blank" title="GitHub Sponsor"><i type="Button" class="svg github-sponsor" title="GitHub Sponsor"></i></a></li></ul>
+      </nav>
+      <p class="s90">Copyright &copy; 2022 Frey&#x27;s blog</p>
+      <nav>
+        <ul><li class="s90"> <a href="https://blog.vhcffh.com/about/"> About </a> </li><li class="s90"> <a href="https://blog.vhcffh.com/contact/"> Contact </a> </li><li class="s90"> <a href="https://blog.vhcffh.com/privacy/"> Privacy </a> </li><li class="s90"> <a href="https://blog.vhcffh.com/sitemap.xml"> Sitemap </a> </li></ul>
+      </nav>
+      <p class="s90">Powered by <a href="https://www.getzola.org/">Zola</a> and <a href="https://github.com/jieiku/abridge/">Abridge</a></p>
+    </div>
+  </footer>
+<span class="topout">
+<span class="topleft"> </span><a href="#" class="top" title="Back to Top"><i class="svgs svgh angu"></i></a>
+</span>
+</body>
+</html>

@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+	<title>Frey&#x27;s blog - Turtle</title>
+	<subtitle>一个简单的个人博客，用于记录笔记</subtitle>
+	<link href="https://blog.vhcffh.com/tags/turtle/atom.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://blog.vhcffh.com"/>
+	<generator uri="https://www.getzola.org/">Zola</generator>
+	<updated>2019-08-22T00:00:00+00:00</updated>
+	<id>https://blog.vhcffh.com/tags/turtle/atom.xml</id>
+	<entry xml:lang="en">
+		<title>OWL基础</title>
+		<published>2019-08-22T00:00:00+00:00</published>
+		<updated>2019-08-22T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/hexo-owlji-chu/" type="text/html"/>
+		<id>https://blog.vhcffh.com/hexo-owlji-chu/</id>
+		<content type="html">&lt;p&gt;OWL基础&lt;&#x2F;p&gt;
+&lt;p&gt;网络本体语言Web Ontologoy Language&lt;&#x2F;p&gt;
+&lt;p&gt;OWL Lite -&amp;gt; OWL DL -&amp;gt; OWL Full 递进关系&lt;&#x2F;p&gt;
+&lt;p&gt;基本元素&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;类(Class)&lt;&#x2F;p&gt;
+&lt;p&gt;任何东西都是类owl:Thing
+的一个成员(实例);子类:Subclass;相等关系:equivalentClass&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;个体(Individual)&lt;&#x2F;p&gt;
+&lt;p&gt;与实例的概念差不多&lt;&#x2F;p&gt;
+&lt;p&gt;一个个体可以属于多个类(没有指名是哪个类)&lt;&#x2F;p&gt;
+&lt;p&gt;某个类的实例(指名了类)&lt;&#x2F;p&gt;
+&lt;p&gt;子类与个体是不同的东西&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;属性(Property)&lt;&#x2F;p&gt;
+&lt;p&gt;一个二元关系,OWL中包括两种属性:&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;类型属性（datatype properties）：描述类与其实例之间关系的属性。&lt;&#x2F;li&gt;
+&lt;li&gt;对象属性（object
+properties）：描述两个不同类的实例之间关系的属性。&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;属性有两个端点:起点和终点,都应该是两个个体(实例)&lt;&#x2F;p&gt;
+&lt;p&gt;用原集(domain)起点的实例的类,用象集(range)描述终点的实例的类.&lt;&#x2F;p&gt;
+&lt;p&gt;属性也有子属性(Subproperty)&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;公理和约束&lt;&#x2F;p&gt;
+&lt;p&gt;rdf资源描述框架(Resource Description Framework)&lt;&#x2F;p&gt;
+&lt;p&gt;W3C提出的一组标记语言的技术规范,是一种数据模型,rdf数据集的序列化方法&lt;&#x2F;p&gt;
+&lt;p&gt;OWL是由DAML(DARPA Agent Markup Language)+OIL(Ontology Inference
+Layer)演变而来。&lt;&#x2F;p&gt;
+&lt;p&gt;OWL是RDF的扩张，为我们提供了更广泛的定义RDFS词汇的功能，更广泛意指可以定义词汇之间的关系，类与类间的关系，属性与属性之间的关系等&lt;&#x2F;p&gt;
+&lt;p&gt;foaf(Friend-of-a-Friend)是一种XML&#x2F;RDF词汇表,不管通过那种那种方法表示数据资源,都要指定词汇表&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;RDF&#x2F;XML&lt;&#x2F;p&gt;
+&lt;p&gt;XML的技术程序;格式太冗长,不便于阅读&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.w3.org&#x2F;TR&#x2F;n-triples&#x2F;&quot;&gt;N-Triples&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;三元组表示;开放领域知识图谱&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;wiki.dbpedia.org&#x2F;&quot;&gt;DBpedia&lt;&#x2F;a&gt;通常使用这种格式发布数据.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.w3.org&#x2F;TR&#x2F;turtle&#x2F;&quot;&gt;Turtle&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;使用最多的一种RDF序列化方法,比RDF&#x2F;XML紧凑,可读性比N-Triples好&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;RDFa&lt;&#x2F;p&gt;
+&lt;p&gt;The Resource Description Framework in
+Attributes,HTML5的一个扩展,不改变任何显示效果的情况下,然网站更容易被搜索引擎解析&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;JSON-LD&lt;&#x2F;p&gt;
+&lt;p&gt;JSON for Linking Data,用键值对的方法来存储RDF&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;RDF&#x2F;XML&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot;?&amp;gt;
+
+&lt;&#x2F;span&gt;&amp;lt;rdf:RDF
+&lt;&#x2F;span&gt;xmlns:rdf=&amp;quot;http:&#x2F;&#x2F;www.w3.org&#x2F;1999&#x2F;02&#x2F;22-rdf-syntax-ns#&amp;quot;
+&lt;&#x2F;span&gt;xmlns:cd=&amp;quot;http:&#x2F;&#x2F;www.recshop.fake&#x2F;cd#&amp;quot;&amp;gt;
+
+&lt;&#x2F;span&gt;&amp;lt;rdf:Description
+&lt;&#x2F;span&gt;rdf:about=&amp;quot;http:&#x2F;&#x2F;www.recshop.fake&#x2F;cd&#x2F;Empire Burlesque&amp;quot;&amp;gt;
+&lt;&#x2F;span&gt;  &amp;lt;cd:artist&amp;gt;Bob Dylan&amp;lt;&#x2F;cd:artist&amp;gt;
+&lt;&#x2F;span&gt;  &amp;lt;cd:country&amp;gt;USA&amp;lt;&#x2F;cd:country&amp;gt;
+&lt;&#x2F;span&gt;  &amp;lt;cd:company&amp;gt;Columbia&amp;lt;&#x2F;cd:company&amp;gt;
+&lt;&#x2F;span&gt;  &amp;lt;cd:price&amp;gt;10.90&amp;lt;&#x2F;cd:price&amp;gt;
+&lt;&#x2F;span&gt;  &amp;lt;cd:year&amp;gt;1985&amp;lt;&#x2F;cd:year&amp;gt;
+&lt;&#x2F;span&gt;&amp;lt;&#x2F;rdf:Description&amp;gt;
+
+&lt;&#x2F;span&gt;&amp;lt;rdf:Description
+&lt;&#x2F;span&gt;rdf:about=&amp;quot;http:&#x2F;&#x2F;www.recshop.fake&#x2F;cd&#x2F;Hide your heart&amp;quot;&amp;gt;
+&lt;&#x2F;span&gt;  &amp;lt;cd:artist&amp;gt;Bonnie Tyler&amp;lt;&#x2F;cd:artist&amp;gt;
+&lt;&#x2F;span&gt;  &amp;lt;cd:country&amp;gt;UK&amp;lt;&#x2F;cd:country&amp;gt;
+&lt;&#x2F;span&gt;  &amp;lt;cd:company&amp;gt;CBS Records&amp;lt;&#x2F;cd:company&amp;gt;
+&lt;&#x2F;span&gt;  &amp;lt;cd:price&amp;gt;9.90&amp;lt;&#x2F;cd:price&amp;gt;
+&lt;&#x2F;span&gt;  &amp;lt;cd:year&amp;gt;1988&amp;lt;&#x2F;cd:year&amp;gt;
+&lt;&#x2F;span&gt;&amp;lt;&#x2F;rdf:Description&amp;gt;
+&lt;&#x2F;span&gt;.
+&lt;&#x2F;span&gt;.
+&lt;&#x2F;span&gt;.
+&lt;&#x2F;span&gt;&amp;lt;&#x2F;rdf:RDF&amp;gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;RDF 文档的第一行是 XML 声明。这个 XML 声明之后是 RDF 文档的根元素：。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;em&gt;xmlns:rdf&lt;&#x2F;em&gt; 命名空间，规定了带有前缀 rdf 的元素来自命名空间
+&amp;quot;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;1999&#x2F;02&#x2F;22-rdf-syntax-ns#%22%E3%80%82&quot;&gt;http:&#x2F;&#x2F;www.w3.org&#x2F;1999&#x2F;02&#x2F;22-rdf-syntax-ns#&amp;quot;。&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;em&gt;xmlns:cd&lt;&#x2F;em&gt; 命名空间，规定了带有前缀 cd 的元素来自命名空间
+&amp;quot;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;http:&#x2F;&#x2F;www.recshop.fake&#x2F;cd#%22%E3%80%82&quot;&gt;http:&#x2F;&#x2F;www.recshop.fake&#x2F;cd#&amp;quot;。&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;元素包含了对被 &lt;em&gt;rdf:about&lt;&#x2F;em&gt; 属性标识的资源的描述。&lt;&#x2F;p&gt;
+&lt;p&gt;元素：、、 等是此资源的属性。&lt;&#x2F;p&gt;
+&lt;p&gt;Turtle序列化方法总结&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;URI用 &lt;strong&gt;&amp;lt;&amp;gt;&lt;&#x2F;strong&gt; 描述&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;&amp;lt;http:&#x2F;&#x2F;example.org&#x2F;path&#x2F;&amp;gt;
+&lt;&#x2F;span&gt;&amp;lt;http:&#x2F;&#x2F;example.org&#x2F;path&#x2F;#fragment&amp;gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;前缀缩写(类似于RDF&#x2F;XML的命名空间)&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;@prefix foo:&amp;lt;http:&#x2F;&#x2F;example.org&#x2F;ns#&amp;gt;
+&lt;&#x2F;span&gt;@prefix  : &amp;lt;http:&#x2F;&#x2F;example.org&#x2F;ns1#&amp;gt;
+&lt;&#x2F;span&gt;:a :b :c
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;字面量&lt;&#x2F;p&gt;
+&lt;p&gt;一行或者多行， &lt;code&gt;@en&lt;&#x2F;code&gt;限定其语言， &lt;code&gt;^^xsd:decimal&lt;&#x2F;code&gt;限定其数据类型&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;&amp;quot;string&amp;quot;
+&lt;&#x2F;span&gt;&amp;quot;&amp;quot;&amp;quot;
+&lt;&#x2F;span&gt;many lines of string
+&lt;&#x2F;span&gt;many lines of string
+&lt;&#x2F;span&gt;many lines of string
+&lt;&#x2F;span&gt;&amp;quot;&amp;quot;&amp;quot;
+&lt;&#x2F;span&gt;&amp;quot;chat&amp;quot;@en
+&lt;&#x2F;span&gt;&amp;quot;chat&amp;quot;@fr
+&lt;&#x2F;span&gt;&amp;quot;10&amp;quot;^^xsd:decimal
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;空节点(RDF模型可能会存在未命名的空节点)&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;code&gt;_:me&lt;&#x2F;code&gt;,&lt;code&gt;_a1234&lt;&#x2F;code&gt;分别代表一个空节点&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;_:me
+&lt;&#x2F;span&gt;_:a1234
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;base URI&lt;&#x2F;p&gt;
+&lt;p&gt;base URI定义后，接下来的&lt;strong&gt;URI, 前缀缩写，qualified names 和base
+URI&lt;&#x2F;strong&gt;都要受其作用&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;# this is a complete turtle document
+
+&lt;&#x2F;span&gt;@base &amp;lt;http:&#x2F;&#x2F;example.org&#x2F;ns&#x2F;&amp;gt; .
+&lt;&#x2F;span&gt;# base URIs 是 http:&#x2F;&#x2F;example.org&#x2F;ns&#x2F;
+
+&lt;&#x2F;span&gt;@base &amp;lt;foo&#x2F;&amp;gt; .
+&lt;&#x2F;span&gt;# base URI 是 http:&#x2F;&#x2F;example.org&#x2F;ns&#x2F;foo&#x2F;
+
+&lt;&#x2F;span&gt;@prefix : &amp;lt;bar#&amp;gt; .
+&lt;&#x2F;span&gt;:a4 :b4 :c4.
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;对三元组进行缩写&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;:a :b :c,
+&lt;&#x2F;span&gt;      :d.
+&lt;&#x2F;span&gt;#the last triple is :a :b :d.
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;一个简单的完整turtle标准文件&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;@prefix info: &amp;lt;http:&#x2F;&#x2F;zy.example.com&#x2F;info#&amp;gt;
+@prefix rel: &amp;lt;http:&#x2F;&#x2F;zy.example.com&#x2F;rel#&amp;gt;
+@prefix person: &amp;lt;http:&#x2F;&#x2F;zy.example.com&#x2F;person#&amp;gt;
+
+person:Tom info:name &amp;quot;Tom&amp;quot;;
+          info:job &amp;quot;worker&amp;quot;;
+          info:age 56;
+          rel:fatherof person:Jim.
+
+person:Jim info:name &amp;quot;Jim&amp;quot;;
+          info:job &amp;quot;programmer&amp;quot;;
+          info:age 28;
+          rel:fatherof person:Cherry.
+
+person:Cherry info:name &amp;quot;Cherry&amp;quot;;
+             info:age 8;
+             .
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</content>
+	</entry>
+</feed>

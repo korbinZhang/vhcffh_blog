@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+	<title>Frey&#x27;s blog - 交叉熵损失</title>
+	<subtitle>一个简单的个人博客，用于记录笔记</subtitle>
+	<link href="https://blog.vhcffh.com/tags/jiao-cha-shang-sun-shi/atom.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://blog.vhcffh.com"/>
+	<generator uri="https://www.getzola.org/">Zola</generator>
+	<updated>2019-10-02T00:00:00+00:00</updated>
+	<id>https://blog.vhcffh.com/tags/jiao-cha-shang-sun-shi/atom.xml</id>
+	<entry xml:lang="en">
+		<title>交叉熵损失的反向传播</title>
+		<published>2019-10-02T00:00:00+00:00</published>
+		<updated>2019-10-02T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/hexo-jiao-cha-shang-sun-shi-de-fan-xiang-chuan-bo/" type="text/html"/>
+		<id>https://blog.vhcffh.com/hexo-jiao-cha-shang-sun-shi-de-fan-xiang-chuan-bo/</id>
+		<content type="html">&lt;p&gt;对于一个单标签多分类问题,假设网络的输出层的输入为$Z_{in}=[z_1,\cdots,z_i,\cdots,z_n]$,
+输出为$\hat Y=[\hat y_1,\cdots,\hat y_i,\cdots,\hat y_n]$,
+真实类标签为$Y = [y_1,\cdots,y_i,\cdots,y_n]$,$n$为类别数(输出层神经元数),通常有:&lt;&#x2F;p&gt;
+&lt;p&gt;$$
+\hat Y = Softmax(Z_{in})\tag{1}
+$$&lt;&#x2F;p&gt;
+&lt;p&gt;$$
+\hat y_i = \frac {e^{z_i}}{\sum_{j=0}^n e^{z_j}}\tag{2}
+$$&lt;&#x2F;p&gt;
+&lt;p&gt;其中$Softmax$为:&lt;&#x2F;p&gt;
+&lt;p&gt;$$
+Softmax(Z_{in}) = [\cdots,\frac {e^{z_i}}{\sum_{j=1}^n e^{z_j}},\cdots]\tag{3}
+$$&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;jiao-cha-shang-sun-shi&quot;&gt;交叉熵损失&lt;&#x2F;h2&gt;
+&lt;p&gt;$$
+Loss(Y,\hat Y) = -\sum_{i=1}^ny_i*\ln(\hat y_i)\tag{4}
+$$&lt;&#x2F;p&gt;
+&lt;p&gt;损失对神经网络输出的偏导(&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.vhcffh.com&#x2F;2019&#x2F;%E7%9F%A9%E9%98%B5%E4%B8%AD%E7%9A%84%E6%B1%82%E5%AF%BC&#x2F;&quot;&gt;标量对向量求偏导&lt;&#x2F;a&gt;)为:&lt;&#x2F;p&gt;
+&lt;p&gt;$$
+\frac {\partial Loss(Y,\hat Y)}{\partial \hat Y} = [-\frac {y_1}{\hat y_1},\cdots,-\frac {y_i}{\hat y_i},\cdots,-\frac {y_n}{\hat y_n}]\label{5}\tag{5}
+$$&lt;&#x2F;p&gt;
+&lt;p&gt;后向传播推导中遇到的所有量都是变量,最终的目的是找到损失关于某变量的偏导,程序中也只用这个公式求得对应输入点的梯度&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;softmaxde-pian-dao&quot;&gt;Softmax的偏导&lt;&#x2F;h2&gt;
+&lt;p&gt;求$\hat y_i​$对$z_i​$的偏导,根据{2}可得:&lt;&#x2F;p&gt;
+&lt;p&gt;求$\hat Y$对$Z$的偏导(&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;blog.vhcffh.com&#x2F;hexo-ju-zhen-zhong-de-qiu-dao&#x2F;&quot;&gt;向量对向量求导&lt;&#x2F;a&gt;)&lt;&#x2F;p&gt;
+&lt;p&gt;这里把$y$的坐标写作$k$&lt;&#x2F;p&gt;
+&lt;p&gt;$k=i$时:&lt;&#x2F;p&gt;
+&lt;p&gt;$$
+\begin{split}
+\frac {\partial \hat y_i}{\partial z_i}
+&amp;amp;= e^{z_i} * \frac {1}{\sum_{j=1}^ne^{z_j}} +
+e^{z_i} * (-\frac {1}{(\sum_{j=1}^n e^{z_j})^2}) * e^{z_i} \cr
+&amp;amp;= \frac {e^{z_i}}{\sum_{j=1}^n e^{z_j}} - (\frac {e^{z_i}}{\sum_{j=1}^n e^{z_j}})^2 \cr
+&amp;amp;= \hat y_i - \hat y_i^2
+\end{split}
+\tag{6}
+$$&lt;&#x2F;p&gt;
+&lt;p&gt;$k \neq i$时:&lt;&#x2F;p&gt;
+&lt;p&gt;$$
+\begin{split}
+\frac {\partial \hat y_k}{\partial z_i}
+&amp;amp;= e^{z_k} * (-\frac {1}{(\sum_{j=1}^n e^{z_j})^2}) * e^{z_i} \cr
+&amp;amp;= -\frac {e^{z_k}*e^{z_i}}{(\sum_{j=1}^n e^{z_j})^2} \cr
+&amp;amp;= - \hat y_k\hat y_i
+\end{split}
+\tag{7}
+$$&lt;&#x2F;p&gt;
+&lt;p&gt;写成矩阵:&lt;&#x2F;p&gt;
+&lt;p&gt;$$
+\frac {\partial \hat Y}{\partial Z_{in}} = 
+\begin{bmatrix}
+\hat y_1-\hat y_1^2 &amp;amp; -\hat y_2\hat y_1 &amp;amp; \cdots &amp;amp; -\hat y_n\hat y_1\cr
+-\hat y_1\hat y_2 &amp;amp; \hat y_2-\hat y_2^2 &amp;amp; \cdots &amp;amp; -\hat y_n\hat y_2\cr
+\vdots &amp;amp; \vdots &amp;amp; \ddots &amp;amp; \vdots\cr
+-\hat y_1\hat y_n &amp;amp; -\hat y_2\hat y_n &amp;amp; \cdots &amp;amp; \hat y_n-\hat y_n^2\cr
+\end{bmatrix}\tag{8}
+$$
+这是一个对称矩阵,在链式求导时加不加转置都一样&lt;&#x2F;p&gt;
+&lt;p&gt;根据(5)和(8),损失$L$对输入$Z$的偏导(&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;blog.vhcffh.com&#x2F;hexo-ju-zhen-zhong-de-qiu-dao&#x2F;&quot;&gt;标量对向量求偏导&lt;&#x2F;a&gt;):&lt;&#x2F;p&gt;
+&lt;p&gt;$$
+\begin{align}
+\frac {\partial L(Y,\hat Y)}{\partial Z}
+&amp;amp;= \frac {\partial L(Y,\hat Y)}{\partial \hat Y} (\frac {\partial \hat Y}{\partial Z})^T\cr
+&amp;amp;= [-\frac {y_1}{\hat y_1},\cdots,-\frac {y_i}{\hat y_i},\cdots,-\frac {y_n}{\hat y_n}]
+\begin{bmatrix}
+\hat y_1-\hat y_1^2 &amp;amp; -\hat y_2\hat y_1 &amp;amp; \cdots &amp;amp; -\hat y_n\hat y_1\cr
+-\hat y_1\hat y_2 &amp;amp; \hat y_2-\hat y_2^2 &amp;amp; \cdots &amp;amp; -\hat y_n\hat y_2\cr
+\vdots &amp;amp; \vdots &amp;amp; \ddots &amp;amp; \vdots\cr
+-\hat y_1\hat y_n &amp;amp; -\hat y_2\hat y_n &amp;amp; \cdots &amp;amp; \hat y_n-\hat y_n^2\cr
+\end{bmatrix}^T\cr
+&amp;amp;= [(\hat y_1-1)y_1+\hat y_1y_2+\cdots+\hat y_1y_n,\hat y_2y_1+(\hat y_2-1)y_2+\cdots+\hat y_1y_n,\cdots]\cr
+&amp;amp;= [\hat y_1\sum_{i=1}^ny_i-y_1,\cdots,\hat y_j\sum_{i=1}^ny_i-y_j,\cdots,\hat y_n\sum_{i=1}^ny_i-y_n]\cr
+&amp;amp;= [\hat y_1-y_1,\cdots,\hat y_j-y_j,\cdots,\hat y_n-y_n]\ \ \ \ (\sum_{i=1}^ny_i=1)\cr
+&amp;amp;= \hat Y-Y
+\end{align}
+$$&lt;&#x2F;p&gt;
+</content>
+	</entry>
+</feed>

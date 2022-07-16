@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+	<title>Frey&#x27;s blog - 文件操作</title>
+	<subtitle>一个简单的个人博客，用于记录笔记</subtitle>
+	<link href="https://blog.vhcffh.com/tags/wen-jian-cao-zuo/atom.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://blog.vhcffh.com"/>
+	<generator uri="https://www.getzola.org/">Zola</generator>
+	<updated>2017-12-21T00:00:00+00:00</updated>
+	<id>https://blog.vhcffh.com/tags/wen-jian-cao-zuo/atom.xml</id>
+	<entry xml:lang="en">
+		<title>C语言文件读写</title>
+		<published>2017-12-21T00:00:00+00:00</published>
+		<updated>2017-12-21T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/hexo-cyu-yan-wen-jian-du-xie/" type="text/html"/>
+		<id>https://blog.vhcffh.com/hexo-cyu-yan-wen-jian-du-xie/</id>
+		<content type="html">&lt;p&gt;C语言文件操作笔记&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;FILE *fopen(char *filename,char *type); &#x2F;&#x2F;打开文件
+&lt;&#x2F;span&gt;int fclose(FILE *stream); &#x2F;&#x2F;关闭文件
+&lt;&#x2F;span&gt;int fgetc(FILE *stream); &#x2F;&#x2F;读一个字符指针后移
+&lt;&#x2F;span&gt;int getc(FILE *stream);
+&lt;&#x2F;span&gt;int fputc(int ch,FILE *stream); &#x2F;&#x2F;写一个字符指针后移
+&lt;&#x2F;span&gt;int putc(int ch,FILE *stream);
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;filename指明文件路径&lt;br &#x2F;&gt;
+type可取的至如下&lt;br &#x2F;&gt;
+&amp;quot;r&amp;quot; :打开一个已有的文本文，允许读取文件&lt;br &#x2F;&gt;
+&amp;quot;w&amp;quot;
+:打开一个文本文件，允许写入文件。如果文件不存在，则会创建一个新文件。在这里，您的程序会从文件的开头写入内容&lt;br &#x2F;&gt;
+&amp;quot;a&amp;quot;
+:打开一个文本文件，以追加模式写入文件。如果文件不存在，则会创建一个新文件。在这里，您的程序会在已有的文件内容中追加内容。&lt;br &#x2F;&gt;
+&amp;quot;r+&amp;quot;:打开一个文本文件，允许读写文件&lt;br &#x2F;&gt;
+&amp;quot;w+&amp;quot;:打开一个文本文件，允许读写文件。如果文件已存在，则文件会被截断为零长度，如果文件不存在，则会创建一个新文件&lt;br &#x2F;&gt;
+&amp;quot;a+&amp;quot;:打开一个文本文件，允许读写文件。如果文件不存在，则会创建一个新文件。读取会从文件的开头开始，写入则只能是追加模式&lt;br &#x2F;&gt;
+如果处理的是二进制文件，则需使用下面的访问模式来取代上面的访问模式:&lt;br &#x2F;&gt;
+&lt;code&gt;&amp;quot;rb&amp;quot;, &amp;quot;wb&amp;quot;, &amp;quot;ab&amp;quot;, &amp;quot;rb+&amp;quot;, &amp;quot;r+b&amp;quot;, &amp;quot;wb+&amp;quot;, &amp;quot;w+b&amp;quot;, &amp;quot;ab+&amp;quot;, &amp;quot;a+b&amp;quot;&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+</content>
+	</entry>
+</feed>

@@ -1,0 +1,914 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+	<title>Frey&#x27;s blog - Python</title>
+	<subtitle>一个简单的个人博客，用于记录笔记</subtitle>
+	<link href="https://blog.vhcffh.com/tags/python/atom.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://blog.vhcffh.com"/>
+	<generator uri="https://www.getzola.org/">Zola</generator>
+	<updated>2020-10-15T00:00:00+00:00</updated>
+	<id>https://blog.vhcffh.com/tags/python/atom.xml</id>
+	<entry xml:lang="en">
+		<title>matplotlib绘制x轴不连续的图</title>
+		<published>2020-10-15T00:00:00+00:00</published>
+		<updated>2020-10-15T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/wp-342/" type="text/html"/>
+		<id>https://blog.vhcffh.com/wp-342/</id>
+		<content type="html">&lt;p&gt;问题：matplotlib在绘制x轴不连续的数据时，会自补全；当使用日期作为横坐标时，会出现一些空值&lt;&#x2F;p&gt;
+&lt;p&gt;例如：&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;x = [1,2,3,4,5,8]
+&lt;&#x2F;span&gt;y = [1,4,9,16,25,36]
+&lt;&#x2F;span&gt;plt.plot(x,y)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;div&gt;
+&lt;&#x2F;div&gt;
+&lt;p&gt;matplotlib的x轴是一定连续的，因此先将需要的图形绘制出来，然后使用&lt;code&gt;plt.xticks(ticks,labels)&lt;&#x2F;code&gt;替换新的坐标显示&lt;&#x2F;p&gt;
+&lt;p&gt;ticks为实际位置，labels为要显示的文本&lt;&#x2F;p&gt;
+&lt;p&gt;画出需要的图形&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;x = [1,2,3,4,5,8]
+&lt;&#x2F;span&gt;y = [1,4,9,16,25,36]
+&lt;&#x2F;span&gt;plt.plot(range(y),y)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;div&gt;
+&lt;&#x2F;div&gt;
+&lt;p&gt;重新定义x轴的显示&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;plt.xticks(range(len(x)),x)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;div&gt;
+&lt;&#x2F;div&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>python标准库模块heapq</title>
+		<published>2020-10-11T00:00:00+00:00</published>
+		<updated>2020-10-11T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/wp-322/" type="text/html"/>
+		<id>https://blog.vhcffh.com/wp-322/</id>
+		<content type="html">&lt;p&gt;堆是一个近似完全二叉树的结构，并同时满足如下性质&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;子节点的键值或索引总是小于（或者大于）它的父节点&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;python标准库模块heapq实现了堆排序的一些算法，主要提供了以下几个函数&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;heapify(x)&lt;&#x2F;code&gt;:本地把列表转换为堆，时间复杂度O(n)&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;heappush(heap, item)&lt;&#x2F;code&gt;:将新项添加到堆，并保持堆的不变性&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;heappop(heap)&lt;&#x2F;code&gt;:从堆中取出最小项，并保持堆的不变性&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;heapreplace(heap, item)&lt;&#x2F;code&gt;:从堆中取出最小项，并将新项添加到堆，并保持堆的不变性&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;heappushpop(heap, item)&lt;&#x2F;code&gt;:从堆中取出最小项，并将新项添加到堆，并保持堆的不变性（速度更快）&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;nsmallest(n, iterable, key=None)&lt;&#x2F;code&gt;:从可迭代对象中返回前n个最小项&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;nlargest(n, iterable, key=None)&lt;&#x2F;code&gt;:从可迭代对象中返回前n个最大项&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;merge(*iterables, key=None, reverse=False)&lt;&#x2F;code&gt;:合并多个可排序对象&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>初探Tornado</title>
+		<published>2020-08-30T00:00:00+00:00</published>
+		<updated>2020-08-30T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/wp-277/" type="text/html"/>
+		<id>https://blog.vhcffh.com/wp-277/</id>
+		<content type="html">&lt;blockquote&gt;
+&lt;p&gt;Tornado是一种 Web 服务器软件的开源版本。Tornado 和主流Web
+服务器框架（包括大多数 Python
+的框架）有着明显的区别：它是非阻塞式服务器，而且速度相当快。&lt;&#x2F;p&gt;
+&lt;p&gt;得利于其非阻塞的方式和对epoll的运用，Tornado
+每秒可以处理数以千计的连接，因此 Tornado 是实时 Web 服务的一个
+理想框架。&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;来自百度百科的解释，其中&lt;strong&gt;异步非阻塞&lt;&#x2F;strong&gt;和&lt;strong&gt;对epoll的运用&lt;&#x2F;strong&gt;是其两大特点&lt;&#x2F;p&gt;
+&lt;p&gt;Tornado不同于&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;http:&#x2F;&#x2F;docs.jinkan.org&#x2F;docs&#x2F;flask&#x2F;index.html&quot;&gt;Flask&lt;&#x2F;a&gt;和&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; title=&quot;https:&#x2F;&#x2F;docs.djangoproject.com&#x2F;en&#x2F;3.1&#x2F;&quot; href=&quot;https:&#x2F;&#x2F;docs.djangoproject.com&#x2F;en&#x2F;3.1&#x2F;&quot;&gt;Django&lt;&#x2F;a&gt;两个常见框架，主要特点是Tornado内部实现了自己的Web服务器，而Flask和Django是采用WSGI协议与服务器对接。在开发时，Flask依赖&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; title=&quot;https:&#x2F;&#x2F;werkzeug.palletsprojects.com&#x2F;en&#x2F;1.0.x&#x2F;&quot; href=&quot;https:&#x2F;&#x2F;werkzeug.palletsprojects.com&#x2F;en&#x2F;1.0.x&#x2F;&quot;&gt;Werkzeug&lt;&#x2F;a&gt;WSGI
+工具集实现一个基于WSGI协议的内置web服务器来满足本地调试，部署的时候需要选择合适的&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;http:&#x2F;&#x2F;docs.jinkan.org&#x2F;docs&#x2F;flask&#x2F;deploying&#x2F;index.html&quot;&gt;WSGI服务器&lt;&#x2F;a&gt;来满足生产需求。Django也是同样原理，使用内置WSGI服务器满足开发，使用其他性能更高的WSGI服务器满足生产中的并发需求。（Tornado中的web服务器和web框架都可以实现对WSGI的兼容，可以Tornado服务器模块为其他web框架提供WSGI服务器，也可以使用其他服务器来部署Tornado的web应用。）&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;yi-bu-fei-zu-sai&quot;&gt;异步非阻塞&lt;&#x2F;h2&gt;
+&lt;p&gt;异步和非阻塞是非常相关的而且这两个术语经常交换使用，但它们不完全相同。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;wei-shi-yao-yi-bu&quot;&gt;为什么异步&lt;&#x2F;h3&gt;
+&lt;p&gt;通常情况下，web服务器对与每个客户端的请求，都会创建一个线程与其连接，这就是同步模式。在处理高并发时，对每一个请求都会创建一个线程，如此多的线程开销是服务器的压力极大。异步模式在处理了并发请求时，先将请求放到后台处理，通过事件轮询等机制，将处理好的请求发送会客户端，从而减少了线程的创建。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;fei-zu-sai&quot;&gt;非阻塞&lt;&#x2F;h3&gt;
+&lt;p&gt;非阻塞是指在不能立刻得到结果之前，该函数不会阻塞当前线程，而会立刻返回（继续执行下面代码，或者使用重试机制）。阻塞的发生主要是由于&lt;strong&gt;系统IO&lt;&#x2F;strong&gt;（网络IO，文件读写IO等）引起的，或者在处理客户端请求时由于复杂的计算引起的CPU阻塞。总之阻塞的发生是由与服务器处理客户端请求需要一定的时间，直接执行（阻塞）或者直接返回，通过一定机制等到准备好要发送到客户端的内容后，发送到对应客户端。如何处理好系统IO是非阻塞的关键，Tornado是通过&lt;strong&gt;epoll&lt;&#x2F;strong&gt;方式的IO多路复用来实现的。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;epoll&quot;&gt;epoll&lt;&#x2F;h2&gt;
+&lt;p&gt;系统IO主要是程序与硬件间接交互的一种方式，如果每个程序都直接操作硬件，不仅程序开发会变得复杂，而且不同程序不统一的操作方式会使硬件混乱。因此有了操作系统，程序通过系统接口访问硬件，操作系统对所有硬件统一管理。当程序调用了系统的IO接口后，操作系统有不同的处理模式，不同的模式就是不同的IO模型。IO多路复用是一种IO模型，epoll是其中一种方式，常用的IO模型有五种：&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;阻塞式IO&lt;br &#x2F;&gt;
+当调用IO请求时直接进入&lt;strong&gt;阻塞状态&lt;&#x2F;strong&gt;，当IO完成（包括准备数据和拷贝数据）时，进入&lt;strong&gt;就绪状态&lt;&#x2F;strong&gt;，等待被再次调度进入&lt;strong&gt;运行状态&lt;&#x2F;strong&gt;。&lt;&#x2F;li&gt;
+&lt;li&gt;非阻塞式IO&lt;br &#x2F;&gt;
+当调用IO请求时，系统内核直接返回一个error信息，程序一边处理其它事情，每隔一段时间都询问内核IO数据是否准备完成，直到返回准备完成，然后把数据由内核拷贝到用户空间。&lt;&#x2F;li&gt;
+&lt;li&gt;IO多路复用&lt;br &#x2F;&gt;
+多路复用把一个程序的多个IO请求整合到一起进行阻塞，主要实现方式有select，poll，epoll。&lt;&#x2F;li&gt;
+&lt;li&gt;信号驱动IO&lt;br &#x2F;&gt;
+内核通过信号通知程序IO数据已经准备好。&lt;&#x2F;li&gt;
+&lt;li&gt;异步IO&lt;br &#x2F;&gt;
+发出IO请求后，内核把数据拷贝到用户空间后，通知程序IO已经完成。&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;IO多路复用的方式&lt;&#x2F;p&gt;
+&lt;p&gt;Tornado使用epoll（依赖依赖操作系统）的方式对网络IO进行多路复用，与客户端建立tcp连接后，能继续与其它客户端继续建立连接。接受完某客户端的数据后，调用对应的回掉函数处理。这样就能在一个线程里处理多个客户端的请求了。&lt;&#x2F;p&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>一些有用的python函数</title>
+		<published>2020-05-14T00:00:00+00:00</published>
+		<updated>2020-05-14T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/wp-160/" type="text/html"/>
+		<id>https://blog.vhcffh.com/wp-160/</id>
+		<content type="html">&lt;h1 id=&quot;ji-chu-han-shu&quot;&gt;基础函数&lt;&#x2F;h1&gt;
+&lt;h2 id=&quot;map&quot;&gt;map&lt;&#x2F;h2&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;map(function, iterable, ...)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;对迭代器每一给元素进行计算&lt;br &#x2F;&gt;
+返回新的迭代器&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;filter&quot;&gt;filter&lt;&#x2F;h2&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;filter(function, iterable)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;过滤掉不满足function的函数&lt;br &#x2F;&gt;
+返回过滤后的迭代器&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;heapqmo-kuai&quot;&gt;heapq模块&lt;&#x2F;h2&gt;
+&lt;p&gt;参考python中文文档&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;docs.python.org&#x2F;zh-cn&#x2F;3&#x2F;library&#x2F;heapq.html&quot;&gt;https:&#x2F;&#x2F;docs.python.org&#x2F;zh-cn&#x2F;3&#x2F;library&#x2F;heapq.html&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;模块提供了一系列的函数用来操作list，从而实现最小堆的特性&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;import heapq
+&lt;&#x2F;span&gt;heapq.heapify(x) #原地转化为最小堆
+&lt;&#x2F;span&gt;heapq.heappush(heap,item) #堆中加入新项
+&lt;&#x2F;span&gt;heapq.heappop(heap) #弹出堆中最小项
+&lt;&#x2F;span&gt;heapq.heapreplace(heap,item) #弹出堆中最小项并加入新项
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h1 id=&quot;functoolsmo-kuai-zhong-de-han-shu&quot;&gt;functools模块中的函数&lt;&#x2F;h1&gt;
+&lt;h2 id=&quot;reduce&quot;&gt;reduce&lt;&#x2F;h2&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;from functools import reduce
+&lt;&#x2F;span&gt;reduce(function, sequence, startValue)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;将一个序列归纳为一个输出&lt;br &#x2F;&gt;
+返回一个输出&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;lru-cache&quot;&gt;lru_cache&lt;&#x2F;h2&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;from functools import lru_cache
+&lt;&#x2F;span&gt;@lru_cache(user_function)
+&lt;&#x2F;span&gt;@lru_cache(maxsize=128, typed=False)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;装饰器缓存函数的输出值&lt;br &#x2F;&gt;
+maxsize：最多缓存最近多少个返回值&lt;br &#x2F;&gt;
+typed：类型是否作为缓存中键的一部分（如果为True，3和3.0两次缓存）&lt;&#x2F;p&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>集合合并问题</title>
+		<published>2020-05-12T00:00:00+00:00</published>
+		<updated>2020-05-12T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/wp-155/" type="text/html"/>
+		<id>https://blog.vhcffh.com/wp-155/</id>
+		<content type="html">&lt;blockquote&gt;
+&lt;p&gt;题目： 小明有n只袜子，需要穿m天 第i只袜子的颜色为c_i
+给出每天要穿的两只袜子的编号（i1,i2)
+保证每天穿的袜子颜色一样，最少要对多少只袜子进行染色&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;思路：
+根据这m天每天穿的两只袜子，可以将所有袜子分成几个集合，每个集合的颜色都要一样，把集合中所有袜子染成颜色最多的袜子即可
+将每天穿的袜子标号看作集合，按袜子颜色进行合并，直到每个集合中袜子的标号都不重复
+实现函数&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;def maxTint(c,d):
+&lt;&#x2F;span&gt;    &amp;quot;&amp;quot;&amp;quot;
+&lt;&#x2F;span&gt;    c: n只袜子的颜色
+&lt;&#x2F;span&gt;    d: m天每天穿的袜子的标号
+&lt;&#x2F;span&gt;    &amp;quot;&amp;quot;&amp;quot;
+&lt;&#x2F;span&gt;    pass
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;1，循环标号进行合并&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;def maxTint(c,d):
+&lt;&#x2F;span&gt;    d = map(set,d)
+&lt;&#x2F;span&gt;    for ci in range(len(c)):
+&lt;&#x2F;span&gt;        new_d = []
+&lt;&#x2F;span&gt;        new_g = []
+&lt;&#x2F;span&gt;        for di in d:
+&lt;&#x2F;span&gt;            if ci in di:
+&lt;&#x2F;span&gt;                new_g.append(di)
+&lt;&#x2F;span&gt;            else:
+&lt;&#x2F;span&gt;                new_d.append(di)
+&lt;&#x2F;span&gt;        d = new_d
+&lt;&#x2F;span&gt;        if len(new_g)!=0:
+&lt;&#x2F;span&gt;            d.append(set())
+&lt;&#x2F;span&gt;            for gi in new_g:
+&lt;&#x2F;span&gt;                d[-1]=d[-1]|gi
+&lt;&#x2F;span&gt;    ans = 0
+&lt;&#x2F;span&gt;    for di in d:
+&lt;&#x2F;span&gt;        ansi = 0
+&lt;&#x2F;span&gt;        for i in di:
+&lt;&#x2F;span&gt;            ansi=max(ansi,c.count(c[i-1]))
+&lt;&#x2F;span&gt;        ans+=ansi
+&lt;&#x2F;span&gt;    return ans
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;时间复杂度：&lt;code&gt;n*m&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>python的整除</title>
+		<published>2020-05-11T00:00:00+00:00</published>
+		<updated>2020-05-11T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/wp-151/" type="text/html"/>
+		<id>https://blog.vhcffh.com/wp-151/</id>
+		<content type="html">&lt;p&gt;python可以通过&lt;code&gt;&#x2F;&#x2F;&lt;&#x2F;code&gt;进行整除运算 例如：&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;4&#x2F;&#x2F;2
+&lt;&#x2F;span&gt;# 2
+&lt;&#x2F;span&gt;5&#x2F;&#x2F;2
+&lt;&#x2F;span&gt;# 2
+&lt;&#x2F;span&gt;# 去尾法
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;当遇到负数时，最后的结果向下取整数 此时负号运算级高，先构成负数，再除法&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;-4&#x2F;&#x2F;2
+&lt;&#x2F;span&gt;# -2
+&lt;&#x2F;span&gt;-5&#x2F;&#x2F;2
+&lt;&#x2F;span&gt;# -3
+&lt;&#x2F;span&gt;-1&#x2F;&#x2F;2
+&lt;&#x2F;span&gt;# -1
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;如果是减号，就先计算除法&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;-1&#x2F;&#x2F;2
+&lt;&#x2F;span&gt;# -1
+&lt;&#x2F;span&gt;1-1&#x2F;&#x2F;2
+&lt;&#x2F;span&gt;# 1
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;python远算符优先级&lt;&#x2F;p&gt;
+&lt;p&gt;运算符                       描述&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;p&gt;&lt;code&gt;**&lt;&#x2F;code&gt;                         指数
+&lt;code&gt;~ + -&lt;&#x2F;code&gt;                      按位翻转, 一元加号和减号（就是正数和负数）
+&lt;code&gt;* &#x2F; % &#x2F;&#x2F;&lt;&#x2F;code&gt;                   乘，除，取模和取整除
+&lt;code&gt;+ -&lt;&#x2F;code&gt;                        加法和减法
+&lt;code&gt;&amp;gt;&amp;gt; &amp;lt;&amp;lt;&lt;&#x2F;code&gt;                      右移，左移
+&lt;code&gt;&amp;amp;&lt;&#x2F;code&gt;                          位与运算
+&lt;code&gt;^ |&lt;&#x2F;code&gt;                        位异或，位或
+&lt;code&gt;&amp;lt;= &amp;lt; &amp;gt; &amp;gt;=&lt;&#x2F;code&gt;                  比较远算
+&lt;code&gt;== !=&lt;&#x2F;code&gt;                      等于远算
+&lt;code&gt;= %= &#x2F;= &#x2F;&#x2F;= -= += *= **=&lt;&#x2F;code&gt;   赋值
+&lt;code&gt;is is not&lt;&#x2F;code&gt;                  身份
+&lt;code&gt;in not in&lt;&#x2F;code&gt;                  成员
+&lt;code&gt;and or not&lt;&#x2F;code&gt;                 逻辑与或非&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;code&gt;-&lt;&#x2F;code&gt;负号比&lt;code&gt;&#x2F;&#x2F;&lt;&#x2F;code&gt;整除远算级高&lt;&#x2F;p&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>数独的解法</title>
+		<published>2020-04-08T00:00:00+00:00</published>
+		<updated>2020-04-08T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/wp-143/" type="text/html"/>
+		<id>https://blog.vhcffh.com/wp-143/</id>
+		<content type="html">&lt;h1 id=&quot;shu-du-de-gui-ze&quot;&gt;数独的规则&lt;&#x2F;h1&gt;
+&lt;p&gt;在9×9的方格里面填写数字1-9，满足&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;每行不重复&lt;&#x2F;li&gt;
+&lt;li&gt;每列不重复&lt;&#x2F;li&gt;
+&lt;li&gt;9个3×3的小方格不重复&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h1 id=&quot;si-lu&quot;&gt;思路&lt;&#x2F;h1&gt;
+&lt;h2 id=&quot;hui-su-fa&quot;&gt;回溯法&lt;&#x2F;h2&gt;
+&lt;p&gt;通过DFS遍历尝试每一个数字
+根据三条规则，可以用三个二维数组记录每行，每列和每个小方格可填数字状态&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;row = [[True]*9 for _ in range(9)]
+&lt;&#x2F;span&gt;col = [[True]*9 for _ in range(9)]
+&lt;&#x2F;span&gt;block = [[True]*9 for _ in range(9)]
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;code&gt;row[i][j]&lt;&#x2F;code&gt;表示第&lt;code&gt;i&lt;&#x2F;code&gt;行是否可以填数字&lt;code&gt;j&lt;&#x2F;code&gt;
+&lt;code&gt;col[i][j]&lt;&#x2F;code&gt;表示第&lt;code&gt;i&lt;&#x2F;code&gt;列是否可以填数字&lt;code&gt;j&lt;&#x2F;code&gt;
+&lt;code&gt;block[i][j]&lt;&#x2F;code&gt;表示第&lt;code&gt;i&lt;&#x2F;code&gt;个方格是否可以填数字&lt;code&gt;j&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;用二维数组&lt;code&gt;g&lt;&#x2F;code&gt;表示数独方格的原始状态，&lt;code&gt;0&lt;&#x2F;code&gt;表示空白&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;def dfs():
+&lt;&#x2F;span&gt;    # 遍历所有位置
+&lt;&#x2F;span&gt;    for i in range(9):
+&lt;&#x2F;span&gt;        for j in range(9):
+&lt;&#x2F;span&gt;            # 空白位置
+&lt;&#x2F;span&gt;            if g[i][j]==0:
+&lt;&#x2F;span&gt;                # 尝试每一个数字
+&lt;&#x2F;span&gt;                for k in range(9):
+&lt;&#x2F;span&gt;                    # 数字满足行，列，块
+&lt;&#x2F;span&gt;                    if row[i][k] and col[j][k] and block[3*(i&#x2F;&#x2F;3)+j&#x2F;&#x2F;3][k]:
+&lt;&#x2F;span&gt;                        # 填入数字
+&lt;&#x2F;span&gt;                        row[i][k] = col[j][k] = block[3*(i&#x2F;&#x2F;3)+j&#x2F;&#x2F;3][k]= False
+&lt;&#x2F;span&gt;                        g[i][j] = k+1
+&lt;&#x2F;span&gt;                        if(dfs()):
+&lt;&#x2F;span&gt;                            return True
+&lt;&#x2F;span&gt;                        # 有填错的，删除数字
+&lt;&#x2F;span&gt;                        row[i][k] = col[j][k] = block[3*(i&#x2F;&#x2F;3)+j&#x2F;&#x2F;3][k]= True
+&lt;&#x2F;span&gt;                        g[i][j] = 0
+&lt;&#x2F;span&gt;                # 九个数字都不能填
+&lt;&#x2F;span&gt;                return False
+&lt;&#x2F;span&gt;    # 所有位置都填了数字
+&lt;&#x2F;span&gt;    return True
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;回溯法要注意如何进行记录状态，要方便更新，回溯&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;can-kao-zi-liao&quot;&gt;参考资料&lt;&#x2F;h1&gt;
+&lt;p&gt;[1]&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;blog.csdn.net&#x2F;xiaoyiaoyou&#x2F;article&#x2F;details&#x2F;52491187&quot;&gt;数独求解算法（回溯法和唯一解法）java实现&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>tensorflow2建立模型的方法</title>
+		<published>2020-04-06T00:00:00+00:00</published>
+		<updated>2020-04-06T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/wp-137/" type="text/html"/>
+		<id>https://blog.vhcffh.com/wp-137/</id>
+		<content type="html">&lt;h1 id=&quot;1-shi-yong-input&quot;&gt;1.使用Input&lt;&#x2F;h1&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;tf.keras.Input(shape=None, batch_size=None, name=None, dtype=None, sparse=False, tensor=None, ragged=False, **kwargs)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;code&gt;Input&lt;&#x2F;code&gt;初始化一个占位符 &lt;code&gt;shape&lt;&#x2F;code&gt;：指定模型输入的shape，不包括batch size
+&lt;code&gt;batch_size&lt;&#x2F;code&gt;：可选 &lt;code&gt;name&lt;&#x2F;code&gt;：可选，图层名称 &lt;code&gt;dtype&lt;&#x2F;code&gt;:字符串，数据类型
+&lt;code&gt;sparse&lt;&#x2F;code&gt;:布尔，是否稀疏 &lt;code&gt;tensor&lt;&#x2F;code&gt;:可选，指定tensor，不再是占位符&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;from tensorflow.keras import Input, Model
+&lt;&#x2F;span&gt;from tensorflow.keras.layers import Dense
+&lt;&#x2F;span&gt;x = Input(shape=(2,))
+&lt;&#x2F;span&gt;y = Dense(5, activation=&amp;#39;softmax&amp;#39;)(x)
+&lt;&#x2F;span&gt;model = Model(x, y)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h1 id=&quot;2-ji-cheng-model&quot;&gt;2.继承Model&lt;&#x2F;h1&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;import tensorflow as tf
+&lt;&#x2F;span&gt;class MyModel(tf.keras.Model):
+&lt;&#x2F;span&gt;    def __init__(self):
+&lt;&#x2F;span&gt;        super(MyModel, self).__init__()
+&lt;&#x2F;span&gt;        self.dense = tf.keras.layers.Dense(5, activation=tf.nn.softmax)
+
+&lt;&#x2F;span&gt;    def call(self, inputs):
+&lt;&#x2F;span&gt;        x = self.dense1(inputs)
+&lt;&#x2F;span&gt;        return self.dense(x)
+
+&lt;&#x2F;span&gt;model = MyModel()
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h1 id=&quot;3-shi-yong-sequential&quot;&gt;3.使用Sequential&lt;&#x2F;h1&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;import tensorflow as tf
+&lt;&#x2F;span&gt;model1 = tf.keras.Sequential(
+&lt;&#x2F;span&gt;    tf.keras.layers.Dense(5, activation=tf.nn.softmax)
+&lt;&#x2F;span&gt;)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>栈实现四则远算</title>
+		<published>2020-03-26T00:00:00+00:00</published>
+		<updated>2020-03-26T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/wp-122/" type="text/html"/>
+		<id>https://blog.vhcffh.com/wp-122/</id>
+		<content type="html">&lt;h2 id=&quot;zong-jie&quot;&gt;总结&lt;&#x2F;h2&gt;
+&lt;p&gt;四则运算表达式求值分两步&lt;br &#x2F;&gt;
+中缀转后缀，栈中存符号&lt;br &#x2F;&gt;
+后缀算结果，栈中存数字&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;zhong-zhui-biao-da-shi-yu-hou-zhui-biao-da-shi-zhuan-huan&quot;&gt;中缀表达式与后缀表达式转换&lt;&#x2F;h2&gt;
+&lt;p&gt;中缀表达式&lt;code&gt;1+(2-3)*4+5&#x2F;6&lt;&#x2F;code&gt;&lt;br &#x2F;&gt;
+后缀表达式&lt;code&gt;1,2,+&lt;&#x2F;code&gt;&lt;br &#x2F;&gt;
+通过栈进行转换&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;数字：直接输出&lt;&#x2F;li&gt;
+&lt;li&gt;（：进栈&lt;&#x2F;li&gt;
+&lt;li&gt;）：出栈直到（,弹出(&lt;&#x2F;li&gt;
+&lt;li&gt;运算符：出栈（高阶等阶运算符），进栈（当前运算符）&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;!-- --&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;#当前字符：1+(2-3)*4+5&#x2F;6
+&lt;&#x2F;span&gt;#输出：1
+&lt;&#x2F;span&gt;#栈：
+&lt;&#x2F;span&gt;#当前字符：+(2-3)*4+5&#x2F;6
+&lt;&#x2F;span&gt;#输出：1
+&lt;&#x2F;span&gt;#栈：+
+&lt;&#x2F;span&gt;#当前字符：(2-3)*4+5&#x2F;6
+&lt;&#x2F;span&gt;#输出：1
+&lt;&#x2F;span&gt;#栈：+,(
+&lt;&#x2F;span&gt;#当前字符：2-3)*4+5&#x2F;6
+&lt;&#x2F;span&gt;#输出：1,2
+&lt;&#x2F;span&gt;#栈：+,(
+&lt;&#x2F;span&gt;#当前字符：-3)*4+5&#x2F;6
+&lt;&#x2F;span&gt;#输出：1,2
+&lt;&#x2F;span&gt;#栈：+,(,-
+&lt;&#x2F;span&gt;#当前字符：3)*4+5&#x2F;6
+&lt;&#x2F;span&gt;#输出：1,2,3
+&lt;&#x2F;span&gt;#栈：+,(,-
+&lt;&#x2F;span&gt;#当前字符：)*4+5&#x2F;6
+&lt;&#x2F;span&gt;#输出：1,2,3,-
+&lt;&#x2F;span&gt;#栈：+
+&lt;&#x2F;span&gt;#当前字符：*4+5&#x2F;6
+&lt;&#x2F;span&gt;#输出：1,2,3,-,
+&lt;&#x2F;span&gt;#栈：+(低阶不弹出),*
+&lt;&#x2F;span&gt;#当前字符：4+5&#x2F;6
+&lt;&#x2F;span&gt;#输出：1,2,3,-,4
+&lt;&#x2F;span&gt;#栈：+,*
+&lt;&#x2F;span&gt;#当前字符：+5&#x2F;6
+&lt;&#x2F;span&gt;#输出：1,2,3,-,4,*(高阶弹出),+(等阶弹出)
+&lt;&#x2F;span&gt;#栈：+
+&lt;&#x2F;span&gt;#当前字符：5&#x2F;6
+&lt;&#x2F;span&gt;#输出：1,2,3,-,4,*,+,5
+&lt;&#x2F;span&gt;#栈：+
+&lt;&#x2F;span&gt;#当前字符：&#x2F;6
+&lt;&#x2F;span&gt;#输出：1,2,3,-,4,*,+,5
+&lt;&#x2F;span&gt;#栈：+,&#x2F;
+&lt;&#x2F;span&gt;#当前字符：6
+&lt;&#x2F;span&gt;#输出：1,2,3,-,4,*,+,5,6
+&lt;&#x2F;span&gt;#栈：+,&#x2F;
+&lt;&#x2F;span&gt;#当前字符：
+&lt;&#x2F;span&gt;#输出：1,2,3,-,4,*,+,5,6,&#x2F;,+
+&lt;&#x2F;span&gt;#栈：
+&lt;&#x2F;span&gt;#1+(2-3)*4+5&#x2F;6
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;hou-zhui-biao-da-shi-de-ji-suan&quot;&gt;后缀表达式的计算&lt;&#x2F;h2&gt;
+&lt;p&gt;数字进栈，符号远算&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;#[1,[[[2,3,-],4,*],[5,6,&#x2F;],+],+]
+&lt;&#x2F;span&gt;#2-3=-1
+&lt;&#x2F;span&gt;#-1*4=-4
+&lt;&#x2F;span&gt;#5&#x2F;6=0.833
+&lt;&#x2F;span&gt;#-4+0.833=-3.167
+&lt;&#x2F;span&gt;#1+(-3.167)=-2.167
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;pythonshi-xian&quot;&gt;python实现&lt;&#x2F;h2&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;def calculator(s: str) -&amp;gt; float:
+&lt;&#x2F;span&gt;    s = s.replace(&amp;quot; &amp;quot;, &amp;quot;&amp;quot;)
+&lt;&#x2F;span&gt;    s_list = []
+&lt;&#x2F;span&gt;    for c in list(s):
+&lt;&#x2F;span&gt;        if c.isdigit():
+&lt;&#x2F;span&gt;            if len(s_list) == 0 or isinstance(s_list[-1], str):
+&lt;&#x2F;span&gt;                s_list.append(int(c))
+&lt;&#x2F;span&gt;            else:
+&lt;&#x2F;span&gt;                s_list[-1] *= 10+int(c)
+&lt;&#x2F;span&gt;        else:
+&lt;&#x2F;span&gt;            s_list.append(c)
+&lt;&#x2F;span&gt;    # 中缀转后缀
+&lt;&#x2F;span&gt;    stack = []
+&lt;&#x2F;span&gt;    s_end = []
+&lt;&#x2F;span&gt;    for c in s_list:
+&lt;&#x2F;span&gt;        if isinstance(c, int):
+&lt;&#x2F;span&gt;            s_end.append(c)
+&lt;&#x2F;span&gt;        elif c == &amp;quot;(&amp;quot;:
+&lt;&#x2F;span&gt;            stack.append(c)
+&lt;&#x2F;span&gt;        elif c == &amp;quot;)&amp;quot;:
+&lt;&#x2F;span&gt;            while stack[-1] != &amp;quot;(&amp;quot;:
+&lt;&#x2F;span&gt;                s_end.append(stack.pop())
+&lt;&#x2F;span&gt;            stack.pop()
+&lt;&#x2F;span&gt;        elif c in [&amp;quot;*&amp;quot;, &amp;quot;&#x2F;&amp;quot;]:
+&lt;&#x2F;span&gt;            while len(stack) != 0 and stack[-1] in [&amp;quot;*&amp;quot;, &amp;quot;&#x2F;&amp;quot;]:
+&lt;&#x2F;span&gt;                s_end.append(stack.pop())
+&lt;&#x2F;span&gt;            stack.append(c)
+&lt;&#x2F;span&gt;        elif c in [&amp;quot;+&amp;quot;, &amp;quot;-&amp;quot;]:
+&lt;&#x2F;span&gt;            while len(stack) != 0 and stack[-1] in [&amp;quot;+&amp;quot;, &amp;quot;-&amp;quot;, &amp;quot;*&amp;quot;, &amp;quot;&#x2F;&amp;quot;]:
+&lt;&#x2F;span&gt;                s_end.append(stack.pop())
+&lt;&#x2F;span&gt;            stack.append(c)
+&lt;&#x2F;span&gt;        else:
+&lt;&#x2F;span&gt;            continue
+&lt;&#x2F;span&gt;    while stack:
+&lt;&#x2F;span&gt;        s_end.append(stack.pop())
+&lt;&#x2F;span&gt;    print(s_end)
+&lt;&#x2F;span&gt;    # 计算后缀表达式
+&lt;&#x2F;span&gt;    stack = []
+&lt;&#x2F;span&gt;    for c in s_end:
+&lt;&#x2F;span&gt;        if isinstance(c, int):
+&lt;&#x2F;span&gt;            stack.append(c)
+&lt;&#x2F;span&gt;        elif c == &amp;quot;+&amp;quot;:
+&lt;&#x2F;span&gt;            stack[-2] += stack[-1]
+&lt;&#x2F;span&gt;            stack.pop()
+&lt;&#x2F;span&gt;        elif c == &amp;quot;-&amp;quot;:
+&lt;&#x2F;span&gt;            stack[-2] -= stack[-1]
+&lt;&#x2F;span&gt;            stack.pop()
+&lt;&#x2F;span&gt;        elif c == &amp;quot;*&amp;quot;:
+&lt;&#x2F;span&gt;            stack[-2] *= stack[-1]
+&lt;&#x2F;span&gt;            stack.pop()
+&lt;&#x2F;span&gt;        elif c == &amp;quot;&#x2F;&amp;quot;:
+&lt;&#x2F;span&gt;            stack[-2] &#x2F;= stack[-1]
+&lt;&#x2F;span&gt;            stack.pop()
+&lt;&#x2F;span&gt;        else:
+&lt;&#x2F;span&gt;            continue
+&lt;&#x2F;span&gt;    return stack[0]
+
+&lt;&#x2F;span&gt;if __name__ == &amp;quot;__main__&amp;quot;:
+&lt;&#x2F;span&gt;    print(calculator(&amp;quot;1+(2-3)*4+5&#x2F;6&amp;quot;))
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;leetcodexiang-guan-ti-mu&quot;&gt;leetcode相关题目&lt;&#x2F;h2&gt;
+&lt;p&gt;1.&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;leetcode.com&#x2F;problems&#x2F;basic-calculator&#x2F;&quot;&gt;https:&#x2F;&#x2F;leetcode.com&#x2F;problems&#x2F;basic-calculator&#x2F;&lt;&#x2F;a&gt;&lt;br &#x2F;&gt;
+2.&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;leetcode.com&#x2F;problems&#x2F;basic-calculator-ii&#x2F;&quot;&gt;https:&#x2F;&#x2F;leetcode.com&#x2F;problems&#x2F;basic-calculator-ii&#x2F;&lt;&#x2F;a&gt;&lt;br &#x2F;&gt;
+3.&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;leetcode.com&#x2F;problems&#x2F;basic-calculator-iii&#x2F;&quot;&gt;https:&#x2F;&#x2F;leetcode.com&#x2F;problems&#x2F;basic-calculator-iii&#x2F;&lt;&#x2F;a&gt;&lt;br &#x2F;&gt;
+4.&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;leetcode.com&#x2F;problems&#x2F;basic-calculator-iv&#x2F;&quot;&gt;https:&#x2F;&#x2F;leetcode.com&#x2F;problems&#x2F;basic-calculator-iv&#x2F;&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>日常笔记-1</title>
+		<published>2019-09-24T00:00:00+00:00</published>
+		<updated>2019-09-24T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/hexo-ri-chang-bi-ji-1/" type="text/html"/>
+		<id>https://blog.vhcffh.com/hexo-ri-chang-bi-ji-1/</id>
+		<content type="html">&lt;p&gt;pickle序列化与反序列化&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;python&quot; class=&quot;language-python z-code&quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;z-source z-python&quot;&gt;    &lt;span class=&quot;z-meta z-statement z-import z-python&quot;&gt;&lt;span class=&quot;z-keyword z-control z-import z-python&quot;&gt;import&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;pickle&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-control z-import z-as z-python&quot;&gt;as&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;plk&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+    &lt;span class=&quot;z-meta z-function-call z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;plk&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-accessor z-dot z-python&quot;&gt;.&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-function z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;dump&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;obj&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-arguments z-python&quot;&gt;,&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;file&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-comment z-line z-number-sign z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-python&quot;&gt;#&lt;&#x2F;span&gt; 将序列化后的二进制写入文件
+&lt;&#x2F;span&gt;    &lt;span class=&quot;z-meta z-function-call z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;plk&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-accessor z-dot z-python&quot;&gt;.&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-function z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;dumps&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;obj&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-comment z-line z-number-sign z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-python&quot;&gt;#&lt;&#x2F;span&gt; 返回一个二进制序列
+&lt;&#x2F;span&gt;
+    &lt;span class=&quot;z-meta z-function-call z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;plk&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-accessor z-dot z-python&quot;&gt;.&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-function z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;load&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;file&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-comment z-line z-number-sign z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-python&quot;&gt;#&lt;&#x2F;span&gt; 读文件对象中的二进制,转化成对象返回
+&lt;&#x2F;span&gt;    &lt;span class=&quot;z-meta z-function-call z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;plk&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-accessor z-dot z-python&quot;&gt;.&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-function z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;loads&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;bytes_object&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-comment z-line z-number-sign z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-python&quot;&gt;#&lt;&#x2F;span&gt; 将二进制序列转化成对象
+&lt;&#x2F;span&gt;
+    &lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;obj1&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-assignment z-python&quot;&gt;=&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-function z-python&quot;&gt;&lt;span class=&quot;z-support z-type z-python&quot;&gt;dict&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;,&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;obj2&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-assignment z-python&quot;&gt;=&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-function z-python&quot;&gt;&lt;span class=&quot;z-support z-type z-python&quot;&gt;dict&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+    &lt;span class=&quot;z-meta z-function-call z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;plk&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-accessor z-dot z-python&quot;&gt;.&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-function z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;dump&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;obj1&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-arguments z-python&quot;&gt;,&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;file&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+    &lt;span class=&quot;z-meta z-function-call z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;plk&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-accessor z-dot z-python&quot;&gt;.&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-function z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;dump&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;obj2&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-arguments z-python&quot;&gt;,&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;file&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+
+    &lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;obj1&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-assignment z-python&quot;&gt;=&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;plk&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-accessor z-dot z-python&quot;&gt;.&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-function z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;load&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;file&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+    &lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;obj2&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-assignment z-python&quot;&gt;=&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;plk&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-accessor z-dot z-python&quot;&gt;.&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-function z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;load&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;file&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+    &lt;span class=&quot;z-meta z-function-call z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;plk&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-accessor z-dot z-python&quot;&gt;.&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-function z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;load&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;file&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-comment z-line z-number-sign z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-python&quot;&gt;#&lt;&#x2F;span&gt; EOFError: Ran out of input
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;文本分类与关键词排名&lt;&#x2F;p&gt;
+&lt;p&gt;文本分类(Text Categorization, TC)&lt;&#x2F;p&gt;
+&lt;p&gt;特征-倒文本频率(Term-Inverse Document Frequency, TF-IDF)&lt;&#x2F;p&gt;
+&lt;p&gt;信息增益(Information Gain, IG)&lt;&#x2F;p&gt;
+&lt;p&gt;互信息(Multi-Information, MI)&lt;&#x2F;p&gt;
+&lt;p&gt;卡方统计 (Chi-square, CHI)&lt;&#x2F;p&gt;
+&lt;p&gt;期 望 交 叉 熵(Expected Cross Entropy, ECE )&lt;&#x2F;p&gt;
+&lt;p&gt;文本证据权( Weight of Evidence for Text, WET)&lt;&#x2F;p&gt;
+&lt;p&gt;TextRank(与PageRank的原理相同)&lt;&#x2F;p&gt;
+&lt;p&gt;HITS(Hyperlink-Induced Topic Search)&lt;&#x2F;p&gt;
+&lt;p&gt;卡方统计模型(CHI)&lt;&#x2F;p&gt;
+&lt;p&gt;卡方分布&lt;&#x2F;p&gt;
+&lt;p&gt;其中$Z_i \sim N(0,1)$(标准正太分布)&lt;&#x2F;p&gt;
+&lt;p&gt;则$X$被称为服从自由度为$k$的卡方分布,记作:&lt;&#x2F;p&gt;
+&lt;p&gt;卡方分布的概率密度函数:&lt;&#x2F;p&gt;
+&lt;p&gt;期望和方差:&lt;&#x2F;p&gt;
+&lt;p&gt;模型通过观察值和理论值的偏差来确定理论是否正确&lt;&#x2F;p&gt;
+&lt;p&gt;基于词袋模型(文档由词组成,不考虑词的顺序)&lt;&#x2F;p&gt;
+&lt;p&gt;通过考虑词语与类别的相关度把由词语组成的文档归为某一类别&lt;&#x2F;p&gt;
+&lt;p&gt;HITS&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;一个高质量的权威页面会被很多高质量的枢纽页面所指向。&lt;&#x2F;li&gt;
+&lt;li&gt;一个高质量的枢纽页面会指向很多高质量的权威页面。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;由PageRank算法演变而来,将当前页面出链也做为考虑当前页面的重要性的一个因素&lt;&#x2F;p&gt;
+&lt;p&gt;参考&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;wangjiang0624&#x2F;Note&#x2F;blob&#x2F;master&#x2F;MachineLearning&#x2F;%E6%96%87%E6%9C%AC%E5%88%86%E7%B1%BB.md&quot;&gt;https:&#x2F;&#x2F;github.com&#x2F;wangjiang0624&#x2F;Note&#x2F;blob&#x2F;master&#x2F;MachineLearning&#x2F;%E6%96%87%E6%9C%AC%E5%88%86%E7%B1%BB.md&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;http:&#x2F;&#x2F;blog.zhengyi.one&#x2F;PageRank-HITS.html&quot;&gt;http:&#x2F;&#x2F;blog.zhengyi.one&#x2F;PageRank-HITS.html&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>Python中遇到的问题</title>
+		<published>2019-05-31T00:00:00+00:00</published>
+		<updated>2019-05-31T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/hexo-pythonzhong-yu-dao-de-wen-ti/" type="text/html"/>
+		<id>https://blog.vhcffh.com/hexo-pythonzhong-yu-dao-de-wen-ti/</id>
+		<content type="html">&lt;p&gt;1.列表的初始化&lt;&#x2F;p&gt;
+&lt;p&gt;当初始化一个n×n的列表时不能使用如下方法，&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;In [1]: l=[[0]*3]*3 #如此初始化会导致其它行仅是第一行的引用而不是copy
+&lt;&#x2F;span&gt;In [2]: l
+&lt;&#x2F;span&gt;Out[2]: [[0, 0, 0], [0, 0, 0], [0, 0, 0]
+&lt;&#x2F;span&gt;In [3]: l[0][0]=1 #改变其中一行的某个元素
+&lt;&#x2F;span&gt;In [4]: l
+&lt;&#x2F;span&gt;Out[4]: [[1, 0, 0], [1, 0, 0], [1, 0, 0]] #其他行跟着改变
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;正确的方法应该如下&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;In [5]: l=[[0 for _ in range(3)] for _ in range(3)] #或者l=[[0]*3 for _ in range(3)]
+&lt;&#x2F;span&gt;In [6]: l
+&lt;&#x2F;span&gt;Out[6]: [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
+&lt;&#x2F;span&gt;In [7]: l[0][0]=1
+&lt;&#x2F;span&gt;In [8]: l
+&lt;&#x2F;span&gt;Out[8]: [[1, 0, 0], [0, 0, 0], [0, 0, 0]]
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;2.a is b与a==b 的区别&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;a=&amp;#39;vhcffh.com&amp;#39;
+&lt;&#x2F;span&gt;b=&amp;#39;vhcffh.com&amp;#39;
+&lt;&#x2F;span&gt;a==b # True,a和b对应实例的内容是相同的
+&lt;&#x2F;span&gt;a is b # False,a和b指向不同的实例
+&lt;&#x2F;span&gt;b=a
+&lt;&#x2F;span&gt;a is b # True,a和b指向同一个实例
+
+&lt;&#x2F;span&gt;# 好奇怪啊！！！
+&lt;&#x2F;span&gt;In [43]: a=&amp;#39;vhcffh.com&amp;#39;
+&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;In [44]: b=&amp;#39;vhcffh.com&amp;#39;
+&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;In [45]: a==b
+&lt;&#x2F;span&gt;Out[45]: True
+&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;In [46]: a is b
+&lt;&#x2F;span&gt;Out[46]: False
+&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;In [47]: a=&amp;#39;abcde&amp;#39;
+&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;In [48]: b=&amp;#39;abcde&amp;#39;
+&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;In [49]: a == b
+&lt;&#x2F;span&gt;Out[49]: True
+&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;In [50]: a is b
+&lt;&#x2F;span&gt;Out[50]: True
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>python类和实例的一些属性</title>
+		<published>2018-05-17T00:00:00+00:00</published>
+		<updated>2018-05-17T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/hexo-pythonlei-he-shi-li-de-yi-xie-shu-xing/" type="text/html"/>
+		<id>https://blog.vhcffh.com/hexo-pythonlei-he-shi-li-de-yi-xie-shu-xing/</id>
+		<content type="html">&lt;h2 id=&quot;1-selfhe-init&quot;&gt;1.self和__init__()&lt;&#x2F;h2&gt;
+&lt;p&gt;self代表类的实例,如下：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;python&quot; class=&quot;language-python z-code&quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;z-source z-python&quot;&gt;&lt;span class=&quot;z-meta z-class z-python&quot;&gt;    &lt;span class=&quot;z-storage z-type z-class z-python&quot;&gt;&lt;span class=&quot;z-keyword z-declaration z-class z-python&quot;&gt;class&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-entity z-name z-class z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;Test&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-class z-begin z-python&quot;&gt;:&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+        &lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;a&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;,&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;b&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-assignment z-python&quot;&gt;=&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-string z-python&quot;&gt;&lt;span class=&quot;z-string z-quoted z-single z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-python&quot;&gt;&amp;#39;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-string z-python&quot;&gt;&lt;span class=&quot;z-string z-quoted z-single z-python&quot;&gt;classa&lt;span class=&quot;z-punctuation z-definition z-string z-end z-python&quot;&gt;&amp;#39;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;,&lt;span class=&quot;z-meta z-string z-python&quot;&gt;&lt;span class=&quot;z-string z-quoted z-single z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-python&quot;&gt;&amp;#39;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-string z-python&quot;&gt;&lt;span class=&quot;z-string z-quoted z-single z-python&quot;&gt;classb&lt;span class=&quot;z-punctuation z-definition z-string z-end z-python&quot;&gt;&amp;#39;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-python&quot;&gt;#&lt;&#x2F;span&gt;类的属性
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function z-python&quot;&gt;        &lt;span class=&quot;z-storage z-type z-function z-python&quot;&gt;&lt;span class=&quot;z-keyword z-declaration z-function z-python&quot;&gt;def&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-entity z-name z-function z-python&quot;&gt;&lt;span class=&quot;z-support z-function z-magic z-python&quot;&gt;__init__&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function z-parameters z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-parameters z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function z-parameters z-python&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-python&quot;&gt;self&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-parameters z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-function z-begin z-python&quot;&gt;:&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+            &lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-language z-python&quot;&gt;self&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-accessor z-dot z-python&quot;&gt;.&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;b&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-assignment z-python&quot;&gt;=&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-string z-python&quot;&gt;&lt;span class=&quot;z-string z-quoted z-single z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-python&quot;&gt;&amp;#39;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-string z-python&quot;&gt;&lt;span class=&quot;z-string z-quoted z-single z-python&quot;&gt;selfb&lt;span class=&quot;z-punctuation z-definition z-string z-end z-python&quot;&gt;&amp;#39;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-python&quot;&gt;#&lt;&#x2F;span&gt;实例的属性
+&lt;&#x2F;span&gt;            &lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-language z-python&quot;&gt;self&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-accessor z-dot z-python&quot;&gt;.&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;c&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-assignment z-python&quot;&gt;=&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-string z-python&quot;&gt;&lt;span class=&quot;z-string z-quoted z-single z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-python&quot;&gt;&amp;#39;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-string z-python&quot;&gt;&lt;span class=&quot;z-string z-quoted z-single z-python&quot;&gt;selfc&lt;span class=&quot;z-punctuation z-definition z-string z-end z-python&quot;&gt;&amp;#39;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+    &lt;span class=&quot;z-meta z-function-call z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-function z-python&quot;&gt;&lt;span class=&quot;z-support z-function z-builtin z-python&quot;&gt;print&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;Test&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-accessor z-dot z-python&quot;&gt;.&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;a&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+    &lt;span class=&quot;z-meta z-function-call z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-function z-python&quot;&gt;&lt;span class=&quot;z-support z-function z-builtin z-python&quot;&gt;print&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;Test&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-accessor z-dot z-python&quot;&gt;.&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;b&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+    &lt;span class=&quot;z-comment z-line z-number-sign z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-python&quot;&gt;#&lt;&#x2F;span&gt;-output:classa classb-访问类的属性
+&lt;&#x2F;span&gt;    &lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;a&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-assignment z-python&quot;&gt;=&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-function z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;Test&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+    &lt;span class=&quot;z-meta z-function-call z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-function z-python&quot;&gt;&lt;span class=&quot;z-support z-function z-builtin z-python&quot;&gt;print&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;a&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-accessor z-dot z-python&quot;&gt;.&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;a&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+    &lt;span class=&quot;z-comment z-line z-number-sign z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-python&quot;&gt;#&lt;&#x2F;span&gt;-output:classa-通过实例访问类的属性
+&lt;&#x2F;span&gt;    &lt;span class=&quot;z-meta z-function-call z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-function z-python&quot;&gt;&lt;span class=&quot;z-support z-function z-builtin z-python&quot;&gt;print&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;a&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-accessor z-dot z-python&quot;&gt;.&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;b&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+    &lt;span class=&quot;z-comment z-line z-number-sign z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-python&quot;&gt;#&lt;&#x2F;span&gt;-output:selfb-当实例和类都具有某属性时,输出实例属性
+&lt;&#x2F;span&gt;    &lt;span class=&quot;z-meta z-function-call z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-function z-python&quot;&gt;&lt;span class=&quot;z-support z-function z-builtin z-python&quot;&gt;print&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;a&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-accessor z-dot z-python&quot;&gt;.&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;c&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+    &lt;span class=&quot;z-meta z-function-call z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-function z-python&quot;&gt;&lt;span class=&quot;z-support z-function z-builtin z-python&quot;&gt;print&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;Test&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-accessor z-dot z-python&quot;&gt;.&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;c&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+    &lt;span class=&quot;z-comment z-line z-number-sign z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-python&quot;&gt;#&lt;&#x2F;span&gt;output
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;当实例和类有相同的属性时，如何通过实例访问类的属性呢？&lt;br &#x2F;&gt;
+可以通过__class__访问&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;2-class&quot;&gt;2.&lt;strong&gt;class&lt;&#x2F;strong&gt;&lt;&#x2F;h2&gt;
+&lt;p&gt;__class__是指实例所对应的类&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;python&quot; class=&quot;language-python z-code&quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;z-source z-python&quot;&gt;    &lt;span class=&quot;z-comment z-line z-number-sign z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-python&quot;&gt;#&lt;&#x2F;span&gt; -*- coding: utf-8 -*-
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-class z-python&quot;&gt;    &lt;span class=&quot;z-storage z-type z-class z-python&quot;&gt;&lt;span class=&quot;z-keyword z-declaration z-class z-python&quot;&gt;class&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-entity z-name z-class z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;Test&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-class z-begin z-python&quot;&gt;:&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+        &lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;a&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-assignment z-python&quot;&gt;=&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-string z-python&quot;&gt;&lt;span class=&quot;z-string z-quoted z-single z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-python&quot;&gt;&amp;#39;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-string z-python&quot;&gt;&lt;span class=&quot;z-string z-quoted z-single z-python&quot;&gt;classa&lt;span class=&quot;z-punctuation z-definition z-string z-end z-python&quot;&gt;&amp;#39;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+        &lt;span class=&quot;z-meta z-function-call z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-function z-python&quot;&gt;&lt;span class=&quot;z-support z-function z-builtin z-python&quot;&gt;print&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;count&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;z-meta z-function z-python&quot;&gt;        &lt;span class=&quot;z-storage z-type z-function z-python&quot;&gt;&lt;span class=&quot;z-keyword z-declaration z-function z-python&quot;&gt;def&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-entity z-name z-function z-python&quot;&gt;&lt;span class=&quot;z-support z-function z-magic z-python&quot;&gt;__init__&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function z-parameters z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-parameters z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function z-parameters z-python&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-python&quot;&gt;self&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-parameters z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-function z-begin z-python&quot;&gt;:&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+            &lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-language z-python&quot;&gt;self&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-accessor z-dot z-python&quot;&gt;.&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;a&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-assignment z-python&quot;&gt;=&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-string z-python&quot;&gt;&lt;span class=&quot;z-string z-quoted z-single z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-python&quot;&gt;&amp;#39;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-string z-python&quot;&gt;&lt;span class=&quot;z-string z-quoted z-single z-python&quot;&gt;selfa&lt;span class=&quot;z-punctuation z-definition z-string z-end z-python&quot;&gt;&amp;#39;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+            &lt;span class=&quot;z-meta z-function-call z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-function z-python&quot;&gt;&lt;span class=&quot;z-support z-function z-builtin z-python&quot;&gt;print&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-language z-python&quot;&gt;self&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+            &lt;span class=&quot;z-comment z-line z-number-sign z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-python&quot;&gt;#&lt;&#x2F;span&gt;-output:&amp;lt;__main__.Test object at 0x055A1270&amp;gt;
+&lt;&#x2F;span&gt;            &lt;span class=&quot;z-meta z-function-call z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-function z-python&quot;&gt;&lt;span class=&quot;z-support z-function z-builtin z-python&quot;&gt;print&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-language z-python&quot;&gt;self&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-accessor z-dot z-python&quot;&gt;.&lt;&#x2F;span&gt;&lt;span class=&quot;z-support z-variable z-magic z-python&quot;&gt;__class__&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+            &lt;span class=&quot;z-comment z-line z-number-sign z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-python&quot;&gt;#&lt;&#x2F;span&gt;-output:&amp;lt;class &amp;#39;__main__.Test&amp;#39;&amp;gt;
+&lt;&#x2F;span&gt;    &lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;a&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-assignment z-python&quot;&gt;=&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-function z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;Test&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+    &lt;span class=&quot;z-meta z-function-call z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-function z-python&quot;&gt;&lt;span class=&quot;z-support z-function z-builtin z-python&quot;&gt;print&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-string z-python&quot;&gt;&lt;span class=&quot;z-string z-quoted z-single z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-python&quot;&gt;&amp;#39;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-string z-python&quot;&gt;&lt;span class=&quot;z-string z-quoted z-single z-python&quot;&gt;实例a&lt;span class=&quot;z-punctuation z-definition z-string z-end z-python&quot;&gt;&amp;#39;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-arguments z-python&quot;&gt;,&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;a&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+    &lt;span class=&quot;z-comment z-line z-number-sign z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-python&quot;&gt;#&lt;&#x2F;span&gt;-output:&amp;lt;__main__.Test object at 0x055A1270&amp;gt;
+&lt;&#x2F;span&gt;    &lt;span class=&quot;z-meta z-function-call z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-function z-python&quot;&gt;&lt;span class=&quot;z-support z-function z-builtin z-python&quot;&gt;print&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-string z-python&quot;&gt;&lt;span class=&quot;z-string z-quoted z-single z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-python&quot;&gt;&amp;#39;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-string z-python&quot;&gt;&lt;span class=&quot;z-string z-quoted z-single z-python&quot;&gt;类Test&lt;span class=&quot;z-punctuation z-definition z-string z-end z-python&quot;&gt;&amp;#39;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-arguments z-python&quot;&gt;,&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;Test&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+    &lt;span class=&quot;z-comment z-line z-number-sign z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-python&quot;&gt;#&lt;&#x2F;span&gt;-output:&amp;lt;class &amp;#39;__main__.Test&amp;#39;&amp;gt;
+&lt;&#x2F;span&gt;    &lt;span class=&quot;z-meta z-function-call z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-function z-python&quot;&gt;&lt;span class=&quot;z-support z-function z-builtin z-python&quot;&gt;print&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;a&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-accessor z-dot z-python&quot;&gt;.&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;a&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-arguments z-python&quot;&gt;,&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;a&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-accessor z-dot z-python&quot;&gt;.&lt;&#x2F;span&gt;&lt;span class=&quot;z-support z-variable z-magic z-python&quot;&gt;__class__&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-accessor z-dot z-python&quot;&gt;.&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;a&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+    &lt;span class=&quot;z-comment z-line z-number-sign z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-python&quot;&gt;#&lt;&#x2F;span&gt;-output:selfa classa
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;通过__init__()可以实现对类的实例的统计&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;python&quot; class=&quot;language-python z-code&quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;z-source z-python&quot;&gt;    &lt;span class=&quot;z-comment z-line z-number-sign z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-python&quot;&gt;#&lt;&#x2F;span&gt; -*- coding: utf-8 -*-
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-class z-python&quot;&gt;    &lt;span class=&quot;z-storage z-type z-class z-python&quot;&gt;&lt;span class=&quot;z-keyword z-declaration z-class z-python&quot;&gt;class&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-entity z-name z-class z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;Test&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-class z-inheritance z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-inheritance z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-class z-inheritance z-python&quot;&gt;&lt;span class=&quot;z-entity z-other z-inherited-class z-python&quot;&gt;object&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-inheritance z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-class z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-class z-begin z-python&quot;&gt;:&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+        &lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;count&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-assignment z-python&quot;&gt;=&lt;&#x2F;span&gt;&lt;span class=&quot;z-constant z-numeric z-integer z-decimal z-python&quot;&gt;0&lt;&#x2F;span&gt;
+&lt;span class=&quot;z-meta z-function z-python&quot;&gt;        &lt;span class=&quot;z-storage z-type z-function z-python&quot;&gt;&lt;span class=&quot;z-keyword z-declaration z-function z-python&quot;&gt;def&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-entity z-name z-function z-python&quot;&gt;&lt;span class=&quot;z-support z-function z-magic z-python&quot;&gt;__init__&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function z-parameters z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-parameters z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function z-parameters z-python&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-python&quot;&gt;self&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-parameters z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-function z-begin z-python&quot;&gt;:&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+            &lt;span class=&quot;z-meta z-function-call z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-function z-python&quot;&gt;&lt;span class=&quot;z-support z-function z-builtin z-python&quot;&gt;super&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;Test&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-arguments z-python&quot;&gt;,&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-language z-python&quot;&gt;self&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-accessor z-dot z-python&quot;&gt;.&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-function z-python&quot;&gt;&lt;span class=&quot;z-support z-function z-magic z-python&quot;&gt;__init__&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+            &lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-language z-python&quot;&gt;self&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-accessor z-dot z-python&quot;&gt;.&lt;&#x2F;span&gt;&lt;span class=&quot;z-support z-variable z-magic z-python&quot;&gt;__class__&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-accessor z-dot z-python&quot;&gt;.&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;count&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-assignment z-augmented z-python&quot;&gt;+=&lt;&#x2F;span&gt;&lt;span class=&quot;z-constant z-numeric z-integer z-decimal z-python&quot;&gt;1&lt;&#x2F;span&gt;
+    &lt;span class=&quot;z-meta z-statement z-conditional z-if z-python&quot;&gt;&lt;span class=&quot;z-keyword z-control z-conditional z-if z-python&quot;&gt;if&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-support z-variable z-magic z-python&quot;&gt;__name__&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-comparison z-python&quot;&gt;==&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-string z-python&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-python&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-string z-python&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-python&quot;&gt;__main__&lt;span class=&quot;z-punctuation z-definition z-string z-end z-python&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-block z-conditional z-if z-python&quot;&gt;:&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+        &lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;a&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-assignment z-python&quot;&gt;=&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-function z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;Test&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+        &lt;span class=&quot;z-meta z-function-call z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-function z-python&quot;&gt;&lt;span class=&quot;z-support z-function z-builtin z-python&quot;&gt;print&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;Test&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-accessor z-dot z-python&quot;&gt;.&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;count&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+        &lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;b&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-assignment z-python&quot;&gt;=&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-function z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;Test&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+        &lt;span class=&quot;z-meta z-function-call z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-function z-python&quot;&gt;&lt;span class=&quot;z-support z-function z-builtin z-python&quot;&gt;print&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;Test&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-accessor z-dot z-python&quot;&gt;.&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;count&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+        &lt;span class=&quot;z-meta z-function-call z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-function z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;Test&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+        &lt;span class=&quot;z-meta z-function-call z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-function z-python&quot;&gt;&lt;span class=&quot;z-support z-function z-builtin z-python&quot;&gt;print&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;Test&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-accessor z-dot z-python&quot;&gt;.&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;count&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;输出为&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;1
+&lt;&#x2F;span&gt;2
+&lt;&#x2F;span&gt;3
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;每创建一个Test类的实例,Test.count都加1&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;3-dict&quot;&gt;3.&lt;strong&gt;dict&lt;&#x2F;strong&gt;&lt;&#x2F;h2&gt;
+&lt;p&gt;__dict__是一个字典，键是属性名，值为属性值。&lt;br &#x2F;&gt;
+类有自己的__dict__，类的实例也有自己的__dict__&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;python&quot; class=&quot;language-python z-code&quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;z-source z-python&quot;&gt;    &lt;span class=&quot;z-comment z-line z-number-sign z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-python&quot;&gt;#&lt;&#x2F;span&gt; -*- coding: utf-8 -*-
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-class z-python&quot;&gt;    &lt;span class=&quot;z-storage z-type z-class z-python&quot;&gt;&lt;span class=&quot;z-keyword z-declaration z-class z-python&quot;&gt;class&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-entity z-name z-class z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;Test&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-class z-inheritance z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-inheritance z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-class z-inheritance z-python&quot;&gt;&lt;span class=&quot;z-entity z-other z-inherited-class z-python&quot;&gt;object&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-inheritance z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-class z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-class z-begin z-python&quot;&gt;:&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+        &lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;classa&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-assignment z-python&quot;&gt;=&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-string z-python&quot;&gt;&lt;span class=&quot;z-string z-quoted z-single z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-python&quot;&gt;&amp;#39;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-string z-python&quot;&gt;&lt;span class=&quot;z-string z-quoted z-single z-python&quot;&gt;classa&lt;span class=&quot;z-punctuation z-definition z-string z-end z-python&quot;&gt;&amp;#39;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;z-meta z-function z-python&quot;&gt;        &lt;span class=&quot;z-storage z-type z-function z-python&quot;&gt;&lt;span class=&quot;z-keyword z-declaration z-function z-python&quot;&gt;def&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-entity z-name z-function z-python&quot;&gt;&lt;span class=&quot;z-support z-function z-magic z-python&quot;&gt;__init__&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function z-parameters z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-parameters z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function z-parameters z-python&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-python&quot;&gt;self&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-parameters z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-function z-begin z-python&quot;&gt;:&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+            &lt;span class=&quot;z-meta z-function-call z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-function z-python&quot;&gt;&lt;span class=&quot;z-support z-function z-builtin z-python&quot;&gt;super&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;Test&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-arguments z-python&quot;&gt;,&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-language z-python&quot;&gt;self&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-accessor z-dot z-python&quot;&gt;.&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-function z-python&quot;&gt;&lt;span class=&quot;z-support z-function z-magic z-python&quot;&gt;__init__&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+            &lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-language z-python&quot;&gt;self&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-accessor z-dot z-python&quot;&gt;.&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;selfb&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-assignment z-python&quot;&gt;=&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-string z-python&quot;&gt;&lt;span class=&quot;z-string z-quoted z-single z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-python&quot;&gt;&amp;#39;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-string z-python&quot;&gt;&lt;span class=&quot;z-string z-quoted z-single z-python&quot;&gt;selfb&lt;span class=&quot;z-punctuation z-definition z-string z-end z-python&quot;&gt;&amp;#39;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+    &lt;span class=&quot;z-meta z-statement z-conditional z-if z-python&quot;&gt;&lt;span class=&quot;z-keyword z-control z-conditional z-if z-python&quot;&gt;if&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-support z-variable z-magic z-python&quot;&gt;__name__&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-comparison z-python&quot;&gt;==&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-string z-python&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-python&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-string z-python&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-python&quot;&gt;__main__&lt;span class=&quot;z-punctuation z-definition z-string z-end z-python&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-block z-conditional z-if z-python&quot;&gt;:&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+        &lt;span class=&quot;z-meta z-function-call z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-function z-python&quot;&gt;&lt;span class=&quot;z-support z-function z-builtin z-python&quot;&gt;print&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;Test&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-accessor z-dot z-python&quot;&gt;.&lt;&#x2F;span&gt;&lt;span class=&quot;z-support z-variable z-magic z-python&quot;&gt;__dict__&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+        &lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;a&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-assignment z-python&quot;&gt;=&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-function z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;Test&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+        &lt;span class=&quot;z-meta z-function-call z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-function z-python&quot;&gt;&lt;span class=&quot;z-support z-function z-builtin z-python&quot;&gt;print&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;a&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-accessor z-dot z-python&quot;&gt;.&lt;&#x2F;span&gt;&lt;span class=&quot;z-support z-variable z-magic z-python&quot;&gt;__dict__&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;输出为&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;{&amp;#39;__module__&amp;#39;: &amp;#39;__main__&amp;#39;, &amp;#39;classa&amp;#39;: &amp;#39;classa&amp;#39;, &amp;#39;__init__&amp;#39;: &amp;lt;function Test.__init__ at 0x04D03468&amp;gt;, &amp;#39;__dict__&amp;#39;: &amp;lt;attribute &amp;#39;__dict__&amp;#39; of &amp;#39;Test&amp;#39; objects&amp;gt;, &amp;#39;__weakref__&amp;#39;: &amp;lt;attribute &amp;#39;__weakref__&amp;#39; of &amp;#39;Test&amp;#39; objects&amp;gt;, &amp;#39;__doc__&amp;#39;: None}
+&lt;&#x2F;span&gt;{&amp;#39;selfb&amp;#39;: &amp;#39;selfb&amp;#39;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;可见类Test有classa属性以及一些其他属性&lt;br &#x2F;&gt;
+类Test的实例a只有self.b属性&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;4-len-self-han-shu&quot;&gt;4.&lt;strong&gt;len&lt;&#x2F;strong&gt;(self)函数&lt;&#x2F;h2&gt;
+&lt;p&gt;返回元素个数，实现len()方法。即类实现了__len__()函数就可以使用len()函数&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;5-getitem-self-key&quot;&gt;5.&lt;strong&gt;getitem&lt;&#x2F;strong&gt;(self,key)&lt;&#x2F;h2&gt;
+&lt;p&gt;实现字典一样的功能，当类的实例对象（假设为P）调用P[key]时，调用此函数返回。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;can-kao-zi-liao&quot;&gt;参考资料&lt;&#x2F;h2&gt;
+&lt;p&gt;1,&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;docs.python.org&#x2F;&quot;&gt;https:&#x2F;&#x2F;docs.python.org&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>python中关于路径的知识</title>
+		<published>2018-05-17T00:00:00+00:00</published>
+		<updated>2018-05-17T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/hexo-pythonzhong-guan-yu-lu-jing-de-zhi-shi/" type="text/html"/>
+		<id>https://blog.vhcffh.com/hexo-pythonzhong-guan-yu-lu-jing-de-zhi-shi/</id>
+		<content type="html">&lt;pre data-lang=&quot;python&quot; class=&quot;language-python z-code&quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;z-source z-python&quot;&gt;    &lt;span class=&quot;z-meta z-function-call z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;os&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-accessor z-dot z-python&quot;&gt;.&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-function z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;getcwd&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+    &lt;span class=&quot;z-comment z-line z-number-sign z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-python&quot;&gt;#&lt;&#x2F;span&gt;输出当前路径
+&lt;&#x2F;span&gt;
+    &lt;span class=&quot;z-meta z-function-call z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;os&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-accessor z-dot z-python&quot;&gt;.&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-function z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;listdir&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+    &lt;span class=&quot;z-comment z-line z-number-sign z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-python&quot;&gt;#&lt;&#x2F;span&gt;输出当前路径下的所有文件夹名和文件名
+&lt;&#x2F;span&gt;
+    &lt;span class=&quot;z-meta z-function-call z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;os&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-accessor z-dot z-python&quot;&gt;.&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-function z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;remove&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-string z-python&quot;&gt;&lt;span class=&quot;z-string z-quoted z-single z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-python&quot;&gt;&amp;#39;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-string z-python&quot;&gt;&lt;span class=&quot;z-string z-quoted z-single z-python&quot;&gt;filename.xxx&lt;span class=&quot;z-punctuation z-definition z-string z-end z-python&quot;&gt;&amp;#39;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;和os&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-accessor z-dot z-python&quot;&gt;.&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-function z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;unlink&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-string z-python&quot;&gt;&lt;span class=&quot;z-string z-quoted z-single z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-python&quot;&gt;&amp;#39;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-string z-python&quot;&gt;&lt;span class=&quot;z-string z-quoted z-single z-python&quot;&gt;filename.xxx&lt;span class=&quot;z-punctuation z-definition z-string z-end z-python&quot;&gt;&amp;#39;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;功能一样&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+    &lt;span class=&quot;z-comment z-line z-number-sign z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-python&quot;&gt;#&lt;&#x2F;span&gt;删除文件filename.xxx
+&lt;&#x2F;span&gt;
+    &lt;span class=&quot;z-meta z-function-call z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;os&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-accessor z-dot z-python&quot;&gt;.&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-function z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;rmdir&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-string z-python&quot;&gt;&lt;span class=&quot;z-string z-quoted z-single z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-python&quot;&gt;&amp;#39;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-string z-python&quot;&gt;&lt;span class=&quot;z-string z-quoted z-single z-python&quot;&gt;path&lt;span class=&quot;z-punctuation z-definition z-string z-end z-python&quot;&gt;&amp;#39;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+    &lt;span class=&quot;z-comment z-line z-number-sign z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-python&quot;&gt;#&lt;&#x2F;span&gt;删除目录（目录必须为空）
+&lt;&#x2F;span&gt;
+    &lt;span class=&quot;z-meta z-function-call z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;os&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-accessor z-dot z-python&quot;&gt;.&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-function z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;removedirs&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-string z-python&quot;&gt;&lt;span class=&quot;z-string z-quoted z-single z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-python&quot;&gt;&amp;#39;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-string z-python&quot;&gt;&lt;span class=&quot;z-string z-quoted z-single z-python&quot;&gt;p1&#x2F;&#x2F;p2&#x2F;&#x2F;p3&lt;span class=&quot;z-punctuation z-definition z-string z-end z-python&quot;&gt;&amp;#39;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+    &lt;span class=&quot;z-comment z-line z-number-sign z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-python&quot;&gt;#&lt;&#x2F;span&gt;依次删除目录p3,p2,p1直到某一目录不为空
+&lt;&#x2F;span&gt;
+    &lt;span class=&quot;z-meta z-function-call z-python&quot;&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;os&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-accessor z-dot z-python&quot;&gt;.&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-qualified-name z-python&quot;&gt;&lt;span class=&quot;z-variable z-function z-python&quot;&gt;&lt;span class=&quot;z-meta z-generic-name z-python&quot;&gt;chdir&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-begin z-python&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-string z-python&quot;&gt;&lt;span class=&quot;z-string z-quoted z-single z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-python&quot;&gt;&amp;#39;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-string z-python&quot;&gt;&lt;span class=&quot;z-string z-quoted z-single z-python&quot;&gt;path&lt;span class=&quot;z-punctuation z-definition z-string z-end z-python&quot;&gt;&amp;#39;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-arguments z-end z-python&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+    &lt;span class=&quot;z-comment z-line z-number-sign z-python&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-python&quot;&gt;#&lt;&#x2F;span&gt;更改当前路径
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;参考资料&lt;&#x2F;p&gt;
+&lt;p&gt;1.&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.cnblogs.com&#x2F;yanglang&#x2F;p&#x2F;7610838.html&quot;&gt;https:&#x2F;&#x2F;www.cnblogs.com&#x2F;yanglang&#x2F;p&#x2F;7610838.html&lt;&#x2F;a&gt;&lt;br &#x2F;&gt;
+2.&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;blog.csdn.net&#x2F;muwinter&#x2F;article&#x2F;details&#x2F;77196261&quot;&gt;https:&#x2F;&#x2F;blog.csdn.net&#x2F;muwinter&#x2F;article&#x2F;details&#x2F;77196261&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>python3之模块</title>
+		<published>2018-04-28T00:00:00+00:00</published>
+		<updated>2018-04-28T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/hexo-python3zhi-mo-kuai/" type="text/html"/>
+		<id>https://blog.vhcffh.com/hexo-python3zhi-mo-kuai/</id>
+		<content type="html">&lt;h2 id=&quot;1-python3mo-kuai&quot;&gt;1.python3模块&lt;&#x2F;h2&gt;
+&lt;p&gt;简单讲，一个模块就是一个*.py文件，这个文件里面可以定义类，函数，变量，也可以包含可执行代码。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;2-mo-kuai-de-yin-ru&quot;&gt;2.模块的引入&lt;&#x2F;h2&gt;
+&lt;p&gt;2.1import引入&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;import module1,[module2[,.........moduleN]]
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;一个模块只会被导入一次，不管执行了多少次import，这样可以防止导入模块被重复执行。&lt;&#x2F;p&gt;
+&lt;p&gt;2.2from * import语句&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;from modname import name1,name2..........nameN
+&lt;&#x2F;span&gt;from mod import func_1
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;这个声明不会把整个mod模块导入到当前命名空间中，它只会将mod里的func_1单个引入到执行这个声明的模块的全局符号表。&lt;&#x2F;p&gt;
+&lt;p&gt;from ... import *
+：这样会把模块中的所有内容导入到当前命名空间，一般不建议使用，消耗内存空间，也容易出现未预知的问题。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;3-sou-suo-lu-jing&quot;&gt;3.搜索路径&lt;&#x2F;h2&gt;
+&lt;p&gt;搜索顺序：当前目录-&amp;gt;系统环境变量PATHONHOME-&amp;gt;标准链接库目录&lt;br &#x2F;&gt;
+通过&lt;code&gt;sys.path&lt;&#x2F;code&gt;可查看搜索路径&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;&amp;gt;&amp;gt;&amp;gt; import sys
+&lt;&#x2F;span&gt;&amp;gt;&amp;gt;&amp;gt; sys.path
+&lt;&#x2F;span&gt;[&amp;#39;&amp;#39;, &amp;#39;C:\\Python36\\python36.zip&amp;#39;, &amp;#39;C:\\Python36\\DLLs&amp;#39;, &amp;#39;C:\\Python36\\lib&amp;#39;, &amp;#39;C:\\Python36&amp;#39;, &amp;#39;C:\\Python36\\lib\\site-packages&amp;#39;]
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;4-ming-ming-kong-jian&quot;&gt;4.命名空间&lt;&#x2F;h2&gt;
+&lt;p&gt;变量是拥有匹配对象的名字（标识符）。命名空间是一个包含了变量名称（键）和它们各自相应的对象们（值）的字典。&lt;br &#x2F;&gt;
+函数内用到全局变量要用global语句，否则会当作局部变量处理&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;qi-ta-wen-ti&quot;&gt;其他问题:&lt;&#x2F;h2&gt;
+&lt;p&gt;1.python模块里的可执行代码何时执行？&lt;br &#x2F;&gt;
+当导入模块时，python顶层的代码会执行一次，若要重新执行模块的顶层代码需要通道reload()函数&lt;br &#x2F;&gt;
+另外python3中的reload()需要从imp包中导入&lt;br &#x2F;&gt;
+2.关于python模块循环引入的问题？&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;can-kao-zi-liao&quot;&gt;参考资料&lt;&#x2F;h2&gt;
+&lt;p&gt;1.&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.cnblogs.com&#x2F;zhangxinqi&#x2F;p&#x2F;7905103.html&quot;&gt;https:&#x2F;&#x2F;www.cnblogs.com&#x2F;zhangxinqi&#x2F;p&#x2F;7905103.html&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>python遇到的错误</title>
+		<published>2017-12-26T00:00:00+00:00</published>
+		<updated>2017-12-26T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/hexo-pythonyu-dao-de-cuo-wu/" type="text/html"/>
+		<id>https://blog.vhcffh.com/hexo-pythonyu-dao-de-cuo-wu/</id>
+		<content type="html">&lt;p&gt;python使用在中遇到的错误&lt;&#x2F;p&gt;
+&lt;p&gt;1.DLL load failed&lt;&#x2F;p&gt;
+&lt;p&gt;python ImportError: DLL load failed: %1 不是有效的 Win32 应用程序&lt;br &#x2F;&gt;
+解决方法：去下载与你所安装的Python版本对应的pywin32并安装&lt;br &#x2F;&gt;
+下载链接：&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;sourceforge.net&#x2F;projects&#x2F;pywin32&#x2F;files&#x2F;pywin32&#x2F;&quot;&gt;https:&#x2F;&#x2F;sourceforge.net&#x2F;projects&#x2F;pywin32&#x2F;files&#x2F;pywin32&#x2F;&lt;&#x2F;a&gt;&lt;br &#x2F;&gt;
+对应版本和位数&lt;br &#x2F;&gt;
+Python 2.7.13 (v2.7.13:a06454b1afa1, Dec 17 2016, 20:42:59) [MSC v.1500
+32 bit (Intel)] on win32&lt;br &#x2F;&gt;
+Type &amp;quot;help&amp;quot;, &amp;quot;copyright&amp;quot;, &amp;quot;credits&amp;quot; or &amp;quot;license&amp;quot; for more information.&lt;br &#x2F;&gt;
+还有一种可能是导入的模块是64位的，而你的python是32位的&lt;&#x2F;p&gt;
+&lt;p&gt;2.使用libsvm for python时出错[1]&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;Traceback (most recent call last):
+&lt;&#x2F;span&gt;  File &amp;quot;C:\Python36\lib\libsvm\python\svm.py&amp;quot;, line 28, in &amp;lt;module&amp;gt;
+&lt;&#x2F;span&gt;    libsvm = CDLL(path.join(dirname, r&amp;#39;..\windows\libsvm.dll&amp;#39;))
+&lt;&#x2F;span&gt;  File &amp;quot;C:\Python36\lib\ctypes\__init__.py&amp;quot;, line 348, in __init__
+&lt;&#x2F;span&gt;    self._handle = _dlopen(self._name, mode)
+&lt;&#x2F;span&gt;OSError: [WinError 126] 找不到指定的模块。
+
+&lt;&#x2F;span&gt;During handling of the above exception, another exception occurred:
+
+&lt;&#x2F;span&gt;Traceback (most recent call last):
+&lt;&#x2F;span&gt;  File &amp;quot;train.py&amp;quot;, line 3, in &amp;lt;module&amp;gt;
+&lt;&#x2F;span&gt;    from libsvm.python.svmutil import *
+&lt;&#x2F;span&gt;  File &amp;quot;C:\Python36\lib\libsvm\python\svmutil.py&amp;quot;, line 5, in &amp;lt;module&amp;gt;
+&lt;&#x2F;span&gt;    from svm import *
+&lt;&#x2F;span&gt;  File &amp;quot;C:\Python36\lib\libsvm\python\svm.py&amp;quot;, line 38, in &amp;lt;module&amp;gt;
+&lt;&#x2F;span&gt;    raise Exception(&amp;#39;LIBSVM library not found.&amp;#39;)
+&lt;&#x2F;span&gt;Exception: LIBSVM library not found.
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;出错原因：在github上下载的libsvm中的libsvm.lib是win64版本的，而自己的python版本是32位的&lt;br &#x2F;&gt;
+解决方案：&lt;br &#x2F;&gt;
+方法1.更换python版本（太麻烦了，还要重新下载好多库）&lt;br &#x2F;&gt;
+方法2.去&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;http:&#x2F;&#x2F;www.lfd.uci.edu&#x2F;%7Egohlke&#x2F;pythonlibs&#x2F;&quot;&gt;万能宝库&lt;&#x2F;a&gt;上下载对应版本的.whl文件，（不用安装）直接解压后找到&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;download.lfd.uci.edu&#x2F;pythonlibs&#x2F;o4uhg4xd&#x2F;libsvm-3.22-cp27-cp27m-win32.whl&quot;&gt;libsvm.lib&lt;&#x2F;a&gt;更换即可&lt;br &#x2F;&gt;
+2018-09-07 22:11:58&lt;&#x2F;p&gt;
+&lt;p&gt;参考资料&lt;&#x2F;p&gt;
+&lt;p&gt;1.&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;blog.csdn.net&#x2F;rena521&#x2F;article&#x2F;details&#x2F;51187981&quot;&gt;https:&#x2F;&#x2F;blog.csdn.net&#x2F;rena521&#x2F;article&#x2F;details&#x2F;51187981&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>CentOS自带python26升级到27</title>
+		<published>2017-09-12T00:00:00+00:00</published>
+		<updated>2017-09-12T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/hexo-centoszi-dai-python26sheng-ji-dao-27/" type="text/html"/>
+		<id>https://blog.vhcffh.com/hexo-centoszi-dai-python26sheng-ji-dao-27/</id>
+		<content type="html">&lt;p&gt;1.下载安装&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;#下载
+&lt;&#x2F;span&gt;wget http:&#x2F;&#x2F;python.org&#x2F;ftp&#x2F;python&#x2F;2.7.3&#x2F;Python-2.7.3.tar.bz2
+&lt;&#x2F;span&gt;#解压并更改目录   
+&lt;&#x2F;span&gt;tar -jxvf Python-2.7.3.tar.bz2
+&lt;&#x2F;span&gt;cd Python-2.7.3
+&lt;&#x2F;span&gt;#编译安装
+&lt;&#x2F;span&gt;.&#x2F;configure
+&lt;&#x2F;span&gt;make all
+&lt;&#x2F;span&gt;make install
+&lt;&#x2F;span&gt;make clean
+&lt;&#x2F;span&gt;make distclean
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;安装需要gcc(如果系统没有gcc需要自己安装)&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;yum install -y gcc
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;查看版本信息&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;[root@host ~]# &#x2F;usr&#x2F;local&#x2F;bin&#x2F;python2.7 -V
+&lt;&#x2F;span&gt;Python 2.7.3
+&lt;&#x2F;span&gt;[root@host ~]# python -V
+&lt;&#x2F;span&gt;Python 2.6.6
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;python2.7已经安装,但系统的python还是2.6&lt;&#x2F;p&gt;
+&lt;p&gt;2.建立软连接&lt;&#x2F;p&gt;
+&lt;p&gt;使系统默认的python指向python2.7&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;rm &#x2F;usr&#x2F;bin&#x2F;python &#x2F;usr&#x2F;bin&#x2F;python2.6
+&lt;&#x2F;span&gt;ln -s &#x2F;usr&#x2F;local&#x2F;bin&#x2F;python2.7 &#x2F;usr&#x2F;bin&#x2F;python
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;但yum命令依赖python2.6.6，需要更改一些配置文件&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;su root                         ##切换到root  
+&lt;&#x2F;span&gt;vi &#x2F;usr&#x2F;bin&#x2F;yum                 ##打开文件
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;del&gt;&#x2F;usr&#x2F;bin&#x2F;python&lt;&#x2F;del&gt; ##删除此行&lt;br &#x2F;&gt;
+&#x2F;usr&#x2F;bin&#x2F;python2.6.6 ##改为此行&lt;br &#x2F;&gt;
+更改需要管理员权限&lt;&#x2F;p&gt;
+&lt;p&gt;参考资料&lt;&#x2F;p&gt;
+&lt;p&gt;1.&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;http:&#x2F;&#x2F;blog.csdn.net&#x2F;jcjc918&#x2F;article&#x2F;details&#x2F;11022345&quot;&gt;http:&#x2F;&#x2F;blog.csdn.net&#x2F;jcjc918&#x2F;article&#x2F;details&#x2F;11022345&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>涉及PyQt5的一些命令</title>
+		<published>2017-08-09T00:00:00+00:00</published>
+		<updated>2017-08-09T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/hexo-she-ji-pyqt5de-yi-xie-ming-ling/" type="text/html"/>
+		<id>https://blog.vhcffh.com/hexo-she-ji-pyqt5de-yi-xie-ming-ling/</id>
+		<content type="html">&lt;p&gt;记录pyqt5中用到的几个命令
+安装&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;pip install python-qt5
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;把ui转py&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;python -m PyQt5.uic.pyuic &amp;lt;arguments&amp;gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;lineEdit输入隐藏，密码&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;lineEdit.setEchoMode(QtWidgets.QLineEdit.Password)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;py转exe&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;pip install pyinstaller
+&lt;&#x2F;span&gt;pyinstaller demo.py
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;参数  含义&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;-F   指定打包后只生成一个exe格式的文件
+&lt;&#x2F;span&gt;-D   --onedir创建一个目录,包含exe文件,但会依赖很多文件（默认选项）
+&lt;&#x2F;span&gt;-c   --console,--nowindowed使用控制台,无界面(默认)
+&lt;&#x2F;span&gt;-F   指定打包后只生成一个exe格式的文件
+&lt;&#x2F;span&gt;-w   --windowed,--noconsole使用窗口,无控制台
+&lt;&#x2F;span&gt;-p   添加搜索路径,让其找到对应的库。
+&lt;&#x2F;span&gt;-i   改变生成程序的icon图标
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>Python2与Python3共存</title>
+		<published>2017-08-03T00:00:00+00:00</published>
+		<updated>2017-08-03T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/hexo-python2yu-python3gong-cun/" type="text/html"/>
+		<id>https://blog.vhcffh.com/hexo-python2yu-python3gong-cun/</id>
+		<content type="html">&lt;p&gt;在windows下安装多个版本的python&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;an-zhuang-liang-ge-ban-ben-de-python&quot;&gt;安装两个版本的Python&lt;&#x2F;h1&gt;
+&lt;p&gt;选择想要安装的版本下载例如:&lt;br &#x2F;&gt;
+python2下载地址:&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.python.org&#x2F;ftp&#x2F;python&#x2F;2.7.13&#x2F;python-2.7.13.msi&quot;&gt;https:&#x2F;&#x2F;www.python.org&#x2F;ftp&#x2F;python&#x2F;2.7.13&#x2F;python-2.7.13.msi&lt;&#x2F;a&gt;&lt;br &#x2F;&gt;
+python3下载地址:&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.python.org&#x2F;ftp&#x2F;python&#x2F;3.6.2&#x2F;python-3.6.2.exe&quot;&gt;https:&#x2F;&#x2F;www.python.org&#x2F;ftp&#x2F;python&#x2F;3.6.2&#x2F;python-3.6.2.exe&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;进行安装(安装顺序随便)&lt;br &#x2F;&gt;
+尽量安装到同一目录下的两个文件夹例如:&lt;br &#x2F;&gt;
+python2安装在&amp;quot;D:\program\python27\&amp;quot;下&lt;br &#x2F;&gt;
+python3安装在&amp;quot;D:\program\python36\&amp;quot;下&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;tian-jia-huan-jing-bian-liang&quot;&gt;添加环境变量&lt;&#x2F;h1&gt;
+&lt;p&gt;Path中要有一下四个路径&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;D:\program\python\Python36\Scripts\
+&lt;&#x2F;span&gt;D:\program\python\Python36\
+&lt;&#x2F;span&gt;D:\program\python\python27\Scripts
+&lt;&#x2F;span&gt;D:\program\python\python27\
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h1 id=&quot;geng-gai-python-exeming-zi&quot;&gt;更改python.exe名字&lt;&#x2F;h1&gt;
+&lt;p&gt;找到找到两个python的安装目录&lt;br &#x2F;&gt;
+&lt;code&gt;D:\program\python\Python36\python.exe&lt;&#x2F;code&gt;&lt;br &#x2F;&gt;
+更改为&lt;br &#x2F;&gt;
+&lt;code&gt;D:\program\python\Python36\python3.exe&lt;&#x2F;code&gt;&lt;br &#x2F;&gt;
+&lt;code&gt;D:\program\python\Python27\python.exe&lt;&#x2F;code&gt;&lt;br &#x2F;&gt;
+更改为&lt;br &#x2F;&gt;
+&lt;code&gt;D:\program\python\Python36\python2.exe&lt;&#x2F;code&gt;&lt;br &#x2F;&gt;
+此时两个版本的python已经共同存在&lt;br &#x2F;&gt;
+但还要对pip进行修改&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;geng-gai-pipming-cheng&quot;&gt;更改pip名称&lt;&#x2F;h1&gt;
+&lt;p&gt;重装python2和python3的pip&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;python2 -m pip install --upgrade pip --force-reinstall
+&lt;&#x2F;span&gt;python3 -m pip install --upgrade pip --force-reinstall
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;重装成功后进行如下测试&lt;br &#x2F;&gt;
+test.PNG...&lt;br &#x2F;&gt;
+可见python2和python3已经共存&lt;br &#x2F;&gt;
+pip的问题也解决了&lt;br &#x2F;&gt;
+但直接调用pip是还能执行并且是后安装的pip的版本&lt;br &#x2F;&gt;
+python命令已经不存在&lt;br &#x2F;&gt;
+直接运行py结尾的文件时会出现问题&lt;br &#x2F;&gt;
+python自带的编辑器出现了两个&lt;&#x2F;p&gt;
+</content>
+	</entry>
+</feed>

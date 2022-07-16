@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <script src="https://blog.vhcffh.com/theme.min.js" integrity="sha384-IpIaa84kOKgkF5EJ0fD/kBe2wtIIsIB60ANGmuJxeA0dz5bSRfwBwp2/QybtQpU2"></script>
+  <link rel="stylesheet" href="https://blog.vhcffh.com/abridge-switcher.css?h=e4088b6018baa6c5c4f8222bf9a3811dec2f942f862ca9550010fba28852c1bc" />
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <script defer src="https://blog.vhcffh.com/search_index.en.js?h=d5e574ffd65cdc44489544089e33544b19b3b86a3340d587cc85531d18b8e792" integrity="sha384-HT1AXvCEAQGWm4cehYh3bO0RNhvjaSLPHFBWZ/7j3UFKwYf5wgLbX7GVJy0LGqKp"></script>
+  <script defer src="https://blog.vhcffh.com/abridge-switcher.min.js?h=be6d42ac1cc5ae1da7cdde772d392d6508fc038f98a8d0fd1bc5b5678530631a" integrity="sha384-RAhv9DQbxrVfq4cbSJsOQ8l7sA56QdpoR10euhjBCBOhLdbJ6y8SCZVYy818n51+"></script>
+  <link rel="alternate" type="application/atom+xml" title="Atom/RSS Feed" href="https://blog.vhcffh.com/atom.xml" />
+  <meta name="robots" content="index, follow" />
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <title>C语言红黑树实现 | Frey's blog</title>
+  <meta name="author" content="Jake G" />
+  <meta name="copyright" content="Frey&#x27;s blog" />
+  <meta name="description" content="一个简单的个人博客，用于记录笔记" />
+  <link rel="canonical" href="https://blog.vhcffh.com/wp-691/" />
+  <meta name="keywords" content="Abridge, Abridge.css, Zola, Theme, Zola Theme, getzola, Semantic Html, Fast, lightweight" />
+  <meta property="og:url" content="https://blog.vhcffh.com/wp-691/" />
+  <meta name="twitter:url" content="https://blog.vhcffh.com/wp-691/" />
+  <meta property="og:description" content="一个简单的个人博客，用于记录笔记" />
+  <meta name="twitter:description" content="一个简单的个人博客，用于记录笔记" />
+  <meta property="og:title" content="C语言红黑树实现 | Frey&#x27;s blog" />
+  <meta name="twitter:title" content="C语言红黑树实现 | Frey&#x27;s blog" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://blog.vhcffh.com/banner.png" />
+  <meta property="og:image" content="https://blog.vhcffh.com/banner.png" />
+  <meta property="og:site_name" content="Frey&#x27;s blog" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:type" content="website" />
+  <meta property="og:updated_time" content="2022-02-05" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="theme-color" content="#333333" />
+  <meta name="msapplication-TileColor" content="#333333" />
+  <link rel="manifest" href="https://blog.vhcffh.com/site.webmanifest" />
+  <link rel="mask-icon" href="https://blog.vhcffh.com/safari-pinned-tab.svg" color="#ff9900" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://blog.vhcffh.com/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="https://blog.vhcffh.com/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="https://blog.vhcffh.com/favicon-16x16.png" />
+  <noscript><link rel="stylesheet" href="https://blog.vhcffh.com/nojs.css" /></noscript>
+</head>
+<body>
+  <header>
+    <nav>
+      <div><h1><a href="https://blog.vhcffh.com/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#f90" viewBox="0 0 96 96" width="32" height="32"><path stroke-width="14" d="M14 99 46 7h4l32 92"/><path stroke-width="9" d="M-3 82c43-26 59-26 102 0"/><path stroke-linecap="round" stroke-width="1.5" d="M94 72v7m-5-9.8v7m-5-9.8v7.1M79 64v7M63 57.7v7m-5-8.2v7m-5-7.8v7m-5-7.2v7m-5-6.7v7m-5-6.3v7m-5-5.8v7M17 64v7m-5-4.6v7m-5-4.2v7M2 72v7"/></svg>bridge</a></h1></div>
+      <div>
+        <ul><li> <h2><a href="https://blog.vhcffh.com/about/">About</a></h2> </li><li> <h2><a href="https://blog.vhcffh.com/posts/">Posts</a></h2> </li><li> <h2><a href="https://blog.vhcffh.com/categories/">Categories</a></h2> </li><li> <h2><a href="https://blog.vhcffh.com/tags/">Tags</a></h2> </li><li class="js"><i type="reset" id="mode" class="svgs adjust"></i></li></ul>
+      </div>
+      <div>
+        <form class="js" name="goSearch">
+          <div class="searchd">
+            <input id="userinput" type="text" placeholder="Search" autocomplete="off" title="Search" />
+            <button type="submit" title="Search"><i class="svgs search"></i></button>
+          </div>
+          <div><div id="suggestions"></div></div>
+        </form>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <article>
+        <h1><a href="https://blog.vhcffh.com/wp-691/">C语言红黑树实现</a></h1>
+        <span class="s95"> Jake G<span class="hpad"> </span> February 05, 2022<span class="hpad"> </span> [<a href="https://blog.vhcffh.com/categories/suan-fa/">算法</a>] #<a href="https://blog.vhcffh.com/tags/cyu-yan/">C语言</a>  #<a href="https://blog.vhcffh.com/tags/linux/">linux</a>  #<a href="https://blog.vhcffh.com/tags/hong-hei-shu/">红黑树</a> </span>
+
+    <h2 id="hong-hei-shu-de-jie-gou">红黑树的结构</h2>
+<p>类型定义包括两个部分：一个root节点和多个树节点</p>
+<h3 id="rootjie-dian"><strong>root节点</strong></h3>
+<p>root节点保存红黑树的树根节点</p>
+<pre class="z-code"><code><span class="z-text z-plain">typedef struct rb_tree() {
+</span>    Node* node;
+</span>} RBRoot;
+</span></code></pre>
+<h3 id="shu-jie-dian"><strong>树节点</strong></h3>
+<p>树节点用于保存红黑树节点中的信息包括</p>
+<ul>
+<li>节点的颜色~ ~color~ ~</li>
+<li>节点存储的有效信息~ ~key~ ~</li>
+<li>以及节点的左孩子节点~ ~left~ ~,右孩子节点~ ~right~ ~和父节点~ ~parent~ ~</li>
+</ul>
+<!-- -->
+<pre class="z-code"><code><span class="z-text z-plain">typedef struct RBTreeNode {
+</span>    unsigned char color;
+</span>    Type key;
+</span>    struct RBTreeNode* left;
+</span>    struct RBtreeNode* right;
+</span>    struct RBtreeNode* parent;
+</span>} Node, *RBTree;
+</span></code></pre>
+<p>主要有六个函数用于实现红黑树：红黑树的<strong>创建</strong>与<strong>销毁</strong>，<strong>左旋</strong>，<strong>右旋</strong>，<strong>插入节点</strong>，<strong>删除节点</strong></p>
+<h2 id="chuang-jian"><strong>创建</strong></h2>
+<p>分配一个root节点</p>
+<pre class="z-code"><code><span class="z-text z-plain">RBRoot* create_rbtree() {
+</span>    RBRoot* root = (RBRoot*) malloc( sizeof( RBRoot ) );
+</span>    root-&gt;node   = NULL;
+</span>    return root;
+</span>}
+</span></code></pre>
+<h2 id="xiao-hui"><strong>销毁</strong></h2>
+<p>销毁主要分四个步骤：</p>
+<ol>
+<li>销毁左子树</li>
+<li>销毁右子树</li>
+<li>释放树根节点空间</li>
+<li>释放root节点空间</li>
+</ol>
+<!-- -->
+<pre class="z-code"><code><span class="z-text z-plain">static void rbtree_destroy( RBTree tree ) {
+</span>    if ( tree == NULL ) return;
+</span>    if ( tree-&gt;left != NULL ) rbtree_destroy( tree-&gt;left );
+</span>    if ( tree-&gt;right != NULL ) rbtree_destroy( tree-&gt;right );
+
+</span>    free( tree );
+</span>}
+</span>void destroy_rbtree( RBRoot* root ) {
+</span>    if ( root != NULL ) rbtree_destroy( root-&gt;node );
+
+</span>    free( root );
+</span>}
+</span></code></pre>
+<p>为了实现在红黑树的插入与删除后，并且保持红黑树的性质不变，需要用到下面两个对树的基本操作左旋和右旋</p>
+<h2 id="zuo-xuan"><strong>左旋</strong></h2>
+<div>
+</div>
+<p>左旋操作</p>
+<p>对节点b进行左旋操作，进行左旋后减少了左子树的深度，增大了右子树的深度</p>
+<pre class="z-code"><code><span class="z-text z-plain">static void rbtree_left_rotate( RBRoot* root, Node* x ) {
+</span>    Node* y = x-&gt;right;
+
+</span>    x-&gt;right = y-&gt;left;
+</span>    if ( y-&gt;left != NULL ) y-&gt;left-&gt;parent = x;
+
+</span>    y-&gt;parent = x-&gt;parent;
+
+</span>    if ( x-&gt;parent == NULL ) {
+</span>        root-&gt;node = y;
+</span>    } else {
+</span>        if ( x-&gt;parent-&gt;left == x )
+</span>            x-&gt;parent-&gt;left = y;
+</span>        else
+</span>            x-&gt;parent-&gt;right = y;
+</span>    }
+
+</span>    y-&gt;left   = x;
+</span>    x-&gt;parent = y;
+</span>}
+</span></code></pre>
+<h2 id="you-xuan"><strong>右旋</strong></h2>
+<div>
+</div>
+<p>右旋操作</p>
+<p>右旋操作与左旋操作相反，上图对节点a进行右旋操作，减少了右子树的深度，增大了左子树的深度</p>
+<pre class="z-code"><code><span class="z-text z-plain">static void rbtree_right_rotate( RBRoot* root, Node* y ) {
+</span>    Node* x = y-&gt;left;
+
+</span>    y-&gt;left = x-&gt;right;
+</span>    if ( x-&gt;right != NULL ) x-&gt;right-&gt;parent = y;
+
+</span>    x-&gt;parent = y-&gt;parent;
+
+</span>    if ( y-&gt;parent == NULL ) {
+</span>        root-&gt;node = x;
+</span>    } else {
+</span>        if ( y == y-&gt;parent-&gt;right )
+</span>            y-&gt;parent-&gt;right = x;
+</span>        else
+</span>            y-&gt;parent-&gt;left = x;
+</span>    }
+
+</span>    x-&gt;right = y;
+
+</span>    y-&gt;parent = x;
+</span>}
+</span></code></pre>
+<h2 id="cha-ru-jie-dian"><strong>插入节点</strong></h2>
+<p>红黑树的插入分为两步：首先将待插入节点标记为红色并安装二叉查找树的方法插入；第二步对红黑树进行调整，使其保持红黑树的特性。根据不同的情况需要做出不同的调整：</p>
+<ol>
+<li>情况一：新节点N位于树的根上，没有父节点
+<ol>
+<li>直接将其标记为黑色即可</li>
+</ol>
+</li>
+<li>情况二：新节点N的父节点P是黑色
+<ol>
+<li>直接插入，无需修正</li>
+</ol>
+</li>
+<li>情况三：父节点P与叔父节点U都为红色
+<ol>
+<li>将父节点P与叔父节点U标记为黑色</li>
+<li>将祖父节点G标记为红色</li>
+<li>将祖父节点G作为新插入节点重新进行修正（重新执行修正）</li>
+</ol>
+</li>
+<li>情况四：父节点P为红色，叔父节点U不为红色（新节点与父节点不同侧）
+<ul>
+<li>父节点P为祖父节点G的左子节点<strong>且</strong>新节点N为父节点P的右子节点
+<ol>
+<li>对节点N进行左旋操作</li>
+<li>对节点N的左子树（左旋操作前的父节点P）执行情况5</li>
+</ol>
+</li>
+<li>父节点P为祖父节点G的右子节点<strong>且</strong>新节点N为父节点P的左子节点
+a.  对节点N进行右旋操作
+b.  对节点N的右子树（右旋操作前的父节点P）执行情况5</li>
+</ul>
+</li>
+<li>情况五：父节点P为红色，叔父节点U不为红色
+<ol>
+<li>将父节点P标记为黑色</li>
+<li>将祖父节点G标记为红色</li>
+<li>父节点P为祖父节点G的右子节点<strong>且</strong>新节点N为父节点P的右子节点
+<ol>
+<li>对父节点P进行右旋操作</li>
+</ol>
+</li>
+<li>父节点P为祖父节点G的左子节点<strong>且</strong>新节点N为父节点P的左子节点
+<ol>
+<li>对父节点P进行左旋操作</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<!-- -->
+<pre class="z-code"><code><span class="z-text z-plain">static void rbtree_insert_fixup( RBRoot* root, Node* node ) {
+</span>    Node *parent, *gparent;
+
+</span>    while ( ( parent = rb_parent( node ) ) &amp;&amp; rb_is_red( parent ) ) {
+</span>        gparent = rb_parent( parent );
+
+</span>        if ( parent == gparent-&gt;left ) {
+</span>            {
+</span>                Node* uncle = gparent-&gt;right;
+</span>                if ( uncle &amp;&amp; rb_is_red( uncle ) ) {
+</span>                    rb_set_black( uncle );
+</span>                    rb_set_black( parent );
+</span>                    rb_set_red( gparent );
+</span>                    node = gparent;
+</span>                    continue;
+</span>                }
+</span>            }
+
+</span>            if ( parent-&gt;right == node ) {
+</span>                Node* tmp;
+</span>                rbtree_left_rotate( root, parent );
+</span>                tmp    = parent;
+</span>                parent = node;
+</span>                node   = tmp;
+</span>            }
+
+</span>            rb_set_black( parent );
+</span>            rb_set_red( gparent );
+</span>            rbtree_right_rotate( root, gparent );
+</span>        } else {
+</span>            {
+</span>                Node* uncle = gparent-&gt;left;
+</span>                if ( uncle &amp;&amp; rb_is_red( uncle ) ) {
+</span>                    rb_set_black( uncle );
+</span>                    rb_set_black( parent );
+</span>                    rb_set_red( gparent );
+</span>                    node = gparent;
+</span>                    continue;
+</span>                }
+</span>            }
+
+</span>            if ( parent-&gt;left == node ) {
+</span>                Node* tmp;
+</span>                rbtree_right_rotate( root, parent );
+</span>                tmp    = parent;
+</span>                parent = node;
+</span>                node   = tmp;
+</span>            }
+
+</span>            rb_set_black( parent );
+</span>            rb_set_red( gparent );
+</span>            rbtree_left_rotate( root, gparent );
+</span>        }
+</span>    }
+
+</span>    rb_set_black( root-&gt;node );
+</span>}
+</span>static void rbtree_insert( RBRoot* root, Node* node ) {
+</span>    Node* y = NULL;
+</span>    Node* x = root-&gt;node;
+
+</span>    while ( x != NULL ) {
+</span>        y = x;
+</span>        if ( node-&gt;key &lt; x-&gt;key )
+</span>            x = x-&gt;left;
+</span>        else
+</span>            x = x-&gt;right;
+</span>    }
+</span>    rb_parent( node ) = y;
+
+</span>    if ( y != NULL ) {
+</span>        if ( node-&gt;key &lt; y-&gt;key )
+</span>            y-&gt;left = node;
+</span>        else
+</span>            y-&gt;right = node;
+</span>    } else {
+</span>        root-&gt;node = node;
+</span>    }
+
+</span>    node-&gt;color = RED;
+
+</span>    rbtree_insert_fixup( root, node );
+</span>}
+</span>int insert_rbtree( RBRoot* root, Type key ) {
+</span>    Node* node;
+
+</span>    if ( search( root-&gt;node, key ) != NULL ) return -1;
+
+</span>    if ( ( node = create_rbtree_node( key, NULL, NULL, NULL ) ) == NULL )
+</span>        return -1;
+
+</span>    rbtree_insert( root, node );
+
+</span>    return 0;
+</span>}
+</span></code></pre>
+<h2 id="shan-chu-jie-dian"><strong>删除节点</strong></h2>
+<p>节点的删除也分为两个步骤：<strong>节点的删除</strong>与<strong>删除后的修正</strong></p>
+<p><strong>节点的删除</strong>分为三种情况：</p>
+<ol>
+<li>节点没有子树，直接删除</li>
+<li>节点只有一个子树，用子节点替代此节点，在子节点上进行修正</li>
+<li>节点有两个子树，用右子树最小值节点替代此节点，在新节点上进行修正</li>
+</ol>
+<p>对于<strong>删除后的修正</strong>，如果删除节点是红色，则无需修正，否则需要修正，分多种情况：</p>
+<ol>
+<li>情况一：N是新的根
+<ol>
+<li>无需修正</li>
+</ol>
+</li>
+<li>情况二：兄弟节点S是红色
+<ol>
+<li>对父节点P进行左旋，交换N的父节点P与祖父节点G的颜色</li>
+<li>进入情况三</li>
+</ol>
+</li>
+<li>情况三：N的父节点G，兄弟节点S和S的儿子都是黑色
+<ol>
+<li>将兄弟节点S设置为红色</li>
+<li>对父节点P从<strong>情况一</strong>开始重新修正</li>
+</ol>
+</li>
+<li>情况四：N的父节点G为红色，兄弟节点S和S的儿子都是黑色
+<ol>
+<li>交换N的兄弟和父亲的颜色</li>
+</ol>
+</li>
+<li>情况五：N的父节点G为红色，兄弟节点S为红色，S的右儿子为黑色，N为其父节点的左儿子
+<ol>
+<li>在S上做右旋</li>
+<li>交换S和它的父节点颜色</li>
+<li>进入情况六</li>
+</ol>
+</li>
+<li>情况六：S是黑色，S的右儿子是红色，N为其父节点的左儿子
+<ol>
+<li>在N的父节点P上做左旋</li>
+<li>交换N和父节点的颜色</li>
+<li>将S的右子树设置为黑色</li>
+</ol>
+</li>
+</ol>
+<!-- -->
+<pre class="z-code"><code><span class="z-text z-plain">static void rbtree_delete_fixup( RBRoot* root, Node* node, Node* parent ) {
+</span>    Node* other;
+
+</span>    while ( ( !node || rb_is_black( node ) ) &amp;&amp; node != root-&gt;node ) {
+</span>        if ( parent-&gt;left == node ) {
+</span>            other = parent-&gt;right;
+</span>            if ( rb_is_red( other ) ) {
+</span>                rb_set_black( other );
+</span>                rb_set_red( parent );
+</span>                rbtree_left_rotate( root, parent );
+</span>                other = parent-&gt;right;
+</span>            }
+</span>            if ( ( !other-&gt;left || rb_is_black( other-&gt;left ) ) &amp;&amp;
+</span>                 ( !other-&gt;right || rb_is_black( other-&gt;right ) ) ) {
+</span>                rb_set_red( other );
+</span>                node   = parent;
+</span>                parent = rb_parent( node );
+</span>            } else {
+</span>                if ( !other-&gt;right || rb_is_black( other-&gt;right ) ) {
+</span>                    rb_set_black( other-&gt;left );
+</span>                    rb_set_red( other );
+</span>                    rbtree_right_rotate( root, other );
+</span>                    other = parent-&gt;right;
+</span>                }
+</span>                rb_set_color( other, rb_color( parent ) );
+</span>                rb_set_black( parent );
+</span>                rb_set_black( other-&gt;right );
+</span>                rbtree_left_rotate( root, parent );
+</span>                node = root-&gt;node;
+</span>                break;
+</span>            }
+</span>        } else {
+</span>            other = parent-&gt;left;
+</span>            if ( rb_is_red( other ) ) {
+</span>                rb_set_black( other );
+</span>                rb_set_red( parent );
+</span>                rbtree_right_rotate( root, parent );
+</span>                other = parent-&gt;left;
+</span>            }
+</span>            if ( ( !other-&gt;left || rb_is_black( other-&gt;left ) ) &amp;&amp;
+</span>                 ( !other-&gt;right || rb_is_black( other-&gt;right ) ) ) {
+</span>                rb_set_red( other );
+</span>                node   = parent;
+</span>                parent = rb_parent( node );
+</span>            } else {
+</span>                if ( !other-&gt;left || rb_is_black( other-&gt;left ) ) {
+</span>                    rb_set_black( other-&gt;right );
+</span>                    rb_set_red( other );
+</span>                    rbtree_left_rotate( root, other );
+</span>                    other = parent-&gt;left;
+</span>                }
+</span>                rb_set_color( other, rb_color( parent ) );
+</span>                rb_set_black( parent );
+</span>                rb_set_black( other-&gt;left );
+</span>                rbtree_right_rotate( root, parent );
+</span>                node = root-&gt;node;
+</span>                break;
+</span>            }
+</span>        }
+</span>    }
+</span>    if ( node ) rb_set_black( node );
+</span>}
+</span>void rbtree_delete( RBRoot* root, Node* node ) {
+</span>    Node *child, *parent;
+</span>    int   color;
+
+</span>    if ( ( node-&gt;left != NULL ) &amp;&amp; ( node-&gt;right != NULL ) ) {
+</span>        Node* replace = node;
+
+</span>        replace = replace-&gt;right;
+</span>        while ( replace-&gt;left != NULL ) {
+</span>            replace = replace-&gt;left;
+</span>        }
+
+</span>        if ( rb_parent( node ) ) {
+</span>            if ( rb_parent( node )-&gt;left == node ) {
+</span>                rb_parent( node )-&gt;left = replace;
+</span>            } else {
+</span>                rb_parent( node )-&gt;right = replace;
+</span>            }
+</span>        } else {
+</span>            root-&gt;node = replace;
+</span>        }
+
+</span>        child  = replace-&gt;right;
+</span>        parent = rb_parent( replace );
+
+</span>        color = rb_color( replace );
+
+</span>        if ( parent == node ) {
+</span>            parent = replace;
+</span>        } else {
+</span>            if ( child ) rb_set_parent( child, parent );
+</span>            parent-&gt;left = child;
+
+</span>            replace-&gt;right = node-&gt;right;
+</span>            rb_set_parent( node-&gt;right, replace );
+</span>        }
+
+</span>        replace-&gt;parent    = node-&gt;parent;
+</span>        replace-&gt;color     = node-&gt;color;
+</span>        replace-&gt;left      = node-&gt;left;
+</span>        node-&gt;left-&gt;parent = replace;
+
+</span>        if ( color == BLACK ) rbtree_delete_fixup( root, child, parent );
+</span>        free( node );
+
+</span>        return;
+</span>    }
+
+</span>    if ( node-&gt;left != NULL ) {
+</span>        child = node-&gt;left;
+
+</span>    } else {
+</span>        child = node-&gt;right;
+</span>    }
+
+</span>    parent = node-&gt;parent;
+</span>    color  = node-&gt;color;
+
+</span>    if ( child ) child-&gt;parent = parent;
+
+</span>    if ( parent ) {
+</span>        if ( parent-&gt;left == node ) {
+</span>            parent-&gt;left = child;
+</span>        } else {
+</span>            parent-&gt;right = child;
+</span>        }
+</span>    } else {
+</span>        root-&gt;node = child;
+</span>    }
+
+</span>    if ( color == BLACK ) rbtree_delete_fixup( root, child, parent );
+</span>    free( node );
+</span>}
+</span>void delete_rbtree( RBRoot* root, Type key ) {
+</span>    Node *z, *node;
+
+</span>    if ( ( z = search( root-&gt;node, key ) ) != NULL ) rbtree_delete( root, z );
+</span>}
+</span></code></pre>
+<h2 id="can-kao">参考</h2>
+<ol>
+<li><a rel="noopener" target="_blank" href="https://github.com/torvalds/linux/blob/5bfc75d92efd494db37f5c4c173d3639d4772966/tools/include/linux/rbtree.h">linux/rbtree.h at 5bfc75d92efd494db37f5c4c173d3639d4772966 ·
+torvalds/linux
+(github.com)</a></li>
+<li><a rel="noopener" target="_blank" href="https://github.com/torvalds/linux/blob/5bfc75d92efd494db37f5c4c173d3639d4772966/lib/rbtree.c">linux/rbtree.c at 5bfc75d92efd494db37f5c4c173d3639d4772966 ·
+torvalds/linux
+(github.com)</a></li>
+</ol>
+
+<p><b><a href="#">Back to top</a></b></p>
+    </article>
+  </main>
+  <footer>
+    <hr />
+    <div class="c">
+      <nav>
+        <ul><li><a href="https://blog.vhcffh.com/atom.xml" target="_blank" title="Atom/RSS Feed"><i type="Button" class="svg rss" title="Atom/RSS Feed"></i></a></li><li><a href="mailto:fly92727@outlook.com" target="_blank" title="Mail"><i type="Button" class="svg mail" title="Mail"></i></a></li><li><a href="https://github.com/FreyZhang007/" target="_blank" title="Github"><i type="Button" class="svg github" title="Github"></i></a></li><li><a href="https://github.com/sponsors/FreyZhang007/" target="_blank" title="GitHub Sponsor"><i type="Button" class="svg github-sponsor" title="GitHub Sponsor"></i></a></li></ul>
+      </nav>
+      <p class="s90">Copyright &copy; 2022 Frey&#x27;s blog</p>
+      <nav>
+        <ul><li class="s90"> <a href="https://blog.vhcffh.com/about/"> About </a> </li><li class="s90"> <a href="https://blog.vhcffh.com/contact/"> Contact </a> </li><li class="s90"> <a href="https://blog.vhcffh.com/privacy/"> Privacy </a> </li><li class="s90"> <a href="https://blog.vhcffh.com/sitemap.xml"> Sitemap </a> </li></ul>
+      </nav>
+      <p class="s90">Powered by <a href="https://www.getzola.org/">Zola</a> and <a href="https://github.com/jieiku/abridge/">Abridge</a></p>
+    </div>
+  </footer>
+<span class="topout">
+<span class="topleft"> </span><a href="#" class="top" title="Back to Top"><i class="svgs svgh angu"></i></a>
+</span>
+</body>
+</html>

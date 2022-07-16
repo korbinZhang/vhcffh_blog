@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <script src="https://blog.vhcffh.com/theme.min.js" integrity="sha384-IpIaa84kOKgkF5EJ0fD/kBe2wtIIsIB60ANGmuJxeA0dz5bSRfwBwp2/QybtQpU2"></script>
+  <link rel="stylesheet" href="https://blog.vhcffh.com/abridge-switcher.css?h=e4088b6018baa6c5c4f8222bf9a3811dec2f942f862ca9550010fba28852c1bc" />
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <script defer src="https://blog.vhcffh.com/search_index.en.js?h=d5e574ffd65cdc44489544089e33544b19b3b86a3340d587cc85531d18b8e792" integrity="sha384-HT1AXvCEAQGWm4cehYh3bO0RNhvjaSLPHFBWZ/7j3UFKwYf5wgLbX7GVJy0LGqKp"></script>
+  <script defer src="https://blog.vhcffh.com/abridge-switcher.min.js?h=be6d42ac1cc5ae1da7cdde772d392d6508fc038f98a8d0fd1bc5b5678530631a" integrity="sha384-RAhv9DQbxrVfq4cbSJsOQ8l7sA56QdpoR10euhjBCBOhLdbJ6y8SCZVYy818n51+"></script>
+  <link rel="alternate" type="application/atom+xml" title="Atom/RSS Feed" href="https://blog.vhcffh.com/atom.xml" />
+  <meta name="robots" content="index, follow" />
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <title>搬瓦工安装ss并加速 | Frey's blog</title>
+  <meta name="author" content="Jake G" />
+  <meta name="copyright" content="Frey&#x27;s blog" />
+  <meta name="description" content="一个简单的个人博客，用于记录笔记" />
+  <link rel="canonical" href="https://blog.vhcffh.com/hexo-ban-wa-gong-an-zhuang-ssbing-jia-su/" />
+  <meta name="keywords" content="Abridge, Abridge.css, Zola, Theme, Zola Theme, getzola, Semantic Html, Fast, lightweight" />
+  <meta property="og:url" content="https://blog.vhcffh.com/hexo-ban-wa-gong-an-zhuang-ssbing-jia-su/" />
+  <meta name="twitter:url" content="https://blog.vhcffh.com/hexo-ban-wa-gong-an-zhuang-ssbing-jia-su/" />
+  <meta property="og:description" content="一个简单的个人博客，用于记录笔记" />
+  <meta name="twitter:description" content="一个简单的个人博客，用于记录笔记" />
+  <meta property="og:title" content="搬瓦工安装ss并加速 | Frey&#x27;s blog" />
+  <meta name="twitter:title" content="搬瓦工安装ss并加速 | Frey&#x27;s blog" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://blog.vhcffh.com/banner.png" />
+  <meta property="og:image" content="https://blog.vhcffh.com/banner.png" />
+  <meta property="og:site_name" content="Frey&#x27;s blog" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:type" content="website" />
+  <meta property="og:updated_time" content="2017-08-03" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="theme-color" content="#333333" />
+  <meta name="msapplication-TileColor" content="#333333" />
+  <link rel="manifest" href="https://blog.vhcffh.com/site.webmanifest" />
+  <link rel="mask-icon" href="https://blog.vhcffh.com/safari-pinned-tab.svg" color="#ff9900" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://blog.vhcffh.com/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="https://blog.vhcffh.com/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="https://blog.vhcffh.com/favicon-16x16.png" />
+  <noscript><link rel="stylesheet" href="https://blog.vhcffh.com/nojs.css" /></noscript>
+</head>
+<body>
+  <header>
+    <nav>
+      <div><h1><a href="https://blog.vhcffh.com/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#f90" viewBox="0 0 96 96" width="32" height="32"><path stroke-width="14" d="M14 99 46 7h4l32 92"/><path stroke-width="9" d="M-3 82c43-26 59-26 102 0"/><path stroke-linecap="round" stroke-width="1.5" d="M94 72v7m-5-9.8v7m-5-9.8v7.1M79 64v7M63 57.7v7m-5-8.2v7m-5-7.8v7m-5-7.2v7m-5-6.7v7m-5-6.3v7m-5-5.8v7M17 64v7m-5-4.6v7m-5-4.2v7M2 72v7"/></svg>bridge</a></h1></div>
+      <div>
+        <ul><li> <h2><a href="https://blog.vhcffh.com/about/">About</a></h2> </li><li> <h2><a href="https://blog.vhcffh.com/posts/">Posts</a></h2> </li><li> <h2><a href="https://blog.vhcffh.com/categories/">Categories</a></h2> </li><li> <h2><a href="https://blog.vhcffh.com/tags/">Tags</a></h2> </li><li class="js"><i type="reset" id="mode" class="svgs adjust"></i></li></ul>
+      </div>
+      <div>
+        <form class="js" name="goSearch">
+          <div class="searchd">
+            <input id="userinput" type="text" placeholder="Search" autocomplete="off" title="Search" />
+            <button type="submit" title="Search"><i class="svgs search"></i></button>
+          </div>
+          <div><div id="suggestions"></div></div>
+        </form>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <article>
+        <h1><a href="https://blog.vhcffh.com/hexo-ban-wa-gong-an-zhuang-ssbing-jia-su/">搬瓦工安装ss并加速</a></h1>
+        <span class="s95"> Jake G<span class="hpad"> </span> August 03, 2017<span class="hpad"> </span> [<a href="https://blog.vhcffh.com/categories/ruan-jian/">软件</a>] #<a href="https://blog.vhcffh.com/tags/centos/">centos</a>  #<a href="https://blog.vhcffh.com/tags/ban-wa-gong/">搬瓦工</a>  #<a href="https://blog.vhcffh.com/tags/shadowsocks/">shadowsocks</a> </span>
+
+    <p>通过搬瓦工的VPS安装ss的几种方法</p>
+<p>搬瓦工（BandwagonHost）是美国IT7公司旗下的一家提供便宜年付OVZ架构的VPS主机方案的服务商。价格便宜、且依托的商家比较靠谱，具有较高的性价比。拿来搭个FQ是非常合适的，做个小站也是可以的。</p>
+<h1 id="1-gou-mai-di-zhi">1.购买地址</h1>
+<blockquote>
+<p>搬瓦工所有配置及购买地址:<a rel="noopener" target="_blank" href="https://bandwagonhost.com/aff.php?aff=17697">https://bandwagonhost.com/aff.php?aff=17697</a>
+以前有小内存的VPS年费三刀，很便宜，但现在没有了，缺货，连521M的有时候也会缺货，看来挺火的。</p>
+</blockquote>
+<h1 id="2-an-zhuang-shadowsocks">2.安装Shadowsocks</h1>
+<h2 id="2-1ban-wa-gong-hou-tai-yi-jian-an-zhuang-bu-tui-jian">2.1搬瓦工后台一键安装(不推荐)</h2>
+<p>登录账号-&gt;Client Area-&gt;Services-&gt;My Services-&gt;KiwiVM Control Panel<br />
+来到管理面板，点击 Shadowsocks Server 就可以一键安装 Shadowsocks<br />
+测试过它自带的一键安装，速度太慢，yotube视频看不了，有点慢。</p>
+<h2 id="2-2shi-yong-shelljiao-ben-an-zhuang-tui-jian">2.2使用shell脚本安装(推荐)</h2>
+<p>2.2.1安装 shadowsoksR</p>
+<p>Shadowsocks的一个分支，比较不错。但是默认是 aes-256-cfb 加密，如果需要
+chacha20 加密，需要手动切换。</p>
+<pre class="z-code"><code><span class="z-text z-plain">wget --no-check-certificate https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocksR.sh
+</span>chmod +x shadowsocksR.sh
+</span>./shadowsocksR.sh 2&gt;&amp;1 | tee shadowsocksR.log
+</span></code></pre>
+<p>安装成功需要等几分钟<br />
+这个速度可以看yotube无压力</p>
+<p>卸载方法：<br />
+使用 root 用户登录，运行以下命令：</p>
+<pre class="z-code"><code><span class="z-text z-plain">./shadowsocksR.sh uninstall
+</span></code></pre>
+<p>安装完成后即已后台启动 ShadowsocksR,运行：</p>
+<pre class="z-code"><code><span class="z-text z-plain">/etc/init.d/shadowsocks status
+</span></code></pre>
+<p>可以查看 ShadowsocksR 进程是否已经启动。<br />
+本脚本安装完成后，已将 ShadowsocksR 自动加入开机自启动。</p>
+<p>其它命令：<br />
+启动：/etc/init.d/shadowsocks start<br />
+停止：/etc/init.d/shadowsocks stop<br />
+重启：/etc/init.d/shadowsocks restart<br />
+状态：/etc/init.d/shadowsocks status</p>
+<p>配置文件路径：/etc/shadowsocks.json<br />
+日志文件路径：/var/log/shadowsocks.log<br />
+代码安装目录：/usr/local/shadowsocks</p>
+<p>2.2.2安装 shadowsocks-go版本</p>
+<p>据说有buff，比python版Shadowsocks要快：</p>
+<pre class="z-code"><code><span class="z-text z-plain">wget --no-check-certificate https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks-go.sh
+</span>chmod +x shadowsocks-go.sh
+</span>./shadowsocks-go.sh 2&amp;gt;&amp;amp;1 | tee shadowsocks-go.log
+</span></code></pre>
+<p>2.2.3其他版本Shadowsocks一键安装：</p>
+<p>来自 teddysun：<a rel="noopener" target="_blank" href="https://github.com/teddysun/shadowsocks_install">https://github.com/teddysun/shadowsocks_install</a></p>
+<h1 id="3-yu-dao-de-yi-xie-wen-ti">3.遇到的一些问题</h1>
+<h2 id="3-1ban-wa-gong-mo-ren-xi-tong-centosmei-you-wgetming-ling-xu-yao-an-zhuang">3.1搬瓦工默认系统Centos没有wget命令需要安装</h2>
+<p>安装命令:</p>
+<pre class="z-code"><code><span class="z-text z-plain">yum -y install wget
+</span></code></pre>
+<h2 id="3-2guan-yu-pei-zhi-duo-yong-hu">3.2关于配置多用户</h2>
+<pre class="z-code"><code><span class="z-text z-plain">vi /etc/shadowsocks.json
+</span></code></pre>
+<p>只需要在port_password项下添加&quot;端口号&quot;:&quot;密码&quot;</p>
+<pre class="z-code"><code><span class="z-text z-plain">{
+</span>    &quot;server&quot;:&quot;0.0.0.0&quot;,
+</span>    &quot;server_ipv6&quot;:&quot;[::]&quot;,
+</span>    &quot;local_address&quot;:&quot;127.0.0.1&quot;,
+</span>    &quot;local_port&quot;:1080,
+</span>    &quot;port_password&quot;:{
+</span>        &quot;12345&quot;: &quot;123456&quot;,
+</span>        &quot;23456&quot;: &quot;123456&quot;
+</span>    },
+</span>    &quot;timeout&quot;:120,
+</span>    &quot;method&quot;:&quot;aes-256-cfb&quot;,
+</span>    &quot;protocol&quot;:&quot;origin&quot;,
+</span>    &quot;protocol_param&quot;:&quot;&quot;,
+</span>    &quot;obfs&quot;:&quot;plain&quot;,
+</span>    &quot;obfs_param&quot;:&quot;&quot;,
+</span>    &quot;redirect&quot;:&quot;&quot;,
+</span>    &quot;dns_ipv6&quot;:false,
+</span>    &quot;fast_open&quot;:false,
+</span>    &quot;workers&quot;:1
+</span>}
+</span></code></pre>
+<h1 id="can-kao-zi-liao">参考资料</h1>
+<p>1.<a rel="noopener" target="_blank" href="https://blog.kuoruan.com/48.html">https://blog.kuoruan.com/48.html</a></p>
+
+<p><b><a href="#">Back to top</a></b></p>
+    </article>
+  </main>
+  <footer>
+    <hr />
+    <div class="c">
+      <nav>
+        <ul><li><a href="https://blog.vhcffh.com/atom.xml" target="_blank" title="Atom/RSS Feed"><i type="Button" class="svg rss" title="Atom/RSS Feed"></i></a></li><li><a href="mailto:fly92727@outlook.com" target="_blank" title="Mail"><i type="Button" class="svg mail" title="Mail"></i></a></li><li><a href="https://github.com/FreyZhang007/" target="_blank" title="Github"><i type="Button" class="svg github" title="Github"></i></a></li><li><a href="https://github.com/sponsors/FreyZhang007/" target="_blank" title="GitHub Sponsor"><i type="Button" class="svg github-sponsor" title="GitHub Sponsor"></i></a></li></ul>
+      </nav>
+      <p class="s90">Copyright &copy; 2022 Frey&#x27;s blog</p>
+      <nav>
+        <ul><li class="s90"> <a href="https://blog.vhcffh.com/about/"> About </a> </li><li class="s90"> <a href="https://blog.vhcffh.com/contact/"> Contact </a> </li><li class="s90"> <a href="https://blog.vhcffh.com/privacy/"> Privacy </a> </li><li class="s90"> <a href="https://blog.vhcffh.com/sitemap.xml"> Sitemap </a> </li></ul>
+      </nav>
+      <p class="s90">Powered by <a href="https://www.getzola.org/">Zola</a> and <a href="https://github.com/jieiku/abridge/">Abridge</a></p>
+    </div>
+  </footer>
+<span class="topout">
+<span class="topleft"> </span><a href="#" class="top" title="Back to Top"><i class="svgs svgh angu"></i></a>
+</span>
+</body>
+</html>

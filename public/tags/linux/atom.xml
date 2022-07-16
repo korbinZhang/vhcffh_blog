@@ -1,0 +1,1099 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+	<title>Frey&#x27;s blog - Linux</title>
+	<subtitle>一个简单的个人博客，用于记录笔记</subtitle>
+	<link href="https://blog.vhcffh.com/tags/linux/atom.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://blog.vhcffh.com"/>
+	<generator uri="https://www.getzola.org/">Zola</generator>
+	<updated>2022-02-12T00:00:00+00:00</updated>
+	<id>https://blog.vhcffh.com/tags/linux/atom.xml</id>
+	<entry xml:lang="en">
+		<title>struct timespec转化为struct tm</title>
+		<published>2022-02-12T00:00:00+00:00</published>
+		<updated>2022-02-12T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/wp-698/" type="text/html"/>
+		<id>https://blog.vhcffh.com/wp-698/</id>
+		<content type="html">&lt;p&gt;C语言中遇到了三种时间类型：&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;time_t&lt;&#x2F;li&gt;
+&lt;li&gt;struct timespec&lt;&#x2F;li&gt;
+&lt;li&gt;struct tm&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;这里总结一下它们之间的相互转化&lt;&#x2F;p&gt;
+&lt;p&gt;time_t 和 struct timespec&lt;&#x2F;p&gt;
+&lt;p&gt;time_t 只存储秒而struct timespec存储了纳秒，直接将秒转化即可：&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;time_t time = (time_t)ut_tv.tv_sec;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;time_t 和 struct tm&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.cplusplus.com&#x2F;reference&#x2F;ctime&#x2F;mktime&#x2F;&quot;&gt;&lt;strong&gt;mktime&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;
+将tm转化为time_t&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.cplusplus.com&#x2F;reference&#x2F;ctime&#x2F;localtime&#x2F;&quot;&gt;&lt;strong&gt;localtime&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;
+将time_t转化为tm（本地时区）&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.cplusplus.com&#x2F;reference&#x2F;ctime&#x2F;gmtime&#x2F;&quot;&gt;&lt;strong&gt;gmtime&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;
+将time_t转化为tm（UTC时区）&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;timespec 和 tm 可以通过time_t 间接转换&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;can-kao&quot;&gt;参考&lt;&#x2F;h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;http:&#x2F;&#x2F;ostack.cn&#x2F;qa&#x2F;?qa=1049564&#x2F;&quot;&gt;&lt;&#x2F;a&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;stackoverflow.com&#x2F;questions&#x2F;9252849&#x2F;convert-timeval-to-time-t&#x2F;9252913&quot;&gt;c - Convert timeval to
+time_t - Stack
+Overflow&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.cplusplus.com&#x2F;reference&#x2F;ctime&#x2F;tm&#x2F;&quot;&gt;struct tm - C++ Reference
+(cplusplus.com)&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>C语言红黑树实现</title>
+		<published>2022-02-05T00:00:00+00:00</published>
+		<updated>2022-02-05T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/wp-691/" type="text/html"/>
+		<id>https://blog.vhcffh.com/wp-691/</id>
+		<content type="html">&lt;h2 id=&quot;hong-hei-shu-de-jie-gou&quot;&gt;红黑树的结构&lt;&#x2F;h2&gt;
+&lt;p&gt;类型定义包括两个部分：一个root节点和多个树节点&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;rootjie-dian&quot;&gt;&lt;strong&gt;root节点&lt;&#x2F;strong&gt;&lt;&#x2F;h3&gt;
+&lt;p&gt;root节点保存红黑树的树根节点&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;typedef struct rb_tree() {
+&lt;&#x2F;span&gt;    Node* node;
+&lt;&#x2F;span&gt;} RBRoot;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;shu-jie-dian&quot;&gt;&lt;strong&gt;树节点&lt;&#x2F;strong&gt;&lt;&#x2F;h3&gt;
+&lt;p&gt;树节点用于保存红黑树节点中的信息包括&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;节点的颜色~ ~color~ ~&lt;&#x2F;li&gt;
+&lt;li&gt;节点存储的有效信息~ ~key~ ~&lt;&#x2F;li&gt;
+&lt;li&gt;以及节点的左孩子节点~ ~left~ ~,右孩子节点~ ~right~ ~和父节点~ ~parent~ ~&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;!-- --&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;typedef struct RBTreeNode {
+&lt;&#x2F;span&gt;    unsigned char color;
+&lt;&#x2F;span&gt;    Type key;
+&lt;&#x2F;span&gt;    struct RBTreeNode* left;
+&lt;&#x2F;span&gt;    struct RBtreeNode* right;
+&lt;&#x2F;span&gt;    struct RBtreeNode* parent;
+&lt;&#x2F;span&gt;} Node, *RBTree;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;主要有六个函数用于实现红黑树：红黑树的&lt;strong&gt;创建&lt;&#x2F;strong&gt;与&lt;strong&gt;销毁&lt;&#x2F;strong&gt;，&lt;strong&gt;左旋&lt;&#x2F;strong&gt;，&lt;strong&gt;右旋&lt;&#x2F;strong&gt;，&lt;strong&gt;插入节点&lt;&#x2F;strong&gt;，&lt;strong&gt;删除节点&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;chuang-jian&quot;&gt;&lt;strong&gt;创建&lt;&#x2F;strong&gt;&lt;&#x2F;h2&gt;
+&lt;p&gt;分配一个root节点&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;RBRoot* create_rbtree() {
+&lt;&#x2F;span&gt;    RBRoot* root = (RBRoot*) malloc( sizeof( RBRoot ) );
+&lt;&#x2F;span&gt;    root-&amp;gt;node   = NULL;
+&lt;&#x2F;span&gt;    return root;
+&lt;&#x2F;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;xiao-hui&quot;&gt;&lt;strong&gt;销毁&lt;&#x2F;strong&gt;&lt;&#x2F;h2&gt;
+&lt;p&gt;销毁主要分四个步骤：&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;销毁左子树&lt;&#x2F;li&gt;
+&lt;li&gt;销毁右子树&lt;&#x2F;li&gt;
+&lt;li&gt;释放树根节点空间&lt;&#x2F;li&gt;
+&lt;li&gt;释放root节点空间&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;!-- --&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;static void rbtree_destroy( RBTree tree ) {
+&lt;&#x2F;span&gt;    if ( tree == NULL ) return;
+&lt;&#x2F;span&gt;    if ( tree-&amp;gt;left != NULL ) rbtree_destroy( tree-&amp;gt;left );
+&lt;&#x2F;span&gt;    if ( tree-&amp;gt;right != NULL ) rbtree_destroy( tree-&amp;gt;right );
+
+&lt;&#x2F;span&gt;    free( tree );
+&lt;&#x2F;span&gt;}
+&lt;&#x2F;span&gt;void destroy_rbtree( RBRoot* root ) {
+&lt;&#x2F;span&gt;    if ( root != NULL ) rbtree_destroy( root-&amp;gt;node );
+
+&lt;&#x2F;span&gt;    free( root );
+&lt;&#x2F;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;为了实现在红黑树的插入与删除后，并且保持红黑树的性质不变，需要用到下面两个对树的基本操作左旋和右旋&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;zuo-xuan&quot;&gt;&lt;strong&gt;左旋&lt;&#x2F;strong&gt;&lt;&#x2F;h2&gt;
+&lt;div&gt;
+&lt;&#x2F;div&gt;
+&lt;p&gt;左旋操作&lt;&#x2F;p&gt;
+&lt;p&gt;对节点b进行左旋操作，进行左旋后减少了左子树的深度，增大了右子树的深度&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;static void rbtree_left_rotate( RBRoot* root, Node* x ) {
+&lt;&#x2F;span&gt;    Node* y = x-&amp;gt;right;
+
+&lt;&#x2F;span&gt;    x-&amp;gt;right = y-&amp;gt;left;
+&lt;&#x2F;span&gt;    if ( y-&amp;gt;left != NULL ) y-&amp;gt;left-&amp;gt;parent = x;
+
+&lt;&#x2F;span&gt;    y-&amp;gt;parent = x-&amp;gt;parent;
+
+&lt;&#x2F;span&gt;    if ( x-&amp;gt;parent == NULL ) {
+&lt;&#x2F;span&gt;        root-&amp;gt;node = y;
+&lt;&#x2F;span&gt;    } else {
+&lt;&#x2F;span&gt;        if ( x-&amp;gt;parent-&amp;gt;left == x )
+&lt;&#x2F;span&gt;            x-&amp;gt;parent-&amp;gt;left = y;
+&lt;&#x2F;span&gt;        else
+&lt;&#x2F;span&gt;            x-&amp;gt;parent-&amp;gt;right = y;
+&lt;&#x2F;span&gt;    }
+
+&lt;&#x2F;span&gt;    y-&amp;gt;left   = x;
+&lt;&#x2F;span&gt;    x-&amp;gt;parent = y;
+&lt;&#x2F;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;you-xuan&quot;&gt;&lt;strong&gt;右旋&lt;&#x2F;strong&gt;&lt;&#x2F;h2&gt;
+&lt;div&gt;
+&lt;&#x2F;div&gt;
+&lt;p&gt;右旋操作&lt;&#x2F;p&gt;
+&lt;p&gt;右旋操作与左旋操作相反，上图对节点a进行右旋操作，减少了右子树的深度，增大了左子树的深度&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;static void rbtree_right_rotate( RBRoot* root, Node* y ) {
+&lt;&#x2F;span&gt;    Node* x = y-&amp;gt;left;
+
+&lt;&#x2F;span&gt;    y-&amp;gt;left = x-&amp;gt;right;
+&lt;&#x2F;span&gt;    if ( x-&amp;gt;right != NULL ) x-&amp;gt;right-&amp;gt;parent = y;
+
+&lt;&#x2F;span&gt;    x-&amp;gt;parent = y-&amp;gt;parent;
+
+&lt;&#x2F;span&gt;    if ( y-&amp;gt;parent == NULL ) {
+&lt;&#x2F;span&gt;        root-&amp;gt;node = x;
+&lt;&#x2F;span&gt;    } else {
+&lt;&#x2F;span&gt;        if ( y == y-&amp;gt;parent-&amp;gt;right )
+&lt;&#x2F;span&gt;            y-&amp;gt;parent-&amp;gt;right = x;
+&lt;&#x2F;span&gt;        else
+&lt;&#x2F;span&gt;            y-&amp;gt;parent-&amp;gt;left = x;
+&lt;&#x2F;span&gt;    }
+
+&lt;&#x2F;span&gt;    x-&amp;gt;right = y;
+
+&lt;&#x2F;span&gt;    y-&amp;gt;parent = x;
+&lt;&#x2F;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;cha-ru-jie-dian&quot;&gt;&lt;strong&gt;插入节点&lt;&#x2F;strong&gt;&lt;&#x2F;h2&gt;
+&lt;p&gt;红黑树的插入分为两步：首先将待插入节点标记为红色并安装二叉查找树的方法插入；第二步对红黑树进行调整，使其保持红黑树的特性。根据不同的情况需要做出不同的调整：&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;情况一：新节点N位于树的根上，没有父节点
+&lt;ol&gt;
+&lt;li&gt;直接将其标记为黑色即可&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;情况二：新节点N的父节点P是黑色
+&lt;ol&gt;
+&lt;li&gt;直接插入，无需修正&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;情况三：父节点P与叔父节点U都为红色
+&lt;ol&gt;
+&lt;li&gt;将父节点P与叔父节点U标记为黑色&lt;&#x2F;li&gt;
+&lt;li&gt;将祖父节点G标记为红色&lt;&#x2F;li&gt;
+&lt;li&gt;将祖父节点G作为新插入节点重新进行修正（重新执行修正）&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;情况四：父节点P为红色，叔父节点U不为红色（新节点与父节点不同侧）
+&lt;ul&gt;
+&lt;li&gt;父节点P为祖父节点G的左子节点&lt;strong&gt;且&lt;&#x2F;strong&gt;新节点N为父节点P的右子节点
+&lt;ol&gt;
+&lt;li&gt;对节点N进行左旋操作&lt;&#x2F;li&gt;
+&lt;li&gt;对节点N的左子树（左旋操作前的父节点P）执行情况5&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;父节点P为祖父节点G的右子节点&lt;strong&gt;且&lt;&#x2F;strong&gt;新节点N为父节点P的左子节点
+a.  对节点N进行右旋操作
+b.  对节点N的右子树（右旋操作前的父节点P）执行情况5&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;情况五：父节点P为红色，叔父节点U不为红色
+&lt;ol&gt;
+&lt;li&gt;将父节点P标记为黑色&lt;&#x2F;li&gt;
+&lt;li&gt;将祖父节点G标记为红色&lt;&#x2F;li&gt;
+&lt;li&gt;父节点P为祖父节点G的右子节点&lt;strong&gt;且&lt;&#x2F;strong&gt;新节点N为父节点P的右子节点
+&lt;ol&gt;
+&lt;li&gt;对父节点P进行右旋操作&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;父节点P为祖父节点G的左子节点&lt;strong&gt;且&lt;&#x2F;strong&gt;新节点N为父节点P的左子节点
+&lt;ol&gt;
+&lt;li&gt;对父节点P进行左旋操作&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;!-- --&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;static void rbtree_insert_fixup( RBRoot* root, Node* node ) {
+&lt;&#x2F;span&gt;    Node *parent, *gparent;
+
+&lt;&#x2F;span&gt;    while ( ( parent = rb_parent( node ) ) &amp;amp;&amp;amp; rb_is_red( parent ) ) {
+&lt;&#x2F;span&gt;        gparent = rb_parent( parent );
+
+&lt;&#x2F;span&gt;        if ( parent == gparent-&amp;gt;left ) {
+&lt;&#x2F;span&gt;            {
+&lt;&#x2F;span&gt;                Node* uncle = gparent-&amp;gt;right;
+&lt;&#x2F;span&gt;                if ( uncle &amp;amp;&amp;amp; rb_is_red( uncle ) ) {
+&lt;&#x2F;span&gt;                    rb_set_black( uncle );
+&lt;&#x2F;span&gt;                    rb_set_black( parent );
+&lt;&#x2F;span&gt;                    rb_set_red( gparent );
+&lt;&#x2F;span&gt;                    node = gparent;
+&lt;&#x2F;span&gt;                    continue;
+&lt;&#x2F;span&gt;                }
+&lt;&#x2F;span&gt;            }
+
+&lt;&#x2F;span&gt;            if ( parent-&amp;gt;right == node ) {
+&lt;&#x2F;span&gt;                Node* tmp;
+&lt;&#x2F;span&gt;                rbtree_left_rotate( root, parent );
+&lt;&#x2F;span&gt;                tmp    = parent;
+&lt;&#x2F;span&gt;                parent = node;
+&lt;&#x2F;span&gt;                node   = tmp;
+&lt;&#x2F;span&gt;            }
+
+&lt;&#x2F;span&gt;            rb_set_black( parent );
+&lt;&#x2F;span&gt;            rb_set_red( gparent );
+&lt;&#x2F;span&gt;            rbtree_right_rotate( root, gparent );
+&lt;&#x2F;span&gt;        } else {
+&lt;&#x2F;span&gt;            {
+&lt;&#x2F;span&gt;                Node* uncle = gparent-&amp;gt;left;
+&lt;&#x2F;span&gt;                if ( uncle &amp;amp;&amp;amp; rb_is_red( uncle ) ) {
+&lt;&#x2F;span&gt;                    rb_set_black( uncle );
+&lt;&#x2F;span&gt;                    rb_set_black( parent );
+&lt;&#x2F;span&gt;                    rb_set_red( gparent );
+&lt;&#x2F;span&gt;                    node = gparent;
+&lt;&#x2F;span&gt;                    continue;
+&lt;&#x2F;span&gt;                }
+&lt;&#x2F;span&gt;            }
+
+&lt;&#x2F;span&gt;            if ( parent-&amp;gt;left == node ) {
+&lt;&#x2F;span&gt;                Node* tmp;
+&lt;&#x2F;span&gt;                rbtree_right_rotate( root, parent );
+&lt;&#x2F;span&gt;                tmp    = parent;
+&lt;&#x2F;span&gt;                parent = node;
+&lt;&#x2F;span&gt;                node   = tmp;
+&lt;&#x2F;span&gt;            }
+
+&lt;&#x2F;span&gt;            rb_set_black( parent );
+&lt;&#x2F;span&gt;            rb_set_red( gparent );
+&lt;&#x2F;span&gt;            rbtree_left_rotate( root, gparent );
+&lt;&#x2F;span&gt;        }
+&lt;&#x2F;span&gt;    }
+
+&lt;&#x2F;span&gt;    rb_set_black( root-&amp;gt;node );
+&lt;&#x2F;span&gt;}
+&lt;&#x2F;span&gt;static void rbtree_insert( RBRoot* root, Node* node ) {
+&lt;&#x2F;span&gt;    Node* y = NULL;
+&lt;&#x2F;span&gt;    Node* x = root-&amp;gt;node;
+
+&lt;&#x2F;span&gt;    while ( x != NULL ) {
+&lt;&#x2F;span&gt;        y = x;
+&lt;&#x2F;span&gt;        if ( node-&amp;gt;key &amp;lt; x-&amp;gt;key )
+&lt;&#x2F;span&gt;            x = x-&amp;gt;left;
+&lt;&#x2F;span&gt;        else
+&lt;&#x2F;span&gt;            x = x-&amp;gt;right;
+&lt;&#x2F;span&gt;    }
+&lt;&#x2F;span&gt;    rb_parent( node ) = y;
+
+&lt;&#x2F;span&gt;    if ( y != NULL ) {
+&lt;&#x2F;span&gt;        if ( node-&amp;gt;key &amp;lt; y-&amp;gt;key )
+&lt;&#x2F;span&gt;            y-&amp;gt;left = node;
+&lt;&#x2F;span&gt;        else
+&lt;&#x2F;span&gt;            y-&amp;gt;right = node;
+&lt;&#x2F;span&gt;    } else {
+&lt;&#x2F;span&gt;        root-&amp;gt;node = node;
+&lt;&#x2F;span&gt;    }
+
+&lt;&#x2F;span&gt;    node-&amp;gt;color = RED;
+
+&lt;&#x2F;span&gt;    rbtree_insert_fixup( root, node );
+&lt;&#x2F;span&gt;}
+&lt;&#x2F;span&gt;int insert_rbtree( RBRoot* root, Type key ) {
+&lt;&#x2F;span&gt;    Node* node;
+
+&lt;&#x2F;span&gt;    if ( search( root-&amp;gt;node, key ) != NULL ) return -1;
+
+&lt;&#x2F;span&gt;    if ( ( node = create_rbtree_node( key, NULL, NULL, NULL ) ) == NULL )
+&lt;&#x2F;span&gt;        return -1;
+
+&lt;&#x2F;span&gt;    rbtree_insert( root, node );
+
+&lt;&#x2F;span&gt;    return 0;
+&lt;&#x2F;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;shan-chu-jie-dian&quot;&gt;&lt;strong&gt;删除节点&lt;&#x2F;strong&gt;&lt;&#x2F;h2&gt;
+&lt;p&gt;节点的删除也分为两个步骤：&lt;strong&gt;节点的删除&lt;&#x2F;strong&gt;与&lt;strong&gt;删除后的修正&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;节点的删除&lt;&#x2F;strong&gt;分为三种情况：&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;节点没有子树，直接删除&lt;&#x2F;li&gt;
+&lt;li&gt;节点只有一个子树，用子节点替代此节点，在子节点上进行修正&lt;&#x2F;li&gt;
+&lt;li&gt;节点有两个子树，用右子树最小值节点替代此节点，在新节点上进行修正&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;对于&lt;strong&gt;删除后的修正&lt;&#x2F;strong&gt;，如果删除节点是红色，则无需修正，否则需要修正，分多种情况：&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;情况一：N是新的根
+&lt;ol&gt;
+&lt;li&gt;无需修正&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;情况二：兄弟节点S是红色
+&lt;ol&gt;
+&lt;li&gt;对父节点P进行左旋，交换N的父节点P与祖父节点G的颜色&lt;&#x2F;li&gt;
+&lt;li&gt;进入情况三&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;情况三：N的父节点G，兄弟节点S和S的儿子都是黑色
+&lt;ol&gt;
+&lt;li&gt;将兄弟节点S设置为红色&lt;&#x2F;li&gt;
+&lt;li&gt;对父节点P从&lt;strong&gt;情况一&lt;&#x2F;strong&gt;开始重新修正&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;情况四：N的父节点G为红色，兄弟节点S和S的儿子都是黑色
+&lt;ol&gt;
+&lt;li&gt;交换N的兄弟和父亲的颜色&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;情况五：N的父节点G为红色，兄弟节点S为红色，S的右儿子为黑色，N为其父节点的左儿子
+&lt;ol&gt;
+&lt;li&gt;在S上做右旋&lt;&#x2F;li&gt;
+&lt;li&gt;交换S和它的父节点颜色&lt;&#x2F;li&gt;
+&lt;li&gt;进入情况六&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;情况六：S是黑色，S的右儿子是红色，N为其父节点的左儿子
+&lt;ol&gt;
+&lt;li&gt;在N的父节点P上做左旋&lt;&#x2F;li&gt;
+&lt;li&gt;交换N和父节点的颜色&lt;&#x2F;li&gt;
+&lt;li&gt;将S的右子树设置为黑色&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;!-- --&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;static void rbtree_delete_fixup( RBRoot* root, Node* node, Node* parent ) {
+&lt;&#x2F;span&gt;    Node* other;
+
+&lt;&#x2F;span&gt;    while ( ( !node || rb_is_black( node ) ) &amp;amp;&amp;amp; node != root-&amp;gt;node ) {
+&lt;&#x2F;span&gt;        if ( parent-&amp;gt;left == node ) {
+&lt;&#x2F;span&gt;            other = parent-&amp;gt;right;
+&lt;&#x2F;span&gt;            if ( rb_is_red( other ) ) {
+&lt;&#x2F;span&gt;                rb_set_black( other );
+&lt;&#x2F;span&gt;                rb_set_red( parent );
+&lt;&#x2F;span&gt;                rbtree_left_rotate( root, parent );
+&lt;&#x2F;span&gt;                other = parent-&amp;gt;right;
+&lt;&#x2F;span&gt;            }
+&lt;&#x2F;span&gt;            if ( ( !other-&amp;gt;left || rb_is_black( other-&amp;gt;left ) ) &amp;amp;&amp;amp;
+&lt;&#x2F;span&gt;                 ( !other-&amp;gt;right || rb_is_black( other-&amp;gt;right ) ) ) {
+&lt;&#x2F;span&gt;                rb_set_red( other );
+&lt;&#x2F;span&gt;                node   = parent;
+&lt;&#x2F;span&gt;                parent = rb_parent( node );
+&lt;&#x2F;span&gt;            } else {
+&lt;&#x2F;span&gt;                if ( !other-&amp;gt;right || rb_is_black( other-&amp;gt;right ) ) {
+&lt;&#x2F;span&gt;                    rb_set_black( other-&amp;gt;left );
+&lt;&#x2F;span&gt;                    rb_set_red( other );
+&lt;&#x2F;span&gt;                    rbtree_right_rotate( root, other );
+&lt;&#x2F;span&gt;                    other = parent-&amp;gt;right;
+&lt;&#x2F;span&gt;                }
+&lt;&#x2F;span&gt;                rb_set_color( other, rb_color( parent ) );
+&lt;&#x2F;span&gt;                rb_set_black( parent );
+&lt;&#x2F;span&gt;                rb_set_black( other-&amp;gt;right );
+&lt;&#x2F;span&gt;                rbtree_left_rotate( root, parent );
+&lt;&#x2F;span&gt;                node = root-&amp;gt;node;
+&lt;&#x2F;span&gt;                break;
+&lt;&#x2F;span&gt;            }
+&lt;&#x2F;span&gt;        } else {
+&lt;&#x2F;span&gt;            other = parent-&amp;gt;left;
+&lt;&#x2F;span&gt;            if ( rb_is_red( other ) ) {
+&lt;&#x2F;span&gt;                rb_set_black( other );
+&lt;&#x2F;span&gt;                rb_set_red( parent );
+&lt;&#x2F;span&gt;                rbtree_right_rotate( root, parent );
+&lt;&#x2F;span&gt;                other = parent-&amp;gt;left;
+&lt;&#x2F;span&gt;            }
+&lt;&#x2F;span&gt;            if ( ( !other-&amp;gt;left || rb_is_black( other-&amp;gt;left ) ) &amp;amp;&amp;amp;
+&lt;&#x2F;span&gt;                 ( !other-&amp;gt;right || rb_is_black( other-&amp;gt;right ) ) ) {
+&lt;&#x2F;span&gt;                rb_set_red( other );
+&lt;&#x2F;span&gt;                node   = parent;
+&lt;&#x2F;span&gt;                parent = rb_parent( node );
+&lt;&#x2F;span&gt;            } else {
+&lt;&#x2F;span&gt;                if ( !other-&amp;gt;left || rb_is_black( other-&amp;gt;left ) ) {
+&lt;&#x2F;span&gt;                    rb_set_black( other-&amp;gt;right );
+&lt;&#x2F;span&gt;                    rb_set_red( other );
+&lt;&#x2F;span&gt;                    rbtree_left_rotate( root, other );
+&lt;&#x2F;span&gt;                    other = parent-&amp;gt;left;
+&lt;&#x2F;span&gt;                }
+&lt;&#x2F;span&gt;                rb_set_color( other, rb_color( parent ) );
+&lt;&#x2F;span&gt;                rb_set_black( parent );
+&lt;&#x2F;span&gt;                rb_set_black( other-&amp;gt;left );
+&lt;&#x2F;span&gt;                rbtree_right_rotate( root, parent );
+&lt;&#x2F;span&gt;                node = root-&amp;gt;node;
+&lt;&#x2F;span&gt;                break;
+&lt;&#x2F;span&gt;            }
+&lt;&#x2F;span&gt;        }
+&lt;&#x2F;span&gt;    }
+&lt;&#x2F;span&gt;    if ( node ) rb_set_black( node );
+&lt;&#x2F;span&gt;}
+&lt;&#x2F;span&gt;void rbtree_delete( RBRoot* root, Node* node ) {
+&lt;&#x2F;span&gt;    Node *child, *parent;
+&lt;&#x2F;span&gt;    int   color;
+
+&lt;&#x2F;span&gt;    if ( ( node-&amp;gt;left != NULL ) &amp;amp;&amp;amp; ( node-&amp;gt;right != NULL ) ) {
+&lt;&#x2F;span&gt;        Node* replace = node;
+
+&lt;&#x2F;span&gt;        replace = replace-&amp;gt;right;
+&lt;&#x2F;span&gt;        while ( replace-&amp;gt;left != NULL ) {
+&lt;&#x2F;span&gt;            replace = replace-&amp;gt;left;
+&lt;&#x2F;span&gt;        }
+
+&lt;&#x2F;span&gt;        if ( rb_parent( node ) ) {
+&lt;&#x2F;span&gt;            if ( rb_parent( node )-&amp;gt;left == node ) {
+&lt;&#x2F;span&gt;                rb_parent( node )-&amp;gt;left = replace;
+&lt;&#x2F;span&gt;            } else {
+&lt;&#x2F;span&gt;                rb_parent( node )-&amp;gt;right = replace;
+&lt;&#x2F;span&gt;            }
+&lt;&#x2F;span&gt;        } else {
+&lt;&#x2F;span&gt;            root-&amp;gt;node = replace;
+&lt;&#x2F;span&gt;        }
+
+&lt;&#x2F;span&gt;        child  = replace-&amp;gt;right;
+&lt;&#x2F;span&gt;        parent = rb_parent( replace );
+
+&lt;&#x2F;span&gt;        color = rb_color( replace );
+
+&lt;&#x2F;span&gt;        if ( parent == node ) {
+&lt;&#x2F;span&gt;            parent = replace;
+&lt;&#x2F;span&gt;        } else {
+&lt;&#x2F;span&gt;            if ( child ) rb_set_parent( child, parent );
+&lt;&#x2F;span&gt;            parent-&amp;gt;left = child;
+
+&lt;&#x2F;span&gt;            replace-&amp;gt;right = node-&amp;gt;right;
+&lt;&#x2F;span&gt;            rb_set_parent( node-&amp;gt;right, replace );
+&lt;&#x2F;span&gt;        }
+
+&lt;&#x2F;span&gt;        replace-&amp;gt;parent    = node-&amp;gt;parent;
+&lt;&#x2F;span&gt;        replace-&amp;gt;color     = node-&amp;gt;color;
+&lt;&#x2F;span&gt;        replace-&amp;gt;left      = node-&amp;gt;left;
+&lt;&#x2F;span&gt;        node-&amp;gt;left-&amp;gt;parent = replace;
+
+&lt;&#x2F;span&gt;        if ( color == BLACK ) rbtree_delete_fixup( root, child, parent );
+&lt;&#x2F;span&gt;        free( node );
+
+&lt;&#x2F;span&gt;        return;
+&lt;&#x2F;span&gt;    }
+
+&lt;&#x2F;span&gt;    if ( node-&amp;gt;left != NULL ) {
+&lt;&#x2F;span&gt;        child = node-&amp;gt;left;
+
+&lt;&#x2F;span&gt;    } else {
+&lt;&#x2F;span&gt;        child = node-&amp;gt;right;
+&lt;&#x2F;span&gt;    }
+
+&lt;&#x2F;span&gt;    parent = node-&amp;gt;parent;
+&lt;&#x2F;span&gt;    color  = node-&amp;gt;color;
+
+&lt;&#x2F;span&gt;    if ( child ) child-&amp;gt;parent = parent;
+
+&lt;&#x2F;span&gt;    if ( parent ) {
+&lt;&#x2F;span&gt;        if ( parent-&amp;gt;left == node ) {
+&lt;&#x2F;span&gt;            parent-&amp;gt;left = child;
+&lt;&#x2F;span&gt;        } else {
+&lt;&#x2F;span&gt;            parent-&amp;gt;right = child;
+&lt;&#x2F;span&gt;        }
+&lt;&#x2F;span&gt;    } else {
+&lt;&#x2F;span&gt;        root-&amp;gt;node = child;
+&lt;&#x2F;span&gt;    }
+
+&lt;&#x2F;span&gt;    if ( color == BLACK ) rbtree_delete_fixup( root, child, parent );
+&lt;&#x2F;span&gt;    free( node );
+&lt;&#x2F;span&gt;}
+&lt;&#x2F;span&gt;void delete_rbtree( RBRoot* root, Type key ) {
+&lt;&#x2F;span&gt;    Node *z, *node;
+
+&lt;&#x2F;span&gt;    if ( ( z = search( root-&amp;gt;node, key ) ) != NULL ) rbtree_delete( root, z );
+&lt;&#x2F;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;can-kao&quot;&gt;参考&lt;&#x2F;h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;torvalds&#x2F;linux&#x2F;blob&#x2F;5bfc75d92efd494db37f5c4c173d3639d4772966&#x2F;tools&#x2F;include&#x2F;linux&#x2F;rbtree.h&quot;&gt;linux&#x2F;rbtree.h at 5bfc75d92efd494db37f5c4c173d3639d4772966 ·
+torvalds&#x2F;linux
+(github.com)&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;torvalds&#x2F;linux&#x2F;blob&#x2F;5bfc75d92efd494db37f5c4c173d3639d4772966&#x2F;lib&#x2F;rbtree.c&quot;&gt;linux&#x2F;rbtree.c at 5bfc75d92efd494db37f5c4c173d3639d4772966 ·
+torvalds&#x2F;linux
+(github.com)&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>docker镜像alpine无法联网</title>
+		<published>2022-01-01T00:00:00+00:00</published>
+		<updated>2022-01-01T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/wp-665/" type="text/html"/>
+		<id>https://blog.vhcffh.com/wp-665/</id>
+		<content type="html">&lt;p&gt;alpine docker镜像无法联网出现如下错误：&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;ERROR: https:&#x2F;&#x2F;mirrors.ustc.edu.cn&#x2F;alpine&#x2F;v3.15&#x2F;main: temporary error (try again later) WARNING: Ignoring https:&#x2F;&#x2F;mirrors.ustc.edu.cn&#x2F;alpine&#x2F;v3.15&#x2F;main: No such file or directory 3069277072:error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed:ssl&#x2F;statem&#x2F;statem_clnt.c:1914:
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;基础的 docker 镜像是~ ~python:3.6-alpine~ ~&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;stack overflow上看到一个解答&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;stackoverflow.com&#x2F;questions&#x2F;53710206&#x2F;docker-cant-build-because-of-alpine-error&quot;&gt;docker can&#x27;t build because of alpine error - Stack
+Overflow&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;使用~ ~&lt;code&gt;docker build . --network local &lt;&#x2F;code&gt;进行构建--错误仍在&lt;&#x2F;li&gt;
+&lt;li&gt;添加~ ~8.8.8.8~ ~到文件&lt;code&gt; &#x2F;etc&#x2F;resolv.conf &lt;&#x2F;code&gt;并重启docker--错误仍在&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;&lt;strong&gt;思路：启动一个基础docker 容器，并进入查找错误原因&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;启动并进入容器&lt;br &#x2F;&gt;
+&lt;code&gt;docker run -it python:3.6-alpine &#x2F;bin&#x2F;sh &lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;执行Dockerfile文件里的命令&lt;br &#x2F;&gt;
+apk安装及更新时出错&lt;br &#x2F;&gt;
+使用~ ~ping~ ~命令测试网络连通性，出错~ ~ping:
+clock_gettime(MONOTONIC) failed~ ~&lt;br &#x2F;&gt;
+使用~ ~nc~ ~命令连接外部服务器，可以连接ip，不能连接域名&lt;br &#x2F;&gt;
+猜想应该是域名解析的问题&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;&lt;strong&gt;对alpine不熟，换一个其他的基础容器&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;使用镜像~ ~python:3.6~ ~，启动镜像后使用pip时报错&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;Fatal Python error: Py_Initialize: can&amp;#39;t initialize time
+&lt;&#x2F;span&gt;PermissionError: [Errno 1] Operation not permitted
+
+&lt;&#x2F;span&gt;Current thread 0xb6fda010 (most recent call first):
+&lt;&#x2F;span&gt;Aborted (core dumped)
+&lt;&#x2F;span&gt;# pip
+&lt;&#x2F;span&gt;Fatal Python error: Py_Initialize: can&amp;#39;t initialize time
+&lt;&#x2F;span&gt;PermissionError: [Errno 1] Operation not permitted
+
+&lt;&#x2F;span&gt;Current thread 0xb6f12010 (most recent call first):
+&lt;&#x2F;span&gt;Aborted (core dumped)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;比较了一下两个python镜像的大小&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;python                   3.6                 a3bba401d788        2 weeks ago         696MB
+&lt;&#x2F;span&gt;python                   3.6-alpine          dc8c4f7b64b7        2 weeks ago         34.8MB
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;还是用~ ~alpine~ ~版本的吧&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;域名解析问题&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;搜到&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.sudops.com&#x2F;kubernetes-alpine-image-resolve-ext-dns.html&quot;&gt;这里&lt;&#x2F;a&gt;，说要将~ ~&#x2F;etc&#x2F;resolv.conf~ ~文件中的~ ~ndots~ ~注释掉&lt;&#x2F;p&gt;
+&lt;p&gt;进入容器查看~ ~&#x2F;etc&#x2F;resolv.conf~ ~文件，并没有字符~ ~ndots~ ~&lt;&#x2F;p&gt;
+&lt;p&gt;搜索ping的错误~ ~ping: clock_gettime(MONOTONIC) failed~ ~&lt;&#x2F;p&gt;
+&lt;p&gt;找到了&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;docs.linuxserver.io&#x2F;faq#libseccomp&quot;&gt;这里&lt;&#x2F;a&gt;，有三种解决方法&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;安装一个软件包&lt;br &#x2F;&gt;
+&lt;code&gt;wget http:&#x2F;&#x2F;ftp.us.debian.org&#x2F;debian&#x2F;pool&#x2F;main&#x2F;libs&#x2F;libseccomp&#x2F;libseccomp2_2.4.4-1~bpo10+1_armhf.deb &amp;amp;&amp;amp; sudo dpkg -i libseccomp2_2.4.4-1~bpo10+1_armhf.deb&lt;&#x2F;code&gt;&lt;br &#x2F;&gt;
+下载时发现2.4.4版本已经没了，于是下载2.5.1版本&lt;br &#x2F;&gt;
+安装后仍然时间还不对，安装前是1970年，安装后变成了2071年&lt;&#x2F;li&gt;
+&lt;li&gt;第二个方法一样，不过是添加源安装软件&lt;&#x2F;li&gt;
+&lt;li&gt;方法三要更新树莓派的系统&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;方法2和方法3需要添加源或更新系统，不想搞太多源，也懒得重新安装&lt;&#x2F;p&gt;
+&lt;p&gt;又搜了一下，看到&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.alpinelinux.org&#x2F;alpine&#x2F;aports&#x2F;-&#x2F;issues&#x2F;12091&quot;&gt;这里&lt;&#x2F;a&gt;，有人提示添加~ ~--security-opt
+seccomp=unconfined~ ~&lt;&#x2F;p&gt;
+&lt;p&gt;测试一下&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;❯ docker run -it --rm --security-opt seccomp=unconfined python:3.6-alpine ping baidu.com
+&lt;&#x2F;span&gt;PING baidu.com (220.181.38.148): 56 data bytes
+&lt;&#x2F;span&gt;64 bytes from 220.181.38.148: seq=0 ttl=48 time=45.827 ms
+&lt;&#x2F;span&gt;64 bytes from 220.181.38.148: seq=1 ttl=48 time=47.090 ms
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;网络可以ping通了，应该可行&lt;&#x2F;p&gt;
+&lt;p&gt;但是使用~ ~docker build~ ~时，出现了问题&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;❯ docker build . --security-opt seccomp=unconfined
+&lt;&#x2F;span&gt;Error response from daemon: The daemon on this platform does not support setting security options on build
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;系统无法使用此选项&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;从其它系统构建镜像后导出&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;docker 镜像保存：&lt;&#x2F;p&gt;
+&lt;p&gt;~ ~docker save 0d33 &amp;gt; proxy_pool.tar~ ~&lt;&#x2F;p&gt;
+&lt;p&gt;docker镜像导入：&lt;&#x2F;p&gt;
+&lt;p&gt;~ ~docker load &amp;lt; proxy_pool.tar~ ~&lt;&#x2F;p&gt;
+&lt;p&gt;两个机器架构不同&lt;&#x2F;p&gt;
+&lt;p&gt;按照&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;blog.vhcffh.com&#x2F;667.html&quot;&gt;这里&lt;&#x2F;a&gt;进行跨平台构建即可&lt;&#x2F;p&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>tar命令详解</title>
+		<published>2021-12-04T00:00:00+00:00</published>
+		<updated>2021-12-04T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/wp-631/" type="text/html"/>
+		<id>https://blog.vhcffh.com/wp-631/</id>
+		<content type="html">&lt;p&gt;解包命令：&lt;code&gt;tar -xvf all.tar&lt;&#x2F;code&gt;&lt;br &#x2F;&gt;
+打包命令：&lt;code&gt;tar -cvf all.tar dir1 dir2 1.txt 2.txt&lt;&#x2F;code&gt;&lt;br &#x2F;&gt;
+解压命令：&lt;code&gt;tar -x[zjZ][v]f all.tar.[gz&#x2F;bz2&#x2F;Z]&lt;&#x2F;code&gt;&lt;br &#x2F;&gt;
+压缩命令：&lt;code&gt;tar -c[zjZ]f all.tar.[gz&#x2F;bz2&#x2F;Z]&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;更新压缩档案中的文件&lt;&#x2F;p&gt;
+&lt;p&gt;压缩解压参数&lt;&#x2F;p&gt;
+&lt;p&gt;这五个参数是完全独立的，必须且只能使用其中一个与另外的参数配合进行某项操作。&lt;&#x2F;p&gt;
+&lt;p&gt;压缩为compress（后缀Z）&lt;&#x2F;p&gt;
+&lt;p&gt;压缩解压方案参数&lt;&#x2F;p&gt;
+&lt;p&gt;这三个参数用来选择一个压缩方案，如果没有选择任何方案，则仅进行打包解包命令（后缀tar）。&lt;&#x2F;p&gt;
+&lt;p&gt;输出文件到标准输出&lt;&#x2F;p&gt;
+&lt;p&gt;其它配置&lt;&#x2F;p&gt;
+&lt;p&gt;这两个参数添加一些其它特性。它们也是可选择。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;zong-jie&quot;&gt;总结&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;code&gt;unzip file.zip&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;压缩解压示例&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;can-kao&quot;&gt;参考&lt;&#x2F;h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.cnblogs.com&#x2F;xinghen1216&#x2F;p&#x2F;11307956.html&quot;&gt;（21）tar打包命令详解 - 星痕1216 - 博客园
+(cnblogs.com)&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.cnblogs.com&#x2F;xiondun&#x2F;p&#x2F;13208881.html&quot;&gt;tar 压缩命令 - xiondun - 博客园
+(cnblogs.com)&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>C语言日期时间</title>
+		<published>2021-11-28T00:00:00+00:00</published>
+		<updated>2021-11-28T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/wp-625/" type="text/html"/>
+		<id>https://blog.vhcffh.com/wp-625/</id>
+		<content type="html">&lt;p&gt;在本教程中，我们将展示如何在 C 中使用日期和时间。在本教程中，我们使用
+C99。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;c-ri-qi-shi-jian-ding-yi&quot;&gt;C 日期时间定义&lt;&#x2F;h2&gt;
+&lt;p&gt;我们从几个定义开始。&lt;strong&gt;日历时间&lt;&#x2F;strong&gt;，也称为绝对时间，是时间连续体中的一个点，例如
+2016 年 2 月 17 日 13：02：5
+CET。&lt;strong&gt;时间间隔&lt;&#x2F;strong&gt;是两个日历时间之间时间连续体的连续部分，例如 2000 年 2
+月 20 日 13：00 到 14：00 之间的小时。&lt;em&gt;经过的时间&lt;&#x2F;em&gt;是间隔的长度，例如 28
+分钟。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;时间量&lt;&#x2F;strong&gt;是经过的时间之和。经过的时间不需要是连续的。当工作花了我们十一个小时，我们可能是在不同的日子工作。&lt;strong&gt;CPU
+时间&lt;&#x2F;strong&gt;是中央处理单元 （CPU）
+用于处理计算机程序或操作系统指令的时间量。它以系统时钟或秒为单位进行测量。&lt;strong&gt;Unix
+纪元&lt;&#x2F;strong&gt;是指从1970 年 1 月 1 日 00：00：00 UTC 开始的时间（或
+1970-01-01T00：00：00Z ISO 8601）。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Unix 时间&lt;&#x2F;strong&gt;是自&lt;strong&gt;Unix 纪元&lt;&#x2F;strong&gt;以来经过的时间的秒数。 &lt;strong&gt;Unix
+时间&lt;&#x2F;strong&gt;的类型为&lt;code&gt;time_t&lt;&#x2F;code&gt;。另外有一个&lt;strong&gt;时间结构体&lt;&#x2F;strong&gt;来表示人类可读的日历时间。它由一组包括年、月、日、时、分、秒等变量组成。&lt;strong&gt;时间结构体&lt;&#x2F;strong&gt;的类型为&lt;code&gt;struct tm&lt;&#x2F;code&gt;。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;现实时间&lt;&#x2F;strong&gt;（Wall time、real-world time、wall-clock
+time）不同于通过计算机微处理器时钟脉冲或周期测量得到的时间。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;code&gt;time.h&lt;&#x2F;code&gt;包含了以下函数：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;char *asctime(const struct tm *)&lt;&#x2F;code&gt; --- 将时间转化为字符串（过时的）&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;clock_t clock(void)&lt;&#x2F;code&gt; --- 返回当前进程启动后使用的CPU时间&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;int clock_getres(clockid_t, struct timespec *)&lt;&#x2F;code&gt; --- 返回时钟精度&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;int clock_gettime(clockid_t, struct timespec *)&lt;&#x2F;code&gt; ---
+用于计算时间，有秒和纳秒两种精度；比clock精确&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;int clock_settime(clockid_t, const struct timespec *)&lt;&#x2F;code&gt; ---
+设置系统时间&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;char *ctime(const time_t *)&lt;&#x2F;code&gt; ---
+将时间值转换为日期和时间字符串（过时）&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;double difftime(time_t, time_t)&lt;&#x2F;code&gt; --- 计算两个时间的差&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;struct tm *getdate(const char *)&lt;&#x2F;code&gt; --- 将时间字符串转换为时间结构体&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;struct tm *gmtime(const time_t *)&lt;&#x2F;code&gt; ---
+将Unix时间转换为时间结构体（&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;baike.baidu.com&#x2F;item&#x2F;%E5%8D%8F%E8%B0%83%E4%B8%96%E7%95%8C%E6%97%B6&#x2F;787659&quot;&gt;UTC时间&lt;&#x2F;a&gt;）&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;struct tm *localtime(const time_t *)&lt;&#x2F;code&gt; ---
+将Unix时间转换为时间结构体（本地时间）&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;time_t mktime(struct tm *)&lt;&#x2F;code&gt; --- 将时间结构体转换为Unix时间&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;size_t strftime(char *, size_t, const char *, const struct tm *)&lt;&#x2F;code&gt; ---
+以指定格式输出时间字符串&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;char *strptime(const char *, const char *, struct tm *)&lt;&#x2F;code&gt; ---
+以指定格式的时间字符串配置时间结构体&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;time_t time(time_t *)&lt;&#x2F;code&gt; --- 返回Unix时间或设置Unix时间&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;void tzset(void)&lt;&#x2F;code&gt; --- 设置时区信息&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;此外，&lt;code&gt;time.h&lt;&#x2F;code&gt;文件定义了&lt;code&gt;CLOCKS_PER_SEC&lt;&#x2F;code&gt;宏，它保存了每秒的处理器时钟刻度数。
+&lt;code&gt;clock_t&lt;&#x2F;code&gt;是进程运行时间类型。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;unixshi-jian-time-t&quot;&gt;Unix时间（time_t）&lt;&#x2F;h2&gt;
+&lt;p&gt;Unix时间是指自Unix纪元以来的秒数。
+time()函数返回自1970年1月1日协调世界时0小时0分0秒以来的时间值，单位为秒。
+如果发生错误，它返回-1。&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;time_t time(time_t *t);
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;如果&lt;code&gt;t!=NULL&lt;&#x2F;code&gt;，此函数返回值也会存储到&lt;code&gt;t&lt;&#x2F;code&gt;指向的内存。&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;#include &amp;lt;stdio.h&amp;gt;
+&lt;&#x2F;span&gt;#include &amp;lt;time.h&amp;gt;
+
+&lt;&#x2F;span&gt;&#x2F;&#x2F; unixtime.c
+&lt;&#x2F;span&gt;int main(void) {
+&lt;&#x2F;span&gt;    
+&lt;&#x2F;span&gt;    time_t now = time(NULL);
+&lt;&#x2F;span&gt;    
+&lt;&#x2F;span&gt;    if (now == -1) {
+&lt;&#x2F;span&gt;        
+&lt;&#x2F;span&gt;        puts(&amp;quot;The time() function failed&amp;quot;);
+&lt;&#x2F;span&gt;    }
+
+&lt;&#x2F;span&gt;    printf(&amp;quot;%ld\n&amp;quot;, now);
+
+&lt;&#x2F;span&gt;    return 0;
+&lt;&#x2F;span&gt;}
+
+&lt;&#x2F;span&gt;&#x2F;&#x2F;❯ .&#x2F;unixtime
+&lt;&#x2F;span&gt;&#x2F;&#x2F;1638028257
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;shi-jian-jie-gou-ti-struct-tm&quot;&gt;时间结构体（struct tm）&lt;&#x2F;h2&gt;
+&lt;p&gt;时间结构体是一个人类友好的日期时间。结构体类型为&lt;code&gt;struct tm&lt;&#x2F;code&gt;。函数&lt;code&gt;localtime()&lt;&#x2F;code&gt;可以将
+Unix时间（time_t）
+转换为时间结构体。他使用本地账户的时区。函数原型如下：&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;struct tm *localtime(const time_t *clock);
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;函数存储了一个结构体并返回指针。&lt;&#x2F;p&gt;
+&lt;p&gt;下面关于结构tm的描述来自FreeBSD手册。&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;struct tm {
+&lt;&#x2F;span&gt;    int tm_sec;         &#x2F;* seconds:0-59 *&#x2F;
+&lt;&#x2F;span&gt;    int tm_min;         &#x2F;* minutes:0-59 *&#x2F;
+&lt;&#x2F;span&gt;    int tm_hour;        &#x2F;* hours:0-23 *&#x2F;
+&lt;&#x2F;span&gt;    int tm_mday;        &#x2F;* day of the month:1-31 *&#x2F;
+&lt;&#x2F;span&gt;    int tm_mon;         &#x2F;* month:0-11 *&#x2F;
+&lt;&#x2F;span&gt;    int tm_year;        &#x2F;* year:1900-&amp;gt; *&#x2F;
+&lt;&#x2F;span&gt;    int tm_wday;        &#x2F;* day of the week:0-6 *&#x2F;
+&lt;&#x2F;span&gt;    int tm_yday;        &#x2F;* day in the year:0-365 *&#x2F;
+&lt;&#x2F;span&gt;    int tm_isdst;       &#x2F;* daylight saving time:是否实行夏令时 *&#x2F;
+&lt;&#x2F;span&gt;};
+
+&lt;&#x2F;span&gt;#include &amp;lt;stdio.h&amp;gt; 
+&lt;&#x2F;span&gt;#include &amp;lt;time.h&amp;gt;       
+&lt;&#x2F;span&gt; 
+&lt;&#x2F;span&gt;int main(void) {
+&lt;&#x2F;span&gt;    
+&lt;&#x2F;span&gt;    time_t rawtime = time(NULL);  &#x2F;&#x2F; 得到Unix时间
+&lt;&#x2F;span&gt;    
+&lt;&#x2F;span&gt;    if (rawtime == -1) {
+
+&lt;&#x2F;span&gt;        puts(&amp;quot;The time() function failed&amp;quot;);
+&lt;&#x2F;span&gt;        return 1;
+&lt;&#x2F;span&gt;    }
+&lt;&#x2F;span&gt;    
+&lt;&#x2F;span&gt;    struct tm *ptm = localtime(&amp;amp;rawtime);   &#x2F;&#x2F; 将Unix时间转换为时间结构体
+&lt;&#x2F;span&gt;    
+&lt;&#x2F;span&gt;    if (ptm == NULL) {
+&lt;&#x2F;span&gt;        
+&lt;&#x2F;span&gt;puts(&amp;quot;The localtime() function failed&amp;quot;);
+&lt;&#x2F;span&gt;        return 1;
+&lt;&#x2F;span&gt;    }
+&lt;&#x2F;span&gt;    
+&lt;&#x2F;span&gt;    printf(&amp;quot;The time is: %02d:%02d:%02d\n&amp;quot;, ptm-&amp;gt;tm_hour, 
+&lt;&#x2F;span&gt;           ptm-&amp;gt;tm_min, ptm-&amp;gt;tm_sec);
+
+&lt;&#x2F;span&gt;    return 0;
+&lt;&#x2F;span&gt;}
+
+&lt;&#x2F;span&gt;&#x2F;&#x2F;❯ .&#x2F;brokendowntime 
+&lt;&#x2F;span&gt;&#x2F;&#x2F;The time is: 17:00:12
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;shi-jian-jie-gou-ti-zhuan-huan-wei-unixshi-jian&quot;&gt;时间结构体转换为Unix时间&lt;&#x2F;h2&gt;
+&lt;h2 id=&quot;can-kao&quot;&gt;参考&lt;&#x2F;h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;zetcode.com&#x2F;articles&#x2F;cdatetime&#x2F;&quot;&gt;C Date time
+(zetcode.com)&lt;&#x2F;a&gt;[原文]&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.cnblogs.com&#x2F;buptmuye&#x2F;p&#x2F;3711022.html&quot;&gt;clock_gettime的使用，计时比clock()精确 - 木叶火影 - 博客园
+(cnblogs.com)&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.jianshu.com&#x2F;p&#x2F;0161e730eb5d&quot;&gt;C语言getdate函数、setdate函数的用法 - 简书
+(jianshu.com)&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>C语言库函数之函数间的goto</title>
+		<published>2021-11-14T00:00:00+00:00</published>
+		<updated>2021-11-14T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/wp-577/" type="text/html"/>
+		<id>https://blog.vhcffh.com/wp-577/</id>
+		<content type="html">&lt;h2 id=&quot;setjmp&quot;&gt;setjmp()&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.runoob.com&#x2F;cprogramming&#x2F;c-macro-setjmp.html&quot;&gt;C 库宏 -- setjmp() | 菜鸟教程
+(runoob.com)&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;void longjmp(jmp_buf environment, int value)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;返回0，等待&lt;code&gt;longjmp()&lt;&#x2F;code&gt;调用&lt;code&gt;setjmp()&lt;&#x2F;code&gt;宏执行处返回新值&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;longjmp&quot;&gt;longjmp()&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.runoob.com&#x2F;cprogramming&#x2F;c-function-longjmp.html&quot;&gt;C 库函数 -- longjmp() | 菜鸟教程 (runoob.com)&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;int setjmp(jmp_buf environment)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;恢复最近一次调用&lt;code&gt;setjmp()&lt;&#x2F;code&gt;宏时保存的环境&lt;&#x2F;p&gt;
+&lt;p&gt;setjmp()和longjmp()可以实现从一个函数直接跳转到另一个函数继续执行，类似于goto语句（但goto语句仅限于函数内使用）。不过这两个跳转并不保证堆栈正常，因此需要程序自己实现堆栈的保存与恢复（也就是保护现场和恢复现场）。通过sp和bp指针即可访问当前堆栈内容。堆栈寄存器sp（Stack
+Pointer）一般用来存放栈的偏移指针；基数指针寄存器bp（Base
+Pointer）一般在函数中用来保存进入函数时的sp的栈顶基址。bp到sp之间的内容即为当前函数的现场。在c语言中获取sp和bp指针的方法如下：&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;signal&quot;&gt;signal()&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.runoob.com&#x2F;cprogramming&#x2F;c-function-signal.html&quot;&gt;C 库函数 -- signal() | 菜鸟教程 (runoob.com)&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;void (*signal(int sig, void (*func)(int)))(int)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;宏        信号&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;p&gt;SIGABRT   (Signal Abort) 程序异常终止。
+SIGFPE    (Signal Floating-Point Exception) 算术运算出错，如除数为 0 或溢出（不一定是浮点运算）。
+SIGILL    (Signal Illegal Instruction) 非法函数映象，如非法指令，通常是由于代码中的某个变体或者尝试执行数据导致的。
+SIGINT    (Signal Interrupt) 中断信号，如 ctrl-C，通常由用户生成。
+SIGSEGV   (Signal Segmentation Violation) 非法访问存储器，如访问不存在的内存单元。
+SIGTERM   (Signal Terminate) 发送给本程序的终止请求信号。&lt;&#x2F;p&gt;
+&lt;p&gt;sig参数&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;p&gt;SIG_DFL   默认的信号处理程序。
+SIG_IGN   忽视信号。&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;p&gt;func参数&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;alarm&quot;&gt;alarm()&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.cnblogs.com&#x2F;wuyepeng&#x2F;p&#x2F;9788919.html&quot;&gt;alarm()函数的使用总结 - cs_wu - 博客园 (cnblogs.com)&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;unsigned int alarm(unsigned int seconds);
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;设置一定时间后进行中断，执行signal()传入的函数。&lt;&#x2F;p&gt;
+&lt;p&gt;signal函数和alarm函数可以通过中断来实现函数间的跳转，signal函数定义中断事件类型和中断发生时需要执行的函数；alarm函数定义多长时间后发生中断。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;can-kao&quot;&gt;参考&lt;&#x2F;h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;163852444&quot;&gt;C语言（6）- 函数调用和栈 - 知乎 (zhihu.com)&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.runoob.com&#x2F;cprogramming&#x2F;c-macro-setjmp.html&quot;&gt;C 库宏 -- setjmp() | 菜鸟教程 (runoob.com)&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.cnblogs.com&#x2F;wuyepeng&#x2F;p&#x2F;9788919.html&quot;&gt;alarm()函数的使用总结 - cs_wu - 博客园 (cnblogs.com)&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.cnblogs.com&#x2F;dongzhiquan&#x2F;p&#x2F;4960602.html&quot;&gt;SS、SP、BP寄存器 - dzqdevin - 博客园 (cnblogs.com)&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>top命令笔记</title>
+		<published>2021-10-05T00:00:00+00:00</published>
+		<updated>2021-10-05T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/wp-376/" type="text/html"/>
+		<id>https://blog.vhcffh.com/wp-376/</id>
+		<content type="html">&lt;h1 id=&quot;界面介绍&quot;&gt;界面介绍&lt;&#x2F;h1&gt;
+&lt;h2 id=&quot;di-yi-xing-xin-xi-top&quot;&gt;第一行信息(&lt;code&gt;top -&lt;&#x2F;code&gt;)&lt;&#x2F;h2&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th align=&quot;left&quot;&gt;参数&lt;&#x2F;th&gt;&lt;th align=&quot;left&quot;&gt;含义&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td align=&quot;left&quot;&gt;&lt;code&gt;05:19:41&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td align=&quot;left&quot;&gt;系统当前时间&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td align=&quot;left&quot;&gt;&lt;code&gt;up 10 days, 20:15&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td align=&quot;left&quot;&gt;本机己经运行 10 天 20小时 15 分钟&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td align=&quot;left&quot;&gt;&lt;code&gt;1 users&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td align=&quot;left&quot;&gt;当前登录了一个用户&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td align=&quot;left&quot;&gt;&lt;code&gt;load average:0.01, 0.01, 0.00&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td align=&quot;left&quot;&gt;系统历史平均负载1分钟，5分钟，15分钟一般认为1表示一个CPU核满负载&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
+&lt;h2 id=&quot;di-er-xing-xin-xi-tasks&quot;&gt;第二行信息(&lt;code&gt;Tasks: &lt;&#x2F;code&gt;)&lt;&#x2F;h2&gt;
+&lt;p&gt;任务进程信息&lt;&#x2F;p&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;参数&lt;&#x2F;th&gt;&lt;th&gt;意义&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;&lt;code&gt;Tasks: 38 total&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td&gt;系统中的进程总数&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;code&gt;1 running&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td&gt;正在运行的进程数&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;code&gt;37 sleeping&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td&gt;睡眠的进程数&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;code&gt;0 stoped&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td&gt;停止的进程数&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;code&gt;0 zombie&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td&gt;僵尸进程数如果不是 0，则需要手工检查僵尸进程&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
+&lt;h2 id=&quot;di-san-xing-xin-xi-cpu-s&quot;&gt;第三行信息(&lt;code&gt;%CPU(s)&lt;&#x2F;code&gt;)&lt;&#x2F;h2&gt;
+&lt;p&gt;CPU状态信息，占用CPU百分比&lt;&#x2F;p&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;参数&lt;&#x2F;th&gt;&lt;th&gt;意义&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;0.0 us&lt;&#x2F;td&gt;&lt;td&gt;用户进程&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;0.0 sy&lt;&#x2F;td&gt;&lt;td&gt;内核进程&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;0.0 ni&lt;&#x2F;td&gt;&lt;td&gt;已调整优先级的用户进程&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;100.0 id&lt;&#x2F;td&gt;&lt;td&gt;空闲&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;0.0 wa&lt;&#x2F;td&gt;&lt;td&gt;等待IO&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;0.0 hi&lt;&#x2F;td&gt;&lt;td&gt;处理硬件中断&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;0.0 si&lt;&#x2F;td&gt;&lt;td&gt;处理软件中断&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;0.0 st&lt;&#x2F;td&gt;&lt;td&gt;虚拟机&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
+&lt;h1 id=&quot;ming-ling-can-shu&quot;&gt;命令参数&lt;&#x2F;h1&gt;
+&lt;h2 id=&quot;jiao-hu-ming-ling&quot;&gt;交互命令&lt;&#x2F;h2&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;命令&lt;&#x2F;th&gt;&lt;th&gt;意义&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;P&lt;&#x2F;td&gt;&lt;td&gt;根据CPU使用百分比(%CPU)大小排序（默认状态）&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;M&lt;&#x2F;td&gt;&lt;td&gt;根据内存使用量(%MEM)排序&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;T&lt;&#x2F;td&gt;&lt;td&gt;根据时间(TIME)&#x2F;累计时间(TIME+)排序&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>在wsl上安装Arch Linux</title>
+		<published>2020-10-12T00:00:00+00:00</published>
+		<updated>2020-10-12T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/wp-326/" type="text/html"/>
+		<id>https://blog.vhcffh.com/wp-326/</id>
+		<content type="html">&lt;p&gt;首先启用&amp;quot;适用于 Linux 的 Windows
+子系统&amp;quot;可选功能，并从应用商店安装Ubuntu（本文是在wsl1上进行实验的）&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;bei-fen-xian-you-linuxfen-fa-ban&quot;&gt;备份现有Linux分发版&lt;&#x2F;h2&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;wsl -l #查看所有Linux分发版
+&lt;&#x2F;span&gt;wsl --export &amp;lt;分发版&amp;gt; &amp;lt;文件名&amp;gt; #到处分发版到文件
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;shi-yong-bootstrap-jing-xiang-an-zhuang&quot;&gt;使用 Bootstrap 镜像安装&lt;&#x2F;h2&gt;
+&lt;p&gt;下载Bootstrap镜像&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.archlinux.org&#x2F;download&#x2F;&quot;&gt;https:&#x2F;&#x2F;www.archlinux.org&#x2F;download&#x2F;&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;archlinux&#x2F;iso&#x2F;&quot;&gt;https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;archlinux&#x2F;iso&#x2F;&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;选择合适版本的&lt;code&gt;archlinux-bootstrap-2020.10.01-x86_64.tar.gz&lt;&#x2F;code&gt;进行下载&lt;&#x2F;p&gt;
+&lt;p&gt;解压&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;tar -zxf archlinux-bootstrap-2020.10.01-x86_64.tar.gz
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;选择软件仓库服务器，去掉&lt;code&gt;etc&#x2F;pacman.d&#x2F;mirrorlist&lt;&#x2F;code&gt;中的一个注释&lt;&#x2F;p&gt;
+&lt;p&gt;进入chroot&lt;&#x2F;p&gt;
+&lt;p&gt;[进入失败]{.has-inline-color
+.has-vivid-red-color}，出现错误&lt;code&gt;mount: &#x2F;tmp&#x2F;root.x86_64&#x2F;dev: unknown filesystem type &#x27;devtmpfs&#x27;&lt;&#x2F;code&gt;和&lt;code&gt;ERROR: failed to setup chroot &#x2F;tmp&#x2F;root.x86_64&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;这是参照&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; title=&quot;https:&#x2F;&#x2F;wiki.archlinux.org&#x2F;index.php&#x2F;Install_Arch_Linux_from_existing_Linux_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)&quot; href=&quot;https:&#x2F;&#x2F;wiki.archlinux.org&#x2F;index.php&#x2F;Install_Arch_Linux_from_existing_Linux_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)&quot;&gt;官网&lt;&#x2F;a&gt;的方法，可能不适用于wsl，参照&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; title=&quot;https:&#x2F;&#x2F;github.com&#x2F;yuk7&#x2F;ArchWSL&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;yuk7&#x2F;ArchWSL&quot;&gt;github&lt;&#x2F;a&gt;安装一个新的Linux分发版Arch
+Linux&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;shi-yong-archwslan-zhuang-arch-linuxzi-xi-tong&quot;&gt;使用ArchWSL安装Arch linux子系统&lt;&#x2F;h2&gt;
+&lt;p&gt;ArchWSL是基于WSL的Arch linux分发版，专门用于管理Arch Linux分发版&lt;&#x2F;p&gt;
+&lt;p&gt;Arch.exe用于Arch Linux子系统安装，其余两个应该是将Arch放到微软应用商店。&lt;&#x2F;p&gt;
+&lt;p&gt;Note：安装.appx后开启Arch时出现&lt;strong&gt;系统资源不足，无法完成请求的服务。&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;安装后是WSL2中的Arch Linux&lt;&#x2F;p&gt;
+&lt;p&gt;Note：为了正常使用pacman需要&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; title=&quot;https:&#x2F;&#x2F;github.com&#x2F;yuk7&#x2F;ArchWSL&#x2F;wiki&#x2F;How-to-Setup&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;yuk7&#x2F;ArchWSL&#x2F;wiki&#x2F;How-to-Setup&quot;&gt;初始化keyring&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;sudo pacman-key --init
+&lt;&#x2F;span&gt;sudo pacman-key --populate
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Note：安装systemctl alternative代替systemctl（WSL不支持systemctl）&lt;&#x2F;p&gt;
+&lt;p&gt;WSL2之间安装&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;aur.archlinux.org&#x2F;packages&#x2F;genie-systemd&quot;&gt;genie-systemd&lt;&#x2F;a&gt;即可&lt;&#x2F;p&gt;
+&lt;p&gt;Note：[使用&lt;code&gt;makepkg -si&lt;&#x2F;code&gt;命令时出错]{.has-inline-color
+.has-vivid-red-color}&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;code&gt;==&amp;gt; ERROR: Cannot find the strip binary required for object file stripping.&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;执行&lt;code&gt;sudo pacman -Sy base-devel&lt;&#x2F;code&gt;更新即可&lt;&#x2F;p&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>linux交换分区</title>
+		<published>2020-03-24T00:00:00+00:00</published>
+		<updated>2020-03-24T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/wp-102/" type="text/html"/>
+		<id>https://blog.vhcffh.com/wp-102/</id>
+		<content type="html">&lt;h2 id=&quot;xin-jian-ying-pan-fen-qu-zuo-wei-jiao-huan-fen-qu&quot;&gt;新建硬盘分区作为交换分区&lt;&#x2F;h2&gt;
+&lt;p&gt;硬盘分区情况&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;设备            起点      末尾      扇区  大小 类型
+&lt;&#x2F;span&gt;&#x2F;dev&#x2F;sda1       2048    821247    819200  400M Linux 文件系统
+&lt;&#x2F;span&gt;&#x2F;dev&#x2F;sda2     821248   1640447    819200  400M Linux 文件系统
+&lt;&#x2F;span&gt;&#x2F;dev&#x2F;sda3    1640448 840501247 838860800  400G Linux 文件系统
+&lt;&#x2F;span&gt;&#x2F;dev&#x2F;sda4  840501248 871958527  31457280   15G VMware 诊断
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;把&lt;code&gt;&#x2F;dev&#x2F;sda4&lt;&#x2F;code&gt;作为交换分区 交换分区大小建议&lt;&#x2F;p&gt;
+&lt;p&gt;物理内存   不需要休眠   需要休眠   最大值&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;p&gt;256M       256M         512M       512M
+512M       512M         1024M      1024M
+1024M      1024M        2048M      2048M
+1G         1G           2G         2G
+2G         1G           3G         4G
+3G         2G           5G         6G
+4G         2G           6G         8G
+5G         2G           7G         10G
+6G         2G           8G         12G
+8G         3G           11G        16G
+12G        3G           15G        24G
+16G        4G           20G        32G
+24G        5G           29G        48G
+32G        6G           38G        64G
+64G        8G           72G        128G
+128G       11G          139G       256G&lt;&#x2F;p&gt;
+&lt;p&gt;archlinux的wiki中建议交换分区类型为82 安装交换分区&lt;code&gt;mkswap &#x2F;dev&#x2F;sda4&lt;&#x2F;code&gt;
+启用交换分区&lt;code&gt;swapon &#x2F;dev&#x2F;sdxy&lt;&#x2F;code&gt; 设置自动启动
+在文件&lt;code&gt;&#x2F;etc&#x2F;fstab&lt;&#x2F;code&gt;中添加&lt;code&gt;UUID=&amp;lt;UUID&amp;gt; none swap defaults 0 0&lt;&#x2F;code&gt;
+其中UUID&lt;code&gt;lsblk -no UUID &#x2F;dev&#x2F;sda4&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;can-kao-zi-liao&quot;&gt;参考资料&lt;&#x2F;h2&gt;
+&lt;p&gt;[1]&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;segmentfault.com&#x2F;a&#x2F;1190000008125116&quot;&gt;Linux交换空间（swap
+space）&lt;&#x2F;a&gt; [2]&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;wiki.archlinux.org&#x2F;index.php&#x2F;Swap_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#%E4%BA%A4%E6%8D%A2%E6%96%87%E4%BB%B6&quot;&gt;Swap
+(简体中文)&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>实现让终端走代理</title>
+		<published>2020-03-13T00:00:00+00:00</published>
+		<updated>2020-03-13T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/wp-41/" type="text/html"/>
+		<id>https://blog.vhcffh.com/wp-41/</id>
+		<content type="html">&lt;p&gt;让终端走代理可以通过设置环境变量实现&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;export http_proxy=socks5:&#x2F;&#x2F;127.0.0.1:1080 
+&lt;&#x2F;span&gt;export https_proxy=socks5:&#x2F;&#x2F;127.0.0.1:1080 
+&lt;&#x2F;span&gt;export ALL_PROXY=socks5:&#x2F;&#x2F;127.0.0.1:1080
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;把代理服务器的配置写到shell配置文件&lt;code&gt;~&#x2F;.bashrc&lt;&#x2F;code&gt;或者&lt;code&gt;.&#x2F;zshrc&lt;&#x2F;code&gt;&lt;br &#x2F;&gt;
+并通过&lt;code&gt;alias&lt;&#x2F;code&gt;实现方便的设置代理&lt;code&gt;setproxy&lt;&#x2F;code&gt;，关闭代理&lt;code&gt;unsetproxy&lt;&#x2F;code&gt;，验证代理&lt;code&gt;myip&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;# ~&#x2F;.zshrc 
+&lt;&#x2F;span&gt;# setproxy,unsetproxy,myip 
+&lt;&#x2F;span&gt;alias setproxy=&amp;quot;export ALL_PROXY=socks:&#x2F;&#x2F;localhost:1080&amp;quot; 
+&lt;&#x2F;span&gt;alias unsetproxy=&amp;quot;unset ALL_PROXY&amp;quot; 
+&lt;&#x2F;span&gt;alias myip=&amp;quot;curl http:&#x2F;&#x2F;cip.cc&amp;quot; 
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;验证ip通过获取本机外网ip实现[2]
+&lt;img src=&quot;https:&#x2F;&#x2F;i.imgur.com&#x2F;Xtdho3W.png&quot; alt=&quot;file&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;wen-ti&quot;&gt;问题&lt;&#x2F;h1&gt;
+&lt;p&gt;本机使用v2ray开的&lt;code&gt;socks&lt;&#x2F;code&gt;代理，设置代理用&lt;code&gt;sock5&lt;&#x2F;code&gt;会出现错误，只能设置成socks，可能是终端不支持socks5，v2ray兼容socks&lt;br &#x2F;&gt;
+查&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.v2ray.com&#x2F;chapter_02&#x2F;protocols&#x2F;socks.html&quot;&gt;资料&lt;&#x2F;a&gt;得知&lt;code&gt;v2ray&lt;&#x2F;code&gt;中的&lt;code&gt;socks&lt;&#x2F;code&gt;兼容
+Socks 4、Socks 4a 和 Socks 5&lt;br &#x2F;&gt;
+&lt;code&gt;curl: (6) Couldn&#x27;t resolve host name&lt;&#x2F;code&gt;&lt;br &#x2F;&gt;
+但是在chrome中使用SwitchyOmega设置为&lt;code&gt;sock5&lt;&#x2F;code&gt;可以上网&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;can-kao-zi-liao&quot;&gt;参考资料&lt;&#x2F;h1&gt;
+&lt;p&gt;[1]&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; title=&quot;让终端走代理的几种方法&quot; href=&quot;https:&#x2F;&#x2F;blog.fazero.me&#x2F;2015&#x2F;09&#x2F;15&#x2F;%E8%AE%A9%E7%BB%88%E7%AB%AF%E8%B5%B0%E4%BB%A3%E7%90%86%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E6%B3%95&#x2F;&quot;&gt;让终端走代理的几种方法&lt;&#x2F;a&gt;&lt;br &#x2F;&gt;
+[2]&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; title=&quot;用Linux命令行获取本机外网IP地址&quot; href=&quot;https:&#x2F;&#x2F;www.cnblogs.com&#x2F;wjoyxt&#x2F;p&#x2F;6288582.html&quot;&gt;用Linux命令行获取本机外网IP地址&lt;&#x2F;a&gt;&lt;br &#x2F;&gt;
+[3]&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.v2ray.com&#x2F;chapter_02&#x2F;protocols&#x2F;socks.html&quot;&gt;www.v2ray.com&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>记一次GRUB引导修复</title>
+		<published>2019-09-03T00:00:00+00:00</published>
+		<updated>2019-09-03T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/hexo-ji-yi-ci-grubyin-dao-xiu-fu/" type="text/html"/>
+		<id>https://blog.vhcffh.com/hexo-ji-yi-ci-grubyin-dao-xiu-fu/</id>
+		<content type="html">&lt;p&gt;使用Arch Linux已经2年多了，基本上已经习惯了，可前段时间英雄联盟也出了&amp;quot;自走棋&amp;quot;，想要体验一把。
+于是就在硬盘剩余的60多个G上装了Windows 10，用了一两个月没有问题，最后在一次Windows 10更新后，蓝屏了。
+又手惨的点了Windows 的修复功能。等了半天，结果是修复，重启，蓝屏无限循环。
+而且Arch Linux的引导全都没了，感觉应该是Windows的修复动了efi分区。
+无奈只能重新修复引导，各种方法尝试了好多遍，都是卡在了&lt;code&gt;GRUB _&lt;&#x2F;code&gt;一直闪这个状态，
+最终在官网wiki找到了办法 &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;wiki.archlinux.org&#x2F;index.php&#x2F;GRUB_#Default&#x2F;fallback_boot_path&quot;&gt;缺省&#x2F;后备启动路径&lt;&#x2F;a&gt; grub 安装时添加&lt;code&gt;--removable&lt;&#x2F;code&gt;参数&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash z-code&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;grub-install&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; --&lt;&#x2F;span&gt;target&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-assignment z-option z-shell&quot;&gt;=&lt;&#x2F;span&gt;x86_64-efi&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; --&lt;&#x2F;span&gt;efi-directory&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-assignment z-option z-shell&quot;&gt;=&lt;&#x2F;span&gt;esp&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; --&lt;&#x2F;span&gt;removable&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;或者手动移动&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash z-code&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;mv&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; esp&#x2F;EFI&#x2F;grub esp&#x2F;EFI&#x2F;BOOT&lt;&#x2F;span&gt;
+&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;mv&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; esp&#x2F;EFI&#x2F;BOOT&#x2F;grubx64.efi esp&#x2F;EFI&#x2F;BOOT&#x2F;BOOTX64.EFI&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;grub出现bug的原因应该会千奇百怪，要尽可能多的尝试网上的各种修改方法。&lt;&#x2F;p&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>Linux常用命令</title>
+		<published>2019-05-21T00:00:00+00:00</published>
+		<updated>2019-05-21T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/hexo-linuxchang-yong-ming-ling/" type="text/html"/>
+		<id>https://blog.vhcffh.com/hexo-linuxchang-yong-ming-ling/</id>
+		<content type="html">&lt;p&gt;Linux中的一些常用命令,tar&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;1-tarjie-ya-da-bao-xiang-guan&quot;&gt;1.tar解压打包相关&lt;&#x2F;h2&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash z-code&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;tar&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;cvf&lt;&#x2F;span&gt; log.tar log2019.log    &lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-begin z-shell&quot;&gt;#&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;仅打包，不压缩&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;tar&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;zcvf&lt;&#x2F;span&gt; log.tar.gz log2019.log   &lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-begin z-shell&quot;&gt;#&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;打包后，以 gzip 压缩&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;tar&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;jcvf&lt;&#x2F;span&gt; log.tar.bz2 log2019.log  &lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-begin z-shell&quot;&gt;#&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;打包后，以 bzip2 压缩&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;tar&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;ztvf&lt;&#x2F;span&gt; log.tar.gz &lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-begin z-shell&quot;&gt;#&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;gzip查阅&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;tar&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;jtvf&lt;&#x2F;span&gt; log.tar.gz &lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-begin z-shell&quot;&gt;#&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;bzip2查阅&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;tar&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;zxvf&lt;&#x2F;span&gt; log.tar.gz &lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-begin z-shell&quot;&gt;#&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;gzip解压&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;tar&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;jxvf&lt;&#x2F;span&gt; log.tar.gz &lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-begin z-shell&quot;&gt;#&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;bzip2解压&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;unzip&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; log.zip&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;d&lt;&#x2F;span&gt; dirname &lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-begin z-shell&quot;&gt;#&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;zip解压到dirname目录&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;补充&lt;&#x2F;p&gt;
+&lt;p&gt;c: 建立压缩档案&lt;br &#x2F;&gt;
+-x：解压&lt;br &#x2F;&gt;
+-t：查看内容&lt;br &#x2F;&gt;
+-r：向压缩归档文件末尾追加文件&lt;br &#x2F;&gt;
+-u：更新原压缩包中的文件&lt;&#x2F;p&gt;
+&lt;p&gt;这五个是独立的命令，压缩解压都要用到其中一个，可以和别的命令连用但只能用其中一个。下面的参数是根据需要在压缩或解压档案时可选的。&lt;&#x2F;p&gt;
+&lt;p&gt;-z：有gzip属性的&lt;br &#x2F;&gt;
+-j：有bz2属性的&lt;br &#x2F;&gt;
+-Z：有compress属性的&lt;br &#x2F;&gt;
+-v：显示所有过程&lt;br &#x2F;&gt;
+-O：将文件解开到标准输出&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;2-wgetshe-zhi-dai-li&quot;&gt;2.wget设置代理&lt;&#x2F;h2&gt;
+&lt;p&gt;2.1环境变量中设置&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;export http_proxy=http:&#x2F;&#x2F;127.0.0.1:8087
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;2.2使用配置文件&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;# cp &#x2F;etc&#x2F;wgetrc ~&#x2F;.wgetrc
+&lt;&#x2F;span&gt;# vim ~&#x2F;.wgetrc
+&lt;&#x2F;span&gt;# You can set the default proxies for Wget to use for http, https, and ftp.
+&lt;&#x2F;span&gt;# They will override the value in the environment.
+&lt;&#x2F;span&gt;https_proxy = http:&#x2F;&#x2F;127.0.0.1:8087&#x2F;
+&lt;&#x2F;span&gt;http_proxy = http:&#x2F;&#x2F;127.0.0.1:8087&#x2F;
+&lt;&#x2F;span&gt;ftp_proxy = http:&#x2F;&#x2F;127.0.0.1:8087&#x2F;
+
+&lt;&#x2F;span&gt;# If you do not want to use proxy at all, set this to off.
+&lt;&#x2F;span&gt;use_proxy = on
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;3-psxiang-guan-ming-ling&quot;&gt;3.ps相关命令&lt;&#x2F;h2&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;ps -ef # 查看进程信息和执行的命令
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;4-yong-hu-wen-jian-guan-li-xiang-guan&quot;&gt;4.用户文件管理相关&lt;&#x2F;h2&gt;
+&lt;p&gt;4.1Linux系统用户账号的管理&lt;&#x2F;p&gt;
+&lt;p&gt;4.1.1添加新的用户账号&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;useradd [-d dirname] username
+&lt;&#x2F;span&gt;# [-d dirname]指定用户主目录
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;4.1.2删除帐号&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;userdel [-r] username
+&lt;&#x2F;span&gt;# [-R]把用户的主目录一起删除
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;4.1.3修改帐号&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;usermod [] username
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;4.1.4用户密码管理&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;passwd [-I][-u][-d][-f] username
+&lt;&#x2F;span&gt;# [-I]锁定密码，即禁用账号。
+&lt;&#x2F;span&gt;# [-u]密码解锁。
+&lt;&#x2F;span&gt;# [-d]使账号无密码。
+&lt;&#x2F;span&gt;# [-f]强迫用户下次登录时修改密码。
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;4.2Linux系统用户组的管理&lt;&#x2F;p&gt;
+&lt;p&gt;4.2.1增加一个新的用户组&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;groupadd [-g GID] username
+&lt;&#x2F;span&gt;# [-g GID]指定新用户组的组标识号（GID）
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;4.2.2删除一个已有的用户组&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;groupdel groupname
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;4.2.3修改用户组的属性&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;groupmod [-g GID] groupname
+&lt;&#x2F;span&gt;# [-g GID]指定新用户组的组标识号（GID）
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;4.2.4更改用户组&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;如果一个用户同时属于多个用户组，那么用户可以在用户组之间切换，以便具有其他用户组的权限。用户可以在登录后，使用命令newgrp切换到其他用户组，这个命令的参数就是目的用户组。&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;newgrp root
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;4.3Linux文件用户属性修改&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;chown [-R] user_name filename_OR_dirname  # 更改文件或目录的所有者
+&lt;&#x2F;span&gt;chgrp [-R] group_name filename_OR_dirname  # 更改文件或目录所在组
+&lt;&#x2F;span&gt;# [-R]参数递归更改目录下所有文件的用户属性
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;can-kao-zi-liao&quot;&gt;参考资料&lt;&#x2F;h2&gt;
+&lt;p&gt;1.&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;http:&#x2F;&#x2F;man.linuxde.net&#x2F;tar&quot;&gt;http:&#x2F;&#x2F;man.linuxde.net&#x2F;tar&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;2.&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.cnblogs.com&#x2F;cloud2rain&#x2F;archive&#x2F;2013&#x2F;03&#x2F;22&#x2F;2976337.html&quot;&gt;https:&#x2F;&#x2F;www.cnblogs.com&#x2F;cloud2rain&#x2F;archive&#x2F;2013&#x2F;03&#x2F;22&#x2F;2976337.html&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;3.&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.cnblogs.com&#x2F;52php&#x2F;p&#x2F;5677628.html&quot;&gt;https:&#x2F;&#x2F;www.cnblogs.com&#x2F;52php&#x2F;p&#x2F;5677628.html&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;4.&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.jb51.net&#x2F;LINUXjishu&#x2F;43356.html&quot;&gt;https:&#x2F;&#x2F;www.jb51.net&#x2F;LINUXjishu&#x2F;43356.html&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+	</entry>
+</feed>

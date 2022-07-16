@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <script src="https://blog.vhcffh.com/theme.min.js" integrity="sha384-IpIaa84kOKgkF5EJ0fD/kBe2wtIIsIB60ANGmuJxeA0dz5bSRfwBwp2/QybtQpU2"></script>
+  <link rel="stylesheet" href="https://blog.vhcffh.com/abridge-switcher.css?h=e4088b6018baa6c5c4f8222bf9a3811dec2f942f862ca9550010fba28852c1bc" />
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <script defer src="https://blog.vhcffh.com/search_index.en.js?h=d5e574ffd65cdc44489544089e33544b19b3b86a3340d587cc85531d18b8e792" integrity="sha384-HT1AXvCEAQGWm4cehYh3bO0RNhvjaSLPHFBWZ/7j3UFKwYf5wgLbX7GVJy0LGqKp"></script>
+  <script defer src="https://blog.vhcffh.com/abridge-switcher.min.js?h=be6d42ac1cc5ae1da7cdde772d392d6508fc038f98a8d0fd1bc5b5678530631a" integrity="sha384-RAhv9DQbxrVfq4cbSJsOQ8l7sA56QdpoR10euhjBCBOhLdbJ6y8SCZVYy818n51+"></script>
+  <link rel="alternate" type="application/atom+xml" title="Atom/RSS Feed" href="https://blog.vhcffh.com/atom.xml" />
+  <meta name="robots" content="index, follow" />
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <title>边缘计算系统中延迟敏感任务的成本有效调度 | Frey's blog</title>
+  <meta name="author" content="Jake G" />
+  <meta name="copyright" content="Frey&#x27;s blog" />
+  <meta name="description" content="一个简单的个人博客，用于记录笔记" />
+  <link rel="canonical" href="https://blog.vhcffh.com/hexo-bian-yuan-ji-suan-xi-tong-zhong-yan-chi-min-gan-ren-wu-de-cheng-ben-you-xiao-diao-du/" />
+  <meta name="keywords" content="Abridge, Abridge.css, Zola, Theme, Zola Theme, getzola, Semantic Html, Fast, lightweight" />
+  <meta property="og:url" content="https://blog.vhcffh.com/hexo-bian-yuan-ji-suan-xi-tong-zhong-yan-chi-min-gan-ren-wu-de-cheng-ben-you-xiao-diao-du/" />
+  <meta name="twitter:url" content="https://blog.vhcffh.com/hexo-bian-yuan-ji-suan-xi-tong-zhong-yan-chi-min-gan-ren-wu-de-cheng-ben-you-xiao-diao-du/" />
+  <meta property="og:description" content="一个简单的个人博客，用于记录笔记" />
+  <meta name="twitter:description" content="一个简单的个人博客，用于记录笔记" />
+  <meta property="og:title" content="边缘计算系统中延迟敏感任务的成本有效调度 | Frey&#x27;s blog" />
+  <meta name="twitter:title" content="边缘计算系统中延迟敏感任务的成本有效调度 | Frey&#x27;s blog" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://blog.vhcffh.com/banner.png" />
+  <meta property="og:image" content="https://blog.vhcffh.com/banner.png" />
+  <meta property="og:site_name" content="Frey&#x27;s blog" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:type" content="website" />
+  <meta property="og:updated_time" content="2019-04-05" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="theme-color" content="#333333" />
+  <meta name="msapplication-TileColor" content="#333333" />
+  <link rel="manifest" href="https://blog.vhcffh.com/site.webmanifest" />
+  <link rel="mask-icon" href="https://blog.vhcffh.com/safari-pinned-tab.svg" color="#ff9900" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://blog.vhcffh.com/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="https://blog.vhcffh.com/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="https://blog.vhcffh.com/favicon-16x16.png" />
+  <noscript><link rel="stylesheet" href="https://blog.vhcffh.com/nojs.css" /></noscript>
+</head>
+<body>
+  <header>
+    <nav>
+      <div><h1><a href="https://blog.vhcffh.com/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#f90" viewBox="0 0 96 96" width="32" height="32"><path stroke-width="14" d="M14 99 46 7h4l32 92"/><path stroke-width="9" d="M-3 82c43-26 59-26 102 0"/><path stroke-linecap="round" stroke-width="1.5" d="M94 72v7m-5-9.8v7m-5-9.8v7.1M79 64v7M63 57.7v7m-5-8.2v7m-5-7.8v7m-5-7.2v7m-5-6.7v7m-5-6.3v7m-5-5.8v7M17 64v7m-5-4.6v7m-5-4.2v7M2 72v7"/></svg>bridge</a></h1></div>
+      <div>
+        <ul><li> <h2><a href="https://blog.vhcffh.com/about/">About</a></h2> </li><li> <h2><a href="https://blog.vhcffh.com/posts/">Posts</a></h2> </li><li> <h2><a href="https://blog.vhcffh.com/categories/">Categories</a></h2> </li><li> <h2><a href="https://blog.vhcffh.com/tags/">Tags</a></h2> </li><li class="js"><i type="reset" id="mode" class="svgs adjust"></i></li></ul>
+      </div>
+      <div>
+        <form class="js" name="goSearch">
+          <div class="searchd">
+            <input id="userinput" type="text" placeholder="Search" autocomplete="off" title="Search" />
+            <button type="submit" title="Search"><i class="svgs search"></i></button>
+          </div>
+          <div><div id="suggestions"></div></div>
+        </form>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <article>
+        <h1><a href="https://blog.vhcffh.com/hexo-bian-yuan-ji-suan-xi-tong-zhong-yan-chi-min-gan-ren-wu-de-cheng-ben-you-xiao-diao-du/">边缘计算系统中延迟敏感任务的成本有效调度</a></h1>
+        <span class="s95"> Jake G<span class="hpad"> </span> April 05, 2019<span class="hpad"> </span> [<a href="https://blog.vhcffh.com/categories/shu-xue/">数学</a>] #<a href="https://blog.vhcffh.com/tags/bian-yuan-ji-suan/">边缘计算</a> </span>
+
+    <h2 id="zhai-yao">摘要</h2>
+<p>边缘计算作为一种新兴的计算模型，可以将具有有限计算资源和能量的物联网（IoT）设备的延迟敏感计算任务卸载到边缘云。在边缘计算系统中，多个服务器放置在IoT设备附近的网络边缘上以处理卸载的任务。边缘计算系统的一个关键问题是如何在完成卸载任务的同时降低系统成本。在本文中，我们研究任务调度问题，以降低边缘计算系统的成本。我们将任务调度问题建模为优化问题，其目标是在满足所有任务的延迟要求的同时最小化系统成本。然后，我们证明了所提出的优化问题是NP难的。为了有效地解决这个优化问题，我们提出了一种任务调度算法，称为两阶段任务调度成本优化（TTSCO）。我们通过与最优解进行比较来验证算法的有效性。结果表明，对于我们使用的95％的数据集，近似比率小于1.2。性能评估表明，该算法能够有效降低边缘计算系统的成本，同时满足所有任务的延迟要求。索引术语</p>
+<ul>
+<li>边缘计算;任务调度;延迟敏感的任务;成本效益;</li>
+</ul>
+<h2 id="yun-ji-suan-yu-bian-yuan-ji-suan-de-qu-bie-he-bian-yuan-ji-suan-yao-jie-jue-de-wen-ti">云计算与边缘计算的区别和边缘计算要解决的问题</h2>
+<p>随着物联网技术的发展，延迟敏感应用（例如，健康监测[1]，基于位置的增强现实游戏）的数量正在迅速增加[2]。由于物联网设备的计算资源和能量有限，因此应将许多处理繁重的任务卸载到远程服务器进行处理。具有强大计算能力的云计算被认为是处理卸载任务的潜在方式。但是，由于传统云和物联网设备之间的距离较远，将大量任务发送到传统云进行处理会导致响应时间过长，网络拥塞严重。为了解决这个问题，最近提出边缘计算作为一种有前景的计算模型[3]，[4]。边缘计算提供附加的计算基础设施层，其由网络边缘处的一些服务器（即，基站）组成。对于从物联网设备卸载的计算任务，边缘计算提供计算服务并将结果返回给设备。这样，卸载任务的传输延迟和核心网的流量负载将大大降低。</p>
+<h2 id="zai-bian-yuan-ji-suan-zhong-de-ren-wu-diao-du-wen-ti">在边缘计算中的任务调度问题</h2>
+<p>设备如何进行任务卸载决策
+降低传输或计算任务所产生的系统成本
+边缘计算系统中任务调度问题的成本优化
+在边缘计算中，任务调度问题已成为研究的热门话题[9] - [18]。为了减少由任务计算引起的能耗，物联网设备会将计算任务卸载到边缘服务器。但是，卸载任务会消耗额外的能量来将任务传输到边缘服务器，卸载任务的完成时间也会增加。在这种情况下，一些工作研究了设备如何进行任务卸载决策[9] - [12]。另外，当计算任务被调度到不同的边缘服务器时，传输和计算的成本也不同。因此，一些工作旨在降低传输或计算任务所产生的系统成本[13] - [18]。但是，这些工作很少考虑边缘服务器生成的成本。在非高峰时间（例如，在夜间）降低由服务器引起的系统成本的问题在很大程度上未被探索[5]。</p>
+<h2 id="ben-wen-yan-jiu-de-wen-ti">本文研究的问题</h2>
+<p>边缘计算系统中任务调度问题的成本优化，在本文中，我们研究边缘计算系统中任务调度问题的成本优化。目标是在满足所有任务的QoS要求的同时最小化边缘计算系统的成本。我们为延迟敏感的输入任务开发了一个任务调度模型。然后，我们制定成本优化问题并证明该优化问题为NP-Hard。接下来，我们提出了一种近似算法来解决这个优化问题，称为两阶段任务调度成本优化（TTSCO），并对TTSCO算法进行分析。最后，仿真结果验证了算法的准确性和性能。</p>
+<p>边缘计算作为一种新兴的计算模型，可以将具有有限计算资源和能量的物联网（IoT）设备的延迟敏感计算任务卸载到边缘云。在边缘计算系统中，多个服务器放置在IoT设备附近的网络边缘上以处理卸载的任务。</p>
+
+<p><b><a href="#">Back to top</a></b></p>
+    </article>
+  </main>
+  <footer>
+    <hr />
+    <div class="c">
+      <nav>
+        <ul><li><a href="https://blog.vhcffh.com/atom.xml" target="_blank" title="Atom/RSS Feed"><i type="Button" class="svg rss" title="Atom/RSS Feed"></i></a></li><li><a href="mailto:fly92727@outlook.com" target="_blank" title="Mail"><i type="Button" class="svg mail" title="Mail"></i></a></li><li><a href="https://github.com/FreyZhang007/" target="_blank" title="Github"><i type="Button" class="svg github" title="Github"></i></a></li><li><a href="https://github.com/sponsors/FreyZhang007/" target="_blank" title="GitHub Sponsor"><i type="Button" class="svg github-sponsor" title="GitHub Sponsor"></i></a></li></ul>
+      </nav>
+      <p class="s90">Copyright &copy; 2022 Frey&#x27;s blog</p>
+      <nav>
+        <ul><li class="s90"> <a href="https://blog.vhcffh.com/about/"> About </a> </li><li class="s90"> <a href="https://blog.vhcffh.com/contact/"> Contact </a> </li><li class="s90"> <a href="https://blog.vhcffh.com/privacy/"> Privacy </a> </li><li class="s90"> <a href="https://blog.vhcffh.com/sitemap.xml"> Sitemap </a> </li></ul>
+      </nav>
+      <p class="s90">Powered by <a href="https://www.getzola.org/">Zola</a> and <a href="https://github.com/jieiku/abridge/">Abridge</a></p>
+    </div>
+  </footer>
+<span class="topout">
+<span class="topleft"> </span><a href="#" class="top" title="Back to Top"><i class="svgs svgh angu"></i></a>
+</span>
+</body>
+</html>

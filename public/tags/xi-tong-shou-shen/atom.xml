@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+	<title>Frey&#x27;s blog - 系统瘦身</title>
+	<subtitle>一个简单的个人博客，用于记录笔记</subtitle>
+	<link href="https://blog.vhcffh.com/tags/xi-tong-shou-shen/atom.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://blog.vhcffh.com"/>
+	<generator uri="https://www.getzola.org/">Zola</generator>
+	<updated>2017-09-02T00:00:00+00:00</updated>
+	<id>https://blog.vhcffh.com/tags/xi-tong-shou-shen/atom.xml</id>
+	<entry xml:lang="en">
+		<title>windows系统盘瘦身</title>
+		<published>2017-09-02T00:00:00+00:00</published>
+		<updated>2017-09-02T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/hexo-windowsxi-tong-pan-shou-shen/" type="text/html"/>
+		<id>https://blog.vhcffh.com/hexo-windowsxi-tong-pan-shou-shen/</id>
+		<content type="html">&lt;p&gt;C盘满了，瘦一下身&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;1-guan-bi-xi-tong-xiu-mian-gong-neng&quot;&gt;1.关闭系统休眠功能&lt;&#x2F;h3&gt;
+&lt;p&gt;删除Hiberfil.sys文件&lt;br &#x2F;&gt;
+管理员运行cmd输入下面命令&lt;br &#x2F;&gt;
+&lt;code&gt;powercfg -h of&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;2.设置虚拟内存&lt;&#x2F;p&gt;
+&lt;p&gt;控制面板---&amp;gt;(系统和安全)---&amp;gt;系统---&amp;gt;高级系统设置---&amp;gt;(高级)---&amp;gt;设置---&amp;gt;(高级)---&amp;gt;更改&lt;br &#x2F;&gt;
+把虚拟内存设置到其它盘&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;3-shan-chu-lin-shi-wen-jian&quot;&gt;3.删除临时文件&lt;&#x2F;h3&gt;
+&lt;p&gt;以下三个目录里的文件是临时文件，可以删除&lt;br &#x2F;&gt;
+C:\windows\temp&lt;br &#x2F;&gt;
+C:\ProgramData\TEMP&lt;br &#x2F;&gt;
+C:\Users\你的用户名\AppData\Local\Temp&lt;&#x2F;p&gt;
+</content>
+	</entry>
+</feed>

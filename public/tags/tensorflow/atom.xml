@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+	<title>Frey&#x27;s blog - tensorflow</title>
+	<subtitle>一个简单的个人博客，用于记录笔记</subtitle>
+	<link href="https://blog.vhcffh.com/tags/tensorflow/atom.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://blog.vhcffh.com"/>
+	<generator uri="https://www.getzola.org/">Zola</generator>
+	<updated>2020-04-06T00:00:00+00:00</updated>
+	<id>https://blog.vhcffh.com/tags/tensorflow/atom.xml</id>
+	<entry xml:lang="en">
+		<title>tensorflow2建立模型的方法</title>
+		<published>2020-04-06T00:00:00+00:00</published>
+		<updated>2020-04-06T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/wp-137/" type="text/html"/>
+		<id>https://blog.vhcffh.com/wp-137/</id>
+		<content type="html">&lt;h1 id=&quot;1-shi-yong-input&quot;&gt;1.使用Input&lt;&#x2F;h1&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;tf.keras.Input(shape=None, batch_size=None, name=None, dtype=None, sparse=False, tensor=None, ragged=False, **kwargs)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;code&gt;Input&lt;&#x2F;code&gt;初始化一个占位符 &lt;code&gt;shape&lt;&#x2F;code&gt;：指定模型输入的shape，不包括batch size
+&lt;code&gt;batch_size&lt;&#x2F;code&gt;：可选 &lt;code&gt;name&lt;&#x2F;code&gt;：可选，图层名称 &lt;code&gt;dtype&lt;&#x2F;code&gt;:字符串，数据类型
+&lt;code&gt;sparse&lt;&#x2F;code&gt;:布尔，是否稀疏 &lt;code&gt;tensor&lt;&#x2F;code&gt;:可选，指定tensor，不再是占位符&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;from tensorflow.keras import Input, Model
+&lt;&#x2F;span&gt;from tensorflow.keras.layers import Dense
+&lt;&#x2F;span&gt;x = Input(shape=(2,))
+&lt;&#x2F;span&gt;y = Dense(5, activation=&amp;#39;softmax&amp;#39;)(x)
+&lt;&#x2F;span&gt;model = Model(x, y)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h1 id=&quot;2-ji-cheng-model&quot;&gt;2.继承Model&lt;&#x2F;h1&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;import tensorflow as tf
+&lt;&#x2F;span&gt;class MyModel(tf.keras.Model):
+&lt;&#x2F;span&gt;    def __init__(self):
+&lt;&#x2F;span&gt;        super(MyModel, self).__init__()
+&lt;&#x2F;span&gt;        self.dense = tf.keras.layers.Dense(5, activation=tf.nn.softmax)
+
+&lt;&#x2F;span&gt;    def call(self, inputs):
+&lt;&#x2F;span&gt;        x = self.dense1(inputs)
+&lt;&#x2F;span&gt;        return self.dense(x)
+
+&lt;&#x2F;span&gt;model = MyModel()
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h1 id=&quot;3-shi-yong-sequential&quot;&gt;3.使用Sequential&lt;&#x2F;h1&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;import tensorflow as tf
+&lt;&#x2F;span&gt;model1 = tf.keras.Sequential(
+&lt;&#x2F;span&gt;    tf.keras.layers.Dense(5, activation=tf.nn.softmax)
+&lt;&#x2F;span&gt;)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</content>
+	</entry>
+</feed>

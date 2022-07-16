@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+	<title>Frey&#x27;s blog - 图灵机</title>
+	<subtitle>一个简单的个人博客，用于记录笔记</subtitle>
+	<link href="https://blog.vhcffh.com/tags/tu-ling-ji/atom.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://blog.vhcffh.com"/>
+	<generator uri="https://www.getzola.org/">Zola</generator>
+	<updated>2019-09-07T00:00:00+00:00</updated>
+	<id>https://blog.vhcffh.com/tags/tu-ling-ji/atom.xml</id>
+	<entry xml:lang="en">
+		<title>神经图灵机</title>
+		<published>2019-09-07T00:00:00+00:00</published>
+		<updated>2019-09-07T00:00:00+00:00</updated>
+		<link href="https://blog.vhcffh.com/hexo-shen-jing-tu-ling-ji/" type="text/html"/>
+		<id>https://blog.vhcffh.com/hexo-shen-jing-tu-ling-ji/</id>
+		<content type="html">&lt;h3 id=&quot;neural-turing-machinesyuan-wen&quot;&gt;Neural Turing Machines&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;1410.5401&quot;&gt;原文&lt;&#x2F;a&gt;&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;读记忆(Read Heads)&lt;&#x2F;p&gt;
+&lt;p&gt;把时刻$t$的记忆看作是一个$ N \times M $的矩阵$ M_t $,读的过成首先生成长度为$N$的定位权重向量$w_t$,表示$N$个记忆位置的权值大小,读出的记忆向量为$r_t$:&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;$$
+r_t=\sum_i^Nw_t(i)M_t(i) \ \ \ 其中 \sum_iw_t(i)=1
+$$&lt;&#x2F;p&gt;
+&lt;p&gt;对$N$条记忆进行加权求和&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;写记忆(Write Heads)&lt;&#x2F;p&gt;
+&lt;p&gt;类似LSTM:擦除向量$e_t$,增加向量$a_t$&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;擦除操作:&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;$$
+M_t&#x27;(i)=M_{t-1}(1-w_t(i)e_t(i))
+$$&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;增加操作:&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;$$
+M_t(i)=M_t&#x27;(i)+w_t(i)a_t(i)
+$$&lt;&#x2F;p&gt;
+&lt;p&gt;神经图灵机的关键是定位向量$w_t$,其它的是由控制器(LSTM,MLP)输出&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;定位机制(Addressing Mechanism)&lt;&#x2F;p&gt;
+&lt;p&gt;结合了基于内容和基于位置的两种方法&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;基于内容(Content-based Addressing)&lt;&#x2F;p&gt;
+&lt;p&gt;$$
+w_t^c(i)=\frac {\exp(\beta_tK[k_t,M_t(i)])}{\sum_j\exp(\beta_tK[k_t,M_t(j)])}
+$$&lt;&#x2F;p&gt;
+&lt;p&gt;$K[...]$是余弦相似度计算:&lt;&#x2F;p&gt;
+&lt;p&gt;$$
+K[u,v]=\frac{u \cdot v}{\Vert u\Vert \cdot \Vert v\Vert}
+$$&lt;&#x2F;p&gt;
+&lt;p&gt;$\beta_t$是控制器输出&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;基于位置(Location-based Addressing)&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;插值(Interpolation)
+$$
+w_t^g=g_tw_t^c+(1-g_t)w_{t-1}
+$$&lt;&#x2F;p&gt;
+&lt;p&gt;$g_t$有控制器生成&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;偏移(shift)
+$$
+\tilde w_t(i)=\sum_{j=0}^{N-1}w_t^g(j)s_t(i-j)
+$$&lt;&#x2F;p&gt;
+&lt;p&gt;每一个$\tilde w_t(i)$都与相邻元素有关&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;重塑(Sharping)
+$$
+w_t(i)=\frac{\tilde w_t(i)^{\gamma_t}}{\sum_j\tilde w_t(j)^{\gamma_t}}
+$$&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+	</entry>
+</feed>
