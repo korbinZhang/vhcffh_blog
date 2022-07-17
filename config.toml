@@ -46,7 +46,7 @@ title_separator = "|"  # Separator between title and title_addition, set as |, -
 title_addition = "Fast & Lightweight Zola Theme" # a default value for title addition
 recent = true # TOC / index
 recent_items = 9
-author = "Jake G" # Put Your Name here
+author = "Frey" # Put Your Name here
 
 title_size_index = "s85" # size: s95, s90, s85, s80, s75, s70, false(full size)
 meta_index = { position="bottom", size="s90", author=false, readtime=false, readstring="min", date=true, categories_tags=true, divider=" " }
@@ -64,8 +64,8 @@ textlogo = "<font color='#f90'>F</font>rey's blog"
 #textlogo = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#f90" viewBox="0 0 96 96" width="32" height="32"><path stroke-width="14" d="M14 99 46 7h4l32 92"/><path stroke-width="9" d="M-3 82c43-26 59-26 102 0"/><path stroke-linecap="round" stroke-width="1.5" d="M94 72v7m-5-9.8v7m-5-9.8v7.1M79 64v7M63 57.7v7m-5-8.2v7m-5-7.8v7m-5-7.2v7m-5-6.7v7m-5-6.3v7m-5-5.8v7M17 64v7m-5-4.6v7m-5-4.2v7M2 72v7"/></svg>bridge'
 
 sitedesc = false # enables or disables the display of the site description below the logo.
-#copyright_start_year = 2019  # optional
-#copyright_end_year = 2020  # optional, recommend leaving unset, zola build will set this to current year by default
+copyright_start_year = 2017  # optional
+copyright_end_year = 2022  # optional, recommend leaving unset, zola build will set this to current year by default
 headhr = false # show or hide horizontal rule below header
 foothr = true # show or hide horizontal rule above footer
 
@@ -178,15 +178,15 @@ icon_top = "svgs svgh angu" # Back to Top Button.
 math = false # katex math js library, used to to render mathematical notations, requires javascript
 math_auto_render = false
 
-#katex_css = "https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css" # Fonts - use remote fonts
-#katex_js = "https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"
-#katex_autorender_js = "https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"
-#mathtex_js = "https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/mathtex-script-type.min.js"
+katex_css = "https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css" # Fonts - use remote fonts
+katex_js = "https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"
+katex_autorender_js = "https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"
+mathtex_js = "https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/mathtex-script-type.min.js"
 
-katex_css = "katex.min.css" # Fonts - to load the css locally, you also need to have all the fonts.
-katex_js = "katex.min.js" # use local js, so that we dont have to whitelist cdn.jsdelivr.net for script src in CSP
-mathtex_js = "mathtex-script-type.min.js" # use local js, so that we dont have to whitelist cdn.jsdelivr.net for script src in CSP
-katex_autorender_js = "auto-render.min.js"
+#katex_css = "katex.min.css" # Fonts - to load the css locally, you also need to have all the fonts.
+#katex_js = "katex.min.js" # use local js, so that we dont have to whitelist cdn.jsdelivr.net for script src in CSP
+#mathtex_js = "mathtex-script-type.min.js" # use local js, so that we dont have to whitelist cdn.jsdelivr.net for script src in CSP
+#katex_autorender_js = "auto-render.min.js"
 katex_options = "katexoptions.js"
 katex_bundle = "katexbundle.min.js"
 
