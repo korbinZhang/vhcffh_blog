@@ -1,4 +1,0 @@
-Sitemap: https://blog.vhcffh.com/sitemap.xml
-User-Agent: *
-Allow: /
-Host: https://blog.vhcffh.com
