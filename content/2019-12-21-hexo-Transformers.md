@@ -3,7 +3,7 @@ title = "Transformers"
 date = 2019-12-21
 
 [taxonomies]
-categories = ["论文笔记"]
+categories = ["算法"]
 tags = ["NLP", "transformer"]
 +++
 
