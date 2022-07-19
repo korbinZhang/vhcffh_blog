@@ -1,0 +1,3 @@
+[submodule "themes/abridge"]
+	path = themes/abridge
+	url = git@github.com:FreyZhang007/abridge.git
