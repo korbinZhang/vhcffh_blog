@@ -39,7 +39,7 @@ smart_punctuation = false          # `...` to `…`, `"quote"` to `“curly”` 
 
 [extra]
 uglyurls = false # if set to true then links are generated with the full path. eg https://abridge.netlify.app/index.html
-language_code = "en-US"
+language_code = "zh-CN"
 title_separator = "|"  # Separator between title and title_addition, set as |, -, _, etc
 # To disable title_addition but keep built in page additions eg, Posts page: "Posts | Abridge" set title_addition to an empty string
 # To always set the page title exactly eg "Abridge" then comment out the below line (not recommend, bad for SEO)
