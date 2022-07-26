@@ -3,8 +3,9 @@ title = "神经网络中的前向传播与后向传播"
 date = 2019-07-10
 
 [taxonomies]
-categories = ["神经网络"]
-tags = ["BP算法"]
+categories = ["算法"]
+tags = ["神经网络"]
+
 [extra]
 math = true
 math_auto_render = true

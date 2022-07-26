@@ -3,7 +3,7 @@ title = "sublime_Text3插入当前时间"
 date = 2017-12-21
 
 [taxonomies]
-categories = ["软件使用"]
+categories = ["软件"]
 tags = ["sublime"]
 +++
 
