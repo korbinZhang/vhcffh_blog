@@ -192,7 +192,7 @@ keywords = "Abridge, Abridge.css, Zola, Theme, Zola Theme, getzola, Semantic Htm
 #twitter = "your-user-name" # used for twitter related
 #google = "Your Google Site verification code."
 google_ga4 = "G-D9NXKT8Z3L"
-google_ad = "ca-pub-3597458182538053"
+#google_ad = "ca-pub-3597458182538053"
 #bing = "Your Bing Site verification code."
 seo = true  # enable or disable seo-related meta tags: opengraph, facebook, twitter
 
