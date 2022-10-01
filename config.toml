@@ -43,7 +43,7 @@ language_code = "zh-CN"
 title_separator = "|"  # Separator between title and title_addition, set as |, -, _, etc
 # To disable title_addition but keep built in page additions eg, Posts page: "Posts | Abridge" set title_addition to an empty string
 # To always set the page title exactly eg "Abridge" then comment out the below line (not recommend, bad for SEO)
-title_addition = "Fast & Lightweight Zola Theme" # a default value for title addition
+title_addition = "一个简单的个人博客，用于记录笔记" # a default value for title addition
 recent = true # TOC / index
 recent_items = 9
 author = "Frey" # Put Your Name here
