@@ -1,0 +1,71 @@
++++
+title = "WSL2 启用桥接网络并开启mDNS"
+description = "WSL2 启用桥接网络获得独立ip，通过mDNS广播实现通过计算机名访问"
+date = 2023-01-09
+
+[taxonomies]
+categories = ["软件"]
+tags = ["WSL","tips"]
++++
+
+1. WSL2 启用桥接网络
+
+首先在`Hyper-V管理器`中创建新的虚拟交换机（假设名字为eth_switch），并选择外部网络和要桥接道德物理网卡。
+
+编辑window主目录下.wslconfig文件，添加两行配置
+
+```
+#C:\Users\<user_name>\.wslconfig
+[wsl2]
+#...
+networkingMode=bridged
+vmSwitch=eth_switch
+```
+重启WSL2后，eth0将和物理网卡一样获取一个独立ip
+
+2. 启用avahi-daemon.service服务实现mDNS广播
+
+```
+# 安装
+sudo apt-get install avahi-daemon
+# 启动
+systemctl start avahi-daemon.service
+# 配置自动启动
+systemctl enable avahi-daemon.service
+```
+
+配置WSL2计算机名
+修改文件`/etc/wsl.conf`
+
+```
+[network]
+hostname = wsl
+```
+
+重启之后便可以在局域网内通过计算机名wsl访问wsl了
+
+```
+PS C:\Users\fly92> ping wsl
+
+正在 Ping wsl.local [192.168.10.164] 具有 32 字节的数据:
+来自 192.168.10.164 的回复: 字节=32 时间<1ms TTL=64
+来自 192.168.10.164 的回复: 字节=32 时间<1ms TTL=64
+来自 192.168.10.164 的回复: 字节=32 时间<1ms TTL=64
+来自 192.168.10.164 的回复: 字节=32 时间<1ms TTL=64
+
+192.168.10.164 的 Ping 统计信息:
+    数据包: 已发送 = 4，已接收 = 4，丢失 = 0 (0% 丢失)，
+往返行程的估计时间(以毫秒为单位):
+    最短 = 0ms，最长 = 0ms，平均 = 0ms
+```
+
+### 参考
+1. [WSL 中的高级设置配置](https://learn.microsoft.com/zh-cn/windows/wsl/wsl-config)
+
+
+
+
+
+
+
+
