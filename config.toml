@@ -188,7 +188,7 @@ katex_bundle = "katexbundle.min.js"
 ##########################
 # meta/seo/analytic tags
 ##########################
-keywords = "Abridge, Abridge.css, Zola, Theme, Zola Theme, getzola, Semantic Html, Fast, lightweight" # used for the primary site index
+keywords = "Frey, blog, 编程, 软件, 数学, 算法, 通信, 外语, 系统" # used for the primary site index
 #twitter = "your-user-name" # used for twitter related
 #google = "Your Google Site verification code."
 google_ga4 = "G-D9NXKT8Z3L"
@@ -208,8 +208,8 @@ mail = "fly92727@outlook.com"
 #facebook = "your-user-name"
 #linkedin = "your-user-name"
 #gitlab = "your-user-name"
-github = "FreyZhang007"
-github_sponsor = "FreyZhang007"
+github = "FreyZhang001"
+github_sponsor = "FreyZhang001"
 #bitbucket = "your-user-name"
 #python = "your-user-name"
 #docker = "your-user-name"
