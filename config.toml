@@ -5,7 +5,6 @@ description = "一个简单的个人博客，用于记录笔记"
 default_language = "en"
 output_dir = "public"
 compile_sass = true
-build_search_index = true
 minify_html = false
 generate_feed = true
 feed_filename = "atom.xml"
@@ -17,6 +16,14 @@ taxonomies = [
 ]
 
 theme = "abridge"
+build_search_index = true
+[search]                # Options specific to elasticlunr search.
+include_title = true        # include title of page/section in index
+include_description = false # include description of page/section in index
+include_content = true      # include rendered content of page/section in index
+# Truncate content at nth character. Useful if index size significantly slows down the site.
+# truncate_content_length = 100
+
 [markdown]
 extra_syntaxes_and_themes = ["themes/abridge/highlight_themes"] # Abridge's config.toml
 # In YOUR SITE'S config.toml set to: ["highlight_themes", "themes/abridge/highlight_themes"]
@@ -70,16 +77,16 @@ headhr = false # show or hide horizontal rule below header
 foothr = true # show or hide horizontal rule above footer
 
 menu = [
-    #{url = "/about/", name = "About", slash = true},
-    {url = "/posts/", name = "Posts", slash = true},
-    {url = "/categories/", name = "Categories", slash = true},
-    {url = "/tags/", name = "Tags", slash = true},
+    #{url = "/about/", name = "About", slash = true, blank = false},
+    {url = "/posts/", name = "Posts", slash = true, blank = false},
+    {url = "/categories/", name = "Categories", slash = true, blank = false},
+    {url = "/tags/", name = "Tags", slash = true, blank = false},
 ]
 menu_footer = [
-    #{url = "/about/", name = "About", slash = true},
-    #{url = "/contact/", name = "Contact", slash = true},
-    #{url = "/privacy/", name = "Privacy", slash = true},
-    {url = "/sitemap.xml", name = "Sitemap", slash = false},
+    #{url = "/about/", name = "About", slash = true, blank = false},
+    #{url = "/contact/", name = "Contact", slash = true, blank = false},
+    #{url = "/privacy/", name = "Privacy", slash = true, blank = false},
+    {url = "/sitemap.xml", name = "Sitemap", slash = false, blank = true},
 ]
 
 # Security Headers should preferably be set by your webserver (Nginx, Apache) https://observatory.mozilla.org  https://csp-evaluator.withgoogle.com/
@@ -192,13 +199,13 @@ keywords = "Frey, blog, 编程, 软件, 数学, 算法, 通信, 外语, 系统" 
 #twitter = "your-user-name" # used for twitter related
 #google = "Your Google Site verification code."
 google_ga4 = "G-D9NXKT8Z3L"
-#google_ad = "ca-pub-3597458182538053"
 #bing = "Your Bing Site verification code."
 seo = true  # enable or disable seo-related meta tags: opengraph, facebook, twitter
 
 # Footer social links; full options listed in macros/social.html
 [extra.social]
 feed = true
+mail_encode = true # This obfuscates your email address, javascript is used to decode it at page load.
 mail = "fly92727@outlook.com"
 #mastodon = "@your-user-name"
 #element = "matrix.example.com"
