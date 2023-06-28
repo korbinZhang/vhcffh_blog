@@ -72,7 +72,7 @@ textlogo = "<font color='#f90'>F</font>rey's blog"
 
 sitedesc = false # enables or disables the display of the site description below the logo.
 copyright_start_year = 2017  # optional
-copyright_end_year = 2022  # optional, recommend leaving unset, zola build will set this to current year by default
+copyright_end_year = 2023  # optional, recommend leaving unset, zola build will set this to current year by default
 headhr = false # show or hide horizontal rule below header
 foothr = true # show or hide horizontal rule above footer
 
