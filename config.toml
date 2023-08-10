@@ -81,7 +81,8 @@ menu = [
     {url = "/posts/", name = "Posts", slash = true, blank = false},
     {url = "/categories/", name = "Categories", slash = true, blank = false},
     {url = "/tags/", name = "Tags", slash = true, blank = false},
-    {url = "/pages/examples/", name = "Examples", slash = true, blank = false},
+    {url = "/pages/demos/", name = "Demos", slash = true, blank = false},
+    {url = "/pages/tools/", name = "Tools", slash = true, blank = false},
 ]
 menu_footer = [
     #{url = "/about/", name = "About", slash = true, blank = false},
