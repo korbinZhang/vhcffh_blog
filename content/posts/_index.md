@@ -1,4 +1,4 @@
 +++
 title = "posts"
-template = "posts.html"
+template = "archive.html"
 +++

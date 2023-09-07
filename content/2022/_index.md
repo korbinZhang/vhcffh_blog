@@ -1,4 +1,4 @@
 +++
 transparent = true
-template = "posts.html"
+template = "archive.html"
 +++
