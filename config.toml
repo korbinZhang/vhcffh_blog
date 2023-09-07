@@ -24,7 +24,7 @@ textlogo = "<font color='#f90'>F</font>rey's blog"
 
 menu = [
     #{url = "/about/", name = "About", slash = true, blank = false},
-    {url = "/posts/", name = "Posts", slash = true, blank = false},
+    #{url = "/posts/", name = "Posts", slash = true, blank = false},
     {url = "/categories/", name = "Categories", slash = true, blank = false},
     {url = "/tags/", name = "Tags", slash = true, blank = false},
     {url = "/pages/demos/", name = "Demos", slash = true, blank = false},
