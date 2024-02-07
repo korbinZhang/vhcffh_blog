@@ -11,6 +11,7 @@ taxonomies = [
 
 theme = "abridge"
 build_search_index = true
+generate_feed = true
 [search]                # Options specific to elasticlunr search.
 include_description = false # include description of page/section in index
 
@@ -51,6 +52,7 @@ katex_bundle = "js/katexbundle.min.js"
 keywords = "Frey, blog, 编程, 软件, 数学, 算法, 通信, 外语, 系统" # used for the primary site index
 google_ga4 = "G-D9NXKT8Z3L"
 seo = true  # enable or disable seo-related meta tags: opengraph, facebook, twitter
+feed = true
 
 [extra.social]
 feed = true
