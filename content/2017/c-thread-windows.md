@@ -1,0 +1,94 @@
+---
+sidebar: false
+outline: false
+date: 2017-09-04
+---
+
+# C 语言多线程学习
+
+VC6++环境下 C 语言创建多线程
+
+## 简单的创建多线程实例
+
+```c
+#include <stdio.h>
+#include <windows.h>
+//子线程函数
+DWORD WINAPI ThreadFun(LPVOID pM){
+    printf("子线程的线程ID号为：%d\n子线程输出 Hello World\n", GetCurrentThreadId());
+    return 0;
+}
+//主函数，所谓主函数其实就是主线程执行的函数。
+int main()
+{
+    printf("最简单的创建多线程实例\n");
+    printf("http://zfblog.xyz");
+
+    HANDLE handle = CreateThread(NULL, 0, ThreadFun, NULL, 0, NULL);
+    WaitForSingleObject(handle, INFINITE);
+    return 0;
+}
+```
+
+使用 CreateThread 函数创建线程
+
+```c
+HANDLE  WINAPI   CreateThread(
+           LPSECURITY_ATTRIBUTES   lpThreadAttributes,
+           DWORD    dwStackSize,
+           LPTHREAD_START_ROUTINE    lpStartAddress,
+           LPVOID    lpParameter,
+           DWORD   dwCreationFlags,
+           LPDWORD   lpThreadId);
+```
+
+第一个参数表示线程内核对象的安全属性,一般传入 NULL 表示使用默认设置\
+第二个参数表示线程栈空间大小,传入 0 表示使用默认大小(1MB)\
+第三个参数表示新线程所执行的线程函数地址\
+　　　　　　　多个线程可以使用同一个函数地址(线程函数入口)\
+第四个参数是传给线程函数的参数\
+第五个参数指定额外的标志来控制线程的创建\
+　　　　　　　就是控制线程何时运行\
+　　　　　　　为 0:直接运行\
+　　　　　　　为 CREATE_SUSPENDED:调用 ResumeThread()后运行\
+第六个参数将返回线程的 ID 号,传入 NULL 表示不需要返回该线程 ID 号\
+函数返回值:成功返回新线程的句柄,失败返回 NULL
+
+## 关于 CreateThread()给线程函数传递参数的问题
+
+```c
+//创建线程时传递参数
+int *parameter;
+CreateThread(NULL, 0, ThreadFun, (void *)parameter, 0, NULL);
+//想到一个问题直接使用全局的static变量会出现什么情况?????
+//parameter是任意类型的地址
+//线程函数中调用参数
+DWORD WINAPI ThreadFun(LPVOID pM)
+{
+        //传入的地址指向一个int类型的数据
+        int p=*PM;
+        return 0;
+}
+```
+
+WaitForSingleObject 函数作用
+
+```c
+DWORD  WINAPI  WaitForSingleObject(
+        HANDLE   hHandle,
+        DWORD   dwMilliseconds
+);
+```
+
+第一个参数为要等待的内核对象\
+第二个参数为最长等待的时间\
+　　　　　　为 5000:等待 5 秒\
+　　　　　　为 0:立即执行\
+　　　　　　为 INFINITE:无限等待\
+函数返回值:WAIT_OBJECT_0 在指定的时间内对象被触发\
+　　　　　　 WAIT_TIMEOUT 超过最长等待时间对象仍未被触发\
+　　　　　　 WAIT_FAILED 传入参数有错误\
+函数作用\
+首先要知道----线程的句柄在线程运行时是未触发的，结束后触发\
+在主函数中调用等待线程执行完毕，然后主函数结束\
+不用此函数可能会导致线程没有执行完，主函数结束，程序结束

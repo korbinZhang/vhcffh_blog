@@ -1,0 +1,14 @@
+{
+  "name": "korbin-web",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "rspress dev",
+    "build": "rspress build",
+    "preview": "rspress preview"
+  },
+  "devDependencies": {
+    "rspress": "^1.37.2"
+  }
+}
