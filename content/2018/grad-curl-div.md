@@ -38,7 +38,7 @@ date: 2018-09-08
 \vec v=v_x\vec i+v_y\vec j+v_z\vec k
 ```
 
-其中$ v*{x},v*{y},v\_{z} $具有一阶连续偏导数,点$ P(x,y,z) \in G $
+其中$ v_{x},v_{y},v_{z} $具有一阶连续偏导数,点$ P(x,y,z) \in G $
 
 向量
 
@@ -59,13 +59,13 @@ v_x & v_y & v_z \cr
 
 ## 散度
 
-在三维空间$ G $ 中有三维直角坐标系$ O\_{xyz} $,设向量场:
+在三维空间$ G $ 中有三维直角坐标系$ O_{xyz} $,设向量场:
 
 ```math
 \vec v=v_x\vec i+v_y\vec j+v_z\vec k
 ```
 
-其中$ v\_{x},v\_{y},v\_{z} $具有一阶连续偏导数,点$ P(x,y,z) \in G $
+其中$ v_{x},v_{y},v_{z} $具有一阶连续偏导数,点$ P(x,y,z) \in G $
 
 标量
 
@@ -75,6 +75,6 @@ v_x & v_y & v_z \cr
 \frac {\partial v_z}{\partial z}
 ```
 
-为向量场$$在点$$的散度
+为向量场$ \vec v $ 在点$ P(x,y,z) $的**散度**
 
 记为$div\;v$或$\nabla \cdot v$

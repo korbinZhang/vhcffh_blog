@@ -8,7 +8,8 @@ date: 2019-07-10
 
 ![img](./img/7_10_neu.png)
 
-$ f(z) $为激励函数，关于激励函数(又称激活函数)的总结\
+$ f(z) $为激励函数，关于激励函数(又称激活函数)的总结
+
 隐藏层 1 输入
 
 ```math
@@ -72,11 +73,11 @@ diag(1,1, \ldots ,1)\tag{10}
 
 列向量对列向量求导参见矩阵中的求导
 
-计算偏导数$ \frac {\partial L(y,\widehat y)}{\partial z\^{(k)}} $
+计算偏导数$ \frac {\partial L(y,\widehat y)}{\partial z^{(k)}} $
 
-偏导数$ \frac {\partial L(y,\widehat y)}{\partial z\^{(k)}} $
+偏导数$ \frac {\partial L(y,\widehat y)}{\partial z^{(k)}} $
 又称误差项(error term,也称"灵敏度"),一般用$ \delta $
-表示,用$ \delta\^{(k)} $
+表示,用$ \delta^{(k)} $
 表示第 k 层神经元的误差项,其值的大小代表了**第 k 层神经元对最终总误差的影响大小**
 
 ```math
