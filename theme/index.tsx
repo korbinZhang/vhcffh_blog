@@ -1,9 +1,10 @@
 import React from 'react'
-import { usePageData } from 'rspress/runtime'
+import { usePageData , useLocation} from 'rspress/runtime'
 import Theme, { Link } from 'rspress/theme'
 
 const PostList = () => {
   const { siteData } = usePageData()
+  const { search } = useLocation()
   let pageList: {
     date: string
     title: string
@@ -20,7 +21,9 @@ const PostList = () => {
     }
   }
   pageList.sort((a, b) => Date.parse(b.date) - Date.parse(a.date))
-  pageList = pageList.slice(0, 5)
+  if (!search.includes('all')) {
+    pageList = pageList.slice(0, 5)
+  }
   return (
     <div>
       <ul>
