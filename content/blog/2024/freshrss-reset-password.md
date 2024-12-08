@@ -1,6 +1,4 @@
 ---
-sidebar: false
-outline: false
 date: 2024-07-06
 ---
 

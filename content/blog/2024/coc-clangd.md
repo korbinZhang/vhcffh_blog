@@ -1,6 +1,4 @@
 ---
-sidebar: false
-outline: false
 date: 2021-11-21
 ---
 

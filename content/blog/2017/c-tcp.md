@@ -1,6 +1,4 @@
 ---
-sidebar: false
-outline: false
 data: 2017-09-05
 ---
 

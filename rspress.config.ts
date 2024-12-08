@@ -5,4 +5,9 @@ export default defineConfig({
   // 文档根目录
   root: 'content',
   plugins: [katex()],
+  themeConfig: {
+    nav: [],
+    outline: false,
+    hideNavbar: 'always',
+  }
 })
