@@ -1,0 +1,93 @@
+---
+date: 2024-10-10
+---
+
+# js 访问串口
+
+## 连接串口
+
+```js
+const connectPort = async () => {
+  try {
+    const selectedPort = await navigator.serial.requestPort()
+    await selectedPort.open(config)
+    setPort(selectedPort)
+
+    const reader = selectedPort.readable?.getReader()
+    if (reader) {
+      readerRef.current = reader
+      readData(reader)
+    }
+
+    setIsConnected(true)
+    message.success('Connected to serial port!')
+  } catch (error) {
+    console.error(error)
+    message.error('Failed to connect to serial port.')
+  }
+}
+```
+
+提示错误`Cannot find name 'SerialPort'. (tsserver 2304)`
+
+需要安装`@types/serialport`, 并导入`import SerialPort from 'serialport'`
+
+## 断开串口
+
+```js
+const disconnectPort = async () => {
+  try {
+    readerRef.current?.cancel()
+    readerRef.current = null
+
+    port?.close()
+    setPort(null)
+    setIsConnected(false)
+    message.success('Disconnected from serial port!')
+  } catch (error) {
+    console.error(error)
+    message.error('Failed to disconnect from serial port.')
+  }
+}
+```
+
+## 读取数据
+
+```js
+const readData = async (reader: ReadableStreamDefaultReader<Uint8Array>) => {
+  try {
+    while (true) {
+      const { value, done } = await reader.read()
+      if (done) break
+
+      if (value) {
+        const text = new TextDecoder().decode(value)
+        setOutput((prev) => [...prev, text])
+      }
+    }
+  } catch (error) {
+    console.error('Error reading from serial port:', error)
+  }
+}
+```
+
+## 发送数据
+
+```js
+const sendData = async () => {
+  if (port?.writable) {
+    const writer = port.writable.getWriter()
+    await writer.write(new TextEncoder().encode(input))
+    writer.releaseLock()
+    setInput('')
+  } else {
+    message.error('Port is not writable.')
+  }
+}
+```
+
+## 示例
+
+import JsSeria from '../../../components/js-seria'
+
+<JsSeria />
