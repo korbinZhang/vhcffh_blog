@@ -1,10 +1,16 @@
 import { defineConfig } from 'rspress/config'
 import katex from 'rspress-plugin-katex'
+import { pluginRss } from '@rspress/plugin-rss'
 
 export default defineConfig({
   // 文档根目录
   root: 'content',
-  plugins: [katex()],
+  plugins: [
+    katex(),
+    pluginRss({
+      siteUrl: 'https://www.vhcffh.com',
+    }),
+  ],
   head: [
     '<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">',
     '<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">',
