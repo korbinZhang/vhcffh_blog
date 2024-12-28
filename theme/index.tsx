@@ -12,7 +12,7 @@ const PostList = () => {
   }[] = []
 
   for (const page of siteData.pages) {
-    if (page.frontmatter.date) {
+    if (page.frontmatter.date && page.frontmatter.layout !== 'home') {
       pageList.push({
         date: page.frontmatter.date as string,
         title: page.title,
