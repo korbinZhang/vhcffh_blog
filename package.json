@@ -10,6 +10,7 @@
     "publish": "rspress build && scp -r ./doc_build/* my-ten:/srv/html/blog/"
   },
   "devDependencies": {
+    "@rspress/plugin-rss": "^1.39.3",
     "@types/serialport": "^8.0.5",
     "antd": "^5.22.4",
     "rspress": "^1.37.2",
