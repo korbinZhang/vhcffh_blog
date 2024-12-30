@@ -3390,6 +3390,14 @@ rspress-plugin-devkit@^0.3.0:
     vfile "^5.3.7"
     vfile-reporter "^7.0.5"
 
+rspress-plugin-google-analytics@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/rspress-plugin-google-analytics/-/rspress-plugin-google-analytics-0.3.0.tgz#5098b00ec0cc7e1a5bd81e8e2d1d4327f36b0244"
+  integrity sha512-WefsXU8eTHGFC54Zr6/rmZVuK89w3kgY+sP7uUPdFZZghbkFJUM1Xjd2UqzyFL1coq67RDxeZ68L29nPKF3ReA==
+  dependencies:
+    "@rspress/shared" "^1.17.1"
+    rspress-plugin-devkit "^0.3.0"
+
 rspress-plugin-katex@^0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/rspress-plugin-katex/-/rspress-plugin-katex-0.3.0.tgz#39ee1eb50df5d14ec95c79f8cb5cc389b4785f08"
@@ -3400,6 +3408,11 @@ rspress-plugin-katex@^0.3.0:
     rehype-katex "^7.0.0"
     remark-math "^6.0.0"
     rspress-plugin-devkit "^0.3.0"
+
+rspress-plugin-sitemap@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/rspress-plugin-sitemap/-/rspress-plugin-sitemap-1.1.1.tgz#4c7dd253f00c4c9b5956b5743d48dcc08e817328"
+  integrity sha512-usb6zWoi5wFFmBeA9HKR6BhsnnsItudMBarc54GYpuRL55SWkLxyWyMijv14mUI04FI7J7lEmea08uZE0bVKxg==
 
 rspress@^1.37.2:
   version "1.39.3"

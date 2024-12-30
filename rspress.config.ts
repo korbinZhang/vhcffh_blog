@@ -1,6 +1,8 @@
 import { defineConfig } from 'rspress/config'
 import katex from 'rspress-plugin-katex'
 import { pluginRss } from '@rspress/plugin-rss'
+import sitemap from 'rspress-plugin-sitemap'
+import ga from 'rspress-plugin-google-analytics'
 
 export default defineConfig({
   // 文档根目录
@@ -10,6 +12,10 @@ export default defineConfig({
     pluginRss({
       siteUrl: 'https://www.vhcffh.com',
     }),
+    sitemap({
+      domain: 'https://www.vhcffh.com',
+    }),
+    ga({ id: `G-D9NXKT8Z3L` }),
   ],
   head: [
     '<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">',
