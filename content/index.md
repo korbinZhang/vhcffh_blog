@@ -1,9 +1,9 @@
 ---
-layout: home
 sidebar: false
 outline: false
-date: 2024-12-28
 ---
 
-# 文章列表
+# 主页
 
+- [文章](/blog)
+- [项目](/project)
