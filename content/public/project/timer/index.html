@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<link rel="modulepreload" href="./yew-tools-d2d48a4e9034fef4.js" crossorigin="anonymous" integrity="sha384-ewG9imUkLIju0Hp4l+vhMHN7RXLLcgo4uHn9UmUJnNxzg3Jq8Gm84td266b8soEM"><link rel="preload" href="./yew-tools-d2d48a4e9034fef4_bg.wasm" crossorigin="anonymous" integrity="sha384-dz9CWerpcOfj74ZrevSqD2mF3isPq3/qCKu3zmdaHiB1WL+yA9gww65A0v2VMPN1" as="fetch" type="application/wasm"></head>
+<body>
+
+
+<script type="module">
+import init, * as bindings from './yew-tools-d2d48a4e9034fef4.js';
+const wasm = await init({ module_or_path: './yew-tools-d2d48a4e9034fef4_bg.wasm' });
+
+
+window.wasmBindings = bindings;
+
+
+dispatchEvent(new CustomEvent("TrunkApplicationStarted", {detail: {wasm}}));
+
+</script></body>
+</html>
