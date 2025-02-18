@@ -1,7 +1,7 @@
 import { defineConfig } from 'rspress/config'
 import katex from 'rspress-plugin-katex'
 import { pluginRss } from '@rspress/plugin-rss'
-import sitemap from 'rspress-plugin-sitemap'
+import sitemap from './plugins/sitemap'
 import ga from 'rspress-plugin-google-analytics'
 
 export default defineConfig({

@@ -15,7 +15,6 @@
     "antd": "^5.22.4",
     "rspress": "^1.37.2",
     "rspress-plugin-google-analytics": "^0.3.0",
-    "rspress-plugin-katex": "^0.3.0",
-    "rspress-plugin-sitemap": "^1.1.1"
+    "rspress-plugin-katex": "^0.3.0"
   }
 }
