@@ -1,0 +1,4 @@
+Sitemap: https://www.vhcffh.com/sitemap.xml
+User-Agent: *
+Allow: /
+Host: https://www.vhcffh.com
