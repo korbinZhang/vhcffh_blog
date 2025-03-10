@@ -54,6 +54,12 @@ make oldconfig
 
 在配置过程中，根据需要启用或禁用内核选项。大多数用户保留默认配置即可。
 
+### 生成arm64配置
+
+```base
+make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- defconfig
+```
+
 ## 编译与构建内核
 
 配置完成后，就可以编译内核。编译过程需要一些时间，这取决于你的硬件性能和选择的配置选项。
@@ -61,6 +67,7 @@ make oldconfig
 使用以下命令启动编译，`-j$(nproc)` 参数会自动利用所有 CPU 核心，加速编译过程：
 
 ```bash
+make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- -j$(nproc)
 make -j$(nproc)
 ```
 
