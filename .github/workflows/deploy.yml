@@ -1,0 +1,75 @@
+name: Check Develop and Updates
+
+on:
+  schedule:
+    - cron: "0 19 * * *"
+  workflow_dispatch:
+
+jobs:
+  check-and-store:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          ref: 'develop'
+
+      - name: Download last stored commit ID
+        uses: actions/download-artifact@v4
+        with:
+          name: last-deployed-commit
+        continue-on-error: true
+
+      - name: Retrieve last stored commit
+        id: get_last_commit
+        run: |
+          if [ -f last_commit.txt ]; then
+            LAST_DEPLOYED_COMMIT=$(cat last_commit.txt)
+          else
+            LAST_DEPLOYED_COMMIT="none"
+          fi
+          echo "Last stored commit: $LAST_DEPLOYED_COMMIT"
+          echo "last_commit=$LAST_DEPLOYED_COMMIT" >> $GITHUB_ENV
+
+      - name: Get latest develop commit
+        id: check_updates
+        run: |
+          LATEST_COMMIT=$(git rev-parse develop)
+          echo "Latest commit: $LATEST_COMMIT"
+
+          if [ "$LATEST_COMMIT" != "$last_commit" ]; then
+            echo "new_update=true" >> $GITHUB_ENV
+          else
+            echo "new_update=false" >> $GITHUB_ENV
+          fi
+
+          echo "$LATEST_COMMIT" > last_commit.txt
+
+      - name: Deploy via SCP if updated
+        if: env.new_update == 'true'
+        run: |
+          echo "🔄 New updates found, deploying..."
+          mkdir -p ~/.ssh
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -p $SERVER_PORT $SERVER_HOST >> ~/.ssh/known_hosts
+
+          rm -rf .git
+          scp -r -P $SERVER_PORT ./* $SERVER_USER@$SERVER_HOST:$SERVER_PATH
+
+          echo "✅ Deployment completed."
+
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          SERVER_USER: ${{ secrets.SERVER_USER }}
+          SERVER_HOST: ${{ secrets.SERVER_HOST }}
+          SERVER_PATH: ${{ secrets.SERVER_PATH }}
+          SERVER_PORT: ${{ secrets.SERVER_PORT}}
+
+      - name: Always upload latest commit ID
+        uses: actions/upload-artifact@v4
+        with:
+          name: last-deployed-commit
+          path: last_commit.txt
+
