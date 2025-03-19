@@ -1,6 +1,5 @@
 
 doc_build/
-.git_develop/
 # Logs
 logs
 *.log
