@@ -1,65 +1,76 @@
-name: Check Develop and Updates
+name: develop
 
 on:
   schedule:
     - cron: "0 19 * * *"
-  workflow_dispatch:
 
 jobs:
-  check-and-store:
+  develop:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Repository
+      - name: Checkout develop
         uses: actions/checkout@v4
         with:
           ref: 'develop'
+          path: 'develop'
 
-      - name: Download last stored commit ID
-        uses: actions/download-artifact@v4
+      - name: Checkout gh-pages
+        uses: actions/checkout@v4
         with:
-          name: last-deployed-commit
+          repository: 'jaywcjlove/reference'
+          ref: 'gh-pages'
+          path: 'gh-pages'
+
+      - name: Checkout record 
+        uses: actions/checkout@v4
+        with:
+          ref: 'record'
+          path: 'record'
         continue-on-error: true
 
-      - name: Retrieve last stored commit
-        id: get_last_commit
+      - name: Read last-commit
         run: |
-          if [ -f last_commit.txt ]; then
-            LAST_DEPLOYED_COMMIT=$(cat last_commit.txt)
-          else
-            LAST_DEPLOYED_COMMIT="none"
+          cd ./develop
+          develop_last_commit=$(git rev-parse HEAD)
+          cd ..
+
+          cd ./gh-pages
+          gh_pages_last_commit=$(git rev-parse HEAD)
+          cd ..
+
+          cd ./record
+          if [ ! -f develop.txt ]; then
+            echo "null" > develop.txt
           fi
-          echo "Last stored commit: $LAST_DEPLOYED_COMMIT"
-          echo "last_commit=$LAST_DEPLOYED_COMMIT" >> $GITHUB_ENV
-
-      - name: Get latest develop commit
-        id: check_updates
-        run: |
-          LATEST_COMMIT=$(git rev-parse develop)
-          echo "Latest commit: $LATEST_COMMIT"
-
-          if [ "$LATEST_COMMIT" != "$last_commit" ]; then
-            echo "new_update=true" >> $GITHUB_ENV
+          if [ ! -f gh-pages.txt ]; then
+            echo "null" > gh-pages.txt
+          fi
+          develop_record_commit=$(cat develop.txt)
+          gh_pages_record_commit=$(cat gh-pages.txt)
+          echo "develop_record_commit: $develop_record_commit"
+          echo "develop_last_commit: $develop_last_commit"
+          echo "gh_pages_record_commit: $gh_pages_record_commit"
+          echo "gh_pages_last_commit: $gh_pages_last_commit"
+          if [ "$develop_record_commit" != "$develop_last_commit" ]; then
+            echo "develop_update=true" >> $GITHUB_ENV
+            echo "$develop_last_commit" > develop.txt
           else
-            echo "new_update=false" >> $GITHUB_ENV
+            echo "develop_update=false" >> $GITHUB_ENV
+          fi
+          if [ "$gh_pages_record_commit" != "$gh_pages_last_commit" ]; then
+            echo "gh_pages_update=true" >> $GITHUB_ENV
+            echo "$gh_pages_last_commit" > gh-pages.txt
+          else
+            echo "gh_pages_update=false" >> $GITHUB_ENV
           fi
 
-          echo "$LATEST_COMMIT" > last_commit.txt
-
-      - name: Deploy via SCP if updated
-        if: env.new_update == 'true'
+      - name: Config ssh
         run: |
-          echo "🔄 New updates found, deploying..."
           mkdir -p ~/.ssh
           echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -p $SERVER_PORT $SERVER_HOST >> ~/.ssh/known_hosts
-
-          rm -rf .git
-          scp -r -P $SERVER_PORT ./* $SERVER_USER@$SERVER_HOST:$SERVER_PATH
-
-          echo "✅ Deployment completed."
-
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           SERVER_USER: ${{ secrets.SERVER_USER }}
@@ -67,9 +78,42 @@ jobs:
           SERVER_PATH: ${{ secrets.SERVER_PATH }}
           SERVER_PORT: ${{ secrets.SERVER_PORT}}
 
-      - name: Always upload latest commit ID
-        uses: actions/upload-artifact@v4
-        with:
-          name: last-deployed-commit
-          path: last_commit.txt
+      - name: develop update
+        if: env.develop_update == 'true'
+        run: |
+          echo "develop_update"
+          cd ./develop
+          rm -rf .git
+          scp -r -P $SERVER_PORT ./* $SERVER_USER@$SERVER_HOST:$SERVER_PATH
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          SERVER_USER: ${{ secrets.SERVER_USER }}
+          SERVER_HOST: ${{ secrets.SERVER_HOST }}
+          SERVER_PATH: ${{ secrets.SERVER_PATH }}
+          SERVER_PORT: ${{ secrets.SERVER_PORT}}
+
+      - name: gh-pages update
+        if: env.gh_pages_update == 'true'
+        run: |
+          echo "gh_pages_update"
+          cd ./gh-pages
+          rm -rf .git
+          scp -r -P $SERVER_PORT ./* $SERVER_USER@$SERVER_HOST:$REFERENCE_PATH
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          SERVER_USER: ${{ secrets.SERVER_USER }}
+          SERVER_HOST: ${{ secrets.SERVER_HOST }}
+          SERVER_PATH: ${{ secrets.SERVER_PATH }}
+          SERVER_PORT: ${{ secrets.SERVER_PORT}}
+
+      - name: record update
+        if: env.develop_update == 'true' || env.gh_pages_update == 'true'
+        run: |
+          echo "any update"
+          cd ./record
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "$(date)"
+          git push origin HEAD:record
 
