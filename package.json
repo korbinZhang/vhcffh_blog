@@ -6,8 +6,7 @@
   "scripts": {
     "dev": "rspress dev",
     "build": "rspress build",
-    "preview": "rspress preview",
-    "push": "rspress build && scp -r ./doc_build/* my-ten:/srv/html/blog/"
+    "preview": "rspress preview"
   },
   "devDependencies": {
     "@rspress/plugin-rss": "^1.39.3",
