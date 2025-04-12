@@ -1,0 +1,46 @@
+---
+date: 2019-08-25
+---
+
+# 深度学习在中文分词和词性标注中的应用
+
+
+
+得到字向量-\>通过窗口方法得到字与上下文有关的向量(矩阵)-\>通过两个线性层和一个非线性激活函数-\>字的标注得分(窗口方法)-\>一个句子的评分矩阵$ f \times \theta (c \times {[1:n]}) $ (句子中的第$ i $ 个子为标签$ t $
+的得分)-\>定义转换分数$ A_{ij} $,得到tag path 得分 -\>最大化得分,得到最优tag path
+
+```math
+s(c_{[1:N]},t_{[1:N]},\theta)=\sum_{i=1}^n(A_{t_{i-1}t_i}+f_\theta (t_i\vert i))
+```
+
+log likelihood
+
+```math
+\sum_{\forall(c,t)\in R}\log p(t\vert c,\theta)
+```
+
+将目标函数转换为条件概率
+
+```math
+p(t\vert c,\theta)=\frac {e^{s(c,t,\theta)}}{\sum_{\tilde t}{e^{s(c,\tilde t,\theta)}}}
+```
+
+取对数
+
+```math
+\log p(t\vert c,\theta) = s(c,t,\theta)-log\sum_{\tilde t}{e^{s(c,\tilde t,\theta)}}
+```
+
+维特比算法(viterbi)
+
+一种动态规划算法(穷举法,A\*算法,beam search,Viterbi算法)
+
+<font color="red">A\*算法和Viterbi算法的区别?</font>
+
+新的训练方法
+
+将维特比算法在当前参数下得出的最优路径结果与正确结果进行比较对比,定义出损失函数对$ A_{t_{i-1}t_i} $
+和$f_\theta (t_i|i) $ 的偏导数,通过后向传播更新参数
+
+收敛性的证明:Discriminative training methods for hidden Markov models
+
