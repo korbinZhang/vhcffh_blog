@@ -3,6 +3,7 @@ import katex from 'rspress-plugin-katex'
 import { pluginRss } from '@rspress/plugin-rss'
 import sitemap from './plugins/sitemap'
 import ga from 'rspress-plugin-google-analytics'
+import path from 'path'
 
 export default defineConfig({
   // 文档根目录
@@ -22,11 +23,10 @@ export default defineConfig({
     outlineTitle: '目录',
     outline: false,
     enableScrollToTop: true,
+    sidebar: {},
+    searchPlaceholderText: '搜索',
     nextPageText: '下一篇',
     prevPageText: '上一篇',
-    lastUpdated: true,
-    lastUpdatedText: '更新时间',
-    sidebar: {},
   },
   plugins: [
     katex(),
@@ -38,4 +38,5 @@ export default defineConfig({
     }),
     ga({ id: `G-D9NXKT8Z3L` }),
   ],
+  globalStyles: path.join(__dirname, 'theme/index.css'),
 })
