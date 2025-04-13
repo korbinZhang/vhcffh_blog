@@ -13,6 +13,7 @@ const Archives = () => {
       route: page.routePath,
     }))
     .filter((page) => page.year > 2000 && page.year <= new Date().getFullYear())
+    .filter((page) => page.title != "")
     .sort((a, b) => b.date.getTime() - a.date.getTime())
 
   let lastYear = -1
@@ -32,12 +33,12 @@ const Archives = () => {
     docLists.push(
       <div className="rounded-lg hover:bg-gray-100 hover:text-blue-600">
         <a
-          className="block px-4 py-1"
+          className="flex justify-between px-4 py-1"
           key={page.title}
           href={page.route}
         >
-          <span>{page.title}</span>
-          <time className="float-right">
+          <span className="text-nowrap truncate">{page.title}</span>
+          <time className="text-nowrap">
             {(page.date.getMonth() + 1).toString().padStart(2, '0') +
               '-' +
               page.date.getDate().toString().padStart(2, '0')}
