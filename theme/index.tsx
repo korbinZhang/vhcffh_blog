@@ -1,6 +1,26 @@
 import React from 'react'
-import { usePageData } from 'rspress/runtime'
+import { NoSSR, usePageData } from 'rspress/runtime'
 import Theme from 'rspress/theme'
+
+const GoogleAd = (
+  <div>
+    <NoSSR>
+      <script
+        async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3597458182538053"
+        crossOrigin="anonymous"
+      ></script>
+      <ins
+        className="adsbygoogle block"
+        data-ad-client="ca-pub-3597458182538053"
+        data-ad-slot="1486993989"
+        data-ad-format="auto"
+        data-full-width-responsive="true"
+      ></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </NoSSR>
+  </div>
+)
 
 const Archives = () => {
   const { siteData } = usePageData()
@@ -50,14 +70,14 @@ const Archives = () => {
     )
   }
   let docContent = (
-    <div className='text-current'>
+    <div className="text-current">
       <h1 className="rspress-doc-title text-3xl mb-10 leading-10 tracking-tight font-semibold">
         共计 {pages.length} 篇文章
       </h1>
       {docLists}
     </div>
   )
-  return <Theme.Layout beforeDocContent={docContent} />
+  return <Theme.Layout beforeDocContent={docContent} afterOutline={GoogleAd} />
 }
 
 const Layout = () => {
@@ -66,7 +86,7 @@ const Layout = () => {
   if (frontmatter.layout === 'archives') {
     return <Archives />
   }
-  return <Theme.Layout />
+  return <Theme.Layout afterOutline={GoogleAd} />
 }
 
 export default {
