@@ -28,7 +28,7 @@ AES 算法（即 Rijndael 算法）是一个对称分组密码算法。
 
 下图是 AES 加密解密的整体流程图：
 
-![AES](./AES.png)
+![AES](./imgs/AES.png)
 
 这里我们需要知道 3 个符号：
 
@@ -63,19 +63,19 @@ AES 加密过程涉及到 4 种变换：S 盒变换，行变换，列变换，�
 
 在密钥扩展部分已经讲过了，S 盒是一个 16 行 16 列的表，表中每个元素都是一个字节。S 盒变换很简单：函数`SubBytes()`接受一个 4x4 的字节矩阵作为输入，对其中的每个字节，前四位组成十六进制数 x 作为行号，后四位组成的十六进制数 y 作为列号，查找表中对应的值替换原来位置上的字节。
 
-![SubBytes](./SubBytes.png)
+![SubBytes](./imgs/SubBytes.png)
 
 #### 行变换-ShiftRows()
 
 行变换也很简单，它仅仅是将矩阵的每一行以字节为单位循环移位：第一行不变，第二行左移一位，第三行左移两位，第四行左移三位。如下图所示：
 
-![ShiftRows](./ShiftRows.png)
+![ShiftRows](./imgs/ShiftRows.png)
 
 #### 与扩展密钥的异或-AddRoundKey()
 
 扩展密钥只参与了这一步。根据当前加密的轮数，用`w[]`中的 4 个扩展密钥与矩阵的 4 个列进行按位异或。如下图：
 
-![AddRoundKey](./AddRoundKey.png)
+![AddRoundKey](./imgs/AddRoundKey.png)
 
 ### 解密
 

@@ -2,25 +2,25 @@
 date: 2022-10-11
 ---
 
-# 常见Hash算法
+# 常见 Hash 算法
 
-## 什么是hash算法
+## 什么是 hash 算法
 
-Hash算法又称散列算法，特点是把任意长度的输出，通过一些列的计算后变成固定长度的输出，这个输出值即为散列值。由于散列值的空间远小于输出空间，因此存在不同输入得到相同输出的情况，这种现象称为碰撞。
+Hash 算法又称散列算法，特点是把任意长度的输出，通过一些列的计算后变成固定长度的输出，这个输出值即为散列值。由于散列值的空间远小于输出空间，因此存在不同输入得到相同输出的情况，这种现象称为碰撞。
 
-## hash算法的应用
+## hash 算法的应用
 
-hash算法应用广泛，主要有七个方面：安全加密、唯一标识、数据校验、散列函数、负载均衡、数据分片、分布式存储。不同的应用利用的hash算法不同的特性，具体的算法实现也需要根据情况设计。比较常见的实现有md5，sha256等。本文通过这两个算法来研究具体的实现。
+hash 算法应用广泛，主要有七个方面：安全加密、唯一标识、数据校验、散列函数、负载均衡、数据分片、分布式存储。不同的应用利用的 hash 算法不同的特性，具体的算法实现也需要根据情况设计。比较常见的实现有 md5，sha256 等。本文通过这两个算法来研究具体的实现。
 
 ## MD5
 
-Md5算法将输入的不定长数据分为512bit的块，并对每个块循环调用MD5运算。
+Md5 算法将输入的不定长数据分为 512bit 的块，并对每个块循环调用 MD5 运算。
 
-![md5](./md5.png)
+![md5](./imgs/md5.png)
 
-一个MD5运算由类似的64次循环构成，分成4组16次。F是一个非线性函数；一个函数运算一次。Mi 表示一个 32-bits 的输入数据，Ki 表示一个 32-bits 常数，用来完成每次不同的计算。
+一个 MD5 运算由类似的 64 次循环构成，分成 4 组 16 次。F 是一个非线性函数；一个函数运算一次。Mi 表示一个 32-bits 的输入数据，Ki 表示一个 32-bits 常数，用来完成每次不同的计算。
 
-## md5的python实现
+## md5 的 python 实现
 
 ```python
 def Md5sum(message: bytes) -> bytes:
@@ -129,7 +129,7 @@ if __name__ == '__main__':
     print(t.hexdigest())
 ```
 
-### Shell命令md5sum
+### Shell 命令 md5sum
 
 ```bash
 $ echo "blog.vhcffh.com" | md5sum
@@ -140,13 +140,13 @@ $ md5sum test.txt
 
 ## SHA256
 
-SHA256是安全散列算法2（SHA-2，Secure Hash Algorithm 2）中的一个算法标准，由[美国国家标准与技术研究院](https://zh.wikipedia.org/wiki/%E7%BE%8E%E5%9B%BD%E5%9B%BD%E5%AE%B6%E6%A0%87%E5%87%86%E4%B8%8E%E6%8A%80%E6%9C%AF%E7%A0%94%E7%A9%B6%E9%99%A2)（NIST）在2001年发布。
+SHA256 是安全散列算法 2（SHA-2，Secure Hash Algorithm 2）中的一个算法标准，由[美国国家标准与技术研究院](https://zh.wikipedia.org/wiki/%E7%BE%8E%E5%9B%BD%E5%9B%BD%E5%AE%B6%E6%A0%87%E5%87%86%E4%B8%8E%E6%8A%80%E6%9C%AF%E7%A0%94%E7%A9%B6%E9%99%A2)（NIST）在 2001 年发布。
 
-![sha256](./sha256.png)
+![sha256](./imgs/sha256.png)
 
-SHA-2的第t个加密循环。图中的深蓝色方块是事先定义好的非线性函数。ABCDEFGH一开始分别是八个初始值，Kt是第t个密钥，Wt是本区块产生第t个word。原消息被切成固定长度的区块，对每一个区块，产生n个word（n视算法而定），透过重复运作循环n次对ABCDEFGH这八个工作区段循环加密。最后一次循环所产生的八段字符串合起来即是此区块对应到的散列字符串。若原消息包含数个区块，则最后还要将这些区块产生的散列字符串加以混合才能产生最后的散列字符串。
+SHA-2 的第 t 个加密循环。图中的深蓝色方块是事先定义好的非线性函数。ABCDEFGH 一开始分别是八个初始值，Kt 是第 t 个密钥，Wt 是本区块产生第 t 个 word。原消息被切成固定长度的区块，对每一个区块，产生 n 个 word（n 视算法而定），透过重复运作循环 n 次对 ABCDEFGH 这八个工作区段循环加密。最后一次循环所产生的八段字符串合起来即是此区块对应到的散列字符串。若原消息包含数个区块，则最后还要将这些区块产生的散列字符串加以混合才能产生最后的散列字符串。
 
-### SHA256的python实现
+### SHA256 的 python 实现
 
 ```python
 def Sha256sum(message: bytes) -> bytes:
@@ -258,7 +258,7 @@ if __name__ == '__main__':
 
 ```
 
-### Shell命令md5sum
+### Shell 命令 md5sum
 
 ```bash
 $ echo "blog.vhcffh.com" | sha256sum
@@ -268,5 +268,6 @@ a948904f2f0f479b8f8197694b30184b0d2ed1c1cd2a1ec0fb85d299a192a447  test.txt
 ```
 
 ## 参考
-1. [Hash算法及相关应用 | Phukety的个人博客](https://phukety.github.io/2020/11/30/Hash-algorithm/)
+
+1. [Hash 算法及相关应用 | Phukety 的个人博客](https://phukety.github.io/2020/11/30/Hash-algorithm/)
 2. [YCBlogs/02.哈希算法应用.md](https://github.com/yangchong211/YCBlogs/blob/master/leetcode/12.Hash/02.%E5%93%88%E5%B8%8C%E7%AE%97%E6%B3%95%E5%BA%94%E7%94%A8.md)

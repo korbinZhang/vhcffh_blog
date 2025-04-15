@@ -16,7 +16,7 @@ date: 2023-08-17
 
 如果 a^b=N(a>0,且 a≠1，则 b 叫做以 a 为底 N 的对数，公式如下，其中 a 叫做底数，N 叫做真数， b 叫对数。
 
-![对数](./index.png)
+![对数](./imgs/index.png)
 
 通常我们将以 10 为底的对数叫常用对数，以 e 为底的对数叫自然对数。
 
@@ -95,7 +95,7 @@ SNR(dB) = 10 *lg \frac {\int s(t)^2 \mathrm{d}t} {\int n(t)^2 \mathrm{d}t} =
 
 ### EVM 介绍
 
-![EVM](./EVM.png)
+![EVM](./imgs/EVM.png)
 
 QAM 调制信号通常用其 EVM 来衡量信号质量，EVM 是英文 Error Vector Magnitude 缩写，意为误差向量幅度。
 

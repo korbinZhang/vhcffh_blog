@@ -23,7 +23,7 @@ matlab中的freqs和freqz函数
 
 freqs 返回一个模拟滤波器的H(jw)的复频域响应(拉普拉斯格式)
 
-![](./freqs.png)
+![](./imgs/freqs.png)
 
 
 h = freqs(b, a, w) 根据系数向量计算返回模拟滤波器的复频域响应\
@@ -35,7 +35,7 @@ freqs
 #### 1.2例子
 
 找到并画出下面传递函数的频率响应
-![](./example1.png)
+![](./imgs/example1.png)
 
 Matlab代码：
 ```matlab
@@ -55,12 +55,12 @@ n如果省略，则默认值为50。
     subplot(2,1,2), semilogx(w,phase);
     f = w/(2*pi);mag = 20*log10(mag);phase = phase*180/pi;
 ```
-![频率响应](./frequency.png)
+![频率响应](./imgs/frequency.png)
 
 ### 2.freqz
 
 MATLAB提供了专门用于求离散系统频响特性的函数freqz()\
-![](./freqz.png)
+![](./imgs/freqz.png)
 调用freqz()的格式有以下两种：
 
 #### 2.1[H,w]=freqz(B,A,N)
@@ -93,8 +93,8 @@ H是频率响应的幅度，w是0---pi内的400个点
     plot(w,Hx)
     title('离散系统相频特性曲线')
 
-![](./amp.png)
-![](./ang.png)
+![](./imgs/amp.png)
+![](./imgs/ang.png)
 
 这样画出来的是线性的，要想获得db格式的幅度，需要转换 20\*log10（Hf）\
 之后再画就是db格式的\

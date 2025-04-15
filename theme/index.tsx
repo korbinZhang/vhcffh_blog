@@ -10,10 +10,12 @@ const Archives = () => {
       month: new Date(page.frontmatter.date as string).getMonth(),
       date: new Date(page.frontmatter.date as string),
       title: page.title,
-      route: page.routePath,
+      route: page.routePath.endsWith('/')
+        ? page.routePath + 'index.html'
+        : page.routePath + '.html',
     }))
     .filter((page) => page.year > 2000 && page.year <= new Date().getFullYear())
-    .filter((page) => page.title != "")
+    .filter((page) => page.title != '')
     .sort((a, b) => b.date.getTime() - a.date.getTime())
 
   let lastYear = -1
