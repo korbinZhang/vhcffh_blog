@@ -28,6 +28,9 @@ export default defineConfig({
     nextPageText: '下一篇',
     prevPageText: '上一篇',
   },
+  route: {
+    exclude: ['**/*.tsx'],
+  },
   plugins: [
     katex(),
     pluginRss({
