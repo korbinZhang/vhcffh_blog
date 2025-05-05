@@ -1,4 +1,4 @@
-# 主页
-
-- [文章](/blog/)
-- [项目](/project/)
+---
+layout: archives
+date: 2025-05-05
+---
