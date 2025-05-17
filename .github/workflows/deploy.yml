@@ -73,9 +73,7 @@ jobs:
           ssh-keyscan -p $SERVER_PORT $SERVER_HOST >> ~/.ssh/known_hosts
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          SERVER_USER: ${{ secrets.SERVER_USER }}
           SERVER_HOST: ${{ secrets.SERVER_HOST }}
-          SERVER_PATH: ${{ secrets.SERVER_PATH }}
           SERVER_PORT: ${{ secrets.SERVER_PORT}}
 
       - name: develop update
@@ -86,7 +84,6 @@ jobs:
           rm -rf .git
           scp -r -P $SERVER_PORT ./* $SERVER_USER@$SERVER_HOST:$SERVER_PATH
         env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           SERVER_USER: ${{ secrets.SERVER_USER }}
           SERVER_HOST: ${{ secrets.SERVER_HOST }}
           SERVER_PATH: ${{ secrets.SERVER_PATH }}
@@ -100,11 +97,10 @@ jobs:
           rm -rf .git
           scp -r -P $SERVER_PORT ./* $SERVER_USER@$SERVER_HOST:$REFERENCE_PATH
         env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           SERVER_USER: ${{ secrets.SERVER_USER }}
           SERVER_HOST: ${{ secrets.SERVER_HOST }}
-          SERVER_PATH: ${{ secrets.SERVER_PATH }}
-          SERVER_PORT: ${{ secrets.SERVER_PORT}}
+          SERVER_PORT: ${{ secrets.SERVER_PORT }}
+          REFERENCE_PATH: ${{ secrets.REFERENCE_PATH }}
 
       - name: record update
         if: env.develop_update == 'true' || env.gh_pages_update == 'true'
