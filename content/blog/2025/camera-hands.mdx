@@ -1,0 +1,20 @@
+---
+date: 2025-05-15
+---
+
+# MediaPipe Hands 手势识别
+
+MediaPipe Hands 由 Google 开发的高保真手部和手指跟踪解决方案，能够从单帧图像中推断出 21 个 3D 手部关键点。
+模型体积小（检测器约 6.76 MB，关键点检测器约 7.71 MB）。
+支持实时性能，即使在移动设备上也能运行。
+提供 Python、C++ 和 JavaScript 等多种语言的 API。
+下面是基于该模型的 Web demo。
+
+import CameraHands from './components/camera-hands'
+
+<CameraHands />
+
+## 参考资料
+
+1. [MediaPipe Hands 文档](https://mediapipe.readthedocs.io/en/latest/solutions/hands.html)
+2. [MediaPipe Hands 模型下载](https://ai.google.dev/edge/mediapipe/solutions/vision/hand_landmarker)
