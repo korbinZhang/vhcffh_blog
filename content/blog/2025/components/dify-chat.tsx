@@ -1,7 +1,7 @@
 const DifyChat = () => {
   return (
     <iframe
-      src="http://dify.vhcffh.com/chatbot/6zTQWyhhe0oxJNpg"
+      src="https://dify.vhcffh.com/chatbot/6zTQWyhhe0oxJNpg"
       style={{
         width: '100%',
         height: '100%',
