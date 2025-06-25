@@ -77,7 +77,17 @@ const Archives = () => {
       {docLists}
     </div>
   )
-  return <Theme.Layout beforeDocContent={docContent} afterOutline={GoogleAd} />
+  return (
+    <Theme.Layout
+      uiSwitch={{ showSidebar: false }}
+      beforeDocContent={docContent}
+      afterOutline={GoogleAd}
+    />
+  )
+}
+
+const Book = () => {
+  return <Theme.Layout uiSwitch={{ showSidebar: true }} />
 }
 
 const Layout = () => {
@@ -86,7 +96,12 @@ const Layout = () => {
   if (frontmatter.layout === 'archives') {
     return <Archives />
   }
-  return <Theme.Layout afterOutline={GoogleAd} />
+  if (page.pagePath.startsWith('book')) {
+    return <Book />
+  }
+  return (
+    <Theme.Layout uiSwitch={{ showSidebar: false }} afterOutline={GoogleAd} />
+  )
 }
 
 export default {

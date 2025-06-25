@@ -24,7 +24,6 @@ export default defineConfig({
     outlineTitle: '目录',
     outline: false,
     enableScrollToTop: true,
-    sidebar: {},
     searchPlaceholderText: '搜索',
     nextPageText: '下一篇',
     prevPageText: '上一篇',
