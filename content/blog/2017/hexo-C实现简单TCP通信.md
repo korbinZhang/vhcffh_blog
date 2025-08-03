@@ -1,5 +1,6 @@
 ---
 date: 2017-09-05
+tags: ["C", "TCP", "Socket"]
 ---
 
 # C实现简单TCP通信

@@ -1,5 +1,6 @@
 ---
 date: 2025-03-04
+tags: ["Git", "Linux", "QEMU"]
 ---
 
 # Git下载构建Linux

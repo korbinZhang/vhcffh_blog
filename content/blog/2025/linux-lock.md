@@ -1,5 +1,6 @@
 ---
 date: 2025-02-20
+tags: ["Linux", "Lock", "Mutex"]
 ---
 
 # Linux中的各种锁及其基本原理

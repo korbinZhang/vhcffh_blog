@@ -1,6 +1,7 @@
 ---
 date: 2022-11-07
 description: '简单介绍DES加密的过程，并使用python实现DES加密'
+tags: ["Python", "DES", "Cryptography"]
 ---
 
 # python 实现 DES 加密

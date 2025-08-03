@@ -1,5 +1,6 @@
 ---
 date: 2017-08-09
+tags: ["Java", "TCP", "Socket"]
 ---
 
 # JAVA套接字之TCP简单实用

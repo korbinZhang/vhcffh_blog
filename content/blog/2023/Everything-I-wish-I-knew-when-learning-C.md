@@ -1,6 +1,7 @@
 ---
 outline: true
 date: 2023-07-08
+tags: ["C", "Programming"]
 ---
 
 # C 语言必备知识

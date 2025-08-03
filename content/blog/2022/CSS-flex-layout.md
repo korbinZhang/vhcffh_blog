@@ -1,6 +1,7 @@
 ---
 date: 2022-08-16
 description: "总结CSS flex布局的一些属性"
+tags: ["CSS", "Flexbox"]
 ---
 
 # CSS flex 布局

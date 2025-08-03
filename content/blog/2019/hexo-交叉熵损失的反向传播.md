@@ -1,5 +1,6 @@
 ---
 date: 2019-10-02
+tags: ["Cross Entropy", "Backpropagation", "Deep Learning"]
 ---
 
 # 交叉熵损失的反向传播

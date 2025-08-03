@@ -1,5 +1,6 @@
 ---
 date: 2017-08-04
+tags: ["VPS", "Linux", "Web Server"]
 ---
 
 # 搬瓦工VPS搭建Web服务器

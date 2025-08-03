@@ -1,5 +1,6 @@
 ---
 date: 2017-07-02
+tags: ["Java", "MD5"]
 ---
 
 # JAVA实现MD5加密

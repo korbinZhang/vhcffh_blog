@@ -1,6 +1,7 @@
 ---
 outline: true
 date: 2024-04-19
+tags: ["ARM", "Cortex-M3", "Embedded"]
 ---
 
 # ARM Cortex-M3 基础

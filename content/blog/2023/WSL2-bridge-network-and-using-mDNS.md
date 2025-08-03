@@ -1,5 +1,6 @@
 ---
 date: 2023-01-19
+tags: ["WSL2", "Network", "mDNS"]
 ---
 
 # WSL2 启用桥接网络并开启 mDNS

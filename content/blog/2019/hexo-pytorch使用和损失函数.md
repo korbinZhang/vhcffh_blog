@@ -1,5 +1,6 @@
 ---
 date: 2019-07-26
+tags: ["PyTorch", "Loss Function"]
 ---
 
 # pytorch使用和损失函数

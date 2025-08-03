@@ -1,5 +1,6 @@
 ---
 date: 2018-01-11
+tags: ["Assembly", "Computer"]
 ---
 
 # 简单了解汇编

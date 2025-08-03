@@ -1,5 +1,6 @@
 ---
 date: 2018-04-28
+tags: ["Python", "Module"]
 ---
 
 # python3之模块

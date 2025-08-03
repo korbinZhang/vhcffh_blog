@@ -1,5 +1,6 @@
 ---
 date: 2019-11-15
+tags: ["Machine Learning", "NLP", "Evaluation"]
 ---
 
 # 机器学习笔记

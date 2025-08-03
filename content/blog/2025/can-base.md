@@ -1,6 +1,7 @@
 ---
 outline: true
 date: 2025-05-06
+tags: ["CAN", "SocketCAN", "Linux"]
 ---
 
 # CAN 基础

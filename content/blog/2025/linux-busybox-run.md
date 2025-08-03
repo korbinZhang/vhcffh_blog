@@ -1,5 +1,6 @@
 ---
 date: 2025-03-11
+tags: ["Linux", "BusyBox", "QEMU"]
 ---
 
 # qemu 运行 busybox

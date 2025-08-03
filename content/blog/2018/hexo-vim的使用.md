@@ -1,5 +1,6 @@
 ---
 date: 2018-06-23
+tags: ["Vim", "Linux"]
 ---
 
 # vim的使用

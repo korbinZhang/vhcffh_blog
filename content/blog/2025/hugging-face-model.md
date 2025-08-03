@@ -1,5 +1,6 @@
 ---
 date: 2025-05-15
+tags: ["Hugging Face", "Model", "PyTorch", "TensorFlow"]
 ---
 
 # Hugging Face 模型简介

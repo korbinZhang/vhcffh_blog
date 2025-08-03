@@ -1,5 +1,6 @@
 ---
 date: 2019-07-21
+tags: ["Loss Function", "Machine Learning"]
 ---
 
 # 常见损失函数

@@ -1,5 +1,6 @@
 ---
 date: 2017-12-26
+tags: ["Python", "Error"]
 ---
 
 # python遇到的错误

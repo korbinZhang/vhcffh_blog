@@ -1,5 +1,6 @@
 ---
 date: 2019-08-10
+tags: ["MathJax", "Hexo"]
 ---
 
 # mathjax配置问题

@@ -1,5 +1,6 @@
 ---
 date: 2019-08-19
+tags: ["Ensemble Learning", "Bagging", "Boosting"]
 ---
 
 # 集成学习算法总结

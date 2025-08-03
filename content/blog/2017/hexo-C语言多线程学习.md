@@ -1,5 +1,6 @@
 ---
 date: 2017-09-04
+tags: ["C", "Windows", "Thread"]
 ---
 
 # C语言多线程学习

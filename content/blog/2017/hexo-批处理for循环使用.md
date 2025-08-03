@@ -1,5 +1,6 @@
 ---
 date: 2017-04-22
+tags: ["Batch", "Windows"]
 ---
 
 # 批处理for循环使用

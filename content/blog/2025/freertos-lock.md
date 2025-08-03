@@ -1,5 +1,6 @@
 ---
 date: 2025-02-19
+tags: ["FreeRTOS", "Lock", "Mutex"]
 ---
 
 # FreeRTOS中的锁

@@ -1,5 +1,6 @@
 ---
 date: 2018-05-17
+tags: ["Python", "OS"]
 ---
 
 # python中关于路径的知识

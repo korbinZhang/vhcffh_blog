@@ -1,5 +1,6 @@
 ---
 date: 2023-08-17
+tags: ["SNR", "EVM", "Wireless"]
 ---
 
 # SNR 与 EVM 的关系

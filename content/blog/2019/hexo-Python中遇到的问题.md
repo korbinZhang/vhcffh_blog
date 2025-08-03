@@ -1,5 +1,6 @@
 ---
 date: 2019-05-31
+tags: ["Python", "List"]
 ---
 
 # Python中遇到的问题

@@ -1,5 +1,6 @@
 ---
 date: 2025-05-10
+tags: ["Keras", "TensorFlow", "MNIST"]
 ---
 
 # Keras 基础

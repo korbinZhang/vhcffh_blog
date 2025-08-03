@@ -1,5 +1,6 @@
 ---
 date: 2017-06-25
+tags: ["Chrome", "Android", "APK"]
 ---
 
 # 谷歌浏览器运行安卓APK

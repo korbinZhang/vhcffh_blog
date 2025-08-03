@@ -1,5 +1,6 @@
 ---
 date: 2023-01-09
+tags: ["Linux", "NetworkManager", "WiFi"]
 ---
 
 # nmcli 配置 wifi

@@ -1,5 +1,6 @@
 ---
 date: 2023-08-28
+tags: ["Linux", "UART", "Serial"]
 ---
 
 # Linux 串口挂载失败

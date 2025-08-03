@@ -1,5 +1,6 @@
 ---
 date: 2019-08-25
+tags: ["Deep Learning", "NLP", "Word Segmentation"]
 ---
 
 # 深度学习在中文分词和词性标注中的应用

@@ -1,5 +1,6 @@
 ---
 date: 2017-08-19
+tags: ["Android", "Camera"]
 ---
 
 # 自己写一个Android照相机应用-2

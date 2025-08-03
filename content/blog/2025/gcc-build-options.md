@@ -1,5 +1,6 @@
 ---
 date: 2025-06-22
+tags: ["GCC", "Build", "Options"]
 ---
 
 # gcc 编译选项总结

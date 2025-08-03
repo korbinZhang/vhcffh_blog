@@ -1,5 +1,6 @@
 ---
 date: 2019-09-09
+tags: ["Nvidia", "Linux", "Driver"]
 ---
 
 # nvidia显卡驱动错误

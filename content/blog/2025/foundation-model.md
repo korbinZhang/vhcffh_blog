@@ -1,5 +1,6 @@
 ---
 date: 2025-04-16
+tags: ["Large Model", "GPT", "LLaMA"]
 ---
 
 # 大模型参数和内存解析

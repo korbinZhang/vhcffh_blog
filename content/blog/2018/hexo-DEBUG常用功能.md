@@ -1,5 +1,6 @@
 ---
 date: 2018-02-12
+tags: ["Debug", "Assembly"]
 ---
 
 # DEBUG常用功能

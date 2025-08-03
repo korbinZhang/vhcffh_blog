@@ -1,5 +1,6 @@
 ---
 date: 2018-09-22
+tags: ["Formal Language", "Automata"]
 ---
 
 # 形式语言与自动机基础知识

@@ -1,5 +1,6 @@
 ---
 date: 2024-07-06
+tags: ["FreshRSS", "Password"]
 ---
 
 # FreshRSS 重置密码

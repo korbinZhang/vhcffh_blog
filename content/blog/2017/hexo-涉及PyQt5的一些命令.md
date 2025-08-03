@@ -1,5 +1,6 @@
 ---
 date: 2017-08-09
+tags: ["Python", "PyQt5"]
 ---
 
 # 涉及PyQt5的一些命令

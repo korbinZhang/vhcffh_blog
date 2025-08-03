@@ -1,5 +1,6 @@
 ---
 date: 2019-08-20
+tags: ["scikit-learn", "Linear Model"]
 ---
 
 # sklearn中的广义线性模型

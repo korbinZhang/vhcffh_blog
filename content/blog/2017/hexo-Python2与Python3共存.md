@@ -1,5 +1,6 @@
 ---
 date: 2017-08-03
+tags: ["Python", "Windows"]
 ---
 
 # Python2与Python3共存

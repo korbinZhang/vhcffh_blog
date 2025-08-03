@@ -1,5 +1,6 @@
 ---
 date: 2017-09-05
+tags: ["C", "TCP", "Socket", "Windows"]
 ---
 
 # VC6聊天室程序设计

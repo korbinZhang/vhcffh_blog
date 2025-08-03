@@ -1,5 +1,6 @@
 ---
 date: 2017-08-03
+tags: ["VPS", "Linux", "Shadowsocks"]
 ---
 
 # 搬瓦工安装ss并加速

@@ -1,5 +1,6 @@
 ---
 date: 2017-09-01
+tags: ["Powershell", "Windows"]
 ---
 
 # powershell卸载自带应用

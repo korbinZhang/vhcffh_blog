@@ -1,5 +1,6 @@
 ---
 date: 2019-05-21
+tags: ["Linux", "Command"]
 ---
 
 # Linux常用命令

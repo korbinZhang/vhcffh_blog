@@ -1,5 +1,6 @@
 ---
 date: 2023-04-21
+tags: ["Assembly", "AT&T", "Intel"]
 ---
 
 # AT&T 汇编与 Intel 汇编区别

@@ -1,5 +1,6 @@
 ---
 date: 2017-12-21
+tags: ["Sublime Text", "Plugin"]
 ---
 
 # sublime_Text3插入当前时间

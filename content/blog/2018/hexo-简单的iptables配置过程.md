@@ -1,5 +1,6 @@
 ---
 date: 2018-10-19
+tags: ["iptables", "Linux"]
 ---
 
 # 简单的iptables配置过程

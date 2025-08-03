@@ -1,5 +1,6 @@
 ---
 date: 2019-07-04
+tags: ["Optimization", "Deep Learning"]
 ---
 
 # 优化算法总结

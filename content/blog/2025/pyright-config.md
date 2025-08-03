@@ -1,5 +1,6 @@
 ---
 date: 2025-06-01
+tags: ["Pyright", "Python", "Config"]
 ---
 
 # pyright 配置

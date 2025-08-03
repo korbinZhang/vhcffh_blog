@@ -1,5 +1,6 @@
 ---
 date: 2017-09-02
+tags: ["Windows", "System"]
 ---
 
 # windows系统盘瘦身

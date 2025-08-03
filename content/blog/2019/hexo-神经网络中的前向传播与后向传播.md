@@ -1,5 +1,6 @@
 ---
 date: 2019-07-10
+tags: ["Neural Network", "Backpropagation"]
 ---
 
 # 神经网络中的前向传播与后向传播

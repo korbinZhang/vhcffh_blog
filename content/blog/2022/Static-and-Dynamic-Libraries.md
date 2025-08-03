@@ -1,6 +1,7 @@
 ---
 date: 2022-08-10
 description: "总结C/C++语言在编译链接过程中动态库与静态库的使用方法"
+tags: ["C", "Library", "Linker"]
 ---
 
 # 动态库与静态库

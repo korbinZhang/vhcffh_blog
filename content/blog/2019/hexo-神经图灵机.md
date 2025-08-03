@@ -1,5 +1,6 @@
 ---
 date: 2019-09-07
+tags: ["Neural Turing Machine", "Deep Learning"]
 ---
 
 # 神经图灵机

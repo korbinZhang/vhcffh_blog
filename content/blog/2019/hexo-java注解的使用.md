@@ -1,5 +1,6 @@
 ---
 date: 2019-03-20
+tags: ["Java", "Annotation"]
 ---
 
 # java注解的使用

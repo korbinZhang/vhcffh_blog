@@ -1,6 +1,7 @@
 ---
 date: 2022-08-02
 description: "本文记录在两台windows间转移WSL子系统时遇到的一些网络问题及解决方案"
+tags: ["WSL", "Network", "Windows"]
 ---
 
 # WSL转移后无法入网

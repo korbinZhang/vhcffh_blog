@@ -1,5 +1,6 @@
 ---
 date: 2017-12-12
+tags: ["Image", "PNG", "Header"]
 ---
 
 # 图片头文件解析

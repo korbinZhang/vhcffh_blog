@@ -1,5 +1,6 @@
 ---
 date: 2017-08-09
+tags: ["Matlab", "freqs", "freqz"]
 ---
 
 # Matlab函数freqs和freqz

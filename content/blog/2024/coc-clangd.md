@@ -1,5 +1,6 @@
 ---
 date: 2021-11-21
+tags: ["Vim", "Coc", "Clangd"]
 ---
 
 # Coc-Clangd 配置

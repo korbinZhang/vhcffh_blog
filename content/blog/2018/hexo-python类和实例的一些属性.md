@@ -1,5 +1,6 @@
 ---
 date: 2018-05-17
+tags: ["Python", "Class"]
 ---
 
 # python类和实例的一些属性

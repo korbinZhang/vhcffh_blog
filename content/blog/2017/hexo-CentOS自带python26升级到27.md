@@ -1,5 +1,6 @@
 ---
 date: 2017-09-12
+tags: ["CentOS", "Python"]
 ---
 
 # CentOS自带python26升级到27

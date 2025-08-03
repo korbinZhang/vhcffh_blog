@@ -1,6 +1,7 @@
 ---
 outline: true
 date: 2024-04-19
+tags: ["FreeRTOS", "RTOS", "Task"]
 ---
 
 # FreeRTOS 的任务

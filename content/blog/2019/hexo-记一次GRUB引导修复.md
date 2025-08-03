@@ -1,5 +1,6 @@
 ---
 date: 2019-09-03
+tags: ["GRUB", "Linux", "Dual Boot"]
 ---
 
 # 记一次GRUB引导修复

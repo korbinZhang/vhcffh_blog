@@ -1,5 +1,6 @@
 ---
 date: 2019-08-18
+tags: ["Information Theory", "Entropy"]
 ---
 
 # 信息论的一些基本概念

@@ -1,5 +1,6 @@
 ---
 date: 2019-09-06
+tags: ["Few-shot Learning", "GNN"]
 ---
 
 # 小样本学习的边缘标签图神经网络

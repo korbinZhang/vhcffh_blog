@@ -1,5 +1,6 @@
 ---
 date: 2017-09-01
+tags: ["Powershell", "Script"]
 ---
 
 # powershell脚本遍历目录

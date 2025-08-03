@@ -1,5 +1,6 @@
 ---
 date: 2019-04-05
+tags: ["Edge Computing", "Task Scheduling"]
 ---
 
 # 边缘计算系统中延迟敏感任务的成本有效调度

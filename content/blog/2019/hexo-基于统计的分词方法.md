@@ -1,5 +1,6 @@
 ---
 date: 2019-09-08
+tags: ["NLP", "HMM", "Word Segmentation"]
 ---
 
 # 基于统计的分词方法
