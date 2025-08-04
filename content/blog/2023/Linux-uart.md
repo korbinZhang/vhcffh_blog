@@ -1,5 +1,6 @@
 ---
 date: 2023-08-28
+description: 本文解决了在Ubuntu上CH340串口设备无法挂载为`/dev/ttyUSB0`的问题。通过查看系统日志，发现是`brltty`（盲文设备支持）服务占用了USB接口导致冲突。最终，通过卸载`brltty`软件包，成功使串口设备恢复正常挂载。
 tags: ["Linux", "UART", "Serial"]
 ---
 

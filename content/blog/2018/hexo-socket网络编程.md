@@ -1,6 +1,7 @@
 ---
 date: 2018-10-18
 tags: ["Socket", "Network"]
+description: 本文是一篇关于Socket网络编程中常用函数的学习笔记。文章详细列举并解释了多个关键函数的功能和用法，包括用于IP地址格式转换的`inet_aton`, `inet_ntoa`, `inet_addr`, `inet_pton`和`inet_ntop`。此外，还介绍了用于I/O多路复用的`select`函数，用于设置套接字选项的`setsockopt`函数，以及用于接收数据的`recvfrom`函数，为网络编程提供了重要的参考。
 ---
 
 # socket网络编程

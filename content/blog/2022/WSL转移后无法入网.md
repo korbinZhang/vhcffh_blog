@@ -1,6 +1,6 @@
 ---
 date: 2022-08-02
-description: "本文记录在两台windows间转移WSL子系统时遇到的一些网络问题及解决方案"
+description: "本文记录了在两台Windows主机间转移WSL子系统时遇到的网络问题及解决方案。内容涵盖了系统导出导入、因IP地址段不匹配导致的网络重置、防火墙规则配置、DNS解析失败（修改resolv.conf）以及新版Windows下端口直接映射等问题的排查与解决步骤。"
 tags: ["WSL", "Network", "Windows"]
 ---
 

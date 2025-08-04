@@ -1,6 +1,7 @@
 ---
 date: 2017-12-26
 tags: ["Python", "Error"]
+description: "本文记录了作者在使用Python过程中遇到的两个具体错误及其解决方案。第一个错误是“ImportError: DLL load failed”，通常是由于安装的pywin32库与Python解释器的位数（32位或64位）不匹配导致，需要下载对应版本的库。第二个错误是使用libsvm时出现的“Exception: LIBSVM library not found.”，原因同样是库文件与Python版本位数不符，解决方法是从特定网站下载预编译的.whl文件并替换其中的库文件。"
 ---
 
 # python遇到的错误

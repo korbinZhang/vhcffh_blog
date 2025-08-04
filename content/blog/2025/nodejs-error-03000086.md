@@ -1,5 +1,6 @@
 ---
 date: 2025-06-07
+description: "本文解决了Node.js v17及以上版本中因OpenSSL 3.0兼容性问题导致的`error:0308010C:digital envelope routines::unsupported`错误。文章提供了三种解决方法：设置`NODE_OPTIONS=--openssl-legacy-provider`环境变量、修改`package.json`脚本或降级Node.js版本。"
 tags: ["Node.js", "OpenSSL", "Webpack"]
 ---
 

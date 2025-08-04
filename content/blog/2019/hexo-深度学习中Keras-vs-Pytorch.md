@@ -1,6 +1,7 @@
 ---
 date: 2019-07-09
 tags: ["Deep Learning", "Keras", "PyTorch"]
+description: "本文翻译并对比了深度学习框架Keras和PyTorch的四个主要不同点。内容包括：模型定义方式（Keras的函数式API vs PyTorch的类继承）、底层操作（Keras隐藏细节 vs PyTorch的张量和动态图）、模型训练流程（Keras的`.fit()` vs PyTorch的显式循环）以及CPU/GPU模式的控制。文章建议初学者从Keras入手，而需要更高灵活性的开发者则可以选择PyTorch。"
 ---
 
 # 深度学习中 Keras vs Pytorch

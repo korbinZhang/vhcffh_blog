@@ -1,6 +1,7 @@
 ---
 date: 2019-09-07
 tags: ["Neural Turing Machine", "Deep Learning"]
+description: 本文解读了神经图灵机（Neural Turing Machine, NTM）的核心机制。NTM通过一个外部记忆矩阵增强了神经网络的能力。文章详细介绍了其读、写操作过程，关键在于一个可微的定位向量（addressing vector）。该向量的生成结合了基于内容的寻址（通过余弦相似度）和基于位置的寻址（通过插值、循环卷积偏移和重塑），使得模型能够端到端地学习访问和修改记忆。
 ---
 
 # 神经图灵机

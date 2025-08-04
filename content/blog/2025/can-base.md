@@ -1,6 +1,7 @@
 ---
 outline: true
 date: 2025-05-06
+description: 本文全面介绍了CAN总线的基础知识。内容涵盖了其拓扑结构、信号表示、多主通信和非破坏性位仲裁等特点。文章详细解析了数据帧、遥控帧、错误帧等帧结构，并讲解了节点的错误处理机制。最后还介绍了Linux下的SocketCAN及其命令行工具和python-can库的使用。
 tags: ["CAN", "SocketCAN", "Linux"]
 ---
 

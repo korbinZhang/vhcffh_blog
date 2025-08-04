@@ -1,5 +1,6 @@
 ---
 date: 2023-01-19
+description: 本文介绍了如何为WSL2启用桥接网络模式，使其获得独立的局域网IP。内容包括在Hyper-V中创建虚拟交换机、修改`.wslconfig`文件。同时，还讲解了如何在WSL2中安装并启用`avahi-daemon`服务，以实现通过mDNS（如`wsl.local`）进行主机名访问。
 tags: ["WSL2", "Network", "mDNS"]
 ---
 

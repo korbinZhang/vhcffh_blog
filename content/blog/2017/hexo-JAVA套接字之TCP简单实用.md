@@ -1,6 +1,7 @@
 ---
 date: 2017-08-09
 tags: ["Java", "TCP", "Socket"]
+description: 本文介绍了Java中TCP套接字编程的基础知识和实用方法。文章通过两个具体的示例进行讲解：第一个是单客户端与服务器的排队连接通信，展示了基本的Socket、ServerSocket、BufferedReader和PrintWriter的使用。第二个示例则演示了如何通过多线程技术，使服务器能够同时处理多个客户端的连接请求，为每个客户端分配一个独立的线程进行通信，从而实现了并发服务的能力。
 ---
 
 # JAVA套接字之TCP简单实用

@@ -1,6 +1,7 @@
 ---
 date: 2017-12-21
 tags: ["Sublime Text", "Plugin"]
+description: 本文提供了一个在Sublime Text 3中实现快速插入当前日期和时间功能的详细教程。整个过程分为三步：首先，通过“New Snippet”创建一个代码片段（.sublime-snippet），定义好包含时间占位符的文本模板。其次，通过“New Plugin”创建一个Python插件（.py），编写一个命令来获取当前系统时间并插入。最后，在用户快捷键设置（Key Bindings）中，将这个新创建的命令绑定到一个自定义的快捷键（如alt+t），从而实现一键插入当前时间的功能。
 ---
 
 # sublime_Text3插入当前时间

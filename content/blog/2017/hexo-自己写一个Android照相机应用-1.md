@@ -1,6 +1,7 @@
 ---
 date: 2017-08-09
 tags: ["Android", "Camera"]
+description: 本文是开发自定义Android相机应用系列教程的第一部分，主要介绍了调用系统相机所需的基础知识。内容包括如何使用`Intent`配合`MediaStore.ACTION_IMAGE_CAPTURE`来启动系统相机程序。文章讲解了两种获取拍摄结果的方式：一种是通过`startActivityForResult`直接从返回的`Intent`数据中获取缩略图（Bitmap），另一种是指定一个文件URI作为输出路径（`MediaStore.EXTRA_OUTPUT`），然后从该文件中读取高清原图。此外，还提到了获取存储权限和处理`onActivityResult`回调的必要步骤。
 ---
 
 # 自己写一个Android照相机应用-1

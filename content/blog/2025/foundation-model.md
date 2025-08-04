@@ -1,5 +1,6 @@
 ---
 date: 2025-04-16
+description: 本文解析了大模型参数规模与内存占用的关系。内容解释了参数单位（B/M）的含义，并详细说明了float32、float16、int8等不同数据类型下每个参数的内存大小。文章以7B模型为例进行计算，并列举了GPT-3、LLaMA-2和DeepSeek等主流模型的参数规模及常用数据类型。
 tags: ["Large Model", "GPT", "LLaMA"]
 ---
 

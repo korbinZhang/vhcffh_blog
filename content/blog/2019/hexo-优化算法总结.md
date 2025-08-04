@@ -1,6 +1,7 @@
 ---
 date: 2019-07-04
 tags: ["Optimization", "Deep Learning"]
+description: 本文总结了深度学习中几种主流的优化算法。内容详细介绍了AdaGrad、RMSProp和Adam优化器的核心思想和数学更新公式，解释了它们如何自适应地调整学习率。此外，文章还通过Python代码示例，模拟并对比了随机梯度下降（SGD）、小批量梯度下降（MSGD）和批量梯度下降（BGD）这三种基本的梯度下降方法在参数更新上的不同之处。
 ---
 
 # 优化算法总结

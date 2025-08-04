@@ -1,6 +1,7 @@
 ---
 date: 2019-08-22
 tags: ["OWL", "RDF", "Semantic Web"]
+description: 本文介绍了Web本体语言（OWL）的基础知识。内容涵盖了OWL的基本元素，如类、个体和属性，并解释了其与RDF的关系。文章还详细介绍了RDF的多种序列化方法，包括RDF/XML、N-Triples、Turtle、RDFa和JSON-LD，并以RDF/XML和Turtle为例展示了具体的语法格式和使用方法，为理解语义网技术提供了入门指导。
 ---
 
 # OWL基础

@@ -1,6 +1,7 @@
 ---
 date: 2017-08-04
 tags: ["VPS", "Linux", "Web Server"]
+description: 本文是一篇在搬瓦工（Bandwagon Host）的CentOS VPS上搭建Web服务器的教程。文章详细记录了安装Apache、PHP和MySQL（LAMP环境）的全过程。内容包括使用`yum`命令分别安装httpd、php及其常用组件、mysql-server等软件包，以及如何使用`service`命令启动、停止和重启各项服务。此外，还介绍了如何通过`chkconfig`命令将服务设置为开机自启动，并讲解了如何为MySQL的root账户设置初始密码，为搭建一个完整的网站运行环境提供了清晰的步骤指导。
 ---
 
 # 搬瓦工VPS搭建Web服务器

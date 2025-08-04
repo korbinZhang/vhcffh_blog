@@ -1,6 +1,7 @@
 ---
 date: 2019-09-09
 tags: ["Nvidia", "Linux", "Driver"]
+description: 本文记录了一次解决Linux系统下Nvidia显卡驱动错误的经历。在使用`bumblebee`进行双显卡切换时，`optirun`命令报错“Failed to load module "nouveau"”。作者通过修改`/etc/bumblebee/xorg.conf.nouveau`文件，取消对`BusID`的注释并正确指定显卡PCI地址，最终成功禁用了nouveau开源驱动，并加载了nvidia专有驱动。
 ---
 
 # nvidia显卡驱动错误

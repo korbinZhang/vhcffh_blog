@@ -1,6 +1,7 @@
 ---
 date: 2019-03-20
 tags: ["Java", "Annotation"]
+description: 本文介绍了Java中的注解（Annotation）及其使用。主要讲解了三种标准注解（@Override, @Deprecated, @SuppressWarnings）和四种元注解（@Target, @Retention, @Documented, @Inherited）的功能与用法，并提及了Java 7和8中新增的@SafeVarargs, @FunctionalInterface, @Repeatable注解。
 ---
 
 # java注解的使用

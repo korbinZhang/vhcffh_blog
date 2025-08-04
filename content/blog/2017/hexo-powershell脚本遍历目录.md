@@ -1,6 +1,7 @@
 ---
 date: 2017-09-01
 tags: ["Powershell", "Script"]
+description: 本文提供了一个实用的PowerShell脚本示例，用于遍历指定目录及其所有子目录，并计算每个子文件夹的总大小。脚本的核心是一个名为`filesize`的自定义函数，该函数接收一个文件路径作为参数，然后利用`dir -Path`和`ForEach-Object`循环遍历目录。对于每个子文件夹，它会通过`dir -Recurse`递归获取所有文件并累加其大小（Length属性），最终以KB为单位输出每个文件夹的名称和计算出的总大小。
 ---
 
 # powershell脚本遍历目录

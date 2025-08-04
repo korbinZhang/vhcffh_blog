@@ -1,6 +1,6 @@
 ---
 date: 2022-11-13
-description: '简单介绍AES加密的过程，并使用python实现AES加密'
+description: "本文介绍了高级加密标准（AES）算法，并用Python进行了实现。内容阐述了AES作为DES替代标准的发展背景，详细讲解了其核心原理，包括密钥扩展、S盒变换、行变换、列变换等加密步骤，并提供了完整的加密和解密Python代码。"
 tags: ["Python", "AES", "Cryptography"]
 ---
 

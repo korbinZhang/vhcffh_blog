@@ -1,6 +1,7 @@
 ---
 date: 2019-05-21
 tags: ["Linux", "Command"]
+description: 本文汇总了Linux中常用的一些命令。内容涵盖了`tar`命令的打包与解压操作，`wget`设置代理的两种方法，`ps`命令查看进程信息，以及用户和用户组管理的命令，如`useradd`, `userdel`, `groupadd`, `chown`等，为Linux日常使用提供了实用的命令参考。
 ---
 
 # Linux常用命令

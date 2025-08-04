@@ -1,6 +1,7 @@
 ---
 date: 2019-08-20
 tags: ["scikit-learn", "Linear Model"]
+description: 本文概述了scikit-learn库中的多种广义线性模型。内容从普通最小二乘法（LinearRegression）开始，依次介绍了岭回归（Ridge）、Lasso回归、多任务Lasso（MultiTaskLasso）、弹性网络（ElasticNet）以及多任务弹性网络（MultiTaskElasticNet）。文章对每种模型的目标函数进行了数学公式的展示，并解释了关键参数（如α和ρ）的作用，为理解和选择线性模型提供了清晰的指导。
 ---
 
 # sklearn中的广义线性模型

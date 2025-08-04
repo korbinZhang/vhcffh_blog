@@ -1,6 +1,7 @@
 ---
 date: 2017-08-03
 tags: ["Python", "Windows"]
+description: 本文详细介绍了在Windows操作系统下如何安装并配置Python 2和Python 3，以实现两个版本的和谐共存。主要步骤包括：将不同版本的Python安装到不同的目录下，正确配置系统环境变量（Path），将各自安装目录下的`python.exe`重命名为`python2.exe`和`python3.exe`以便区分调用，最后通过强制重新安装pip来解决两个版本的包管理工具冲突问题，确保`pip2`和`pip3`能够正常使用。
 ---
 
 # Python2与Python3共存

@@ -1,6 +1,7 @@
 ---
 date: 2019-09-06
 tags: ["Few-shot Learning", "GNN"]
+description: "本文解读了论文《Edge-Labeling Graph Neural Network for Few-shot Learning》。该方法将小样本分类问题转化为图节点标签预测任务，通过构建一个边标签图来学习样本间的关系。文章介绍了模型的核心思想：利用卷积网络提取特征，构建图结构，并通过图神经网络的邻域聚合框架迭代更新节点和边的特征，最终预测查询样本的类别。"
 ---
 
 # 小样本学习的边缘标签图神经网络

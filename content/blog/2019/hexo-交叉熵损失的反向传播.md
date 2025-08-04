@@ -1,6 +1,7 @@
 ---
 date: 2019-10-02
 tags: ["Cross Entropy", "Backpropagation", "Deep Learning"]
+description: 本文详细推导了在多分类问题中，结合Softmax激活函数和交叉熵损失函数的反向传播过程。文章从定义Softmax和交叉熵损失开始，逐步计算了损失对网络输出的偏导，以及Softmax函数对其输入的偏导（雅可比矩阵）。最终通过链式法则，得出了一个简洁而优美的结论：损失对Softmax层输入的梯度等于模型的预测概率与真实标签之差（ŷ - y）。
 ---
 
 # 交叉熵损失的反向传播

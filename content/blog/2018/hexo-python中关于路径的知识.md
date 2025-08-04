@@ -1,6 +1,7 @@
 ---
 date: 2018-05-17
 tags: ["Python", "OS"]
+description: 本文简明扼要地总结了Python中`os`模块里用于处理文件和目录路径的几个常用函数。内容涵盖了获取当前工作目录（`os.getcwd`）、列出目录内容（`os.listdir`）、删除文件（`os.remove`或`os.unlink`）、删除空目录（`os.rmdir`）、递归删除目录（`os.removedirs`）以及更改当前工作目录（`os.chdir`）等基本操作，为Python进行文件系统交互提供了实用的命令参考。
 ---
 
 # python中关于路径的知识

@@ -1,6 +1,7 @@
 ---
 date: 2017-06-25
 tags: ["Chrome", "Android", "APK"]
+description: 本文记录了作者探索使用谷歌浏览器插件ARChon在电脑上运行安卓APK文件的过程和遇到的问题。文章详细描述了解决一系列错误的方法，包括处理“CRX_SIGNATURE_VERIFICATION_FAILED”包无效错误，修改插件文件夹名，解决manifest.json中的import和message元素缺失问题等。作者还提到了使用twerk应用来转换APK，以及通过开启浏览器硬件加速和相关标志来解决WebGL不受支持的问题，最终成功在Chrome中运行了简书等应用。
 ---
 
 # 谷歌浏览器运行安卓APK

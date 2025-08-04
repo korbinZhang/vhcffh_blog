@@ -1,5 +1,6 @@
 ---
 date: 2025-03-04
+description: 本文介绍了从Git下载、配置、编译并运行最新Linux内核的全过程。内容涵盖了使用`git clone`获取源码，通过`make menuconfig`进行配置，以及交叉编译arm64内核的步骤。文章还解决了内核启动时因缺少根文件系统而导致的"Kernel panic"问题，并演示了如何制作并挂载一个简单的initramfs。
 tags: ["Git", "Linux", "QEMU"]
 ---
 

@@ -1,5 +1,6 @@
 ---
 date: 2024-07-20
+description: 本文介绍了使用acme.sh和DNSPod API为腾讯云域名自动申请和续签SSL证书的方法。内容涵盖安装acme.sh、获取并配置DNSPod密钥、通过DNS方式签发泛域名证书，以及最后将证书安装到Nginx并配置自动重载的完整流程。
 tags: ["DNSPod", "acme.sh", "SSL"]
 ---
 

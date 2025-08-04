@@ -1,6 +1,7 @@
 ---
 date: 2017-08-03
 tags: ["VPS", "Linux", "Shadowsocks"]
+description: 本文介绍了在搬瓦工（Bandwagon Host）VPS上安装并优化Shadowsocks（SS）的几种方法。文章首先不推荐使用搬瓦工后台自带的一键安装，因为它速度较慢。接着，重点推荐使用shell脚本进行安装，并分别给出了安装ShadowsocksR（速度快，推荐）和Shadowsocks-Go版本的命令。此外，还涵盖了服务的启动、停止、重启等管理命令，修改配置文件以支持多用户的方法，以及解决CentOS默认未安装wget等常见问题的步骤。
 ---
 
 # 搬瓦工安装ss并加速

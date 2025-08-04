@@ -1,5 +1,6 @@
 ---
 date: 2025-06-22
+description: 本文总结了GCC编译中实用的编译选项及常用库的链接方法。内容列举了`-save-temps`、`-###`、`-fsanitize=address`等高级编译选项，并整理了数学库(-lm)、线程库(-lpthread)等常用系统库以及OpenCV、FFmpeg等第三方库的GCC链接命令，为C/C++开发者提供了便利的参考。
 tags: ["GCC", "Build", "Options"]
 ---
 

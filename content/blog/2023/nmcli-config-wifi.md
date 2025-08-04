@@ -1,5 +1,6 @@
 ---
 date: 2023-01-09
+description: 本文是一份使用`nmcli`命令配置WiFi的快速指南。内容涵盖了扫描、连接、断开WiFi网络，以及创建WiFi热点、设置密码等操作。此外，还简要说明了如何为创建的热点配置DHCP服务，为Linux命令行网络管理提供了实用参考。
 tags: ["Linux", "NetworkManager", "WiFi"]
 ---
 

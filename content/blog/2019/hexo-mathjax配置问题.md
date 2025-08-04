@@ -1,6 +1,7 @@
 ---
 date: 2019-08-10
 tags: ["MathJax", "Hexo"]
+description: 本文解决了在使用Hexo时MathJax无法正确渲染单行公式的问题。文章指出，MathJax自2.3版本后配置方式发生变化，旧的`MathJax.Hub.Config`配置不再适用。文中提供了新的配置方法，即使用`window.MathJax`对象进行设置，并提及了解决Hexo默认转义问题的方法，确保公式能正确显示。
 ---
 
 # mathjax配置问题

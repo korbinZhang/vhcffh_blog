@@ -1,6 +1,7 @@
 ---
 date: 2017-08-09
 tags: ["Python", "PyQt5"]
+description: 本文记录了几个与Python PyQt5开发相关的常用命令和技巧。内容涵盖了如何使用`pip`安装PyQt5库，如何利用`pyuic`工具将Qt Designer创建的`.ui`文件转换为Python代码（.py）。在控件使用方面，介绍了如何将`QLineEdit`设置为密码输入模式。最后，文章还讲解了如何使用`pyinstaller`工具将PyQt5应用程序打包成独立的可执行文件（.exe），并对`-F`、`-w`等常用打包参数的含义进行了解释。
 ---
 
 # 涉及PyQt5的一些命令

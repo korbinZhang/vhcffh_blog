@@ -1,5 +1,6 @@
 ---
 date: 2025-03-11
+description: 本文介绍了如何编译BusyBox并将其作为根文件系统，通过QEMU运行自定义编译的Linux内核。内容涵盖了下载BusyBox源码、配置静态编译、解决编译错误、打包生成initramfs.cpio.gz文件，以及最终使用QEMU加载内核和根文件系统的完整命令和步骤。
 tags: ["Linux", "BusyBox", "QEMU"]
 ---
 

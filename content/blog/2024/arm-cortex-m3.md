@@ -1,6 +1,7 @@
 ---
 outline: true
 date: 2024-04-19
+description: 本文全面介绍了ARM Cortex-M3处理器的基础知识。内容涵盖其高性能、先进中断处理、低功耗等特性，并详细讲解了寄存器组、操作模式、嵌套向量中断控制器（NVIC）、存储器映射以及可选的MPU等核心概念，为嵌入式开发者提供了系统性的入门指南。
 tags: ["ARM", "Cortex-M3", "Embedded"]
 ---
 

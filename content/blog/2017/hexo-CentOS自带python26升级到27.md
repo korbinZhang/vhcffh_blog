@@ -1,6 +1,7 @@
 ---
 date: 2017-09-12
 tags: ["CentOS", "Python"]
+description: 本文详细介绍了在CentOS系统中将自带的Python 2.6版本升级到2.7.3的具体步骤。内容涵盖了从官网下载Python 2.7.3源码包，通过编译安装（configure, make, make install）完成新版本的部署，以及如何通过建立软链接（ln -s）将系统默认的python命令指向新安装的2.7版本。同时，文章还特别指出了升级后需要修复yum命令对旧版Python依赖的问题，通过修改`/usr/bin/yum`文件确保系统工具的正常运行。
 ---
 
 # CentOS自带python26升级到27

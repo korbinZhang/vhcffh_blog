@@ -1,6 +1,7 @@
 ---
 date: 2019-08-19
 tags: ["Ensemble Learning", "Bagging", "Boosting"]
+description: 本文总结了集成学习中的几种核心算法。内容主要介绍了Bagging（如随机森林）和Boosting（如AdaBoost）两大类方法的思想和区别。此外，还详细阐述了梯度提升（Gradient Boosting）算法的原理和步骤，并点明了随机森林、提升树和GBDT等模型分别是Bagging或Boosting与决策树结合的产物，为理解集成学习提供了清晰的框架。
 ---
 
 # 集成学习算法总结

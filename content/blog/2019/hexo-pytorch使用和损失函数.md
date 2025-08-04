@@ -1,6 +1,7 @@
 ---
 date: 2019-07-26
 tags: ["PyTorch", "Loss Function"]
+description: 本文总结了PyTorch框架中的常用操作和损失函数。内容首先介绍了激活函数和BatchNorm2d等层，以及`normalize`, `cat`, `stack`等张量操作。接着，详细列举并解释了多种损失函数，如L1Loss, MSELoss, CrossEntropyLoss, NLLLoss, BCELoss, HingeEmbeddingLoss, CosineEmbeddingLoss等，并给出了它们的数学公式，为PyTorch使用者提供了全面的参考。
 ---
 
 # pytorch使用和损失函数

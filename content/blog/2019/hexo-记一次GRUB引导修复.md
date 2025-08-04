@@ -1,6 +1,7 @@
 ---
 date: 2019-09-03
 tags: ["GRUB", "Linux", "Dual Boot"]
+description: 本文记录了一次在Arch Linux与Windows 10双系统环境下，因Windows更新和修复导致GRUB引导丢失的修复过程。作者在尝试多种方法失败后，最终通过在`grub-install`命令中添加`--removable`参数，或手动将GRUB文件移动到缺省/后备启动路径（EFI/BOOT/BOOTX64.EFI），成功解决了引导卡在`GRUB _`闪烁的问题，恢复了系统启动。
 ---
 
 # 记一次GRUB引导修复

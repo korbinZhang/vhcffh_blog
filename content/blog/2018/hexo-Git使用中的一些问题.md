@@ -1,6 +1,7 @@
 ---
 date: 2018-01-22
 tags: ["Git", "SSH"]
+description: 本文总结了Git使用过程中常见的一些配置和操作问题。内容涵盖了全局和项目级别的用户信息配置方法，SSH密钥的生成、查看及测试连接。文章还通过图示清晰地解释了Git的工作区、暂存区和版本库三个核心概念，并详细说明了`git add`, `git commit`, `git reset`, `git rm --cached`, `git checkout`等关键命令在不同区域之间切换和重置文件的作用及其潜在风险。
 ---
 
 # Git使用中的一些问题

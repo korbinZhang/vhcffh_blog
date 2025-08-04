@@ -1,6 +1,6 @@
 ---
 date: 2022-08-16
-description: "总结CSS flex布局的一些属性"
+description: "本文总结了CSS中Flex弹性布局的常用属性。内容涵盖了主轴方向（flex-direction）、换行（flex-wrap）、对齐方式（justify-content、align-items）以及项目的放大（flex-grow）和缩小（flex-shrink）比例等，为快速掌握Flex布局提供了清晰的语法参考。"
 tags: ["CSS", "Flexbox"]
 ---
 

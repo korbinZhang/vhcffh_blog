@@ -1,6 +1,7 @@
 ---
 date: 2019-03-10
 tags: ["Data Visualization", "JavaScript"]
+description: 本文盘点了一系列优秀的数据可视化开源项目，主要基于JavaScript。文中列举并介绍了多个知名的图表库，如D3.js、Chart.js、LeafletJS（专注于地图）、ECharts（百度出品）、Chartist.js等。此外，还提及了阿里巴巴的AntV系列可视化解决方案，包括G2、G6、F2和L7，为开发者提供了丰富的选择。
 ---
 
 # 数据可视化开源项目

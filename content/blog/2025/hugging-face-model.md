@@ -1,5 +1,6 @@
 ---
 date: 2025-05-15
+description: "本文是一份Hugging Face模型格式加载与推理指南。内容按文件类型分类，详细说明了PyTorch(.bin)、Safetensors、TensorFlow(.h5)、ONNX、GGUF等多种模型格式的加载方式和推理方法，并为每种格式提供了具体的代码示例，帮助开发者快速上手使用不同框架的模型。"
 tags: ["Hugging Face", "Model", "PyTorch", "TensorFlow"]
 ---
 

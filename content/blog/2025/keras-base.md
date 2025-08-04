@@ -1,5 +1,6 @@
 ---
 date: 2025-05-10
+description: 本文是Keras框架的基础入门教程。内容从安装开始，通过三个实例程序，分别演示了如何使用Keras构建、编译和训练线性回归、非线性回归以及MNIST手写数字分类模型。文章详细讲解了`Sequential`模型、`Dense`全连接层、激活函数和优化器的基本用法。
 tags: ["Keras", "TensorFlow", "MNIST"]
 ---
 

@@ -1,5 +1,6 @@
 ---
 date: 2021-11-21
+description: 本文解决了Vim中Coc-Clangd因头文件与源文件分离而无法找到头文件的问题。核心方法是在项目根目录创建`compile_commands.json`或`compile_flags.txt`文件，并介绍了如何分别使用CMake和Bear（配合make）来自动生成该配置文件，以确保语言服务器正常工作。
 tags: ["Vim", "Coc", "Clangd"]
 ---
 

@@ -1,6 +1,6 @@
 ---
 date: 2022-11-07
-description: '简单介绍DES加密的过程，并使用python实现DES加密'
+description: "本文介绍了数据加密标准（DES）算法，并用Python进行了实现。内容详细讲解了DES作为一种对称密钥算法的加密原理，包括初始置换、16轮迭代中的子密钥生成、密码函数f的核心运算（扩展、S盒、P置换）以及最后的尾置换，并提供了完整的Python代码。"
 tags: ["Python", "DES", "Cryptography"]
 ---
 

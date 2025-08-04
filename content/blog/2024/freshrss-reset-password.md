@@ -1,5 +1,6 @@
 ---
 date: 2024-07-06
+description: 本文介绍了如何重置FreshRSS的用户密码。由于密码Hash存储在配置文件中，可通过Python的`bcrypt`库生成一个新的Hash值，替换掉`<freshrss-root>/data/users/<user-name>/config.php`文件中的旧`passwordHash`，即可用新密码登录。
 tags: ["FreshRSS", "Password"]
 ---
 

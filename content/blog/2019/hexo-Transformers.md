@@ -1,6 +1,7 @@
 ---
 date: 2019-12-21
 tags: ["Transformers", "PyTorch", "NLP"]
+description: 本文介绍了Hugging Face的Transformers库，一个强大的Python库，提供了BERT、GPT-2等多种预训练模型用于NLU和NLG任务。文章概述了该库的特点，列举了其支持的多种主流模型，并详细说明了库的核心使用方法，包括模型（Model）、配置（Config）和分词器（Tokenizer）三个主要类。最后通过一个BERT的实例，展示了如何加载模型、处理文本输入以及进行预测。
 ---
 
 # Transformers

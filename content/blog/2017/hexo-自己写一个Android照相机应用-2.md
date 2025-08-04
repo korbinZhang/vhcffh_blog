@@ -1,6 +1,7 @@
 ---
 date: 2017-08-19
 tags: ["Android", "Camera"]
+description: 本文是开发自定义Android相机应用系列教程的第二部分，重点讲解了如何实现一个自定义的相机界面。内容涵盖了Camera对象的生命周期管理，包括获取、预览和释放相机资源，并将其与Activity的生命周期（onResume, onPause）进行绑定。文章还详细说明了如何使用SurfaceView来显示相机预览，如何设置相机参数（如图片格式、尺寸、自动对焦），以及如何通过调用`takePicture`方法并利用其回调函数来捕获图像数据，最终将照片保存到文件中。
 ---
 
 # 自己写一个Android照相机应用-2
