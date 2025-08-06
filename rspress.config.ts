@@ -30,7 +30,7 @@ export default defineConfig({
     prevPageText: '上一篇',
   },
   route: {
-    exclude: ['**/*.tsx'],
+    exclude: ['**/components/*.tsx'],
   },
   plugins: [
     katex(),

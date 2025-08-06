@@ -36,6 +36,7 @@ const Archives = () => {
     }))
     .filter((page) => page.year > 2000 && page.year <= new Date().getFullYear())
     .filter((page) => page.title != '')
+    .filter((page) => page.route.startsWith('/blog'))
     .sort((a, b) => b.date.getTime() - a.date.getTime())
 
   let lastYear = -1
