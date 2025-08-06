@@ -21,6 +21,7 @@
     "rspress": "^1.37.2",
     "rspress-plugin-google-analytics": "^0.3.0",
     "rspress-plugin-katex": "^0.3.0",
+    "rspress-plugin-mermaid": "^0.3.0",
     "tailwindcss": "^4.1.3"
   }
 }

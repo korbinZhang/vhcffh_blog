@@ -4,6 +4,7 @@ import { pluginRss } from '@rspress/plugin-rss'
 import sitemap from './plugins/sitemap'
 import ga from 'rspress-plugin-google-analytics'
 import path from 'path'
+import mermaid from 'rspress-plugin-mermaid'
 
 export default defineConfig({
   // 文档根目录
@@ -40,6 +41,7 @@ export default defineConfig({
       domain: 'https://www.vhcffh.com',
     }),
     ga({ id: `G-D9NXKT8Z3L` }),
+    mermaid(),
   ],
   globalStyles: path.join(__dirname, 'theme/index.css'),
 })
