@@ -81,15 +81,11 @@ const Archives = () => {
   )
   return (
     <Theme.Layout
-      uiSwitch={{ showSidebar: false }}
+      uiSwitch={{ showSidebar: false, showDocFooter: false }}
       beforeDocContent={docContent}
       afterOutline={GoogleAd}
     />
   )
-}
-
-const Book = () => {
-  return <Theme.Layout uiSwitch={{ showSidebar: true }} />
 }
 
 const Layout = () => {
@@ -98,11 +94,11 @@ const Layout = () => {
   if (frontmatter.layout === 'archives') {
     return <Archives />
   }
-  if (page.pagePath.startsWith('book')) {
-    return <Book />
-  }
   return (
-    <Theme.Layout uiSwitch={{ showSidebar: false }} afterOutline={GoogleAd} />
+    <Theme.Layout
+      uiSwitch={{ showSidebar: page.pagePath.startsWith('book') }}
+      afterOutline={GoogleAd}
+    />
   )
 }
 
