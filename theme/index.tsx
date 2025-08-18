@@ -90,13 +90,15 @@ const Archives = () => {
 
 const Layout = () => {
   const { page } = usePageData()
-  const { frontmatter } = page
-  if (frontmatter.layout === 'archives') {
+  if (page.pagePath == 'blog/index.md') {
     return <Archives />
   }
   return (
     <Theme.Layout
-      uiSwitch={{ showSidebar: page.pagePath.startsWith('book') }}
+      uiSwitch={{
+        showSidebar: page.pagePath.startsWith('book'),
+        showDocFooter: !page.pagePath.startsWith('tool'),
+      }}
       afterOutline={GoogleAd}
     />
   )

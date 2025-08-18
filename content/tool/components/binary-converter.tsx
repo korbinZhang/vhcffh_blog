@@ -219,13 +219,17 @@ const BinaryConverter = () => {
             <label className="font-semibold">字节序:</label>
             <button
               onClick={() => setLittleEndian(false)}
-              className={`px-3 py-1 rounded ${!littleEndian ? 'bg-blue-500 text-white' : 'bg-gray-200'}`}
+              className={`px-3 py-1 rounded ${
+                !littleEndian ? 'bg-blue-500 text-white' : 'bg-gray-200'
+              }`}
             >
               大端 (Big)
             </button>
             <button
               onClick={() => setLittleEndian(true)}
-              className={`px-3 py-1 rounded ${littleEndian ? 'bg-blue-500 text-white' : 'bg-gray-200'}`}
+              className={`px-3 py-1 rounded ${
+                littleEndian ? 'bg-blue-500 text-white' : 'bg-gray-200'
+              }`}
             >
               小端 (Little)
             </button>
@@ -247,16 +251,17 @@ const BinaryConverter = () => {
         </div>
       </div>
 
-      {bytes.length > 0 && (
-        <div className="p-4 rounded-lg shadow bg-white">
-          <h3 className="text-lg font-semibold mb-2">Hex Bytes</h3>
-          <div className="flex flex-wrap gap-2">
-            {Array.from(bytes).map((byte, i) => (
-              <ByteChunk key={i} byte={byte.toString(16).padStart(2, '0').toUpperCase()} />
-            ))}
-          </div>
+      <div className="p-4 rounded-lg shadow bg-white">
+        <h3 className="text-lg font-semibold mb-2">Hex Bytes</h3>
+        <div className="flex flex-wrap gap-2">
+          {Array.from(bytes).map((byte, i) => (
+            <ByteChunk
+              key={i}
+              byte={byte.toString(16).padStart(2, '0').toUpperCase()}
+            />
+          ))}
         </div>
-      )}
+      </div>
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {[

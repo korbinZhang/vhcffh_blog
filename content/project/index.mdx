@@ -1,5 +1,4 @@
 ---
-layout: custom
 date: 2025-08-17
 ---
 
