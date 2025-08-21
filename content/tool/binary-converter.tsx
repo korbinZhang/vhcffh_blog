@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useCallback, useEffect } from 'react'
+import { renderInlineMarkdown, getCustomMDXComponent } from 'rspress/theme'
 
-// --- 类型定义 ---
 interface TypeInfo {
   name: string
   bytes: number
@@ -59,10 +59,7 @@ const TYPE_INFO: TypeInfo[] = [
   },
 ]
 
-// --- 辅助函数 ---
 const isFloatType = (name: string) => name.startsWith('float')
-
-// --- 子组件 ---
 
 const ByteChunk = ({ byte }: { byte: string }) => (
   <div className="font-mono bg-gray-200 text-gray-800 rounded px-2 py-1 text-center">
@@ -99,7 +96,6 @@ const ConversionCard = React.memo(
   )
 )
 
-// --- 主组件 ---
 const BinaryConverter = () => {
   const [hex, setHex] = useState('')
   const [littleEndian, setLittleEndian] = useState(false)
@@ -146,9 +142,7 @@ const BinaryConverter = () => {
       const values = conversionResults[type.name] || []
       const isFloat = isFloatType(type.name)
       const formatted = values
-        .map((v) =>
-          isFloat ? v.toFixed(floatPrecision) : v.toString()
-        )
+        .map((v) => (isFloat ? v.toFixed(floatPrecision) : v.toString()))
         .join(', ')
       newDisplayValues[type.name] = formatted
     }
@@ -204,12 +198,11 @@ const BinaryConverter = () => {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 mt-5">
       <div className="p-4 rounded-lg shadow bg-white">
         <h3 className="text-lg font-semibold mb-2">输入</h3>
-        <textarea
+        <input
           className="w-full border px-2 py-1 rounded font-mono text-lg"
-          rows={3}
           value={hex}
           onChange={(e) => setHex(e.target.value)}
           placeholder="在此输入 Hex, e.g., 41 42 43 44"
@@ -292,4 +285,24 @@ const BinaryConverter = () => {
   )
 }
 
-export default BinaryConverter
+export const frontmatter = {
+  sidebar: true,
+  date: '2025-07-27',
+  description: '将二进制转换为常见的数据结构，包括int，flaot等',
+  title: '二进制转换工具',
+}
+
+const Main = () => {
+  const MDXComponents = getCustomMDXComponent()
+  return (
+    <>
+      <MDXComponents.h1>{frontmatter.title}</MDXComponents.h1>
+      {renderInlineMarkdown(
+        '将二进制与`int8_t`, `float`, `double` 等常见数据进行转换。'
+      )}
+      <BinaryConverter />
+    </>
+  )
+}
+
+export default Main
