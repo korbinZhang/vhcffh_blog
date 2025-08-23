@@ -10,9 +10,9 @@ export default defineConfig({
   // 文档根目录
   root: 'content',
   logo: '/favicon-32x32.png',
-  logoText: `Korbin's blog`,
+  logoText: `Korbin`,
   icon: '/favicon.ico',
-  title: `Korbin's blog`,
+  title: `Korbin's Personal Website`,
   description: '一个简单的个人博客，用于记录笔记',
   head: [
     '<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">',

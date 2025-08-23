@@ -1,12 +1,20 @@
 ---
-date: 2025-05-05
+pageType: home
+
+hero:
+  name: Korbin
+  text: Korbin's Personal Website
+  actions:
+    - theme: brand
+      text: Blog
+      link: /blog/index
+    - theme: brand
+      text: Project
+      link: /project/index
+    - theme: brand
+      text: Book
+      link: /book/index
+    - theme: brand
+      text: Tool
+      link: /tool/index
 ---
-
-# Korbin's blog
-
-- [Blog](./blog/index.md)
-- [Book](./book/index.md)
-- [Project](./project/index.mdx)
-- [Tool](./tool/index.mdx)
-
-
