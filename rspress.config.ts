@@ -1,6 +1,5 @@
 import { defineConfig } from 'rspress/config'
 import katex from 'rspress-plugin-katex'
-import { pluginRss } from '@rspress/plugin-rss'
 import sitemap from './plugins/sitemap'
 import ga from 'rspress-plugin-google-analytics'
 import path from 'path'
@@ -31,9 +30,6 @@ export default defineConfig({
   },
   plugins: [
     katex(),
-    pluginRss({
-      siteUrl: 'https://www.vhcffh.com',
-    }),
     sitemap({
       domain: 'https://www.vhcffh.com',
     }),
