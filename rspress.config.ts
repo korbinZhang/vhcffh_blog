@@ -2,6 +2,7 @@ import { defineConfig } from 'rspress/config'
 import katex from 'rspress-plugin-katex'
 import sitemap from './plugins/sitemap'
 import ga from 'rspress-plugin-google-analytics'
+import { pluginRss } from '@rspress/plugin-rss'
 import path from 'path'
 import mermaid from 'rspress-plugin-mermaid'
 
@@ -35,6 +36,10 @@ export default defineConfig({
     }),
     ga({ id: `G-D9NXKT8Z3L` }),
     mermaid(),
+    pluginRss({
+      siteUrl: 'https://www.vhcffh.com',
+      feed: { test: 'blog/' },
+    }),
   ],
   globalStyles: path.join(__dirname, 'theme/index.css'),
 })
