@@ -43,4 +43,5 @@ export default defineConfig({
     exclude: ['components/**/*'],
   },
   outDir: 'dist',
+  globalStyles: path.join(__dirname, 'tailwind.css'),
 });
