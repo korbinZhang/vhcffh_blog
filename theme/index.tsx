@@ -1,22 +1,38 @@
-import React from 'react'
-import { usePageData } from 'rspress/runtime'
-import Theme from 'rspress/theme'
+import { usePage } from '@rspress/core/runtime';
+import { Layout as BasicLayout } from '@rspress/core/theme-original';
 
 const Layout = () => {
-  const { page } = usePageData()
-  return (
-    <Theme.Layout
-      uiSwitch={{
-        showSidebar: page.pagePath.startsWith('book'),
-        showDocFooter: !page.pagePath.startsWith('tool'),
-      }}
-    />
-  )
-}
+  const { page } = usePage();
 
-export default {
-  ...Theme,
-  Layout,
-}
+  if (page.routePath.startsWith('/blog')) {
+    if (page.frontmatter.sidebar === undefined) {
+      page.frontmatter.sidebar = false;
+    }
+    if (page.frontmatter.outline === undefined) {
+      page.frontmatter.outline = false;
+    }
+  }
+  if (page.routePath.startsWith('/project')) {
+    if (page.frontmatter.sidebar === undefined) {
+      page.frontmatter.sidebar = false;
+    }
+    if (page.frontmatter.outline === undefined) {
+      page.frontmatter.outline = false;
+    }
+  }
 
-export * from 'rspress/theme'
+  if (page.routePath.startsWith('/tool')) {
+    if (page.frontmatter.sidebar === undefined) {
+      page.frontmatter.sidebar = false;
+    }
+    if (page.frontmatter.outline === undefined) {
+      page.frontmatter.outline = false;
+    }
+  }
+
+
+  return <BasicLayout />;
+};
+
+export { Layout };
+export * from '@rspress/core/theme-original';
