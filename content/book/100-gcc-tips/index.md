@@ -39,7 +39,7 @@
 
 - [error: cast from ... to ... loses precision](./018-cast-lose-precision.md)
 - [all warnings being treated as errors](./019-warnings-treated-as-errors.md)
-- [gdb 无法调试 gcc 编译的程序](./020-specify-dwarf-version.md)
+- [gdb 无法调试 gcc 编译的程序]
 
 ## 其它
 
