@@ -1,15 +1,18 @@
-import { defineConfig } from 'rspress/config'
-import katex from 'rspress-plugin-katex'
-import sitemap from './plugins/sitemap'
-import ga from 'rspress-plugin-google-analytics'
-import { pluginRss } from '@rspress/plugin-rss'
-import path from 'path'
-import mermaid from 'rspress-plugin-mermaid'
+import * as path from 'node:path';
+import { defineConfig } from '@rspress/core';
+import { pluginRss } from '@rspress/plugin-rss';
+import { pluginSitemap } from '@rspress/plugin-sitemap';
+import ga from 'rspress-plugin-google-analytics';
+import mermaid from 'rspress-plugin-mermaid';
+import katex from './plugins/katex';
 
 export default defineConfig({
-  // 文档根目录
-  root: 'content',
-  logo: '/favicon-32x32.png',
+  root: path.join(__dirname, 'content'),
+  logo: {
+    light: '/favicon-32x32.png',
+    dark: '/favicon-32x32.png',
+  },
+  lang: 'zh',
   logoText: `Korbin`,
   icon: '/favicon.ico',
   title: `Korbin's Personal Website`,
@@ -22,17 +25,12 @@ export default defineConfig({
     '<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3597458182538053" crossorigin="anonymous"></script>',
   ],
   themeConfig: {
-    outlineTitle: '目录',
-    outline: false,
     enableScrollToTop: true,
-    searchPlaceholderText: '搜索',
-    nextPageText: '下一篇',
-    prevPageText: '上一篇',
   },
   plugins: [
     katex(),
-    sitemap({
-      domain: 'https://www.vhcffh.com',
+    pluginSitemap({
+      siteUrl: 'https://www.vhcffh.com',
     }),
     ga({ id: `G-D9NXKT8Z3L` }),
     mermaid(),
@@ -41,5 +39,8 @@ export default defineConfig({
       feed: { test: 'blog/' },
     }),
   ],
-  globalStyles: path.join(__dirname, 'theme/index.css'),
-})
+  route: {
+    exclude: ['components/**/*'],
+  },
+  outDir: 'dist',
+});
