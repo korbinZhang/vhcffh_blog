@@ -8,30 +8,35 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    strategy:
+      matrix:
+        node-version: [22]
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-
-      - name: Setup Node.js
+        
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+      - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
-          node-version: 18
-          cache: 'npm'
-
-      - name: Install Dependencies
-        run: npm install
+          node-version: ${{ matrix.node-version }}
+          cache: "pnpm"
+      - name: Install dependencies
+        run: pnpm install
 
       - name: Build Project
-        run: npm run build
+        run: pnpm run build
 
       - name: Commit Build to Develop Branch
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git checkout -b develop origin/develop || git checkout develop
-          git --work-tree=./doc_build add .
-          git --work-tree=./doc_build commit -m $(git rev-parse origin/main)
-          git --work-tree=./doc_build push origin develop
+          git --work-tree=./dist add .
+          git --work-tree=./dist commit -m $(git rev-parse origin/main)
+          git --work-tree=./dist push origin develop
