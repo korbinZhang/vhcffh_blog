@@ -1,4 +1,4 @@
-import { usePages } from '@rspress/core/runtime';
+import { useDark, usePages } from '@rspress/core/runtime';
 
 const Archives = () => {
   const { pages } = usePages();
@@ -16,6 +16,8 @@ const Archives = () => {
     .filter((page) => page.title !== '')
     .filter((page) => page.route.startsWith('/blog'))
     .sort((a, b) => b.date.getTime() - a.date.getTime());
+  const isDark = useDark();
+  const linkClassName = `rounded-lg ${isDark ? "hover:bg-gray-700 hover:text-blue-300" : "hover:bg-gray-100 hover:text-blue-600"}`;
 
   let lastYear = -1,
     docLists: React.ReactNode[] = [];
@@ -32,7 +34,7 @@ const Archives = () => {
       );
     }
     docLists.push(
-      <div className="rounded-lg hover:bg-gray-100 hover:text-blue-600">
+      <div className={linkClassName}>
         <a
           className="flex justify-between px-4 py-1"
           key={page.title}
