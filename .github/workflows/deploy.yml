@@ -1,70 +1,36 @@
-name: develop
+name: deploy
 
 on:
-  schedule:
-    - cron: "0 19 * * *"
-  workflow_dispatch:
+  push:
+    branches:
+      - main
 
 jobs:
-  develop:
+  build:
     runs-on: ubuntu-latest
-
+    strategy:
+      matrix:
+        node-version: [22]
     steps:
-      - name: Checkout develop
+      - name: Checkout Repository
         uses: actions/checkout@v4
         with:
-          ref: 'develop'
-          path: 'develop'
-
-      - name: Checkout gh-pages
-        uses: actions/checkout@v4
+          fetch-depth: 0
+        
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
         with:
-          repository: 'jaywcjlove/reference'
-          ref: 'gh-pages'
-          path: 'gh-pages'
-
-      - name: Checkout record 
-        uses: actions/checkout@v4
+          version: 10
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
         with:
-          ref: 'record'
-          path: 'record'
-        continue-on-error: true
+          node-version: ${{ matrix.node-version }}
+          cache: "pnpm"
+      - name: Install dependencies
+        run: pnpm install
 
-      - name: Read last-commit
-        run: |
-          cd ./develop
-          develop_last_commit=$(git rev-parse HEAD)
-          cd ..
-
-          cd ./gh-pages
-          gh_pages_last_commit=$(git rev-parse HEAD)
-          cd ..
-
-          cd ./record
-          if [ ! -f develop.txt ]; then
-            echo "null" > develop.txt
-          fi
-          if [ ! -f gh-pages.txt ]; then
-            echo "null" > gh-pages.txt
-          fi
-          develop_record_commit=$(cat develop.txt)
-          gh_pages_record_commit=$(cat gh-pages.txt)
-          echo "develop_record_commit: $develop_record_commit"
-          echo "develop_last_commit: $develop_last_commit"
-          echo "gh_pages_record_commit: $gh_pages_record_commit"
-          echo "gh_pages_last_commit: $gh_pages_last_commit"
-          if [ "$develop_record_commit" != "$develop_last_commit" ]; then
-            echo "develop_update=true" >> $GITHUB_ENV
-            echo "$develop_last_commit" > develop.txt
-          else
-            echo "develop_update=false" >> $GITHUB_ENV
-          fi
-          if [ "$gh_pages_record_commit" != "$gh_pages_last_commit" ]; then
-            echo "gh_pages_update=true" >> $GITHUB_ENV
-            echo "$gh_pages_last_commit" > gh-pages.txt
-          else
-            echo "gh_pages_update=false" >> $GITHUB_ENV
-          fi
+      - name: Build Project
+        run: pnpm run build
 
       - name: Config ssh
         run: |
@@ -78,39 +44,12 @@ jobs:
           SERVER_PORT: ${{ secrets.SERVER_PORT}}
 
       - name: develop update
-        if: env.develop_update == 'true'
         run: |
-          echo "develop_update"
-          cd ./develop
-          rm -rf .git
+          cd ./dist
           scp -r -P $SERVER_PORT ./* $SERVER_USER@$SERVER_HOST:$SERVER_PATH
         env:
           SERVER_USER: ${{ secrets.SERVER_USER }}
           SERVER_HOST: ${{ secrets.SERVER_HOST }}
           SERVER_PATH: ${{ secrets.SERVER_PATH }}
-          SERVER_PORT: ${{ secrets.SERVER_PORT}}
-
-      - name: gh-pages update
-        if: env.gh_pages_update == 'true'
-        run: |
-          echo "gh_pages_update"
-          cd ./gh-pages
-          rm -rf .git
-          scp -r -P $SERVER_PORT ./* $SERVER_USER@$SERVER_HOST:$REFERENCE_PATH
-        env:
-          SERVER_USER: ${{ secrets.SERVER_USER }}
-          SERVER_HOST: ${{ secrets.SERVER_HOST }}
           SERVER_PORT: ${{ secrets.SERVER_PORT }}
-          REFERENCE_PATH: ${{ secrets.REFERENCE_PATH }}
-
-      - name: record update
-        if: env.develop_update == 'true' || env.gh_pages_update == 'true'
-        run: |
-          echo "any update"
-          cd ./record
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add .
-          git commit -m "$(date)"
-          git push origin HEAD:record
 
