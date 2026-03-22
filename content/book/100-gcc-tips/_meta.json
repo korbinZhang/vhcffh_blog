@@ -1,0 +1,127 @@
+[
+  {
+    "type": "file",
+    "name": "index",
+    "label": "总目录"
+  },
+  {
+    "type": "file",
+    "name": "001-print-predefined-macros",
+    "label": "打印 gcc 预定义的宏信息"
+  },
+  {
+    "type": "file",
+    "name": "002-print-commands-only",
+    "label": "打印 gcc 执行的子命令"
+  },
+  {
+    "type": "file",
+    "name": "003-print-level-options",
+    "label": "打印优化级别的对应选项"
+  },
+  {
+    "type": "file",
+    "name": "004-diagnostics-color",
+    "label": "打印彩色诊断信息"
+  },
+  {
+    "type": "file",
+    "name": "005-print-header-search-dir",
+    "label": "打印头文件搜索路径"
+  },
+  {
+    "type": "file",
+    "name": "006-print-file-name",
+    "label": "打印连接库的具体路径"
+  },
+  {
+    "type": "file",
+    "name": "007-inhibit-linemarkers",
+    "label": "生成没有行号标记的预处理文件"
+  },
+  {
+    "type": "file",
+    "name": "008-define-macro",
+    "label": "在命令行中预定义宏"
+  },
+  {
+    "type": "file",
+    "name": "009-undefine-macro",
+    "label": "在命令行中取消宏定义"
+  },
+  {
+    "type": "file",
+    "name": "010-pass-options-to-assembler",
+    "label": "把选项传给汇编器"
+  },
+  {
+    "type": "file",
+    "name": "011-verbose-asm",
+    "label": "生成有详细信息的汇编文件"
+  },
+  {
+    "type": "file",
+    "name": "012-address-sanitizer",
+    "label": "利用 Address Sanitizer 工具检查内存访问错误"
+  },
+  {
+    "type": "file",
+    "name": "013-thread-sanitizer",
+    "label": "利用 Thread Sanitizer 工具检查数据竞争的问题"
+  },
+  {
+    "type": "file",
+    "name": "014-pass-options-to-linker",
+    "label": "把选项传给连接器"
+  },
+  {
+    "type": "file",
+    "name": "015-set-dynamic-linker",
+    "label": "设置动态连接器"
+  },
+  {
+    "type": "file",
+    "name": "016-must-emit-function-code",
+    "label": "禁止函数被优化掉"
+  },
+  {
+    "type": "file",
+    "name": "017-must-forceinline-function-code",
+    "label": "强制函数永远以 inline 的形式调用"
+  },
+  {
+    "type": "file",
+    "name": "018-cast-lose-precision",
+    "label": "error: cast from ... to ... loses precision"
+  },
+  {
+    "type": "file",
+    "name": "019-warnings-treated-as-errors",
+    "label": "all warnings being treated as errors"
+  },
+  {
+    "type": "file",
+    "name": "021-syntax-only",
+    "label": "只做语法检查"
+  },
+  {
+    "type": "file",
+    "name": "022-save-temps",
+    "label": "保存临时文件"
+  },
+  {
+    "type": "file",
+    "name": "023-turn-on-warnings",
+    "label": "打开警告信息"
+  },
+  {
+    "type": "file",
+    "name": "024-specify-language",
+    "label": "指定语言类型"
+  },
+  {
+    "type": "file",
+    "name": "025-pack-struct",
+    "label": "改变结构体成员的字节对齐"
+  }
+]
