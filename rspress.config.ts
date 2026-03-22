@@ -1,10 +1,10 @@
 import * as path from 'node:path';
 import { defineConfig } from '@rspress/core';
 import { pluginRss } from '@rspress/plugin-rss';
-import pluginSitemap from './plugins/sitemap';
 import ga from 'rspress-plugin-google-analytics';
 import mermaid from 'rspress-plugin-mermaid';
 import katex from './plugins/katex';
+import pluginSitemap from './plugins/sitemap';
 
 export default defineConfig({
   root: path.join(__dirname, 'content'),
