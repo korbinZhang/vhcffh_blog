@@ -1,5 +1,6 @@
 ---
 date: 2026-02-09
+description: 记录Linux下自动挂载硬盘，并通过smb共享到局域网的方法。
 ---
 
 # Linux自动挂载硬盘并共享

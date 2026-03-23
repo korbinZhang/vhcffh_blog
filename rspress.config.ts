@@ -16,7 +16,7 @@ export default defineConfig({
   logoText: `Korbin`,
   icon: '/favicon.ico',
   title: `Korbin's Personal Website`,
-  description: '一个简单的个人博客，用于记录笔记',
+  description: '一个简单的个人网站，用于记录个人笔记、工具、项目等',
   head: [
     '<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">',
     '<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">',
