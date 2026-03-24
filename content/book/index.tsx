@@ -20,7 +20,7 @@ const BookList: React.FC = () => {
           <a
             key={book.title}
             className="relative bg-blue-500 m-2 pt-15 pb-35 rounded-lg hover:shadow-lg hover:-translate-y-1"
-            href={book.url}
+            href={`${book.url}/index.html`}
           >
             <span className="absolute left-0 top-0 w-2 h-full bg-black/30 rounded-l-lg" />
             <div className="ml-2 pl-2 bg-blue-300 h-20 line-clamp-5">
@@ -39,6 +39,7 @@ export const frontmatter = {
   title: "Korbin's blog",
   sidebar: false,
   footer: false,
+  outline: false,
 };
 
 export default BookList;
