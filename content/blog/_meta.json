@@ -1,6 +1,46 @@
 [
   {
     "type": "file",
+    "name": "2026/linux-mount-smb",
+    "label": "Linux自动挂载硬盘并共享"
+  },
+  {
+    "type": "file",
+    "name": "2025/c-variable-args",
+    "label": "C语言可变参数应用"
+  },
+  {
+    "type": "file",
+    "name": "2025/nginx-log-statistics",
+    "label": "Nginx日志统计技巧"
+  },
+  {
+    "type": "file",
+    "name": "2025/freertos-memory-management",
+    "label": "FreeRTOS 内存管理方案"
+  },
+  {
+    "type": "file",
+    "name": "2025/linux-terminal-tips",
+    "label": "Linux终端命令行技巧"
+  },
+  {
+    "type": "file",
+    "name": "2025/wsl-network-error-0x8007054f",
+    "label": "修复 WSL 网络配置错误 0x8007054f"
+  },
+  {
+    "type": "file",
+    "name": "2025/mmu-mpu-difference",
+    "label": "MMU 和 MPU的区别"
+  },
+  {
+    "type": "file",
+    "name": "2025/ssh-warning",
+    "label": "ssh连接时出现警告"
+  },
+  {
+    "type": "file",
     "name": "2025/cpp-numeric",
     "label": "C++ numeric 中的算法"
   },
