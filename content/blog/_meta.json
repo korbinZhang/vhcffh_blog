@@ -1,6 +1,11 @@
 [
   {
     "type": "file",
+    "name": "2026/C++11-new-feature",
+    "label": "C++11 新特性总结"
+  },
+  {
+    "type": "file",
     "name": "2026/linux-mount-smb",
     "label": "Linux自动挂载硬盘并共享"
   },
