@@ -41,6 +41,7 @@ export default defineConfig({
   ],
   route: {
     exclude: ['components/**/*'],
+    cleanUrls: true,
   },
   outDir: 'dist',
   globalStyles: path.join(__dirname, 'tailwind.css'),

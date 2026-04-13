@@ -7,14 +7,14 @@ hero:
   actions:
     - theme: brand
       text: Blog
-      link: /blog/index.html
+      link: /blog
     - theme: brand
       text: Project
-      link: /project/index.html
+      link: /project
     - theme: brand
       text: Book
-      link: /book/index.html
+      link: /book
     - theme: brand
       text: Tool
-      link: /tool/index.html
+      link: /tool
 ---

@@ -76,11 +76,9 @@ export default function rspressPluginSitemap(options: Options): RspressPlugin {
     extendPageData(pageData, isProd) {
       if (isProd) {
         if (!set.has(pageData.routePath)) {
-          let suffix = '.html'
-          if (pageData.routePath.endsWith('/')) suffix = 'index.html'
           set.add(pageData.routePath)
           sitemaps.push({
-            loc: `${options.domain}${pageData.routePath}${suffix}`,
+            loc: `${options.domain}${pageData.routePath}`,
             lastmod: statSync(pageData._filepath).mtime.toISOString(),
             priority:
               pageData.routePath === '/' ? '1.0' : options.defaultPriority,

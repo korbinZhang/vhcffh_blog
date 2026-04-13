@@ -15,9 +15,7 @@ const Archives = () => {
       month: new Date(page.frontmatter.date as string).getMonth(),
       date: new Date(page.frontmatter.date as string),
       title: page.title,
-      route: page.routePath.endsWith('/')
-        ? `${page.routePath}index.html`
-        : `${page.routePath}.html`,
+      route: page.routePath
     }))
     .filter((page) => page.year > 2000 && page.year <= new Date().getFullYear())
     .filter((page) => page.title !== '')
