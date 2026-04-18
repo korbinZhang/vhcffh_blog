@@ -17,6 +17,7 @@
   },
   "javascript": {
     "formatter": {
+      "bracketSpacing": true,
       "quoteStyle": "single"
     }
   },
