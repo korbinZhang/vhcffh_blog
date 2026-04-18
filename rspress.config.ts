@@ -36,7 +36,12 @@ export default defineConfig({
     mermaid(),
     pluginRss({
       siteUrl: 'https://www.vhcffh.com',
-      feed: { test: 'blog/' },
+      output: { dir: '.' },
+      feed: {
+        id: 'rss',
+        title: `Korbin's blog`,
+        test: '/blog/2',
+      },
     }),
   ],
   route: {
