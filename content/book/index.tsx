@@ -36,7 +36,7 @@ const BookList: React.FC = () => {
 export const frontmatter = {
   date: '2025-08-17',
   description: '值得阅读的一些笔记',
-  title: "Korbin's blog",
+  title: "Korbin's book",
   sidebar: false,
   footer: false,
   outline: false,

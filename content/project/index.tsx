@@ -35,7 +35,7 @@ const projects: Project[] = [
 export const frontmatter = {
   date: '2025-08-17',
   description: '一些个人项目',
-  title: "Korbin's blog",
+  title: "Korbin's project",
   footer: false,
 };
 
