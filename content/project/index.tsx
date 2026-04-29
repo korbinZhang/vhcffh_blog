@@ -3,7 +3,7 @@ import { Head } from '@rspress/core/runtime';
 interface Project {
   title: string;
   url: string;
-  github: string;
+  github?: string;
   description: string;
   icon: React.ReactNode;
 }
@@ -29,6 +29,12 @@ const projects: Project[] = [
     github: 'https://github.com/korbinZhang/gomoku',
     description: '使用js和Canvs实现的五子棋',
     icon: '⚫',
+  },
+  {
+    title: '语音转文本',
+    url: 'project/asr/',
+    description: '使用cloudflare Work AI实现语音转文本',
+    icon: '🎙️',
   },
 ];
 
@@ -77,14 +83,16 @@ const ProjectList: React.FC = () => {
               >
                 在线演示
               </a>
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm px-3 py-1 rounded bg-gray-100 dark:bg-gray-700 text-blue-600 dark:text-blue-400 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
-              >
-                GitHub 源码
-              </a>
+              {project.github && (
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm px-3 py-1 rounded bg-gray-100 dark:bg-gray-700 text-blue-600 dark:text-blue-400 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+                >
+                  GitHub 源码
+                </a>
+              )}
             </div>
           </div>
         ))}
