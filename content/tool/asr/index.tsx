@@ -12,8 +12,7 @@ export const frontmatter = {
 const Button = (props: ButtonHTMLAttributes<HTMLButtonElement>) => (
   <button
     {...props}
-    className={`mx-5 px-4 py-2 rounded-lg font-medium text-white bg-blue-500 hover:bg-blue-600
-      disabled:opacity-50 disabled:cursor-not-allowed ${props.className}`}
+    className={`w-24 mx-5 px-4 py-2 rounded-lg font-medium text-white bg-blue-500 curosr-pointer hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed ${props.className}`}
   />
 );
 
@@ -48,7 +47,9 @@ const AsrComponent: React.FC = () => {
         setAudioFile(audioBlob);
         setFileName(`recording_${Date.now()}.webm`);
 
-        stream.getTracks().forEach((track) => track.stop());
+        stream.getTracks().forEach((track) => {
+          track.stop();
+        });
       };
 
       mediaRecorder.start();
@@ -99,6 +100,25 @@ const AsrComponent: React.FC = () => {
       setIsConverting(false);
     }
   };
+
+  const selectFile = () => {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'audio/*';
+    input.onchange = (e: Event) => {
+      const file = (e.target as HTMLInputElement).files?.[0];
+      if (file) {
+        if (file.size <= 5 * 1024 * 1024) {
+          setAudioFile(file);
+          setFileName(file.name);
+        } else {
+          alert('文件过大(>5MB)');
+        }
+      }
+      input.remove();
+    };
+    input.click();
+  };
   return (
     <div className="flex flex-col items-center">
       <div className="text-2xl">{frontmatter.title}</div>
@@ -109,7 +129,7 @@ const AsrComponent: React.FC = () => {
             className={recording ? 'bg-red-500 hover:bg-red-600' : ''}
             onClick={handleRecording}
           >
-            {recording ? `结束录制` : `开始录制`}{' '}
+            {recording ? `结束录制` : `开始录制`}
           </Button>
           <Button
             className={isConverting ? 'bg-red-500 hover:bg-red-600' : ''}
@@ -117,6 +137,15 @@ const AsrComponent: React.FC = () => {
             disabled={isConverting}
           >
             {isConverting ? `转换中` : `开始转换`}
+          </Button>
+          <Button
+            className={
+              isConverting || recording ? 'bg-red-500 hover:bg-red-600' : ''
+            }
+            onClick={selectFile}
+            disabled={isConverting || recording}
+          >
+            选择文件
           </Button>
         </div>
         <div className="border-1 rounded border-gray-400 mt-5 px-2 py-1 min-h-30">
