@@ -12,7 +12,7 @@ export const frontmatter = {
 const Button = (props: ButtonHTMLAttributes<HTMLButtonElement>) => (
   <button
     {...props}
-    className={`w-24 mx-5 px-4 py-2 rounded-lg font-medium text-white bg-blue-500 curosr-pointer hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed ${props.className}`}
+    className={`w-24 mx-5 px-4 py-2 rounded-lg font-medium text-white bg-blue-500 cursor-pointer hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed ${props.className}`}
   />
 );
 
@@ -21,6 +21,7 @@ const AsrComponent: React.FC = () => {
   const [fileName, setFileName] = useState('');
   const [isConverting, setIsConverting] = useState(false);
   const [result, setReault] = useState('');
+  const [isZh, setIsZh] = useState(true);
 
   const [audioFile, setAudioFile] = useState<Blob | null>(null);
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
@@ -79,9 +80,10 @@ const AsrComponent: React.FC = () => {
     setIsConverting(true);
     const formData = new FormData();
     formData.append('audio', audioFile, fileName);
+    formData.append('language', isZh ? 'zh' : 'en');
 
     try {
-      const response = await fetch('https://api.vhcffh.com/api/v1/stt', {
+      const response = await fetch('https://api.vhcffh.com/api/v1/asr', {
         method: 'POST',
         body: formData,
       });
@@ -124,19 +126,12 @@ const AsrComponent: React.FC = () => {
       <div className="text-2xl">{frontmatter.title}</div>
       <div className="mt-10 text-sm text-gray-500">{fileName}</div>
       <div className="w-full mt-2">
-        <div className="flex flex-row justify-center w-100%">
+        <div className="mt-2 flex flex-row justify-center w-100%">
           <Button
             className={recording ? 'bg-red-500 hover:bg-red-600' : ''}
             onClick={handleRecording}
           >
             {recording ? `结束录制` : `开始录制`}
-          </Button>
-          <Button
-            className={isConverting ? 'bg-red-500 hover:bg-red-600' : ''}
-            onClick={startTransition}
-            disabled={isConverting}
-          >
-            {isConverting ? `转换中` : `开始转换`}
           </Button>
           <Button
             className={
@@ -146,6 +141,22 @@ const AsrComponent: React.FC = () => {
             disabled={isConverting || recording}
           >
             选择文件
+          </Button>
+        </div>
+        <div className="mt-2 flex flex-row justify-center w-100%">
+          <Button
+            className={
+              isConverting || '' === fileName
+                ? 'bg-red-500 hover:bg-red-600'
+                : ''
+            }
+            onClick={startTransition}
+            disabled={isConverting || '' === fileName}
+          >
+            {isConverting ? `转换中` : `开始转换`}
+          </Button>
+          <Button onClick={() => setIsZh(!isZh)}>
+            {isZh ? '中文' : '英文'}
           </Button>
         </div>
         <div className="border-1 rounded border-gray-400 mt-5 px-2 py-1 min-h-30">
