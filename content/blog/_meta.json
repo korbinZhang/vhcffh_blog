@@ -1,6 +1,11 @@
 [
   {
     "type": "file",
+    "name": "2026/STM32-flash-ram-cache",
+    "label": "STM32 Flash 读写与存储架构详解"
+  },
+  {
+    "type": "file",
     "name": "2026/ollama-config",
     "label": "ollama 使用记录"
   },
