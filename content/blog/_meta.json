@@ -1,6 +1,11 @@
 [
   {
     "type": "file",
+    "name": "2026/ollama-config",
+    "label": "ollama 使用记录"
+  },
+  {
+    "type": "file",
     "name": "2026/C++11-new-feature",
     "label": "C++11 新特性总结"
   },
