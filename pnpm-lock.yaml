@@ -39,6 +39,9 @@ importers:
       react-dom:
         specifier: ^19.2.4
         version: 19.2.4(react@19.2.4)
+      rspress-plugin-blog-list:
+        specifier: ^1.1.0
+        version: 1.1.0(@rspress/core@2.0.3(@types/react@19.2.14))(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       rspress-plugin-google-analytics:
         specifier: ^1.0.0
         version: 1.0.0(@rspress/core@2.0.3(@types/react@19.2.14))
@@ -1501,6 +1504,13 @@ packages:
 
   robust-predicates@3.0.2:
     resolution: {integrity: sha512-IXgzBWvWQwE6PrDI05OvmXUIruQTcoMDzRsOd5CDvHCVLcLHMTSYvOK5Cm46kWqlV3yAbuSpBZdJ5oP5OUoStg==}
+
+  rspress-plugin-blog-list@1.1.0:
+    resolution: {integrity: sha512-9DKCHR9sB3AqAwxUNrYHPCBJnHPEGrdScjIPrPZ+RN0MesDc1t1KKblRcPC7N/g4VV+sD7mgwvvut0rGc/9+qw==}
+    peerDependencies:
+      '@rspress/core': ^2.0.0
+      react: ^18.0.0 || ^19.0.0
+      react-dom: ^18.0.0 || ^19.0.0
 
   rspress-plugin-devkit@1.0.0:
     resolution: {integrity: sha512-Xe+yxu9X9a+SBH8CSPZJSiqm0OtaIvx9FCXI1MQMpfmaK75/F+3Rvbz/zJw7nFxxpo5HsePb86ScGOYNIKNLFg==}
@@ -3737,6 +3747,12 @@ snapshots:
       unified: 11.0.5
 
   robust-predicates@3.0.2: {}
+
+  rspress-plugin-blog-list@1.1.0(@rspress/core@2.0.3(@types/react@19.2.14))(react-dom@19.2.4(react@19.2.4))(react@19.2.4):
+    dependencies:
+      '@rspress/core': 2.0.3(@types/react@19.2.14)
+      react: 19.2.4
+      react-dom: 19.2.4(react@19.2.4)
 
   rspress-plugin-devkit@1.0.0(@rspress/core@2.0.3(@types/react@19.2.14)):
     dependencies:

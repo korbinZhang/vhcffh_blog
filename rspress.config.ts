@@ -2,6 +2,7 @@ import * as path from 'node:path';
 import { defineConfig } from '@rspress/core';
 import { pluginRss } from '@rspress/plugin-rss';
 import { pluginSitemap } from '@rspress/plugin-sitemap';
+import { pluginBlogList } from 'rspress-plugin-blog-list';
 import ga from 'rspress-plugin-google-analytics';
 import katex from 'rspress-plugin-katex';
 import mermaid from 'rspress-plugin-mermaid';
@@ -36,13 +37,14 @@ export default defineConfig({
     mermaid(),
     pluginRss({
       siteUrl: 'https://www.vhcffh.com',
-      output: { dir: '.' },
+      output: { dir: './blog/' },
       feed: {
         id: 'rss',
         title: `Korbin's blog`,
         test: '/blog/2',
       },
     }),
+    pluginBlogList(),
   ],
   route: {
     exclude: ['components/**/*'],
