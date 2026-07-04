@@ -1,5 +1,6 @@
 import * as path from 'node:path';
 import { defineConfig } from '@rspress/core';
+import { pluginLlms } from '@rspress/plugin-llms';
 import { pluginRss } from '@rspress/plugin-rss';
 import { pluginSitemap } from '@rspress/plugin-sitemap';
 import { pluginBlogList } from 'rspress-plugin-blog-list';
@@ -27,6 +28,7 @@ export default defineConfig({
   ],
   themeConfig: {
     enableScrollToTop: true,
+    llmsUI: true,
   },
   plugins: [
     katex(),
@@ -45,6 +47,7 @@ export default defineConfig({
       },
     }),
     pluginBlogList(),
+    pluginLlms({ mdFiles: { mdxToMd: true } }),
   ],
   route: {
     exclude: ['components/**/*'],
