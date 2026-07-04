@@ -2,8 +2,8 @@ import * as path from 'node:path';
 import { defineConfig } from '@rspress/core';
 import { pluginRss } from '@rspress/plugin-rss';
 import ga from 'rspress-plugin-google-analytics';
+import katex from 'rspress-plugin-katex';
 import mermaid from 'rspress-plugin-mermaid';
-import katex from './plugins/katex';
 import pluginSitemap from './plugins/sitemap';
 
 export default defineConfig({

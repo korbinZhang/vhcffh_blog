@@ -36,15 +36,12 @@ importers:
       react-dom:
         specifier: ^19.2.4
         version: 19.2.4(react@19.2.4)
-      rehype-katex:
-        specifier: ^7.0.1
-        version: 7.0.1
-      remark-math:
-        specifier: ^6.0.0
-        version: 6.0.0
       rspress-plugin-google-analytics:
         specifier: ^1.0.0
         version: 1.0.0(@rspress/core@2.0.3(@types/react@19.2.14))
+      rspress-plugin-katex:
+        specifier: ^1.0.1
+        version: 1.0.1(@rspress/core@2.0.3(@types/react@19.2.14))
       rspress-plugin-mermaid:
         specifier: ^1.0.1
         version: 1.0.1(@rspress/core@2.0.3(@types/react@19.2.14))
@@ -1503,6 +1500,11 @@ packages:
 
   rspress-plugin-google-analytics@1.0.0:
     resolution: {integrity: sha512-VgrL7ePZjjbaAeICXzcTxqj4v2zUbQAiF983x7N1B3FsoG1fQPuwhDO9vea67kh5eug4+VOTnm1N32ehkM+RBw==}
+    peerDependencies:
+      '@rspress/core': ^2.0.0-rc.4 || ^2.0.0
+
+  rspress-plugin-katex@1.0.1:
+    resolution: {integrity: sha512-8Cv10o2a+n6T7s0aFpSq25QbtSt/JepUydh0bIt779mvVTN3qT4rmHtc5m5+bffCbQxZqTRlhGxrzJ/Y3fFoOw==}
     peerDependencies:
       '@rspress/core': ^2.0.0-rc.4 || ^2.0.0
 
@@ -3752,6 +3754,17 @@ snapshots:
     dependencies:
       '@rspress/core': 2.0.3(@types/react@19.2.14)
       rspress-plugin-devkit: 1.0.0(@rspress/core@2.0.3(@types/react@19.2.14))
+    transitivePeerDependencies:
+      - supports-color
+
+  rspress-plugin-katex@1.0.1(@rspress/core@2.0.3(@types/react@19.2.14)):
+    dependencies:
+      '@rspress/core': 2.0.3(@types/react@19.2.14)
+      katex: 0.16.28
+      rehype-katex: 7.0.1
+      remark-math: 6.0.0
+      rspress-plugin-devkit: 1.0.0(@rspress/core@2.0.3(@types/react@19.2.14))
+      unist-util-visit: 5.1.0
     transitivePeerDependencies:
       - supports-color
 
