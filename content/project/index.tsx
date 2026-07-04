@@ -16,6 +16,19 @@ const projects: CardProps[] = [
     description: "使用js和Canvs实现的五子棋",
     icon: "⚫",
   },
+  {
+    title: "定时器",
+    url: "https://www.vhcffh.com/project/timer/",
+    github: "https://github.com/korbinZhang/timer",
+    description: "使用Rust基于Yew和Trunk实现的定时器",
+    icon: "⏲️",
+  },
+  {
+    title: "语音转文本",
+    url: "project/asr/",
+    description: "使用cloudflare Work AI实现语音转文本",
+    icon: "🎙️",
+  },
 ];
 
 export const frontmatter = {

@@ -14,7 +14,4 @@ hero:
     - theme: brand
       text: Book
       link: /book
-    - theme: brand
-      text: Tool
-      link: /tool
 ---
