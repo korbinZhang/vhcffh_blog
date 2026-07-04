@@ -18,6 +18,9 @@ importers:
       '@rspress/plugin-rss':
         specifier: ^2.0.3
         version: 2.0.3(@rspress/core@2.0.3(@types/react@19.2.14))
+      '@rspress/plugin-sitemap':
+        specifier: ^2.0.16
+        version: 2.0.16(@rspress/core@2.0.3(@types/react@19.2.14))
       '@tailwindcss/postcss':
         specifier: ^4.2.1
         version: 4.2.1
@@ -267,6 +270,12 @@ packages:
     engines: {node: ^20.19.0 || >=22.12.0}
     peerDependencies:
       '@rspress/core': ^2.0.3
+
+  '@rspress/plugin-sitemap@2.0.16':
+    resolution: {integrity: sha512-zRPvKAGF8EexblJvrkhhHtD2Kqlbaw6XFjbIMM07gs0SIUKNg1o3T2I/uo5cvWtk0pGfYyyAJj94HoqLUgUsEw==}
+    engines: {node: ^20.19.0 || >=22.12.0}
+    peerDependencies:
+      '@rspress/core': ^2.0.10
 
   '@rspress/shared@2.0.3':
     resolution: {integrity: sha512-yI9G4P165fSsmm6QoYTUrdgUis1aFnDh04GcM4SQIpL3itvEZhGtItgoeGkX9EWbnEjhriwI8mTqDDJIp+vrGA==}
@@ -1974,6 +1983,10 @@ snapshots:
     dependencies:
       '@rspress/core': 2.0.3(@types/react@19.2.14)
       feed: 4.2.2
+
+  '@rspress/plugin-sitemap@2.0.16(@rspress/core@2.0.3(@types/react@19.2.14))':
+    dependencies:
+      '@rspress/core': 2.0.3(@types/react@19.2.14)
 
   '@rspress/shared@2.0.3':
     dependencies:

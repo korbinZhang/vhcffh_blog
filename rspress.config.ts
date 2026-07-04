@@ -1,10 +1,10 @@
 import * as path from 'node:path';
 import { defineConfig } from '@rspress/core';
 import { pluginRss } from '@rspress/plugin-rss';
+import { pluginSitemap } from '@rspress/plugin-sitemap';
 import ga from 'rspress-plugin-google-analytics';
 import katex from 'rspress-plugin-katex';
 import mermaid from 'rspress-plugin-mermaid';
-import pluginSitemap from './plugins/sitemap';
 
 export default defineConfig({
   root: path.join(__dirname, 'content'),
@@ -30,7 +30,7 @@ export default defineConfig({
   plugins: [
     katex(),
     pluginSitemap({
-      domain: 'https://www.vhcffh.com',
+      siteUrl: 'https://www.vhcffh.com',
     }),
     ga({ id: `G-D9NXKT8Z3L` }),
     mermaid(),
