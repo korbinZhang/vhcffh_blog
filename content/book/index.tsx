@@ -20,7 +20,7 @@ const BookList: React.FC = () => {
       {books.map((book) => {
         return (
           <li key={book.url}>
-            <Link href={`book/${book.url}`}>{book.url}</Link>
+            <Link href={`book/${book.url}/`}>{book.url}</Link>
           </li>
         );
       })}
