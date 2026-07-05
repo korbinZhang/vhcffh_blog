@@ -4,6 +4,7 @@ import { pluginLlms } from '@rspress/plugin-llms';
 import { pluginRss } from '@rspress/plugin-rss';
 import { pluginSitemap } from '@rspress/plugin-sitemap';
 import { pluginBlogList } from 'rspress-plugin-blog-list';
+import { pluginGiscus } from 'rspress-plugin-giscus';
 import ga from 'rspress-plugin-google-analytics';
 import katex from 'rspress-plugin-katex';
 import mermaid from 'rspress-plugin-mermaid';
@@ -48,6 +49,12 @@ export default defineConfig({
     }),
     pluginBlogList(),
     pluginLlms({ mdFiles: { mdxToMd: true } }),
+    pluginGiscus({
+      repo: 'korbinZhang/blog-giscus',
+      repoId: 'R_kgDOTN6hGw',
+      category: 'Announcements',
+      categoryId: 'DIC_kwDOTN6hG84DAhXs',
+    })
   ],
   route: {
     exclude: ['components/**/*'],
