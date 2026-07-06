@@ -25,7 +25,7 @@ const projects: CardProps[] = [
   },
   {
     title: "语音转文本",
-    url: "project/asr/",
+    url: "https://www.vhcffh.com/project/asr/",
     description: "使用cloudflare Work AI实现语音转文本",
     icon: "🎙️",
   },
