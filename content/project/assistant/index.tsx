@@ -148,7 +148,13 @@ const MessageContent = ({ content }: { content: string }) => {
 };
 
 const AssistantComponent = () => {
-  const [messages, setMessages] = useState<Message[]>([]);
+  const [messages, setMessages] = useState<Message[]>([
+    {
+      role: 'assistant',
+      content: '你好，我是Korbin的个人助理，有什么需要帮助你的吗？',
+      error: true,
+    },
+  ]);
 
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
