@@ -17,7 +17,23 @@ type Message = {
 };
 
 const parseInlineFormatting = (text: string): React.ReactNode => {
-  return <ReactMarkdown remarkPlugins={[remarkGfm]}>{text}</ReactMarkdown>;
+  return (
+    <ReactMarkdown
+      components={{
+        p: ({ node, ...props }) => (
+          <p
+            style={{
+              margin: '0 0',
+            }}
+            {...props}
+          />
+        ),
+      }}
+      remarkPlugins={[remarkGfm]}
+    >
+      {text}
+    </ReactMarkdown>
+  );
 };
 
 const MessageContent = ({ content }: { content: string }) => {
