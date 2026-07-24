@@ -1,4 +1,4 @@
-import { NoSSR } from '@rspress/core/runtime';
+import { NoSSR, useSearchParams } from '@rspress/core/runtime';
 import { useEffect, useRef, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
@@ -13,10 +13,12 @@ export const frontmatter = {
 type Message = {
   role: 'user' | 'assistant';
   content: string;
-  error?: boolean;
+  md?: boolean;
+  skip?: boolean;
+  url?: string;
 };
 
-const parseInlineFormatting = (text: string): React.ReactNode => {
+const MessageContent = ({ text }: { text: string }): React.ReactNode => {
   return (
     <ReactMarkdown
       components={{
@@ -28,6 +30,7 @@ const parseInlineFormatting = (text: string): React.ReactNode => {
             {...props}
           />
         ),
+        a: ({ node, ...props }) => <a target='_blank' {...props} />,
       }}
       remarkPlugins={[remarkGfm]}
     >
@@ -36,141 +39,24 @@ const parseInlineFormatting = (text: string): React.ReactNode => {
   );
 };
 
-const MessageContent = ({ content }: { content: string }) => {
-  if (!content) return null;
-
-  const rawParts = content.split(/```/g);
-  const parts = rawParts.map((part, index) => ({
-    id: `block-${index}-${part.length}`,
-    index,
-    part,
-  }));
-
-  return (
-    <div className="space-y-3 text-sm md:text-base leading-relaxed break-words">
-      {parts.map((item) => {
-        if (item.index % 2 === 1) {
-          const lines = item.part.split('\n');
-          let language = '';
-          let code = item.part;
-
-          if (
-            lines[0] &&
-            lines[0].trim().length > 0 &&
-            !lines[0].includes(' ') &&
-            lines[0].length < 15
-          ) {
-            language = lines[0].trim();
-            code = lines.slice(1).join('\n');
-          }
-
-          return (
-            <div
-              key={item.id}
-              className="my-3 overflow-hidden rounded-lg border border-gray-200 dark:border-gray-700"
-            >
-              {language && (
-                <div className="bg-gray-100 dark:bg-gray-850 px-4 py-1.5 text-xs font-mono text-gray-500 dark:text-gray-400 flex justify-between items-center border-b border-gray-200 dark:border-gray-700 select-none">
-                  <span>{language}</span>
-                </div>
-              )}
-              <pre className="p-4 bg-gray-50 dark:bg-gray-950 overflow-x-auto text-xs md:text-sm font-mono text-gray-800 dark:text-gray-200">
-                <code>{code.trim()}</code>
-              </pre>
-            </div>
-          );
-        }
-
-        const rawParagraphs = item.part.split(/\n\n+/g);
-        const paragraphs = rawParagraphs.map((paragraph, pIdx) => ({
-          id: `p-${item.index}-${pIdx}`,
-          paragraph,
-        }));
-
-        return paragraphs.map((pItem) => {
-          if (!pItem.paragraph.trim()) return null;
-
-          const lines = pItem.paragraph.split('\n');
-          const isBulletList = lines.every(
-            (line) =>
-              line.trim().startsWith('- ') || line.trim().startsWith('* '),
-          );
-          const isNumberedList = lines.every((line) =>
-            /^\d+\.\s/.test(line.trim()),
-          );
-
-          if (isBulletList) {
-            const listItems = lines.map((line, lIdx) => ({
-              id: `bullet-${pItem.id}-${lIdx}`,
-              cleaned: line.trim().replace(/^[-*]\s+/, ''),
-            }));
-
-            return (
-              <ul
-                key={pItem.id}
-                className="list-disc list-inside space-y-1.5 my-2 pl-2"
-              >
-                {listItems.map((lItem) => (
-                  <li
-                    key={lItem.id}
-                    className="text-gray-700 dark:text-gray-300"
-                  >
-                    {parseInlineFormatting(lItem.cleaned)}
-                  </li>
-                ))}
-              </ul>
-            );
-          }
-
-          if (isNumberedList) {
-            const listItems = lines.map((line, lIdx) => ({
-              id: `num-${pItem.id}-${lIdx}`,
-              cleaned: line.trim().replace(/^\d+\.\s+/, ''),
-            }));
-
-            return (
-              <ol
-                key={pItem.id}
-                className="list-decimal list-inside space-y-1.5 my-2 pl-2"
-              >
-                {listItems.map((lItem) => (
-                  <li
-                    key={lItem.id}
-                    className="text-gray-700 dark:text-gray-300"
-                  >
-                    {parseInlineFormatting(lItem.cleaned)}
-                  </li>
-                ))}
-              </ol>
-            );
-          }
-
-          return (
-            <p
-              key={pItem.id}
-              className="text-gray-700 dark:text-gray-300"
-              style={{
-                marginTop: '0px',
-                marginBottom: '0px',
-              }}
-            >
-              {parseInlineFormatting(pItem.paragraph)}
-            </p>
-          );
-        });
-      })}
-    </div>
-  );
-};
-
 const AssistantComponent = () => {
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      role: 'assistant',
-      content: '你好，我是Korbin的个人助理，有什么需要帮助你的吗？',
-      error: true,
-    },
-  ]);
+  const [searchParams] = useSearchParams();
+  const url = searchParams.get('url');
+  const title = searchParams.get('title');
+  const mdTitle = title ? title : '这篇文章';
+  const initMessage: Message = url && mdTitle
+    ? {
+        role: 'user',
+        content: `阅读 [${mdTitle}](${url}),回答相关问题。`,
+        url: `${url}.md`,
+        md: true,
+      }
+    : {
+        role: 'assistant',
+        content: '你好，我是Korbin的个人助理，有什么需要帮助你的吗？',
+        skip: true,
+      };
+  const [messages, setMessages] = useState<Message[]>([]);
 
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
@@ -182,6 +68,21 @@ const AssistantComponent = () => {
     messages.length;
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
+  const isInitialized = useRef(false);
+  const sendMessageRef = useRef(sendMessage);
+
+  useEffect(() => {
+    if (isInitialized.current || messages.length > 0) {
+      return;
+    }
+    isInitialized.current = true;
+
+    if (initMessage.role === 'user') {
+      sendMessageRef.current(initMessage.content, true);
+    } else {
+      setMessages([initMessage]);
+    }
+  }, [initMessage, messages.length]);
 
   const handleCopy = (text: string, index: number) => {
     navigator.clipboard
@@ -197,13 +98,15 @@ const AssistantComponent = () => {
       });
   };
 
-  async function sendMessage(textToSend?: string) {
+  async function sendMessage(textToSend?: string, md?: boolean) {
     const text = (textToSend || input).trim();
     if (!text || loading) return;
 
     const userMsg: Message = {
       role: 'user',
       content: text,
+      md: md,
+      url: messages.length === 0 ? initMessage.url : undefined,
     };
 
     const newMessages = [...messages, userMsg];
@@ -221,8 +124,8 @@ const AssistantComponent = () => {
         },
         body: JSON.stringify(
           newMessages
-            .filter(({ error }) => !error)
-            .map(({ role, content }) => ({ role, content })),
+            .filter(({ skip }) => !skip)
+            .map(({ role, content, url }) => ({ role, content, url })),
         ),
       });
       if (res.status !== 200) {
@@ -234,7 +137,10 @@ const AssistantComponent = () => {
         throw new Error('error');
       }
       setMessages((prev) => {
-        return [...prev.slice(0, prev.length - 1), data.data.messages.message];
+        return [
+          ...prev.slice(0, prev.length - 1),
+          { ...data.data.messages.message, md: true },
+        ];
       });
     } catch (error) {
       console.error(error);
@@ -243,13 +149,13 @@ const AssistantComponent = () => {
           ...prev.slice(0, prev.length - 2),
           {
             ...prev[prev.length - 2],
-            error: true,
+            skip: true,
           },
           {
             role: 'assistant',
             content:
               '⚠️抱歉，获取 AI 回答时发生错误。请检查网络连接或稍后重试。',
-            error: true,
+            skip: true,
           },
         ];
       });
@@ -332,27 +238,27 @@ const AssistantComponent = () => {
                       : 'bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-800/80 text-gray-800 dark:text-gray-100 rounded-tl-none'
                   }`}
                 >
-                  {m.role === 'assistant' ? (
-                    m.content ? (
-                      <MessageContent content={m.content} />
+                  {m.content ? (
+                    m.md ? (
+                      <MessageContent text={m.content} />
                     ) : (
-                      <div className="flex gap-1 py-1.5 px-2 select-none">
-                        <span
-                          className="w-2 h-2 bg-blue-500 rounded-full animate-bounce"
-                          style={{ animationDelay: '0ms' }}
-                        />
-                        <span
-                          className="w-2 h-2 bg-blue-500 rounded-full animate-bounce"
-                          style={{ animationDelay: '150ms' }}
-                        />
-                        <span
-                          className="w-2 h-2 bg-blue-500 rounded-full animate-bounce"
-                          style={{ animationDelay: '300ms' }}
-                        />
-                      </div>
+                      <div className="whitespace-pre-wrap">{m.content}</div>
                     )
                   ) : (
-                    <div className="whitespace-pre-wrap">{m.content}</div>
+                    <div className="flex gap-1 py-1.5 px-2 select-none">
+                      <span
+                        className="w-2 h-2 bg-blue-500 rounded-full animate-bounce"
+                        style={{ animationDelay: '0ms' }}
+                      />
+                      <span
+                        className="w-2 h-2 bg-blue-500 rounded-full animate-bounce"
+                        style={{ animationDelay: '150ms' }}
+                      />
+                      <span
+                        className="w-2 h-2 bg-blue-500 rounded-full animate-bounce"
+                        style={{ animationDelay: '300ms' }}
+                      />
+                    </div>
                   )}
                 </div>
 
