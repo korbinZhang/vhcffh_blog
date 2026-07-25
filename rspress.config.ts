@@ -29,7 +29,6 @@ export default defineConfig({
   ],
   themeConfig: {
     enableScrollToTop: true,
-    llmsUI: true,
   },
   plugins: [
     katex(),
