@@ -1,5 +1,6 @@
 ---
 date: 2025-11-21
+tags: ["SSH", "Security", "Linux"]
 ---
 
 # ssh连接时出现警告

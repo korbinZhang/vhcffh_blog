@@ -1,6 +1,7 @@
 ---
 title: 'FreeRTOS 内存管理方案'
 date: 2025-12-17
+tags: ["FreeRTOS", "Memory"]
 ---
 
 FreeRTOS 将内存管理与内核分离，通过统一的 `pvPortMalloc()` 和 `vPortFree()` 接口实现多种可选的堆管理算法（heap_1 ~ heap_5），以适配不同嵌入式场景。

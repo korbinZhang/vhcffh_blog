@@ -1,6 +1,7 @@
 ---
 title: '修复 WSL 网络配置错误 0x8007054f'
 date: 2025-11-29
+tags: ["WSL", "Network", "Windows"]
 ---
 
 当 WSL 报错 `createinstance/createvm/configurenetworking/0x8007054f` 并提示无法配置网络时，通常是由于网络服务或系统配置问题导致的。以下是解决此问题的步骤。

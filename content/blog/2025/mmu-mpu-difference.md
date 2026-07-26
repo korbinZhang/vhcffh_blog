@@ -1,6 +1,7 @@
 ---
 title: 'MMU 和 MPU的区别'
 date: 2025-11-27
+tags: ["Hardware", "Memory", "MMU", "MPU"]
 ---
 
 MPU（Memory Protection Unit，内存保护单元）和 MMU（Memory Management Unit，内存管理单元）是现代计算机系统中用于内存管理的两种硬件设备。尽管它们在基本功能上有相似之处，但在复杂性和功能上存在显著差异。

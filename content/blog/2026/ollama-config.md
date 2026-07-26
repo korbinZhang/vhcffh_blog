@@ -2,6 +2,7 @@
 date: 2026-04-24
 description: 记录ollama服务配置及问题排查方法。
 title: ollama 使用记录
+tags: ["Ollama", "LLM", "Config"]
 ---
 
 1. 修改监听IP

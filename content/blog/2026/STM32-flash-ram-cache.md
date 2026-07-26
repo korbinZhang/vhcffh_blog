@@ -2,6 +2,7 @@
 date: 2026-04-30
 title: STM32 Flash 读写与存储架构详解
 description: 深入记录STM32F407存储外设的地址映射、ART加速器原理及Flash读写注意事项
+tags: ["STM32", "Flash", "Embedded"]
 ---
 
 在进行 STM32 嵌入式开发时，理解存储架构（Flash、SRAM、CCM RAM）及其访问特性是性能优化的基础。本文以 STM32F407 为例，总结其存储特性。

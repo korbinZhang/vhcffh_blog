@@ -3,6 +3,7 @@ date: 2026-04-10
 description: 总结C++11带来的新特性：nullptr、auto、decltype、lambda、array、forward_list、tuple、move、bind
 title: C++11 新特性总结
 outline: true
+tags: ["C++", "C++11", "Programming"]
 ---
 
 C++11 是 C++ 程序设计语言标准的一个重要版本，于 2011 年由 ISO 正式发布，取代了原有的 C++98/03 标准。C++11 在核心语法、STL 标准模板库等方面增加了众多新功能，例如新增 `nullptr`、`auto`、`decltype` 关键字，引入 Lambda 表达式、`std::array`、`std::forward_list`、`std::tuple` 等容器，以及右值引用与移动语义等。下面将对这些新特性逐一总结。

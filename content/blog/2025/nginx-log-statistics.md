@@ -1,6 +1,7 @@
 ---
 title: 'Nginx日志统计技巧'
 date: 2025-12-18
+tags: ["Nginx", "Linux", "Log"]
 ---
 
 记录如何通过命令行对Nginx日志进行简单分析，日志格式为：

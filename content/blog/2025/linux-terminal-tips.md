@@ -1,6 +1,7 @@
 ---
 title: 'Linux终端命令行技巧'
 date: 2025-12-08
+tags: ["Linux", "Terminal", "CLI"]
 ---
 
 总结一下在Linux终端中进行命令输入、编辑的一些技巧
