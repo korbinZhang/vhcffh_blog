@@ -22,15 +22,6 @@ const Layout = () => {
     }
   }
 
-  if (page.routePath.startsWith('/tool')) {
-    if (page.frontmatter.sidebar === undefined) {
-      page.frontmatter.sidebar = false;
-    }
-    if (page.frontmatter.outline === undefined) {
-      page.frontmatter.outline = false;
-    }
-  }
-
   return <BasicLayout />;
 };
 

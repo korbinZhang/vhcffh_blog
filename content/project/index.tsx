@@ -23,12 +23,6 @@ const projects: CardProps[] = [
     description: "使用Rust基于Yew和Trunk实现的定时器",
     icon: "⏲️",
   },
-  {
-    title: "语音转文本",
-    url: "https://www.vhcffh.com/project/asr/",
-    description: "使用cloudflare Work AI实现语音转文本",
-    icon: "🎙️",
-  },
 ];
 
 export const frontmatter = {
