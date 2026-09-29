@@ -14,16 +14,9 @@ import { CardList, type CardProps } from './card';
 function getCustomMDXComponent() {
   const { h1: H1, ...mdxComponents } = BasicGetCustomMDXComponent();
   const { page } = usePage();
-  const fullUrl = typeof window !== 'undefined' ? window.location.href : '';
-  const localAiUrl = `https://www.vhcffh.com/project/assistant?url=${fullUrl}&title=${page.title}`;
   const options: LlmsViewOptionsProps = {
     options: [
       'markdownLink',
-      {
-        title: '咨询本站助手',
-        href: localAiUrl,
-        icon: 'K',
-      },
       'chatgpt',
       'claude',
     ],
