@@ -1,6 +1,16 @@
 [
   {
     "type": "file",
+    "name": "2026/intermediate-finance-exam-syllabus",
+    "label": "中级金融专业知识与实务 - 考试大纲重点梳理"
+  },
+  {
+    "type": "file",
+    "name": "2026/intermediate-economics-exam-syllabus",
+    "label": "中级经济基础知识 - 考试大纲重点梳理"
+  },
+  {
+    "type": "file",
     "name": "2026/STM32-flash-ram-cache",
     "label": "STM32 Flash 读写与存储架构详解"
   },
